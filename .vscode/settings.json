@@ -4,5 +4,12 @@
             "externalTemplate": true,
             "skipStyle": true
         }
+    },
+    "angular-schematics.forcedDependencies": {
+        "typescript": "5.2.0",
+        "@angular/core": "17.0.0",
+        "@angular/common": "17.0.0",
+        "@angular/router": "17.0.0",
+        "@angular/forms": "17.0.0"
     }
 }

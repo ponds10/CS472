@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CS472": {
+    "Toebeans": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/cs472",
+            "outputPath": "dist/toebeans",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "CS472:build:production"
+              "buildTarget": "Toebeans:build:production"
             },
             "development": {
-              "buildTarget": "CS472:build:development"
+              "buildTarget": "Toebeans:build:development"
             }
           },
           "defaultConfiguration": "development"

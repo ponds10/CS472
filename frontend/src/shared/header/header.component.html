@@ -1,0 +1,23 @@
+<header class="sticky w-full bg-cyan-300 top-0 h-16 z-50 p-4">
+    <nav>
+        <div class="flex items-center justify-between w-full px-4 mx-auto">
+            <div>
+                <h1><button><a [routerLink]="['']">Toebeans</a></button></h1>
+            </div>
+
+            <div>
+                <ul class="flex items-center justify-between w-1/2 space-x-20">
+                    <li><button><a [routerLink]="['']">Home</a></button></li>
+                    <li><button><a [routerLink]="['']">About</a></button></li>
+                    <li><button><a [routerLink]="['']">Services</a></button></li>
+                    <li><button><a [routerLink]="['']">Resources</a></button></li>
+                </ul>
+            </div>
+
+            <div>
+                <button><a [routerLink]="['/login']">Login</a></button>
+            </div>
+        </div>
+    </nav>
+    <router-outlet></router-outlet>
+</header>

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { LandingPageComponent } from './Pages/landing-page/landing-page.component'
+import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
 import { EventPageComponent } from './Pages/event-page/event-page.component';
 import { PetPageComponent } from './Pages/pet-page/pet-page.component';

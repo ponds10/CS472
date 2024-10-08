@@ -1,15 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { LoginBoxComponent } from '../../components/login-box/login-box.component';
 
 @Component({
-  selector: 'app-landing-page',
+  selector: 'app-login-box',
   standalone: true,
   imports: [
     CommonModule,
-    LoginBoxComponent,
   ],
-  templateUrl: './landing-page.component.html',
+  templateUrl: './login-box.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LandingPageComponent { }
+export class LoginBoxComponent { }

@@ -9,6 +9,9 @@ module.exports = {
     },
     fontFamily: {
     },
+    backgroundImage: {
+      'landing': "url('./assets/background1.png')"
+    },
     extend: {},
   },
   plugins: [],

@@ -1,0 +1,42 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="flex flex-col h-screen w-full bg-cyan-100 lg:flex-row">
+    <div class=" bg-white flex flex-col items-center p-16 rounded-lg shadow-xl space-y-16
+                lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll
+                transition-all duration-500 ease-in-out">
+
+        <div class="grid grid-cols-2 gap-4">
+            <div class="grid-cols-subgrid col-span-2"><h1 class="text-5xl">Filter</h1></div>
+            <div class="grid-cols-subgrid col-span-2"><h1 class="text-xl">Species</h1></div>
+            <div><img src="./assets/images/1.png" class="w-32"></div>
+            <div><img src="./assets/images/2.png" class="w-32"></div>
+
+
+            <div class="grid-cols-subgrid col-span-2"><h1 class="text-xl">Gender</h1></div>
+            <div class="grid-cols-subgrid col-span-2">
+                <mat-chip>Male</mat-chip>
+                <mat-chip>Female</mat-chip>
+            </div>
+
+
+            <div class="grid-cols-subgrid col-span-2"><h1 class="text-xl">Breed</h1></div>
+            <div class="grid-cols-subgrid col-span-2">
+                <mat-chip>Siamese</mat-chip>
+                <mat-chip>Hairless</mat-chip>
+                <mat-chip>Balinese</mat-chip>
+                <mat-chip>British Longhair</mat-chip>
+                <mat-chip>Burmilla</mat-chip>
+            </div>
+
+            <div class="grid-cols-subgrid col-span-2"><h1 class="text-xl">Age</h1></div>
+            <div class="grid-cols-subgrid col-span-2">
+                <mat-slider min="0" max="20" showTickMarks discrete="thumbLabel">
+                    <input matSliderStartThumb>
+                    <input matSliderEndThumb>
+                </mat-slider>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>

@@ -1,25 +1,23 @@
 <app-nav-bar></app-nav-bar>
-<style>
-h1 {
-  text-align: center;
-  margin: 0 auto;
-}
-</style>
 
 <div class="flex flex-col h-screen w-full bg-cyan-100 lg:flex-row">
   <div class="bg-stone-50 flex flex-col items-center p-16 rounded-lg shadow-xl space-y-16
               lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll
               transition-all duration-500 ease-in-out">
 
-    <h1>EVENT</h1>
     <section class="w-full space-y-24 overflow-x-scroll lg:overflow-visible">
       <div class="w-full flex flex-col items-center">
-        <app-event-card image="./assets/images/event-page-sample1.png" date="AUGUST 26, 2024" [registeredCount]="100" title="PET DAY OF THE YEAR"></app-event-card>
+        <app-event-card image="./assets/images/event-page-sample1.png" date="AUGUST 26, 2024" [registeredCount]="100" title="INTERNATIONAL PET DAY OF THE YEAR"></app-event-card>
 
         <p class="text-center mt-4">Let's have some fun on this special international pet day of the year! If you want to join this event, just register!</p>
+        <p class="text-left mt-2">
+          Location: Las Vegas, NV <br/>
+          Time: 12PM-5PM <br/>
+          Date: August 26, 2024 <br/>
+        </p>
       </div>
     </section>
-    <div class="grid-cols-subgrid col-span-2 w-full flex justify-center">
+    <div class="flex justify-center grid-cols-subgrid col-span-2 w-full">
       <mat-chip>RSVP</mat-chip>
     </div>
   </div>

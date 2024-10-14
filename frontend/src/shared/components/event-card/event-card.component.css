@@ -1,0 +1,10 @@
+.regiseredCountInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countImage {
+  width: 24px;
+  height: 24px;
+}

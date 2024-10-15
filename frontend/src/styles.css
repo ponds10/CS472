@@ -13,5 +13,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .login-button {
     @apply h-11 w-80 rounded-full
   }
+
+  .custom-bluebutton {
+    @apply h-10 px-6 rounded-full bg-cyan-300 hover:bg-cyan-500
+  }
+
+  /* turn links blue on hover */
+  a {
+    color: #1a202c; /* Default link color (dark gray) */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: blue; /* Turns the link blue when hovered */
+  }
 }
 

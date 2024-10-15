@@ -1,8 +1,9 @@
 <body class="flex flex-col min-h-screen">
   <main class="flex-grow">
     <!-- Main content container -->
-    <div class="max-w-md mx-auto font-sans">
+    <div class="max-w-md mx-auto font-sans-serif">
       
+      <!-- add multiple images later? -->
       <!-- Cat Image at the top -->
       <div class="w-full relative mb-6 shadow-lg">
         <img
@@ -13,11 +14,11 @@
         />
       </div>
 
-      <!-- Creative Basic Information Section -->
+      <!-- Information Section -->
       <div class="mb-6 p-6 border rounded-lg shadow-lg">
         <h1 class="text-lg font-bold text-slate-900 mb-4">Basic Information</h1>
         
-        <!-- Icon and Info Flexbox -->
+        <!-- Info Flexbox -->
         <div class="grid grid-cols-2 gap-4 text-center">
           <div class="flex flex-col items-center">
             <p class="mt-2 font-semibold">Name</p>
@@ -46,30 +47,40 @@
         </div>
       </div>
 
+      <!-- make it dynamic -->
       <!-- Provided Documents Section -->
       <div class="mb-6 p-6 border rounded-lg shadow-lg">
         <h1 class="text-lg font-bold text-slate-900 mb-4">Provided Documents</h1>
         <ul class="space-x-4">
-          <button class="h-10 px-6 font-semibold rounded-full bg-cyan-100 text-white" type="submit">
+          <button class="custom-bluebutton" type="submit">
             <li>
-              <a href="vaccination.pdf" class="text-blue-600 underline">Vaccination.pdf</a>
+              <a href="vaccination.pdf" class="underline">Vaccination.pdf</a>
             </li>
           </button>
-          <button class="h-10 px-6 font-semibold rounded-full bg-cyan-100 text-white" type="submit">
+          <button class="custom-bluebutton" type="submit">
             <li>
-              <a href="vet_visits.pdf" class="text-blue-600 underline">Vet visits.pdf</a>
+              <a href="vet_visits.pdf" class="underline">Vet visits.pdf</a>
             </li>
           </button>
           
         </ul>
       </div>
 
+
+      <!-- also make this dynamic -->
       <!-- Contact Information Section -->
       <div class="p-6 border rounded-lg shadow-lg">
         <h1 class="text-lg font-bold text-slate-900 mb-4">Contact Information</h1>
-        <p><strong>Email:</strong> 
-          <a href="mailto:adoptpetcenter.org" class="text-blue-600 underline">adoptpetcenter.org</a>
+
+        <p>
+          <a href="https://www.nevadahumanesociety.org/" target="_blank" rel="noopener noreferrer" >
+            <strong style="color: blue;">Nevada Humane Society</strong>
+          </a>
         </p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
+        <p><strong>Email: </strong> 
+          <a href="mailto:adoptpetcenter.org" class="underline">adoptpetcenter.org</a>
+        </p>
+        <p><strong>Phone: </strong> 
+          <a href="tel:+15551234567" class="underline">(555) 123-4567</a></p>
       </div>
         

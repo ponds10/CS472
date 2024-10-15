@@ -7,7 +7,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 @layer components {
   .login-textbox {
-    @apply p-1 h-14 w-80 border border-black rounded-md;
+    @apply pl-3 h-14 w-80 border border-black rounded-sm;
+  }
+
+  .login-button {
+    @apply h-11 w-80 rounded-full
   }
 }
 

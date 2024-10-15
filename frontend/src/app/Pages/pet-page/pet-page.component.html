@@ -1,94 +1,75 @@
+<body class="flex flex-col min-h-screen">
+  <main class="flex-grow">
+    <!-- Main content container -->
+    <div class="max-w-md mx-auto font-sans">
+      
+      <!-- Cat Image at the top -->
+      <div class="w-full relative mb-6 shadow-lg">
+        <img
+          src="https://th.bing.com/th/id/OIP.MIeBAl6gLa4vclmGbysFvgHaHa?rs=1&pid=ImgDetMain"
+          alt="Milo"
+          class="w-full h-auto object-cover rounded-lg"
+          loading="lazy"
+        />
+      </div>
 
-<app-nav-bar></app-nav-bar>
+      <!-- Creative Basic Information Section -->
+      <div class="mb-6 p-6 border rounded-lg shadow-lg">
+        <h1 class="text-lg font-bold text-slate-900 mb-4">Basic Information</h1>
+        
+        <!-- Icon and Info Flexbox -->
+        <div class="grid grid-cols-2 gap-4 text-center">
+          <div class="flex flex-col items-center">
+            <p class="mt-2 font-semibold">Name</p>
+            <p>Milo</p>
+          </div>
+          
+          <div class="flex flex-col items-center">
+            <p class="mt-2 font-semibold">Species</p>
+            <p>Cat</p>
+          </div>
+          
+          <div class="flex flex-col items-center">
+            <p class="mt-2 font-semibold">Breed</p>
+            <p>Orange Tabby</p>
+          </div>
+          
+          <div class="flex flex-col items-center">
+            <p class="mt-2 font-semibold">Sex</p>
+            <p>Male</p>
+          </div>
 
-<div class="flex flex-col h-screen w-full bg-cyan-100 lg:flex-row">
-    <div class=" bg-stone-50 flex flex-col items-center p-4 rounded-lg shadow-xl space-y-16
-                lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll
-                transition-all duration-500 ease-in-out">
+          <div class="flex flex-col items-center">
+            <p class="mt-2 font-semibold">Weight</p>
+            <p>10 lbs</p>
+          </div>
+        </div>
+      </div>
 
-                <!-- begin html for inside container-->
+      <!-- Provided Documents Section -->
+      <div class="mb-6 p-6 border rounded-lg shadow-lg">
+        <h1 class="text-lg font-bold text-slate-900 mb-4">Provided Documents</h1>
+        <ul class="space-x-4">
+          <button class="h-10 px-6 font-semibold rounded-full bg-cyan-100 text-white" type="submit">
+            <li>
+              <a href="vaccination.pdf" class="text-blue-600 underline">Vaccination.pdf</a>
+            </li>
+          </button>
+          <button class="h-10 px-6 font-semibold rounded-full bg-cyan-100 text-white" type="submit">
+            <li>
+              <a href="vet_visits.pdf" class="text-blue-600 underline">Vet visits.pdf</a>
+            </li>
+          </button>
+          
+        </ul>
+      </div>
 
-
-                <div class="flex flex-col w-full">
-                    <!-- Your main content -->
-                    <div class="flex flex-col font-sans w-full
-                                lg:flex-row lg:justify-center">
-                      <div>
-                        <img
-                          src="https://th.bing.com/th/id/OIP.MIeBAl6gLa4vclmGbysFvgHaHa?rs=1&pid=ImgDetMain"
-                          alt=""
-                          class="inset-0 w-full h-full object-cover rounded-lg"
-                          loading="lazy"
-                        />
-                      </div>
-
-                      <div>
-                        <form class="flex-auto p-6">
-                          <div class="flex flex-wrap">
-                            <h1 class="flex-auto font-medium text-slate-900">Orange Tabby</h1>
-                            <div
-                              class="w-full flex-none mt-2 order-1 text-3xl font-bold text-violet-600"
-                            >
-                              Milo
-                            </div>
-                            <div class="text-sm font-medium text-slate-400">Available</div>
-                          </div>
-                          <!-- put pet information here -->
-                  
-                          <!-- pet info -->
-                          <div class="flex space-x-4 mb-5 text-sm font-medium">
-                            <div class="flex-auto flex space-x-4">
-                              <button
-                                class="h-10 px-6 font-semibold rounded-full bg-violet-600 text-white"
-                                type="submit"
-                              >
-                                Adopt
-                              </button>
-                              <button
-                                class="h-10 px-6 font-semibold rounded-full border border-slate-200 text-slate-900"
-                                type="button"
-                              >
-                                Foster
-                              </button>
-                            </div>
-                            <button
-                              class="flex-none flex items-center justify-center w-9 h-9 rounded-full text-violet-600 bg-violet-50"
-                              type="button"
-                              aria-label="Like"
-                            >
-                              <svg width="20" height="20" fill="currentColor" aria-hidden="true">
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                />
-                              </svg>
-                            </button>
-                          </div>
-                          <h1 class="flex-auto font-medium text-slate-900">Provided documents</h1>
-                          <div class="flex space-x-4 mb-6 text-sm font-medium">
-                            <div class="flex-auto flex space-x-4">
-                              <button
-                                class="h-10 px-6 font-semibold rounded-md bg-gray-700 text-white"
-                                type="submit"
-                              >
-                                Vaccination.pdf
-                              </button>
-                              <button
-                                class="h-10 px-6 font-semibold rounded-md bg-gray-700 text-white border border-slate-200 text-slate-900"
-                                type="button"
-                              >
-                                Vet visits.pdf
-                              </button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-
-
-                    <!-- end html for inside container-->
-    </div>
-</div>
-
+      <!-- Contact Information Section -->
+      <div class="p-6 border rounded-lg shadow-lg">
+        <h1 class="text-lg font-bold text-slate-900 mb-4">Contact Information</h1>
+        <p><strong>Email:</strong> 
+          <a href="mailto:adoptpetcenter.org" class="text-blue-600 underline">adoptpetcenter.org</a>
+        </p>
+        <p><strong>Phone:</strong> (555) 123-4567</p>
+      </div>
+        

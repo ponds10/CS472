@@ -1,0 +1,87 @@
+<app-nav-bar></app-nav-bar>
+
+
+<div class="flex flex-col h-screen w-full bg-cyan-100 lg:flex-row">
+    <div class=" bg-white flex flex-col items-center p-16 rounded-lg shadow-xl space-y-24
+                lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll
+                transition-all duration-500 ease-in-out">
+
+        <div class="grid grid-cols-1 items-center space-y-4
+                    lg:grid-cols-2">
+   
+            <img src="https://media.istockphoto.com/id/1304796251/photo/dog-and-cat-together.jpg?s=612x612&w=0&k=20&c=tZOTEX9PtQDihX6zgBbKkHHW4liMnc2pOhKHxNKFihU=">
+            <div>
+                <div class="w-full flex flex-col items-center font-bold text-black text-3xl 
+                    lg:text-5xl">
+                    Search For Your Next Furry Friend!
+                </div>
+
+                <div>
+                    Please consider adopting or fostering from local shelters and help find forever homes for these pets. 
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 items-center">
+            
+            <div class="w-full flex flex-col items-center font-bold text-black text-3xl col-span-2
+                        lg:text-5xl">
+                Search By Species
+            </div>
+
+            <div class="flex flex-col items-center">
+                <img src="./assets/images/1.png" class="w-1/2">
+                <div>Dog</div>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <img src="./assets/images/2.png" class="w-1/2">
+                <div>Cat</div>
+            </div>
+
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 text-3xl font-bold text-black lg:space-y-16">
+
+            <div class="grid-cols-subgrid col-span-2"><h1>Species</h1></div>
+
+
+
+            <div class="grid-cols-subgrid col-span-2"><h1>Gender</h1></div>
+            <div class="grid-cols-subgrid col-span-2">
+                <mat-chip>Male</mat-chip>
+                <mat-chip>Female</mat-chip>
+            </div>
+
+
+            <div class="grid-cols-subgrid col-span-2"><h1>Breed</h1></div>
+
+            <div class="grid-cols-subgrid col-span-2">
+                @if(dog_flag){
+                    @for(breed of dog_breeds; let idx = $index; track idx)
+                    {
+                        <mat-chip>{{breed}}</mat-chip>
+                    }
+                }
+
+                @if(cat_flag)
+                {
+                    @for(breed of cat_breeds; let index = $index; track index)
+                    {
+                        <mat-icon>breed</mat-icon>
+                    }
+                }
+            </div>
+
+            <div class="grid-cols-subgrid col-span-2"><h1>Age</h1></div>
+            <div class="grid-cols-subgrid col-span-2">
+                <mat-slider min="0" max="20" showTickMarks discrete="thumbLabel">
+                    <input matSliderStartThumb>
+                    <input matSliderEndThumb>
+                </mat-slider>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>

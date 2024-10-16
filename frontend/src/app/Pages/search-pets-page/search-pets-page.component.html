@@ -5,38 +5,28 @@
                 lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll
                 transition-all duration-500 ease-in-out">
 
-        <div class="grid grid-cols-2 gap-4">
-            <div class="grid-cols-subgrid col-span-2"><h1 class="text-5xl">Filter</h1></div>
-            <div class="grid-cols-subgrid col-span-2"><h1 class="text-xl">Species</h1></div>
-            <div><img src="./assets/images/1.png" class="w-32"></div>
-            <div><img src="./assets/images/2.png" class="w-32"></div>
-
-
-            <div class="grid-cols-subgrid col-span-2"><h1 class="text-xl">Gender</h1></div>
-            <div class="grid-cols-subgrid col-span-2">
-                <mat-chip>Male</mat-chip>
-                <mat-chip>Female</mat-chip>
-            </div>
-
-
-            <div class="grid-cols-subgrid col-span-2"><h1 class="text-xl">Breed</h1></div>
-            <div class="grid-cols-subgrid col-span-2">
-                <mat-chip>Siamese</mat-chip>
-                <mat-chip>Hairless</mat-chip>
-                <mat-chip>Balinese</mat-chip>
-                <mat-chip>British Longhair</mat-chip>
-                <mat-chip>Burmilla</mat-chip>
-            </div>
-
-            <div class="grid-cols-subgrid col-span-2"><h1 class="text-xl">Age</h1></div>
-            <div class="grid-cols-subgrid col-span-2">
-                <mat-slider min="0" max="20" showTickMarks discrete="thumbLabel">
-                    <input matSliderStartThumb>
-                    <input matSliderEndThumb>
-                </mat-slider>
-            </div>
+        <div class="grid grid-cols-1 gap-4
+                    lg:grid-cols-3">
+            <app-sample-card
+                title="Milo"
+                description="Orange Tabby"
+                image="https://th.bing.com/th/id/OIP.MIeBAl6gLa4vclmGbysFvgHaHa?rs=1&pid=ImgDetMain"
+                (click)="navigateToPetPage()"
+            ></app-sample-card>
             
-            
+            <app-sample-card
+                title="Otis"
+                description="Australian Pug"
+                image="https://th.bing.com/th/id/OIP.MIeBAl6gLa4vclmGbysFvgHaHa?rs=1&pid=ImgDetMain"
+                (click)="navigateToPetPage()"
+            ></app-sample-card>
+
+            <app-sample-card
+                title="Lucy"
+                description="Pitbull"
+                image="https://th.bing.com/th/id/OIP.MIeBAl6gLa4vclmGbysFvgHaHa?rs=1&pid=ImgDetMain"
+                (click)="navigateToPetPage()"
+            ></app-sample-card>
         </div>
     </div>
 </div>

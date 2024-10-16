@@ -1,36 +1,50 @@
 <app-nav-bar></app-nav-bar>
 
-<div class="flex flex-col h-screen w-full bg-cyan-100 lg:flex-row">
-    <div class=" bg-stone-50 flex flex-col items-center p-16 rounded-lg shadow-xl space-y-16
-                lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll
+<div class="flex flex-col h-screen w-full bg-cyan-100
+            lg:flex-row">
+    <div class=" bg-stone-50 flex flex-col items-center p-4 rounded-lg shadow-xl space-y-16
+                lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll lg:p-16
                 transition-all duration-500 ease-in-out">
+        <!--Spacers: probably not best practice-->
+        <section class="w-full h-[25px]"></section>
 
+        <!-- The outer divs manage the dashboard's border, essentially creating an inner page we can mess with-->
+        <!-- utilize the following space to create the main portion of the dashboard, the application can handle overflow-->
         <h1>Manage Your Profile</h1>
-        <section class="w-full space-y-24 overflow-x-scroll lg:overflow-visible">
-            <div class="flex justify-start w-full">
-                <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
-                <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
-                <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
+        <section class="w-full space-y-24 lg:overflow-visible">
+            <div class="grid grid-cols-2 w-full
+                        lg:grid-cols-3 lg:space-x-4">
+                <app-home-card class="grid-cols-subgrid col-span-2 lg:col-span-1" title="Pets" description="some description here.some description here.some description here."></app-home-card>
+                <app-home-card title="Documents" description="some description here.some description here.some description here."></app-home-card>
+                <app-home-card title="Events" description="some description here.some description here.some description here."></app-home-card>
             </div>
         </section>
 
-        <h1>Manage Your Profile</h1>
-        <section class="w-full space-y-24 overflow-x-scroll lg:overflow-visible">
-            <div class ="flex justify-start w-full">
+        <h1>Find What's Popular!</h1>
+        <section class="w-full space-y-24 lg:overflow-visible">
+            <div class="grid grid-cols-2 w-full
+                        lg:grid-cols-3 lg:space-x-4">
                 <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
                 <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
                 <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
+                <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
+                <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
+                <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
+                
             </div>
         </section>
 
-        <h1>Manage Your Profile</h1>
-        <section class="w-full space-y-24 overflow-x-scroll lg:overflow-visible">
-            <div class ="flex justify-start w-full">
-                <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
-                <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
-                <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
+        <h1>Favorites</h1>
+        <section class="w-full space-y-24 lg:overflow-visible">
+            <div class="grid grid-cols-2 w-full
+                        lg:grid-cols-3 lg:space-x-4">
+                <app-home-card class="grid-cols-subgrid col-span-2 lg:col-span-1" title="Events" description="some description here.some description here.some description here."></app-home-card>
+                <app-home-card title="Dogs" description="some description here.some description here.some description here."></app-home-card>
+                <app-home-card title="Cats" description="some description here.some description here.some description here."></app-home-card>
             </div>
         </section>
 
+        <!--Spacers: probably not best practice-->
+        <section class="w-full h-[100px]"></section>
     </div>
 </div>

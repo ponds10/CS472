@@ -1,86 +1,136 @@
-<body class="flex flex-col min-h-screen">
-  <main class="flex-grow">
-    <!-- Main content container -->
-    <div class="max-w-md mx-auto font-sans-serif">
-      
-      <!-- add multiple images later? -->
-      <!-- Cat Image at the top -->
-      <div class="w-full relative mb-6 shadow-lg">
-        <img
-          src="https://th.bing.com/th/id/OIP.MIeBAl6gLa4vclmGbysFvgHaHa?rs=1&pid=ImgDetMain"
-          alt="Milo"
-          class="w-full h-auto object-cover rounded-lg"
-          loading="lazy"
-        />
-      </div>
+<app-nav-bar></app-nav-bar>
 
-      <!-- Information Section -->
-      <div class="mb-6 p-6 border rounded-lg shadow-lg">
-        <h1 class="text-lg font-bold text-slate-900 mb-4">Basic Information</h1>
-        
-        <!-- Info Flexbox -->
-        <div class="grid grid-cols-2 gap-4 text-center">
-          <div class="flex flex-col items-center">
-            <p class="mt-2 font-semibold">Name</p>
-            <p>Milo</p>
-          </div>
-          
-          <div class="flex flex-col items-center">
-            <p class="mt-2 font-semibold">Species</p>
-            <p>Cat</p>
-          </div>
-          
-          <div class="flex flex-col items-center">
-            <p class="mt-2 font-semibold">Breed</p>
-            <p>Orange Tabby</p>
-          </div>
-          
-          <div class="flex flex-col items-center">
-            <p class="mt-2 font-semibold">Sex</p>
-            <p>Male</p>
+<div class="flex flex-col h-screen w-full bg-cyan-100 lg:flex-row">
+  <div
+    class="bg-stone-50 flex flex-col items-center p-16 rounded-lg shadow-xl space-y-16 lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll transition-all duration-500 ease-in-out"
+  >
+    <div class="flex flex-col min-h-screen w-full">
+      <main class="flex-grow">
+        <!-- Main content container -->
+        <div class="max-w-4xl mx-auto font-sans-serif">
+          <div
+            class="flex flex-col lg:flex-row bg-gray-100 border rounded-lg shadow-lg p-6"
+          >
+            <!-- Cat Image on the left -->
+            <div class="flex-none lg:w-1/3 mb-4 lg:mb-0 shadow-lg">
+              <img
+                src="https://th.bing.com/th/id/OIP.MIeBAl6gLa4vclmGbysFvgHaHa?rs=1&pid=ImgDetMain"
+                alt="Milo"
+                class="w-full h-auto object-cover rounded-lg"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Pet Information on the right -->
+            <div class="flex-auto lg:pl-6">
+              <h1 class="text-lg font-bold text-slate-900">
+                Basic Information
+              </h1>
+
+              <div class="grid grid-cols-2 gap-4 mt-4 text-center">
+                <div class="flex flex-col items-center">
+                  <p class="mt-2 font-semibold">Name</p>
+                  <p>Milo</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                  <p class="mt-2 font-semibold">Species</p>
+                  <p>Cat</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                  <p class="mt-2 font-semibold">Breed</p>
+                  <p>Orange Tabby</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                  <p class="mt-2 font-semibold">Sex</p>
+                  <p>Male</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                  <p class="mt-2 font-semibold">Weight</p>
+                  <p>10 lbs</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="flex flex-col items-center">
-            <p class="mt-2 font-semibold">Weight</p>
-            <p>10 lbs</p>
+          <!-- Provided Documents Section -->
+          <div class="mb-6 p-6 border rounded-lg shadow-lg">
+            <h1 class="text-lg font-bold text-slate-900 mb-4">
+              Provided Documents
+            </h1>
+            <ul class="space-y-2">
+              <li>
+                <a href="vaccination.pdf" class="underline text-blue-600"
+                  >Vaccination.pdf</a
+                >
+              </li>
+              <li>
+                <a href="vet_visits.pdf" class="underline text-blue-600"
+                  >Vet visits.pdf</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Information Section -->
+          <div class="p-6 border rounded-lg shadow-lg">
+            <h1 class="text-lg font-bold text-slate-900 mb-4">
+              Contact Information
+            </h1>
+
+            <p>
+              <a
+                href="https://www.nevadahumanesociety.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-600 underline"
+              >
+                <strong>Nevada Humane Society</strong>
+              </a>
+            </p>
+            <p>
+              <strong>Email: </strong>
+              <a href="mailto:adoptpetcenter.org" class="underline text-blue-600"
+                >adoptpetcenter.org</a
+              >
+            </p>
+            <p>
+              <strong>Phone: </strong>
+              <a href="tel:+15551234567" class="underline text-blue-600"
+                >(555) 123-4567</a
+              >
+            </p>
           </div>
         </div>
-      </div>
+      </main>
+    </div>
+  </div>
+</div>
 
-      <!-- make it dynamic -->
-      <!-- Provided Documents Section -->
-      <div class="mb-6 p-6 border rounded-lg shadow-lg">
-        <h1 class="text-lg font-bold text-slate-900 mb-4">Provided Documents</h1>
-        <ul class="space-x-4">
-          <button class="custom-bluebutton" type="submit">
-            <li>
-              <a href="vaccination.pdf" class="underline">Vaccination.pdf</a>
-            </li>
-          </button>
-          <button class="custom-bluebutton" type="submit">
-            <li>
-              <a href="vet_visits.pdf" class="underline">Vet visits.pdf</a>
-            </li>
-          </button>
-          
-        </ul>
-      </div>
+<style>
+  /* Default for mobile: stack image and info vertically */
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+  }
 
-
-      <!-- also make this dynamic -->
-      <!-- Contact Information Section -->
-      <div class="p-6 border rounded-lg shadow-lg">
-        <h1 class="text-lg font-bold text-slate-900 mb-4">Contact Information</h1>
-
-        <p>
-          <a href="https://www.nevadahumanesociety.org/" target="_blank" rel="noopener noreferrer" >
-            <strong style="color: blue;">Nevada Humane Society</strong>
-          </a>
-        </p>
-        <p><strong>Email: </strong> 
-          <a href="mailto:adoptpetcenter.org" class="underline">adoptpetcenter.org</a>
-        </p>
-        <p><strong>Phone: </strong> 
-          <a href="tel:+15551234567" class="underline">(555) 123-4567</a></p>
-      </div>
-        
+  /* For larger screens (above 1024px), display image and info side by side */
+  @media (min-width: 1024px) {
+    .lg\:flex-row {
+      display: flex;
+      flex-direction: row;
+    }
+    .lg\:w-1\/3 {
+      width: 33.3333%;
+    }
+    .lg\:pl-6 {
+      padding-left: 1.5rem;
+    }
+    .lg\:mb-0 {
+      margin-bottom: 0;
+    }
+  }
+</style>

@@ -7,8 +7,8 @@ import ssl
 #connect to database
 #to get credential, go to Project Settings/Service Accounts in project and generate private key
 #put path of the private key in variable below
-cred = credentials.Certificate (r"toebeans-d6f03-firebase-adminsdk-rrbfg-76d64f3471.json")
-firebase_admin.initialize_app(cred)
+cred = credentials.Certificate (r"toebeans-d6f03-firebase-adminsdk-rrbfg-76d64f3471.json") #need to generate Python private key in Firebase
+firebase_admin.initialize_app(cred)                                                        #and store that file in backend folder
 
 #to communicate with database
 db = firestore.client()

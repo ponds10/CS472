@@ -29,3 +29,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 
+.outerContainer
+{
+  @apply flex flex-col h-full w-full p-0 m-0 bg-cover bg-gradient overflow-y-auto
+  lg:flex-row lg:pt-[75px] lg:p-16;
+}
+
+.innerContainer
+{
+  @apply bg-white bg-opacity-50 flex flex-col items-center rounded-lg shadow-xl space-y-24
+  lg:items-start lg:w-full lg:overflow-scroll
+  transition-all duration-500 ease-in-out;
+}
+

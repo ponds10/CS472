@@ -8,6 +8,7 @@ import { DocumentsPageComponent } from './Pages/documents-page/documents-page.co
 import { SearchEventsPageComponent } from './Pages/search-events-page/search-events-page.component';
 import { SearchPetsPageComponent } from './Pages/search-pets-page/search-pets-page.component';
 import { SearchPetsFilterComponent } from './Pages/search-pets-filter/search-pets-filter.component';
+import { UserProfilePageComponent } from './Pages/user-profile-page/user-profile-page.component';
 
 export const routes: Routes = [
     {path: '', component: LandingPageComponent},
@@ -19,4 +20,5 @@ export const routes: Routes = [
     {path: 'search/pets/filter', component: SearchPetsFilterComponent},
     {path: 'search/pets/results', component: SearchPetsPageComponent},
     {path: 'search/events', component: SearchEventsPageComponent},
+    {path: 'userprofilepage', component: UserProfilePageComponent},
 ];

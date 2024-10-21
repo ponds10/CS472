@@ -1,15 +1,16 @@
-
-<div>
-    <div class="fixed bg-cyan-100 p-4 w-full bottom-0 
-                lg:w-32 lg:h-screen lg:top-0 lg:left-0 lg:flex lg:flex-col lg:items-center
+<div class="fixed w-full bottom-0 p-0 m-0 h-16 border-0
+                lg:w-64 lg:h-full lg:top-0 lg:ml-[16px] lg:mr-[16px] lg:flex lg:flex-col lg:items-center lg:relative
+                lg:rounded-xl lg:shadow-xl lg:bg-white lg:bg-opacity-50
                 transition-all duration-500 ease-in-out">
-        <nav>
-            <ul class="flex justify-evenly lg:flex-col lg:h-screen">
-                <li><a routerLink="/homepage" routerLinkActive="router-link-active" ><mat-icon>home</mat-icon></a></li>
+        <nav class="h-full w-full">
+            <ul class="flex justify-evenly items-center lg:flex-col h-full">
+                <li><a routerLink="/homepage" routerLinkActive="router-link-active" class="flex items-center space-x-16">
+                    <mat-icon>home</mat-icon> 
+                </a></li>
+
                 <li><a routerLink="/search/pets/filter"><mat-icon>search</mat-icon></a></li>
                 <li><a routerLink="/search/events"><mat-icon>event</mat-icon></a></li>
                 <li><a routerLink="/home"><mat-icon>settings</mat-icon></a></li>
             </ul>
         </nav>
-    </div>
 </div>

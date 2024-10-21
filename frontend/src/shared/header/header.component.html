@@ -1,23 +1,10 @@
-<header class="fixed w-full bg-cyan-100 top-0 h-[75px] z-50 p-4">
+<header class="fixed w-full top-0 h-[75px] z-50 p-4 bg-transparent">
     <nav>
-        <div class="flex items-center justify-between w-full px-4 mx-auto">
+        <div class="lg:ml-16">
             <div>
                 <h1><button><a [routerLink]="['']">
-                    <img src="./assets/images/name_logo.png" alt="registeredCountIcon" class="h-[75px]">
+                    <img src="./assets/images/name_logo.png" alt="logo" class="h-[75px]">
                 </a></button></h1>
-            </div>
-
-            <div>
-                <ul class="flex items-center justify-between w-1/2 space-x-20">
-                    <li><button><a [routerLink]="['']">Home</a></button></li>
-                    <li><button><a [routerLink]="['']">About</a></button></li>
-                    <li><button><a [routerLink]="['']">Services</a></button></li>
-                    <li><button><a [routerLink]="['']">Resources</a></button></li>
-                </ul>
-            </div>
-
-            <div>
-                <button><a [routerLink]="['/login']">Login</a></button>
             </div>
         </div>
     </nav>

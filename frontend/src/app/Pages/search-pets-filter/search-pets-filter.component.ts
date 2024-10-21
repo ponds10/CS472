@@ -14,8 +14,25 @@ import { HeaderComponent } from "../../../shared/header/header.component";
   styleUrl: './search-pets-filter.component.css'
 })
 export class SearchPetsFilterComponent {
+  constructor()
+  {
 
-  dog_flag:boolean = true;
+  }
+  
+  selectSpecies(species:string)
+  {
+    if(species == "cat"){
+      this.cat_flag = !this.cat_flag;
+    }
+    else if(species == "dog")
+    {
+      this.dog_flag = !this.dog_flag;
+    }
+  
+  }
+
+  
+  dog_flag:boolean = false;
   cat_flag:boolean = false;
 
   dog_breeds: string[] = ["dogbreeds", "Breed1", "Breed2", "Breed3", "Breed4", "Breed5", "Breed6", "Breed7", "Breed8"];

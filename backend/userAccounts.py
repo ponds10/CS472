@@ -2,8 +2,8 @@ from encrypt import Encrypt
 from google.cloud.firestore_v1.base_query import FieldFilter
 
 class UserAccounts :
-    # store user account info in userAccounts document
-    def storeUserAccount(emailAddress, password, userAccounts_documentRef) :
+    # create and store user account info in userAccounts document
+    def createUserAccount(emailAddress, password, userAccounts_documentRef) :
         # salt and hash password
         encryptedPassword = Encrypt.passwordEncrypt(password)
 

@@ -10,7 +10,7 @@ from userAccounts import UserAccounts
 # ----------------------------------------connect to database----------------------------------------
 
 # path of private key
-cred = credentials.Certificate (r"perms\toebeans-d6f03-firebase-adminsdk-rrbfg-0bfa7474df.json")
+cred = credentials.Certificate (r"insert-private-key-path") # replace "..." with your private key path
 firebase_admin.initialize_app(cred)                                                        
 
 # communicate with database
@@ -29,8 +29,8 @@ userAccounts_collectionRef = db.collection('userAccounts')
 # FastAPI gets URL, then calls def function
 @app.get("/create-account") 
 def getuserAccountInput(emailAddress:str=Form(...), password:str=Form(...)) :
-    # store user account info in userAccounts document
-    return UserAccounts.storeUserAccount(emailAddress, password, userAccounts_collectionRef.document())
+    # create and store user account info in userAccounts document
+    return UserAccounts.createUserAccount(emailAddress, password, userAccounts_collectionRef.document())
     # ^ returns success or fail
 
 @app.get("/user-login")

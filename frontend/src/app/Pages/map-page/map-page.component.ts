@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GoogleMap } from '@angular/google-maps';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { GoogleMap, MapAdvancedMarker, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
 
@@ -10,10 +10,24 @@ import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
   imports: [
     CommonModule,
     GoogleMap,
+    MapAdvancedMarker,
+    MapInfoWindow,
     HeaderComponent,
     NavBarComponent
 ],
   templateUrl: './map-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MapPageComponent { }
+export class MapPageComponent { 
+  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
+
+  center: google.maps.LatLngLiteral = {lat: 36.180545979079874, lng: -115.17917779168842}
+  zoom = 11
+
+  markerPositions: google.maps.LatLngLiteral[] = [{ lat: 36.180545979079874, lng: -115.17917779168842 }]
+
+  openInfoWindow(marker: MapAdvancedMarker) {
+    this.infoWindow.open(marker)
+  }
+
+}

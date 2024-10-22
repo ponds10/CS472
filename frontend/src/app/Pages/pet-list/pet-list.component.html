@@ -1,0 +1,22 @@
+
+
+
+<app-header></app-header>
+<div class="outerContainer">
+
+        <div class="lg:flex-1">
+            <app-nav-bar></app-nav-bar>
+        </div>
+
+    <div class="innerContainer">
+        <!--Spacers: probably not best practice-->
+        <section class="w-full h-[25px]"></section>
+        <div class="pet-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Use *ngFor to iterate over pets -->
+          <app-pet-card *ngFor="let pet of pets" [pet]="pet"></app-pet-card>
+        </div>
+
+        <!--Spacers: probably not best practice-->
+        <section class="w-full h-[100px]"></section>
+    </div>
+</div>

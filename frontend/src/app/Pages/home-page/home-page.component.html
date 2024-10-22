@@ -5,26 +5,31 @@
             <app-nav-bar></app-nav-bar>
         </div>
 
-    <div class="innerContainer">
+    <div class="innerContainer p-16">
         <!--Spacers: probably not best practice-->
         <section class="w-full h-[25px]"></section>
 
         <!-- The outer divs manage the dashboard's border, essentially creating an inner page we can mess with-->
         <!-- utilize the following space to create the main portion of the dashboard, the application can handle overflow-->
-        <h1>Manage Your Profile</h1>
+        <div class="text-3xl font-bold text-black">
+            Manage Your Profile
+        </div>
         <section class="w-full space-y-24 lg:overflow-visible">
             <div class="grid grid-cols-2 w-full
                         lg:grid-cols-3 lg:space-x-4">
-                <app-home-card class="grid-cols-subgrid col-span-2 lg:col-span-1" title="Pets" description="some description here.some description here.some description here."></app-home-card>
-                <app-home-card title="Documents" description="some description here.some description here.some description here."></app-home-card>
-                <app-home-card title="Events" description="some description here.some description here.some description here."></app-home-card>
+                <app-home-card class="grid-cols-subgrid col-span-2 lg:col-span-1" title="Pets"></app-home-card>
+                <app-home-card title="Documents"></app-home-card>
+                <app-home-card title="Events"></app-home-card>
             </div>
         </section>
 
-        <h1>Find What's Popular!</h1>
+        <div class="text-3xl font-bold text-black">
+            Discover
+        </div>
         <section class="w-full space-y-24 lg:overflow-visible">
             <div class="grid grid-cols-2 w-full
-                        lg:grid-cols-3 lg:space-x-4">
+                        lg:grid-cols-3">
+
                 <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
                 <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
                 <app-home-card title="title" description="some description here.some description here.some description here."></app-home-card>
@@ -35,15 +40,7 @@
             </div>
         </section>
 
-        <h1>Favorites</h1>
-        <section class="w-full space-y-24 lg:overflow-visible">
-            <div class="grid grid-cols-2 w-full
-                        lg:grid-cols-3 lg:space-x-4">
-                <app-home-card class="grid-cols-subgrid col-span-2 lg:col-span-1" title="Events" description="some description here.some description here.some description here."></app-home-card>
-                <app-home-card title="Dogs" description="some description here.some description here.some description here."></app-home-card>
-                <app-home-card title="Cats" description="some description here.some description here.some description here."></app-home-card>
-            </div>
-        </section>
+
 
         <!--Spacers: probably not best practice-->
         <section class="w-full h-[100px]"></section>

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { GoogleMap } from '@angular/google-maps';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
 
@@ -8,6 +9,7 @@ import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
   standalone: true,
   imports: [
     CommonModule,
+    GoogleMap,
     HeaderComponent,
     NavBarComponent
 ],

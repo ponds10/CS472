@@ -1,61 +1,79 @@
-<app-nav-bar></app-nav-bar>
+<app-header></app-header>
 
+<div class="outerContainer">
 
-<div class="flex flex-col h-screen w-full bg-cyan-100 lg:flex-row">
-    <div class=" bg-white flex flex-col items-center p-16 rounded-lg shadow-xl space-y-24
-                lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll
-                transition-all duration-500 ease-in-out">
+    <div class="lg:flex-1">
+        <app-nav-bar></app-nav-bar>
+    </div>
 
-        <div class="grid grid-cols-1 items-center space-y-4
-                    lg:grid-cols-2">
-   
-            <img src="https://media.istockphoto.com/id/1304796251/photo/dog-and-cat-together.jpg?s=612x612&w=0&k=20&c=tZOTEX9PtQDihX6zgBbKkHHW4liMnc2pOhKHxNKFihU=">
-            <div>
+    <div class="innerContainer">
+
+        <div class="grid grid-cols-1 items-center space-y-4 bg-cover bg-search w-full h-[400px] mt-12 lg:h-[900px]">
+
+            <div class="mb-[-600px] lg:pr-16 lg:pb-16 lg:mb-0">
+
                 <div class="w-full flex flex-col items-center font-bold text-black text-3xl 
-                    lg:text-5xl">
-                    Search For Your Next Furry Friend!
+                    lg:text-5xl lg:items-end">
+                    <div>
+                        Search For Your <br> Next Furry Friend!
+                    </div>
                 </div>
 
+                <div class="w-full flex flex-col items-center font-bold text-black
+                            lg:items-end">
                 <div>
-                    Please consider adopting or fostering from local shelters and help find forever homes for these pets. 
+                    Consider adopting or fostering! and help find forever homes for these animals
                 </div>
+            </div>
+                
             </div>
         </div>
 
+        <div class="h-[300px] lg:h-[0px]"></div>
         <div class="grid grid-cols-2 items-center">
             
-            <div class="w-full flex flex-col items-center font-bold text-black text-3xl col-span-2
+            <div class="w-full flex flex-col items-start font-bold text-black text-3xl col-span-2
                         lg:text-5xl">
                 Search By Species
             </div>
 
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center" (click)="selectSpecies('dog')">
                 <img src="./assets/images/1.png" class="w-1/2">
                 <div>Dog</div>
             </div>
 
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center" (click)="selectSpecies('cat')"> 
                 <img src="./assets/images/2.png" class="w-1/2">
                 <div>Cat</div>
             </div>
 
         </div>
 
-        <div class="grid grid-cols-2 gap-4 text-3xl font-bold text-black lg:space-y-16">
 
-            <div class="grid-cols-subgrid col-span-2"><h1>Species</h1></div>
+        <div class="w-full flex flex-col items-start font-bold text-black text-3xl col-span-2
+        lg:text-5xl">
+            Seller
+        </div>
 
+        <div class="grid grid-cols-2">
+            <div class="items-start">Shelter</div>
+            <div>Independent</div>
+        </div>
 
+        <div class="w-full flex flex-col items-start font-bold text-black text-3xl col-span-2
+        lg:text-5xl">
+            Gender
+        </div>
+        <div class="grid grid-cols-2 items-center">
+            <div><mat-chip>Male</mat-chip></div>
+            <div><mat-chip>Female</mat-chip></div>
+        </div>
 
-            <div class="grid-cols-subgrid col-span-2"><h1>Gender</h1></div>
-            <div class="grid-cols-subgrid col-span-2">
-                <mat-chip>Male</mat-chip>
-                <mat-chip>Female</mat-chip>
-            </div>
-
-
-            <div class="grid-cols-subgrid col-span-2"><h1>Breed</h1></div>
-
+        <div class="w-full flex flex-col items-start font-bold text-black text-3xl col-span-2
+        lg:text-5xl">
+            Breeds
+        </div>
+        <div class="grid grid-cols-2 items-center">
             <div class="grid-cols-subgrid col-span-2">
                 @if(dog_flag){
                     @for(breed of dog_breeds; let idx = $index; track idx)
@@ -66,22 +84,26 @@
 
                 @if(cat_flag)
                 {
-                    @for(breed of cat_breeds; let index = $index; track index)
+                    @for(breed of cat_breeds; let idx = $index; track idx)
                     {
-                        <mat-icon>breed</mat-icon>
+                        <mat-chip>{{breed}}</mat-chip>
                     }
                 }
             </div>
+        </div>
 
-            <div class="grid-cols-subgrid col-span-2"><h1>Age</h1></div>
+        <div class="w-full flex flex-col items-start font-bold text-black text-3xl col-span-2
+        lg:text-5xl">
+            Age
+        </div>
+        <div class="grid grid-cols-2 items-center">
             <div class="grid-cols-subgrid col-span-2">
                 <mat-slider min="0" max="20" showTickMarks discrete="thumbLabel">
                     <input matSliderStartThumb>
                     <input matSliderEndThumb>
                 </mat-slider>
             </div>
-            
-            
         </div>
+
     </div>
 </div>

@@ -10,7 +10,10 @@ module.exports = {
     fontFamily: {
     },
     backgroundImage: {
-      'landing': "url('../public/assets/images/landing-bg.png')"
+      'landing': "url('../public/assets/images/landing-bg.png')",
+      'gradient': "url('../public/assets/gradient.png')",
+      'search': "url('../public/assets/search.png')",
+      'event': "url('../public/assets/event.png')",
     },
     extend: {},
   },

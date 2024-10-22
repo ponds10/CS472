@@ -1,0 +1,73 @@
+<app-nav-bar></app-nav-bar>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--Navigation Bar-->
+<div class="flex flex-col h-screen w-full bg-cyan-100 lg:flex-row">
+    <div class="bg-stone-50 flex flex-col items-center p-4 rounded-lg shadow-xl space-y-16
+                lg:ml-40 lg:m-8 lg:items-start lg:w-full lg:overflow-scroll lg:p-16
+                transition-all duration-500 ease-in-out">
+        <!--Profile Picture-->
+        <img class="rounded-full w-48 h-48 mx-auto" src="./assets/images/sample_icon.png">
+        <div class="profile w-full">
+            <div class="flex flex-col justify-center items-center pt-px space-y-6"> 
+                <!--Name-->
+                <h1 class="text-center text-4xl font-bold space-y-6">My Name</h1>
+                <!--Biography-->
+                <div class="w-full max-w-lg mx-auto"> 
+                    <label for="biography" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white">
+                        Biography
+                    </label>
+                    <div class ="flex-grow">
+                    <div type="text" 
+                    id="biography" 
+                    class="bg-gray-50 border border-gray-300
+                    text-gray-900 text-sm resize-y rounded-lg focus:ring-blue-500 focus:border-blue-500
+                    block w-full p-2.5" 
+                    contenteditable="true"
+                    placeholder="Tell us about you!"></div>
+                </div>
+                
+                <!--Contact Information-->
+                <h1 class="text-left text-xl font-bold pt-px space-y-6">Contact</h1>
+                <div>
+                <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                <input type="text" id="company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                  dark:focus:ring-blue-500 dark:focus:border-blue-500 pt-px" placeholder="Your address here!" required />
+            </div>  
+            <div>
+                <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+                <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
+                  dark:focus:ring-blue-500 dark:focus:border-blue-500 pt-px" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+            </div>
+
+                <!--User Classification-->
+                <h1>I am a...</h1>
+                <div class="flex items-center mb-4">
+                    <input id="default-radio-1" 
+                    type="radio" 
+                    value="" 
+                    name="default-radio" 
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600
+                     dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="default-radio-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Prospective pet owner</label>
+                </div>
+                <div class="flex items-center">
+                    <input checked id="default-radio-2" 
+                    type="radio" 
+                    value="" 
+                    name="default-radio" 
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600
+                     dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="default-radio-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Organization</label>
+                </div>
+
+                </div>
+            </div>
+        </div>
+
+        <section class="w-full h-[200px]"></section> <!-- Spacer for bottom -->
+    </div>
+</div>
+

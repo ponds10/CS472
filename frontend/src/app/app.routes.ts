@@ -11,6 +11,7 @@ import { SearchPetsFilterComponent } from './Pages/search-pets-filter/search-pet
 import { CreatePetPostComponent } from './Pages/create-pet-post/create-pet-post.component';
 import { CreateEventComponent } from './Pages/create-event/create-event.component';
 import { UserProfilePageComponent } from './Pages/user-profile-page/user-profile-page.component';
+import { MapPageComponent } from './Pages/map-page/map-page.component';
 
 export const routes: Routes = [
     {path: '', component: LandingPageComponent},
@@ -24,5 +25,6 @@ export const routes: Routes = [
     {path: 'search/events', component: SearchEventsPageComponent},
     {path: 'create/pet-post', component: CreatePetPostComponent},
     {path: 'create/event', component: CreateEventComponent},
-    {path: 'userprofilepage', component: UserProfilePageComponent}
+    {path: 'userprofilepage', component: UserProfilePageComponent},
+    {path: 'map', component:MapPageComponent}
 ];

@@ -11,4 +11,5 @@ export class HomeCardComponent {
 
   @Input()title:string = "";
   @Input()description:string = "";
+  @Input()source:string = "";
 }

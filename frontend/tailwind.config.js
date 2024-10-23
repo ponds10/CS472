@@ -14,6 +14,7 @@ module.exports = {
       'gradient': "url('../public/assets/gradient.png')",
       'search': "url('../public/assets/search.png')",
       'event': "url('../public/assets/event.png')",
+      'account': "url('../public/assets/dots.png')",
     },
     extend: {},
   },

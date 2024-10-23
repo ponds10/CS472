@@ -5,7 +5,7 @@ import {FormControl, ReactiveFormsModule, FormGroup} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
-import { BreedsService } from '../../../core/services/breeds.service';
+import { BreedsService } from '../../../core/services/breeds/breeds.service';
 @Component({
   selector: 'app-create-event',
   standalone: true,

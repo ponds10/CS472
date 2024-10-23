@@ -2,6 +2,7 @@ from encrypt import Encrypt
 from google.cloud.firestore_v1.base_query import FieldFilter
 from firebase_admin import auth
 import smtplib
+import os
 
 class UserAccounts :
     # create and store user account info in userAccounts document
@@ -9,19 +10,37 @@ class UserAccounts :
         # generate email verification link
         link = auth.generate_password_reset_link(emailAddress)
         
-        #SMTP Needed Information
+        # SMTP Needed Information
         server = "smtp.gmail.com" 
         port = 587
         sender_email = "toebeans962@gmail.com"
         receiver_email = emailAddress
+        password = os.environ.get(smtp_password)
 
-        message = """Subject: Toebeans Email Verification
-        Welcome [user],
+        # email message content
+        message = f"""Subject: Toebeans Email Verification
+        Welcome user,
         
-        Please verify your email.
+        Please verify your email with the below link.
+        {link}
 
         From,
         Toebeans"""
+
+        # create a smtp object
+        smtp = smtplib.SMTP(server, port)
+
+        # connect to smtp server
+        smtp.starttls()
+
+        # login to sender email
+        smtp.login(sender_email, password)
+
+        # send verification email to user
+        smtp.sendmail(sender_email, receiver_email, message)
+
+        # disconnect from smtp server
+        smtp.quit()
 
         # salt and hash password
         encryptedPassword = Encrypt.passwordEncrypt(password)

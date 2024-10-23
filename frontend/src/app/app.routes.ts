@@ -11,13 +11,15 @@ import { SearchPetsFilterComponent } from './Pages/search-pets-filter/search-pet
 import { CreatePetPostComponent } from './Pages/create-pet-post/create-pet-post.component';
 import { CreateEventComponent } from './Pages/create-event/create-event.component';
 import { UserProfilePageComponent } from './Pages/user-profile-page/user-profile-page.component';
+import { PetListComponent } from './Pages/pet-list/pet-list.component';
 import { MapPageComponent } from './Pages/map-page/map-page.component';
 
 export const routes: Routes = [
     {path: '', component: LandingPageComponent},
     {path: 'login', component: LoginPageComponent},
     {path: 'eventpage', component: EventPageComponent},
-    {path: 'petpage', component: PetPageComponent},
+    {path: 'petpage/:id', component: PetPageComponent},
+    {path: 'petlist', component: PetListComponent},
     {path: 'homepage', component: HomePageComponent},
     {path: 'documentspage', component: DocumentsPageComponent},
     {path: 'search/pets/filter', component: SearchPetsFilterComponent},

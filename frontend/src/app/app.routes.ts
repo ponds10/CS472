@@ -18,8 +18,8 @@ export const routes: Routes = [
     {path: '', component: LandingPageComponent},
     {path: 'login', component: LoginPageComponent},
     {path: 'eventpage', component: EventPageComponent},
-    {path: 'petpage/:id', component: PetPageComponent},
-    {path: 'petlist', component: PetListComponent},
+    {path: 'petlist/:id', component: PetPageComponent},
+    {path: 'petlist', component: PetListComponent}, //the pets/results page is this, delete later
     {path: 'homepage', component: HomePageComponent},
     {path: 'documentspage', component: DocumentsPageComponent},
     {path: 'search/pets/filter', component: SearchPetsFilterComponent},

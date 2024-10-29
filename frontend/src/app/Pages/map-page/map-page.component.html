@@ -2,29 +2,33 @@
 
 <div class="outerContainer">
 
-  <div class="lg:flex-1">
+  <div class="lg:flex-1 lg:relative fixed">
     <app-nav-bar></app-nav-bar>
   </div>
 
   <div class="lg:w-full bg-white bg-opacity-50 rounded-lg shadow-2xl space-y-24 transition-all duration-500 ease-in-out">
-    <google-map
-     height="100%"
-     width="100%"
-     [center]="center"
-     [zoom]="zoom"
-     mapId="afece44780f05ea6"
-    >
-      @for (position of markerPositions; track position) {
-        <map-advanced-marker
-         #marker="mapAdvancedMarker"
-         [position]="position"
-         (mapClick)="openInfoWindow(marker)"></map-advanced-marker>
-      }
-    <map-info-window>
-      <img class="" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b" />
-      <p>Cat!</p>
-    </map-info-window>
-    </google-map>
+    <div class=""></div>
+    <div class="lg:h-full h-[800px]">
+      <google-map
+      height="100%"
+      width="100%"
+      [center]="center"
+      [zoom]="zoom"
+      mapId="afece44780f05ea6"
+     >
+       @for (position of markerPositions; track position) {
+         <map-advanced-marker
+          #marker="mapAdvancedMarker"
+          [position]="position"
+          (mapClick)="openInfoWindow(marker)"></map-advanced-marker>
+       }
+       <map-info-window>
+         <img class="" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b" />
+         <p>Cat!</p>
+       </map-info-window>
+     </google-map>
+    </div>
+    <div class="h-[100px] lg:h-0"></div>
   </div>
 
 </div>

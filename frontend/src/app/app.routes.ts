@@ -8,8 +8,8 @@ import { DocumentsPageComponent } from './DashboardPages/documents-page/document
 import { SearchEventsPageComponent } from './Pages/search-events-page/search-events-page.component';
 import { SearchPetsPageComponent } from './Pages/search-pets-page/search-pets-page.component';
 import { SearchPetsFilterComponent } from './Pages/search-pets-filter/search-pets-filter.component';
-import { CreatePetPostComponent } from './Pages/create-pet-post/create-pet-post.component';
-import { CreateEventComponent } from './Pages/create-event/create-event.component';
+import { CreatePetPostComponent } from './CreatePages/create-pet-post/create-pet-post.component';
+import { CreateEventComponent } from './CreatePages/create-event/create-event.component';
 import { UserProfilePageComponent } from './Pages/user-profile-page/user-profile-page.component';
 import { PetListComponent } from './Pages/pet-list/pet-list.component';
 import { MapPageComponent } from './Pages/map-page/map-page.component';

@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class PetService {
-  private pets: Pet[] = [
+  private readonly pets: Pet[] = [
     {
       id: 1,
       name: 'Milo',
@@ -34,7 +34,7 @@ export class PetService {
       breed: 'Golden Retriever',
       sex: 'Female',
       weight: '20 lbs',
-      image: 'https://example.com/image2.jpg',
+      image: 'https://th.bing.com/th/id/OIP.Jf0NnGpH2AhNM3BtwZufwwHaJ4?rs=1&pid=ImgDetMain',
       documents: [
         { key: 'Vaccination', value: 'vaccination_bella.pdf' }
         // No vet visits for Bella

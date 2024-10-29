@@ -6,29 +6,34 @@
     <app-nav-bar></app-nav-bar>
   </div>
 
-  <div class="lg:w-full bg-white bg-opacity-50 rounded-lg shadow-2xl space-y-24 transition-all duration-500 ease-in-out">
-    <div class=""></div>
-    <div class="lg:h-full h-[800px]">
+  <div class="mapContainer">
+    <div class="w-full h-full">
       <google-map
       height="100%"
       width="100%"
       [center]="center"
       [zoom]="zoom"
       mapId="afece44780f05ea6"
-     >
-       @for (position of markerPositions; track position) {
-         <map-advanced-marker
+      >
+        @for (position of markerPositions; track position) {
+          <map-advanced-marker
           #marker="mapAdvancedMarker"
           [position]="position"
           (mapClick)="openInfoWindow(marker)"></map-advanced-marker>
-       }
-       <map-info-window>
-         <img class="" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b" />
-         <p>Cat!</p>
-       </map-info-window>
-     </google-map>
+        }
+      <map-info-window>
+        <img class="max-h-80" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b" />
+        <p>Reported by:</p>
+        <p>Coordinates:</p>
+        <p>Comments:</p>
+        <p>Cat!</p>
+        <button>
+            <p class="font-medium text-blue-600 hover:underline">View Info</p>
+        </button>
+
+      </map-info-window>
+      </google-map>
     </div>
-    <div class="h-[100px] lg:h-0"></div>
   </div>
 
 </div>

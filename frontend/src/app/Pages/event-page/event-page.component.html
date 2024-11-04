@@ -1,36 +1,63 @@
-<app-header></app-header>
+<app-header class="fixed-header"></app-header>
 
 <div class="outerContainer">
+  <app-nav-bar class="fixed-nav"></app-nav-bar>
 
-  <div class="flex-1">
-    <app-nav-bar></app-nav-bar>
-  </div>
-  <div class="innerContainer">
+  <!-- use scrollable-content and padding to prevent interference from fixed header and nav bar -->
+  <div class="innerContainer scrollable-content">
+    <div class="flex flex-col items-center space-y-8 lg:m-8 lg:items-start lg:w-full transition-all duration-500 ease-in-out">
+      <div class="flex flex-col w-full">
 
-    <section class="w-full space-y-12 overflow-x-auto lg:overflow-visible">
-      <div class="flex flex-col items-center lg:items-start">
-        <app-event-card
-          image="./assets/images/event-page-sample1.png"
-          date="AUGUST 26, 2024"
-          [registeredCount]="100"
-          title="INTERNATIONAL PET DAY OF THE YEAR"
-        ></app-event-card>
-      </div>
-    </section>
+        <!-- Main content container -->
+        <main class="flex-grow">
+          <div *ngIf="selectedEvent" class="event-page max-w-4xl mx-auto font-sans-serif">
+            <div class="flex flex-col lg:flex-row bg-gray-100 border rounded-lg shadow-lg p-4 lg:p-6">
 
-    <div class="w-full text-center lg:text-left mt-4 space-y-2 flex justify-center">
-      <div class="inner-text-container w-3/4">
-        <p class="text-sm md:text-base">Let's have some fun on this special international pet day of the year! If you want to join this event, just register!</p>
-        <p class="text-sm md:text-base mt-2">
-          Location: Las Vegas, NV <br />
-          Time: 12PM-5PM <br />
-          Date: August 26, 2024 <br />
-        </p>
+              <!-- Event Image -->
+              <div class="event-image-container">
+                <img
+                  [src]="selectedEvent.imageUrl"
+                  [alt]="selectedEvent.title"
+                  class="rounded-lg"
+                  loading="lazy"
+                />
+              </div>
+
+              <!-- Event Information -->
+              <div class="flex-auto lg:pl-6">
+                <div class="flex items-center justify-between">
+                  <p class="text-sm lg:text-base text-gray-800 font-bold">{{ selectedEvent.date }}</p>
+                  <div class="flex items-center">
+                    <p class="text-sm lg:text-base text-gray-800 font-bold">{{ selectedEvent.registeredCount }}</p>
+                    <img src="./assets/images/user-icon.jpg" alt="user-icon" class="count-image w-4 h-4 ml-1">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-2 lg:gap-4 mt-2 lg:mt-4">
+                  <p class="text-base-mobile lg:text-2xl font-bold">{{ selectedEvent.title }}</p>
+                  <p class="text-sm lg:text-base">{{ selectedEvent.description }}</p>
+                  <p class="text-sm lg:text-base">Location: {{ selectedEvent.location }}</p>
+                  <p class="text-sm lg:text-base">Time: {{ selectedEvent.time }}</p>
+                </div>
+
+                <div class="flex justify-center grid-cols-subgrid col-span-2 w-full">
+                  <mat-chip
+                    class="mt-4"
+                    color="primary"
+                    selected
+                    (click)="registerForEvent()"
+                    [disabled]="selectedEvent.isRegistered">
+                    {{ selectedEvent.isRegistered ? 'Already Registered' : 'Register' }}
+                  </mat-chip>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
 
-    <div class="flex justify-center grid-cols-subgrid col-span-2 w-full">
-      <mat-chip>RSVP</mat-chip>
-    </div>
+    <!-- Spacer -->
+    <section class="w-full h-[100px]"></section>
   </div>
 </div>

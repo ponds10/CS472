@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SearchEventsPageComponent } from './search-events-page.component';
 
 describe('SearchEventsPageComponent', () => {

@@ -1,25 +1,48 @@
-import { Component } from '@angular/core';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatIcon } from '@angular/material/icon';
+import { HeaderComponent } from '../../../shared/header/header.component';
 import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
-import { HeaderComponent } from "../../../shared/header/header.component";
-import { EventCardComponent } from '../../../shared/components/event-card/event-card.component.spec';
-import { Router } from '@angular/router';
+
+import { EventService } from '../../services/event.service';
+
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'app-event-page',
-  standalone: true,
-  imports: [NavBarComponent, HeaderComponent, EventCardComponent, MatChipsModule, MatSliderModule, MatIcon],
   templateUrl: './event-page.component.html',
-  styleUrl: './event-page.component.css'
+  styleUrls: ['./event-page.component.css'],
+  standalone: true,
+  imports: [HeaderComponent, NavBarComponent, CommonModule, MatChipsModule]
 })
-export class EventPageComponent {
-  constructor(private router: Router){}
+export class EventPageComponent implements OnInit {
+  selectedEvent: any = {
+    isRegistered: false
+  };
+  userLoggedIn: boolean = false;
 
-  navigateToPetPage()
-  {
-    this.router.navigate(['/eventpage'], {queryParams: null})
+  registerForEvent() {
+    if (!this.userLoggedIn) {
+      alert("Please log into register for the event.");
+    } else {
+      this.selectedEvent.isRegistered = true;
+    }
   }
 
+  constructor(
+    private route: ActivatedRoute,
+    private eventService: EventService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    // get the event ID from the route parameters
+    const eventId = this.route.snapshot.paramMap.get('id');
+    if (eventId) {
+      // fetch the event details from the service using the event ID
+      this.eventService.getEventById(eventId).subscribe((event) => {
+        this.selectedEvent = event;
+      });
+    }
+  }
 }

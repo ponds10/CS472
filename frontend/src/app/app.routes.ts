@@ -17,7 +17,8 @@ import { MapPageComponent } from './Pages/map-page/map-page.component';
 export const routes: Routes = [
     {path: '', component: LandingPageComponent},
     {path: 'login', component: LoginPageComponent},
-    {path: 'eventpage', component: EventPageComponent},
+    // {path: 'eventpage', component: EventPageComponent},
+    {path: 'eventpage/:id', component: EventPageComponent},  // Updated to accept event ID as a parameter
     {path: 'petlist/:id', component: PetPageComponent},
     {path: 'petlist', component: PetListComponent}, //the pets/results page is this, delete later
     {path: 'homepage', component: HomePageComponent},
@@ -28,5 +29,5 @@ export const routes: Routes = [
     {path: 'create/pet-post', component: CreatePetPostComponent},
     {path: 'create/event', component: CreateEventComponent},
     {path: 'userprofilepage', component: UserProfilePageComponent},
-    {path: 'map', component:MapPageComponent}
+    {path: 'map', component:MapPageComponent},
 ];

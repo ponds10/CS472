@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LoginBoxComponent } from '../../components/login-box/login-box.component';
 import { HeaderComponent } from "../../../shared/header/header.component";
+import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -9,9 +10,12 @@ import { HeaderComponent } from "../../../shared/header/header.component";
   imports: [
     CommonModule,
     LoginBoxComponent,
-    HeaderComponent
+    HeaderComponent,
 ],
   templateUrl: './landing-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LandingPageComponent { }
+export class LandingPageComponent { 
+  constructor(public navService: NavigationServiceService){}
+}
+

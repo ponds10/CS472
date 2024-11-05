@@ -15,6 +15,7 @@ module.exports = {
       'search': "url('../public/assets/search.png')",
       'event': "url('../public/assets/event.png')",
       'account': "url('../public/assets/dots.png')",
+      'landing1': "url('../public/assets/landing-img1.png')",
     },
     extend: {},
   },

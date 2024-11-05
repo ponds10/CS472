@@ -13,6 +13,7 @@ import { CreateEventComponent } from './CreatePages/create-event/create-event.co
 import { UserProfilePageComponent } from './Pages/user-profile-page/user-profile-page.component';
 import { PetListComponent } from './Pages/pet-list/pet-list.component';
 import { MapPageComponent } from './Pages/map-page/map-page.component';
+import { NewAccountComponent } from './new-account/new-account.component';
 
 export const routes: Routes = [
     {path: '', component: LandingPageComponent},
@@ -30,5 +31,6 @@ export const routes: Routes = [
     {path: 'create/event', component: CreateEventComponent},
     {path: 'userprofilepage', component: UserProfilePageComponent},
     {path: 'map', component:MapPageComponent},
-    {path: 'login', component:LoginPageComponent}
+    {path: 'login', component:LoginPageComponent},
+    {path: 'newAccount', component:NewAccountComponent}
 ];

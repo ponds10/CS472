@@ -1,28 +1,68 @@
-<main>
+<app-header></app-header>
+<div class="bg-cover bg-gradient overflow-y-auto w-full h-full pt-16">
 
-  <!-- Login section-->
-  <div class="bg-cover bg-top bg-landing p-6 h-[38rem] grid md:grid-cols-3 place-content-center">
-    <div class="h-0 w-0 invisible md:w-1/3 md:col-span-2 md:visible">
-      <img class="" src="./assets/images/name_logo.png">
-    </div>
-    <div class="w-96">
-      <app-login-box></app-login-box>
-    </div>
-  </div>
-
-  <!-- About section -->
-  <div class="bg-stone-100 bg-gradient bg-fixed">
-    <div class="p-6 md:p-52 pt-20 md:pt-20 grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-6">
-      <h1 class="text-4xl">
-        About Toebeans
-      </h1>
-      <div class="md:row-span-2">
-        placeholder for image
+  <div class="grid grid-cols-2 m-8 space-y-8">
+    <div class="w-full flex flex-col items-center bg-white bg-opacity-50 pt-8 pb-8 col-span-2 rounded-xl">
+      <div class="flex flex-col items-center space-y-16">
+  
+        <div>
+          <div class="font-bold text-7xl items-center">
+            TOEBEANS
+          </div>
+          <div class="flex flex-col items-center text-xl">
+            Adopt or foster a pet and save a life
+          </div>
+        </div>
+  
+        <div>
+          <button class="p-4 pl-16 pr-16 rounded-full border border-gray-400 font-bold font-2xl bg-gray-100 bg-opacity-50 hover:bg-blue-300">LOGIN</button>
+        </div>
       </div>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nibh felis, rhoncus sit amet vulputate vitae, euismod quis nibh. Aliquam mollis condimentum erat a faucibus. Proin auctor eros vitae ipsum lobortis, a aliquam diam pretium. Cras sit amet egestas dui. Duis tincidunt mi dignissim, eleifend risus sit amet, viverra elit. Morbi id elit sit amet tortor ultrices hendrerit porta a eros. Duis malesuada fringilla enim, ac congue arcu ornare eget. Aliquam a nulla neque. Ut posuere sapien diam, quis lacinia velit faucibus mollis. Praesent sit amet congue mi.
-      </p>
+  
+      <div class="w-full flex flex-col items-center lg:w-3/4">
+        <img src="./assets/images/landing-2.png" class="w-full lg:w-3/4">
+      </div>
+    </div>
+
+    <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-blue-100 bg-opacity-50 rounded-xl text-xl
+                lg:col-span-1 lg:mr-4">
+      <div class="flex justify-center font-bold text-3xl">
+        About Us
+      </div>
+
+      <div>
+        Toebeans is an application done by on of the senior design groups at UNLV!
+        We aim to help local shelters by driving adoption through education, streamlined processes, and visibility. 
+        As avid animal lovers, each and everyone of us has contribuited toward a better tommorow for the animals here within our local community. 
+      </div>
+    </div>
+
+    <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-pink-100 bg-opacity-50 rounded-xl text-xl
+                lg:ml-4 lg:col-span-1">
+      <div class="flex justify-center font-bold text-3xl">
+        Consider Adopting or Fostering
+      </div>
+
+      <div>
+        Adopting pets is important because it gives animals in shelters a second chance at a happy, loving life. 
+        Many pets are abandoned or surrendered through no fault of their own and face uncertain futures in overcrowded shelters. 
+        By adopting, you help reduce the number of animals in need, while also gaining a loyal companion who may have been overlooked due to age, breed, or appearance. 
+        4Adoption also combats the problem of pet overpopulation and can save lives, making it a compassionate choice for both pets and people.
+      </div>
+    </div>
+
+    <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-violet-200 bg-opacity-50 rounded-xl text-xl">
+      <div class="flex justify-center font-bold text-3xl">
+        Trap-Neuter-Return
+      </div>
+
+      <div>
+        TNR stands for Trap-Neuter-Return, a humane method for managing and reducing feral cat populations. It involves trapping stray or feral cats, 
+        having them spayed or neutered, vaccinated, and then returning them to their original location. This process prevents further breeding, improves 
+        the health of the cats, and helps stabilize local populations over time. TNR is a more compassionate alternative to euthanasia, as it allows cats to 
+        continue living in their familiar environment without contributing to the overpopulation problem, while also reducing behaviors like mating and 
+        territorial fighting.
+      </div>
     </div>
   </div>
-
-</main>
+</div>

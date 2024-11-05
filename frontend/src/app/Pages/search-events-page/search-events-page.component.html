@@ -1,21 +1,37 @@
-<app-header></app-header>
+<app-header class="fixed-header"></app-header>
 
-<div class="outerContainer">
+<div class="outerContainer mt-20 lg:mt-0 pt-mobile-header">
+  <div class="lg:flex-1">
+    <app-nav-bar class="fixed-nav"></app-nav-bar>
+  </div>
 
-    <div class="lg:flex-1">
-        <app-nav-bar></app-nav-bar>
+  <!-- scrollable content and padding prevent interference from fixed header and nav bar -->
+  <div class="innerContainer scrollable-content p-4">
+
+    <div class="mt-24 flex flex-col items-center">
+      <img src="./assets/event.png" class="w-full lg:w-3/4">
     </div>
 
-    <div class="innerContainer p-4">
-
-        <div class="mt-24 flex flex-col items-center">
-            <img src="./assets/event.png" class="w-full lg:w-3/4">
+    <!-- Event List-->
+    <div class="events-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div *ngFor="let event of events" class="event-card p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <img [src]="event.imageUrl" alt="Event Image" class="event-image rounded-t-lg w-full h-40 object-cover">
+        <div class="p-4">
+          <div class="flex justify-between items-center">
+            <p class="text-sm font-bold text-gray-500">{{ event.date }}</p>
+            <div class="flex items-center">
+              <p class="text-sm font-bold text-gray-500">{{ event.registeredCount }}</p>
+              <img src="./assets/images/user-icon.jpg" alt="user-icon" class="count-image w-4 h-4 ml-1">
+            </div>
+          </div>
+          <h2 class="text-lg font-bold">{{ event.title }}</h2>
+          <p class="text-sm text-gray-500">Location: {{ event.location }}</p>
+          <p class="text-sm text-gray-500">Time: {{ event.time }}</p>
+          <button [routerLink]="['/eventpage', event.id]" class="mt-2 bg-purple-400 text-white px-4 py-2 rounded hover:bg-purple-500 transition">
+            View Details
+          </button>
         </div>
-
-        <div class="grid grid-cols-3 w-full place-items-center">
-            <div>box1</div>
-            <div>box1</div>
-            <div>box1</div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>

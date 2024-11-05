@@ -28,5 +28,6 @@ export const routes: Routes = [
     {path: 'create/pet-post', component: CreatePetPostComponent},
     {path: 'create/event', component: CreateEventComponent},
     {path: 'userprofilepage', component: UserProfilePageComponent},
-    {path: 'map', component:MapPageComponent}
+    {path: 'map', component:MapPageComponent},
+    {path: 'login', component:LoginPageComponent}
 ];

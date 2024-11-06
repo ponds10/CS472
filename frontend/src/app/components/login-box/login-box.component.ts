@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
+import { LoginService } from '../../../core/services/login/login.service';
+
 @Component({
   selector: 'app-login-box',
   standalone: true,
@@ -12,4 +14,7 @@ import { NavigationServiceService } from '../../../core/services/navService/navi
 })
 export class LoginBoxComponent { 
   constructor(public navService: NavigationServiceService){}
+
+  loginService = inject(LoginService);
+  user$ = this.loginService.user$;
 }

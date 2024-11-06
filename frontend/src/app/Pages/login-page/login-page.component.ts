@@ -11,4 +11,6 @@ import { LoginBoxComponent } from '../../components/login-box/login-box.componen
   templateUrl: './login-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginPageComponent { }
+export class LoginPageComponent {
+  
+ }

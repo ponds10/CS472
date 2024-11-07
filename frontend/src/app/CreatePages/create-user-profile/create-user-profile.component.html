@@ -1,1 +1,61 @@
-<p>create-user-profile works!</p>
+<app-header></app-header>
+<div class="bg-cover bg-gradient overflow-y-auto w-full h-full flex justify-center">
+    <div class="w-3/4 h-3/4 bg-white bg-opacity-50 rounded-xl m-8 p-8 mt-32">
+        <div class="h-3/4 space-y-32">
+            @if(steps[0])
+            {
+                <div class="text-lg">
+                    <p>Creating your profile</p> <br>
+                    <h1 class="text-5xl font-bold">What's Your Name?</h1>
+                </div>
+
+                <div>
+                    <form class="space-y-8" [formGroup]="fg_basic_info">
+                        <div class="">
+                            <label for="fname" class="mb-2 text-gray-900">First Name</label>
+
+                            <input type="text" id="fname" formControlName="fname"
+                            class="bg-gray-50 border opacity-75 border-gray-300 
+                            text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 
+                            p-2.5 w-full rounded-xl" 
+                            placeholder="" 
+                            required/>
+                        </div>
+
+                        <div class="">
+                            <label for="lname" class="mb-2 text-gray-900">Last Name</label>
+
+                            <input type="text" id="lname" formControlName=";name"
+                            class="bg-gray-50 border opacity-75 border-gray-300 
+                            text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 
+                            p-2.5 w-full rounded-xl" 
+                            placeholder="" 
+                            required/>
+                        </div>
+                    </form>
+                </div>
+            }
+            @else if(steps[1])
+            {
+                step2
+            }
+            @else if(steps[2])
+            {
+                step3
+            }
+            @else if(steps[3])
+            {
+                step4
+            }
+        </div>
+        <div class="w-full flex justify-center space-x-16 bottom-0">
+            <div>
+                <button (click)="back()"> <mat-icon>keyboard_arrow_left</mat-icon> </button>
+            </div>
+
+            <div>
+                <button (click)="next()"> <mat-icon>keyboard_arrow_right</mat-icon></button>
+            </div>
+        </div>
+    </div>
+</div>

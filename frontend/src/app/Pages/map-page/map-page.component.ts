@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
-import { GoogleMap, MapAdvancedMarker, MapInfoWindow } from '@angular/google-maps';
+import { ChangeDetectionStrategy, Component, ViewChild, inject } from '@angular/core';
+import { GoogleMap, MapAdvancedMarker, MapInfoWindow, GoogleMapsModule } from '@angular/google-maps';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
 import { MapInfoBoxComponent } from "./map-info-box/map-info-box.component";
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal/modal.component';
+
 
 @Component({
   selector: 'app-map-page',
@@ -11,11 +14,13 @@ import { MapInfoBoxComponent } from "./map-info-box/map-info-box.component";
   imports: [
     CommonModule,
     GoogleMap,
+    GoogleMapsModule,
     MapAdvancedMarker,
     MapInfoWindow,
     HeaderComponent,
     NavBarComponent,
-    MapInfoBoxComponent
+    MapInfoBoxComponent,
+    ModalComponent,
 ],
   templateUrl: './map-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -57,12 +62,27 @@ export class MapPageComponent {
 
     controlButton.addEventListener('click', () => {
       console.log('Button works!')
+      this.openDialog()
+      
     });
+
 
     return controlButton
   }
 
-  
+  readonly dialog = inject(MatDialog);
+    
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    });
+  }
+
 
   addControl() {
     const newMarkerControl = this.createNewMarkerControl(this.map)
@@ -70,4 +90,7 @@ export class MapPageComponent {
     newMarkerControlDiv.appendChild(newMarkerControl)
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(newMarkerControlDiv)
   }
+  
+
+
 }

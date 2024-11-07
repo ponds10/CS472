@@ -6,7 +6,7 @@
             {
                 <div class="text-lg">
                     <p>Creating your profile</p> <br>
-                    <h1 class="text-5xl font-bold">What's Your Name?</h1>
+                    <h1 class="text-5xl font-bold">What should we call you?</h1>
                 </div>
 
                 <div>
@@ -37,11 +37,85 @@
             }
             @else if(steps[1])
             {
-                step2
+                <div class="text-lg">
+                    <p>Creating your profile</p> <br>
+                    <h1 class="text-5xl font-bold">Tell everyone a little about yourself!</h1>
+                </div>
+
+                <div>
+                    <form class="w-full flex justify-center">
+                        <textarea
+                            class="w-3/4 resize-none h-64 p-8 rounded-xl shadow-sm"
+                            formControlName=""
+                        ></textarea>
+                    </form>
+                </div>
             }
             @else if(steps[2])
             {
-                step3
+                <div class="text-lg">
+                    <p>Creating your profile</p> <br>
+                    <h1 class="text-5xl font-bold">Contact Information</h1>
+                </div>
+                
+                <form class="space-y-8">
+                    <div>
+                        <label for="phone" class="mb-2 text-gray-900">Phone Number</label>
+
+                        <input type="text" id="phone" formControlName="pnumber"
+                        class="bg-gray-50 border opacity-75 border-gray-300 
+                        text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 
+                        p-2.5 w-full rounded-xl" 
+                        placeholder="" 
+                        required/>
+                    </div>
+
+                    <div>
+                        <label for="email" class="mb-2 text-gray-900">Email</label>
+
+                        <input type="text" id="email" formControlName="email"
+                        class="bg-gray-50 border opacity-75 border-gray-300 
+                        text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 
+                        p-2.5 w-full rounded-xl" 
+                        placeholder="" 
+                        required/>
+                    </div>
+
+                    <div class="grid grid-cols-2">
+                        <div class="col-span-2">
+                            <label for="street" class="mb-2 text-gray-900">Street</label>
+
+                            <input type="text" id="street" formControlName="street"
+                            class="bg-gray-50 border opacity-75 border-gray-300 
+                            text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 
+                            p-2.5 w-full rounded-xl" 
+                            placeholder="" 
+                            required/>
+                        </div>
+
+                        <div>
+                            <label for="state" class="mb-2 text-gray-900">State</label>
+
+                            <input type="text" id="state" formControlName="state"
+                            class="bg-gray-50 border opacity-75 border-gray-300 
+                            text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 
+                            p-2.5 w-full rounded-xl" 
+                            placeholder="" 
+                            required/>
+                        </div>
+
+                        <div>
+                            <label for="city" class="mb-2 text-gray-900">City</label>
+
+                            <input type="city" id="email" formControlName="city"
+                            class="bg-gray-50 border opacity-75 border-gray-300 
+                            text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 
+                            p-2.5 w-full rounded-xl" 
+                            placeholder="" 
+                            required/>
+                        </div>
+                    </div>
+                </form>
             }
             @else if(steps[3])
             {

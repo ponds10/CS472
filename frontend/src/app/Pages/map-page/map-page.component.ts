@@ -56,7 +56,7 @@ export class MapPageComponent {
     controlButton.style.padding = '0 5px';
     controlButton.style.textAlign = 'center';
 
-    controlButton.textContent = 'New Marker';
+    controlButton.textContent = 'Report Cat';
     controlButton.title = 'Click to create new marker';
     controlButton.type = 'button';
 

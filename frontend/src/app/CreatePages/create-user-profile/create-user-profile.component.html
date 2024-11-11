@@ -25,7 +25,7 @@
                         <div class="">
                             <label for="lname" class="mb-2 text-gray-900">Last Name</label>
 
-                            <input type="text" id="lname" formControlName=";name"
+                            <input type="text" id="lname" formControlName="lname"
                             class="bg-gray-50 border opacity-75 border-gray-300 
                             text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 
                             p-2.5 w-full rounded-xl" 
@@ -43,10 +43,10 @@
                 </div>
 
                 <div>
-                    <form class="w-full flex justify-center">
+                    <form class="w-full flex justify-center" [formGroup]="fg_bio">
                         <textarea
                             class="w-3/4 resize-none h-64 p-8 rounded-xl shadow-sm"
-                            formControlName=""
+                            formControlName="bio"
                         ></textarea>
                     </form>
                 </div>
@@ -58,11 +58,11 @@
                     <h1 class="text-5xl font-bold">Contact Information</h1>
                 </div>
                 
-                <form class="space-y-8">
+                <form class="space-y-8" [formGroup]="fg_contactInfo">
                     <div>
                         <label for="phone" class="mb-2 text-gray-900">Phone Number</label>
 
-                        <input type="text" id="phone" formControlName="pnumber"
+                        <input type="text" id="phone" formControlName="phone"
                         class="bg-gray-50 border opacity-75 border-gray-300 
                         text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 
                         p-2.5 w-full rounded-xl" 
@@ -119,7 +119,7 @@
             }
             @else if(steps[3])
             {
-                step4
+                <button (click)="finalizeInfo()">submit</button>
             }
         </div>
         <div class="w-full flex justify-center space-x-16 bottom-0">

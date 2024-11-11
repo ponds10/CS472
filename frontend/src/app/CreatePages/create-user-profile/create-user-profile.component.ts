@@ -78,6 +78,17 @@ export class CreateUserProfileComponent {
 
     }
 
-    this.userService.generateAccount(userInfo);
+    this.userService.generateAccount(userInfo, this.selectedImage!);
+  }
+
+  selectedImage: File | null = null; // Store the selected image file
+  uploadProgress: number = 0; // Track upload progress
+  userId: string = 'USERID';  // Replace with the actual user ID (e.g., from Firebase Authentication)
+
+  fileChangeEvent(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedImage = file;
+    }
   }
 }

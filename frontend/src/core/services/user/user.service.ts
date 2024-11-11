@@ -86,7 +86,7 @@ export class UserService {
   // generate the account!
   // takes in userInfo of the userModel
   // returns nothing, VOID
-  async generateAccount(userInfo: User)
+  async generateAccount(userInfo: User, selectedImage: File)
   {
     // if the user info is null, return 
     if(userInfo == null)
@@ -104,10 +104,13 @@ export class UserService {
     // otherwise, try to add a new document to the userInfo collection and return it
     // if it errors catch it and then print it for debug
     try {
+      this.uploadImage(selectedImage);
+
       const newUser = await addDoc(
         collection(this.firestore, "userInfo"),
         userInfo,
       );
+
       return newUser;
     } catch (error) {
       console.error("Error writing new message to Firebase Database", error);

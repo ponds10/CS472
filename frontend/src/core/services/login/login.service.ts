@@ -39,7 +39,7 @@ export class LoginService {
       // subscribe to await for the results, if false => no UID found they are a new user
       // navigate to the create user page!
       from(this.searchUID(this.auth.currentUser?.uid)).subscribe((data) => {
-        if(!data){
+        if(data){
           this.router.navigate(['/', 'createUser']);
         }
         else
@@ -83,7 +83,6 @@ export class LoginService {
     })
 
     // debug
-    console.log("herro")
     console.log("herro")
 
     return false;

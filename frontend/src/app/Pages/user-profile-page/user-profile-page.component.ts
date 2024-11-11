@@ -21,7 +21,12 @@ export class UserProfilePageComponent implements OnInit{
 
   
   ngOnInit(): void {
-    this.user = this.userService.get_sample_user();
+    this.user = this.userService.currentUser;
+    if(this.user == null)
+    {
+      this.userService.getUserInfo();
+      this.user = this.userService.currentUser;
+    }
   }
 
 }

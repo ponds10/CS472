@@ -1,7 +1,8 @@
+<div class="min-h-screen flex flex-col">
 <app-header></app-header>
-<div class="bg-cover bg-gradient overflow-y-auto w-full h-full pt-16">
+<div class="bg-cover bg-gradient overflow-y-auto w-full h-full pt-16 flex-grow">
 
-  <div class="grid grid-cols-2 m-8 space-y-8">
+  <div class="grid grid-cols-2 m-8 space-y-8 overflow-hidden">
     <div class="w-full flex flex-col items-center bg-white bg-opacity-50 pt-8 pb-8 col-span-2 rounded-xl">
       <div class="flex flex-col items-center space-y-16">
   
@@ -41,7 +42,7 @@
     </div>
 
     <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-pink-100 bg-opacity-50 rounded-xl text-xl
-                lg:ml-4 lg:col-span-1">
+                lg:ml-4 lg:col-span-1 overflow-auto">
       <div class="flex justify-center font-bold text-3xl">
         Consider Adopting or Fostering
       </div>
@@ -54,12 +55,12 @@
       </div>
     </div>
 
-    <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-violet-200 bg-opacity-50 rounded-xl text-xl">
+    <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-violet-200 bg-opacity-50 rounded-xl text-xl overflow-auto">
       <div class="flex justify-center font-bold text-3xl">
         Trap-Neuter-Return
       </div>
 
-      <div>
+      <div class="text-justify">
         TNR stands for Trap-Neuter-Return, a humane method for managing and reducing feral cat populations. It involves trapping stray or feral cats, 
         having them spayed or neutered, vaccinated, and then returning them to their original location. This process prevents further breeding, improves 
         the health of the cats, and helps stabilize local populations over time. TNR is a more compassionate alternative to euthanasia, as it allows cats to 
@@ -68,4 +69,7 @@
       </div>
     </div>
   </div>
+</div>
+
+<app-footer></app-footer>
 </div>

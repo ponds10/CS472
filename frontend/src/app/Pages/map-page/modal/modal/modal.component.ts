@@ -19,12 +19,16 @@ export class ModalComponent {
   mapService = inject(MapService);
   //user$ = this.mapService.user$;
   description: string = '';
+  slat: string = '';
+  slng: string = '';
   lat: number = 0;
   lng: number = 0;
 
   constructor(public dialogRef: MatDialogRef<ModalComponent>) {}
 
   onSubmit(): void {
+    this.lat = parseFloat(this.slat);
+    this.lng = parseFloat(this.slng);
     
     if (this.lat && this.lng && this.description) {
       this.mapService.saveMarker(this.lat, this.lng, this.description)

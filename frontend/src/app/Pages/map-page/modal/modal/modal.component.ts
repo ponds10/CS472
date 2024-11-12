@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   MatDialogRef,
   MatDialogModule,
   MatDialog,
 } from '@angular/material/dialog';
+import { MapService } from '../../../../../core/services/map/map.service';
 
 import { FormsModule } from '@angular/forms';
 
@@ -15,21 +16,18 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './modal.component.html',
 })
 export class ModalComponent {
-  title: string = '';
+  mapService = inject(MapService);
   description: string = '';
-  imageUrl: string = '';
   lat: number = 0;
   lng: number = 0;
 
   constructor(public dialogRef: MatDialogRef<ModalComponent>) {}
 
   onSubmit(): void {
+    this.mapService.saveMarker(this.lat, this.lng, this.description);
+
     this.dialogRef.close({
-      //title: this.title,
-      description: this.description,
-      imageUrl: this.imageUrl,
-      lat: this.lat,
-      lng: this.lng,
+      
     });
   }
 

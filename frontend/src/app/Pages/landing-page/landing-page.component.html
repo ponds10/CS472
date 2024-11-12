@@ -1,126 +1,132 @@
 <div class="min-h-screen flex flex-col">
-<app-header></app-header>
-<div class="bg-cover bg-gradient overflow-y-auto w-full h-full pt-16 flex-grow">
+  <app-header></app-header>
+  <div class="bg-cover bg-gradient overflow-y-auto w-full h-full pt-16 flex-grow">
 
-  <div class="grid grid-cols-2 m-8 space-y-8 overflow-hidden">
-    <div class="w-full flex flex-col items-center bg-white bg-opacity-50 pt-8 pb-8 col-span-2 rounded-xl">
-      <div class="flex flex-col items-center space-y-16">
-        <!--Toebeans-->
-        <div>
-          <div class="font-bold text-7xl items-center">
-            TOEBEANS
+    <div class="grid grid-cols-2 m-8 space-y-8 overflow-hidden">
+      <div class="w-full flex flex-col items-center bg-white bg-opacity-50 pt-8 pb-8 col-span-2 rounded-xl">
+        <div class="flex flex-col items-center space-y-16">
+          <!--Toebeans-->
+          <div>
+            <div class="font-bold text-7xl items-center">
+              TOEBEANS
+            </div>
+            <div class="flex flex-col items-center text-xl">
+              Adopt or foster a pet and save a life
+            </div>
           </div>
-          <div class="flex flex-col items-center text-xl">
-            Adopt or foster a pet and save a life
+
+          <div>
+            <button (click)="this.navService.navigateToLoginPage()"
+              class="p-4 pl-16 pr-16 rounded-full border border-gray-400 font-bold font-2xl bg-gray-100 bg-opacity-50 hover:bg-blue-300">
+              LOGIN
+            </button>
           </div>
         </div>
-  
-        <div>
-          <button (click)="this.navService.navigateToLoginPage()"
-            class="p-4 pl-16 pr-16 rounded-full border border-gray-400 font-bold font-2xl bg-gray-100 bg-opacity-50 hover:bg-blue-300">
-            LOGIN
-          </button>
+
+        <div class="w-full flex flex-col items-center lg:w-3/4">
+          <img src="./assets/images/landing-2.png" class="w-full lg:w-3/4">
         </div>
       </div>
-  
-      <div class="w-full flex flex-col items-center lg:w-3/4">
-        <img src="./assets/images/landing-2.png" class="w-full lg:w-3/4">
-      </div>
-    </div>
-    <!--About Us-->
-    <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-blue-100 bg-opacity-50 rounded-xl text-xl
+      <!--About Us-->
+      <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-blue-100 bg-opacity-50 rounded-xl text-xl
                 lg:col-span-1 lg:mr-4">
-      <div class="flex justify-center font-bold text-3xl">
-        About Us
-      </div>
+        <div class="flex justify-center font-bold text-3xl">
+          About Us
+        </div>
 
-      <div>
-        Toebeans is an application done by on of the senior design groups at UNLV!
-        We aim to help local shelters by driving adoption through education, streamlined processes, and visibility. 
-        As avid animal lovers, each and everyone of us has contribuited toward a better tommorow for the animals here within our local community. 
+        <div>
+          Toebeans is an application done by on of the senior design groups at UNLV!
+          We aim to help local shelters by driving adoption through education, streamlined processes, and visibility.
+          As avid animal lovers, each and everyone of us has contribuited toward a better tommorow for the animals here
+          within our local community.
+        </div>
       </div>
-    </div>
-    <!--Adopting/Fostering-->
-    <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-pink-100 bg-opacity-50 rounded-xl text-xl
+      <!--Adopting/Fostering-->
+      <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-pink-100 bg-opacity-50 rounded-xl text-xl
                 lg:ml-4 lg:col-span-1 overflow-auto">
-      <div class="flex justify-center font-bold text-3xl">
-        Consider Adopting or Fostering
+        <div class="flex justify-center font-bold text-3xl">
+          Consider Adopting or Fostering
+        </div>
+
+        <div>
+          Adopting pets is important because it gives animals in shelters a second chance at a happy, loving life.
+          Many pets are abandoned or surrendered through no fault of their own and face uncertain futures in overcrowded
+          shelters.
+          By adopting, you help reduce the number of animals in need, while also gaining a loyal companion who may have
+          been overlooked due to age, breed, or appearance.
+          4Adoption also combats the problem of pet overpopulation and can save lives, making it a compassionate choice
+          for both pets and people.
+        </div>
+      </div>
+      <!--TNR-->
+      <div
+        class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-violet-200 bg-opacity-50 rounded-xl text-xl overflow-auto">
+        <div class="flex justify-center font-bold text-3xl">
+          Trap-Neuter-Return
+        </div>
+
+        <div class="text-justify">
+          TNR stands for Trap-Neuter-Return, a humane method for managing and reducing feral cat populations. It
+          involves trapping stray or feral cats,
+          having them spayed or neutered, vaccinated, and then returning them to their original location. This process
+          prevents further breeding, improves
+          the health of the cats, and helps stabilize local populations over time. TNR is a more compassionate
+          alternative to euthanasia, as it allows cats to
+          continue living in their familiar environment without contributing to the overpopulation problem, while also
+          reducing behaviors like mating and
+          territorial fighting.
+        </div>
       </div>
 
-      <div>
-        Adopting pets is important because it gives animals in shelters a second chance at a happy, loving life. 
-        Many pets are abandoned or surrendered through no fault of their own and face uncertain futures in overcrowded shelters. 
-        By adopting, you help reduce the number of animals in need, while also gaining a loyal companion who may have been overlooked due to age, breed, or appearance. 
-        4Adoption also combats the problem of pet overpopulation and can save lives, making it a compassionate choice for both pets and people.
-      </div>
-    </div>
-    <!--TNR-->
-    <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-violet-200 bg-opacity-50 rounded-xl text-xl overflow-auto">
-      <div class="flex justify-center font-bold text-3xl">
-        Trap-Neuter-Return
-      </div>
 
-      <div class="text-justify">
-        TNR stands for Trap-Neuter-Return, a humane method for managing and reducing feral cat populations. It involves trapping stray or feral cats, 
-        having them spayed or neutered, vaccinated, and then returning them to their original location. This process prevents further breeding, improves 
-        the health of the cats, and helps stabilize local populations over time. TNR is a more compassionate alternative to euthanasia, as it allows cats to 
-        continue living in their familiar environment without contributing to the overpopulation problem, while also reducing behaviors like mating and 
-        territorial fighting.
-      </div>
-    </div>
-
-    <!--Case Studies-->
-    <div class="flex justify-center mt-8 mb-16 space-x-6">
-      <!--Case Study 1-->
-      <div class="h-[200px] w-[250px] bg-rose-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer 
-          transition-all duration-300 ease-in-out transform hover:scale-105"
-           (click)="toggleDescription(1)"
-           [class.bg-blue-100]="showDescription1">
-          <h3 class="font-bold text-lg">Case Study 1: Inequitable Flow of Animals to Shelters</h3>
+      <!--Case Studies-->
+      <div class="flex flex-row justify-items-center mt-8 mb-16 space-x-6">
+        <!--Case Study 1-->
+        <div class="w-[300px] bg-rose-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105"
+          (click)="toggleDescription(1)" [class.h-auto]="showDescription1" [class.h-[200px]]="!showDescription1"
+          [class.bg-blue-100]="showDescription1">
+          <h3 class="font-bold text-xl">Case Study 1: Inequitable Flow of Animals to Shelters</h3>
           @if(showDescription1){
-            <div class="text-justify"> (Ly et al., 2021) found that there is an inequitable flow of animals
-              in and out of shelters. A considerable amount of surrenders come from vulnerable communities,
-              and this study examined socioeconomic factors causing this. By engaging vulnerable 
-              communities, we can help them keep their pets and get them the necessary resources 
-              and care.
-            </div>
+          <div class="text-justify"> (Ly et al., 2021) found that there is an inequitable flow of animals
+            in and out of shelters. A considerable amount of surrenders come from vulnerable communities,
+            and this study examined socioeconomic factors causing this. By engaging vulnerable
+            communities, we can help them keep their pets and get them the necessary resources
+            and care.
+          </div>
           }
-      </div>
-      
-  
-      <!--Case Study 2-->
-      <div class="h-[200px] w-[250px] bg-indigo-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer 
-          transition-all duration-300 ease-in-out transform hover:scale-105"
-           (click)="toggleDescription(2)"
-           [class.bg-blue-100]="showDescription2">
-          <h3 class="font-bold text-lg">Case Study 2: PET Match Project</h3>
+        </div>
+
+
+        <!--Case Study 2-->
+        <div class="w-[300px] bg-indigo-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105"
+          (click)="toggleDescription(2)" [class.h-auto]="showDescription2" [class.h-[200px]]="!showDescription2"
+          [class.bg-blue-100]="showDescription2">
+          <h3 class="font-bold text-xl">Case Study 2: PET Match Project</h3>
           @if(showDescription2){
-            <div class="text-justify">A study done by (Davis et al., 2019) explored the effectiveness of an iterative design
-              for a online pet adoption. The study found that the perceived ethos of their website helped
-              users to trust the website for being reputable and learning about pet ownership and responsibility. 
-              Another finding was that an easy, simple, and intuitive navigation can improve user experience. 
-            </div>
+          <div class="text-justify">A study done by (Davis et al., 2019) explored the effectiveness of an iterative
+            design
+            for a online pet adoption. The study found that the perceived ethos of their website helped
+            users to trust the website for being reputable and learning about pet ownership and responsibility.
+            Another finding was that an easy, simple, and intuitive navigation can improve user experience.
+          </div>
           }
-      </div>
-  
-      <!--Case Study 3-->
-      <div class="h-[200px] w-[250px] bg-green-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer 
-        transition-all duration-300 ease-in-out transform hover:scale-105"
-           (click)="toggleDescription(3)"
-           [class.bg-blue-100]="showDescription3">
-          <h3 class="font-bold text-lg">Case Study 3: Trap-Neuter-Return (TNR)</h3>
+        </div>
+
+        <!--Case Study 3-->
+        <div class="w-[300px] bg-green-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105"
+          (click)="toggleDescription(3)" [class.h-auto]="showDescription3" [class.h-[200px]]="!showDescription3"
+          [class.bg-blue-100]="showDescription3">
+          <h3 class="font-bold text-xl">Case Study 3: Trap-Neuter-Return (TNR)</h3>
           @if(showDescription3){
-            <div class="text-justify"> 
-              (Spehar & Wolf, 2020) researched TNR in San Francisco, and (Co et al., 2021) did a similar
-              study in Oklahoma. They both concluded that the lack of data on feral cat colonies limits
-              TNR research.
-            </div>
+          <div class="text-justify">
+            (Spehar & Wolf, 2020) researched TNR in San Francisco, and (Co et al., 2021) did a similar
+            study in Oklahoma. They both concluded that the lack of data on feral cat colonies limits
+            TNR research.
+          </div>
           }
-      </div>
+        </div>
+      </div> <!--End of case study container-->
+    </div>
+
+    <app-footer></app-footer>
   </div>
-  
-
-</div>
-
-<app-footer></app-footer>
-</div>

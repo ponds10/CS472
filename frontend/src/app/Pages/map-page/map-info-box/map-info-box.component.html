@@ -1,8 +1,26 @@
-<img class="" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b" />
-<p>Coordinates:</p>
-<p>Comments:</p>
-<p>Cat!</p>
-<button>
-    <p class="font-medium text-blue-600 hover:underline">View Info</p>
-</button>
-
+<div class="w-full bg-white bg-opacity-50 rounded-2xl shadow-xl p-6">
+  <div class="w-full h-fit grid grid-cols-1">
+    <div class="justify-self-end">
+        <button (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+    </button>
+    </div>
+    <div>
+      <img
+        class="max-h-80 place-self-center rounded-2xl"
+        src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b"
+      />
+    </div>
+    <div class="text-gray-500 font-light italic text-xs">
+      <p>Reported by: on </p>
+    </div>
+    <div class="pt-2 text-sm">
+      <p>Coordinates:</p>
+      <p>1, 2</p>
+    </div>
+    <div class="pt-2 text-sm">
+      <p>Description:</p>
+      <p>Cat!</p>
+    </div>
+  </div>
+</div>

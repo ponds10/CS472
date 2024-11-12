@@ -1,7 +1,6 @@
 <app-header></app-header>
 
 <div class="outerContainer">
-
   <div class="lg:flex-1 lg:relative fixed">
     <app-nav-bar></app-nav-bar>
   </div>
@@ -9,32 +8,34 @@
   <div class="mapContainer">
     <div class="w-full h-[800px] lg:h-full">
       <google-map
-      height="100%"
-      width="100%"
-      [center]="center"
-      [zoom]="zoom"
-      mapId="afece44780f05ea6"
-      (mapInitialized)="addControl()"
+        height="100%"
+        width="100%"
+        [center]="center"
+        [zoom]="zoom"
+        mapId="afece44780f05ea6"
+        (mapInitialized)="addControl()"
       >
         @for (position of markerPositions; track position) {
-          <map-advanced-marker
+        <map-advanced-marker
           #marker="mapAdvancedMarker"
           [position]="position"
-          (mapClick)="openInfoWindow(marker)"></map-advanced-marker>
+          (mapClick)="openInfoWindow(marker)"
+        ></map-advanced-marker>
         }
-      <map-info-window>
-        <img class="max-h-80" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b" />
-        <p>Reported by:</p>
-        <p>Coordinates:</p>
-        <p>Comments:</p>
-        <p>Cat!</p>
-        <button>
-            <p class="font-medium text-blue-600 hover:underline">View Info</p>
-        </button>
-
-      </map-info-window>
+        <map-info-window>
+          <img
+            class="max-h-64 rounded-lg"
+            src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b"
+          />
+          <p>Description:</p>
+          <p>Cat!</p>
+          <button>
+            <p class="font-medium text-blue-600 hover:underline" (click)="openInfoDialog()">
+              View Info
+            </p>
+          </button>
+        </map-info-window>
       </google-map>
     </div>
   </div>
-
 </div>

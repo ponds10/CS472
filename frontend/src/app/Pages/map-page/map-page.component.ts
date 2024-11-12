@@ -1,13 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ViewChild, inject } from '@angular/core';
-import { GoogleMap, MapAdvancedMarker, MapInfoWindow, GoogleMapsModule } from '@angular/google-maps';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewChild,
+  inject,
+} from '@angular/core';
+import {
+  GoogleMap,
+  MapAdvancedMarker,
+  MapInfoWindow,
+  GoogleMapsModule,
+} from '@angular/google-maps';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
-import { MapInfoBoxComponent } from "./map-info-box/map-info-box.component";
+import { MapInfoBoxComponent } from './map-info-box/map-info-box.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal/modal.component';
 import { MapService } from '../../../core/services/map/map.service';
-
 
 @Component({
   selector: 'app-map-page',
@@ -22,26 +31,30 @@ import { MapService } from '../../../core/services/map/map.service';
     NavBarComponent,
     MapInfoBoxComponent,
     ModalComponent,
-],
+  ],
   templateUrl: './map-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MapPageComponent { 
+export class MapPageComponent {
+  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
+  @ViewChild(GoogleMap) map!: GoogleMap;
 
-  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow
-  @ViewChild(GoogleMap) map!: GoogleMap
+  center: google.maps.LatLngLiteral = {
+    lat: 36.180545979079874,
+    lng: -115.17917779168842,
+  };
+  zoom = 11;
 
-  center: google.maps.LatLngLiteral = {lat: 36.180545979079874, lng: -115.17917779168842}
-  zoom = 11
-
-  markerPositions: google.maps.LatLngLiteral[] = [{ lat: 36.180545979079874, lng: -115.17917779168842 }]
+  markerPositions: google.maps.LatLngLiteral[] = [
+    { lat: 36.180545979079874, lng: -115.17917779168842 },
+  ];
 
   openInfoWindow(marker: MapAdvancedMarker) {
-    this.infoWindow.open(marker)
+    this.infoWindow.open(marker);
   }
 
   createNewMarkerControl(map: GoogleMap) {
-    const controlButton = document.createElement('button')
+    const controlButton = document.createElement('button');
 
     controlButton.style.backgroundColor = '#fff';
     controlButton.style.border = '2px solid #fff';
@@ -61,33 +74,37 @@ export class MapPageComponent {
     controlButton.type = 'button';
 
     controlButton.addEventListener('click', () => {
-      console.log('Button works!')
-      this.openDialog()
-      
+      console.log('Button works!');
+      this.openDialog();
     });
 
-    return controlButton
+    return controlButton;
   }
 
   readonly dialog = inject(MatDialog);
-    
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ModalComponent, {
-      
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalComponent, {});
+
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      
     });
   }
 
+  openInfoDialog(): void {
+    const dialogRef = this.dialog.open(MapInfoBoxComponent, {});
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
 
   addControl() {
-    const newMarkerControl = this.createNewMarkerControl(this.map)
-    const newMarkerControlDiv = document.createElement('div')
-    newMarkerControlDiv.appendChild(newMarkerControl)
-    this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(newMarkerControlDiv)
+    const newMarkerControl = this.createNewMarkerControl(this.map);
+    const newMarkerControlDiv = document.createElement('div');
+    newMarkerControlDiv.appendChild(newMarkerControl);
+    this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
+      newMarkerControlDiv
+    );
   }
-  
 }

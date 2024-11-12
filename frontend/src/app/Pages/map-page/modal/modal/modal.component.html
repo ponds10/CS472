@@ -2,28 +2,8 @@
   <div class="w-full h-fit grid grid-cols-1 place-items-center space-y-8">
     <!-- Text boxes-->
 
-    <form (ngSubmit)="onSubmit()">
+    <div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
-        <div>
-          <label for="first_name" class="text-label">First Name</label>
-          <input
-            type="text"
-            id="first_name"
-            class="report-textbox"
-            placeholder="John"
-            required
-          />
-        </div>
-        <div>
-          <label for="last_name" class="text-label">Last name</label>
-          <input
-            type="text"
-            id="last_name"
-            class="report-textbox"
-            placeholder="Doe"
-            required
-          />
-        </div>
         <div>
           <label for="lat" class="text-label">Latitude</label>
           <input
@@ -31,6 +11,7 @@
             id="lat"
             class="report-textbox"
             placeholder="36.180545979079874"
+            [(ngModel)]="this.slat"
             required
           />
         </div>
@@ -41,38 +22,52 @@
             id="lng"
             class="report-textbox"
             placeholder="-115.17917779168842"
+            [(ngModel)]="this.slng"
             required
           />
         </div>
       </div>
-      <div class="mb-6">
-        <label for="email" class="text-label">Email address</label>
+      <button
+        type="submit"
+        class="text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border hover:bg-gray-300 border-gray-600 dark:focus:ring-blue-800"
+        (click)="getpostion()"
+      >
+        Get current location
+      </button>
+
+      <div class="grid md:grid-cols-2 gap-6 pt-5 mb-6">
         <input
-          type="email"
-          id="email"
-          class="report-textbox"
-          placeholder="john.doe@company.com"
-          required
+          type="file"
+          class="file-input hidden"
+          (change)="this.getImage($event)"
+          #fileUpload
         />
+  
+        <button
+          color="primary"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          (click)="fileUpload.click()"
+        >
+          image upload
+        </button>
+        
+          @if(this.file){
+            <p> {{file.name}}</p>
+          }
+          @else {
+            <p> File type must be jpeg or png</p>
+          }
+        
       </div>
-      <div class="mb-6">
-        <label for="password" class="text-label">Phone Number</label>
-        <input
-          type="tel"
-          id="phone"
-          class="report-textbox"
-          placeholder="123-456-7891"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          required
-        />
-      </div>
-      <div class="mb-6">
+
+      <div class="pt-5 mb-6">
         <label for="Description" class="text-label">Description</label>
         <textarea
-          class="form-control border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 border-gray-600 text-black px-3 py-1.5 bg-gray-50 bg-clip-padding transition ease-in-out"
+          class="form-control border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-black px-3 py-1.5 bg-gray-50 bg-clip-padding transition ease-in-out"
           id="description"
           rows="3"
           placeholder="Please put the description of the location, what time, and how many cats were seen"
+          [(ngModel)]="this.description"
           required
         ></textarea>
       </div>
@@ -89,16 +84,18 @@
         <label
           for="remember"
           class="ms-2 text-sm font-medium text-gray-900 dark:text-black"
-          >I confirm that the information provided is accurate and truthful to
-          the best of my knowledge.</label
+          >I confirm that the information provided is accurate and truthful to the
+          best of my knowledge.</label
         >
       </div>
+
       <button
-        type="submit"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        Submit
-      </button>
-    </form>
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      (click)="this.onSubmit()"
+    >
+      Submit
+    </button>
+    </div>
   </div>
 </div>

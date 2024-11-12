@@ -6,6 +6,7 @@ import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
 import { MapInfoBoxComponent } from "./map-info-box/map-info-box.component";
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal/modal.component';
+import { MapService } from '../../../core/services/map/map.service';
 
 
 @Component({
@@ -26,7 +27,6 @@ import { ModalComponent } from './modal/modal/modal.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapPageComponent { 
-  
 
   @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow
   @ViewChild(GoogleMap) map!: GoogleMap
@@ -66,7 +66,6 @@ export class MapPageComponent {
       
     });
 
-
     return controlButton
   }
 
@@ -91,6 +90,4 @@ export class MapPageComponent {
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(newMarkerControlDiv)
   }
   
-
-
 }

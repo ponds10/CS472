@@ -6,10 +6,12 @@ import {
   MatDialog,
 } from '@angular/material/dialog';
 
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule, MatDialogModule],
+  imports: [CommonModule, MatDialogModule, FormsModule],
   templateUrl: './modal.component.html',
 })
 export class ModalComponent {
@@ -23,7 +25,7 @@ export class ModalComponent {
 
   onSubmit(): void {
     this.dialogRef.close({
-      title: this.title,
+      //title: this.title,
       description: this.description,
       imageUrl: this.imageUrl,
       lat: this.lat,

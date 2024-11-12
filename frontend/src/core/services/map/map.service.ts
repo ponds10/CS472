@@ -55,19 +55,19 @@ export class MapService {
   addMarker = async (
     lat: number | null,
     lng: number | null,
-    title: string | null,
+    
     description: string | null,
-    imageUrl: string | null
+    //imageUrl: string | null
   ): Promise<void | DocumentReference<DocumentData>> => {
     // ignore empty description
-    if (!description && !imageUrl && !lat && !lng && !title) {
+    if (!description  && !lat && !lng) {
       console.log(
         'addMarker was called without a all required fields:',
         lat,
         lng,
-        title,
+        
         description,
-        imageUrl
+        
       );
       return;
     }
@@ -89,11 +89,11 @@ export class MapService {
       uid: this.currentUser.uid,
     };
 
-    title && (marker.title = title);
+    
     lat && (marker.lat = lat);
     lng && (marker.lng = lng);
     description && (marker.description = description);
-    imageUrl && (marker.imageUrl = imageUrl);
+    //imageUrl && (marker.imageUrl = imageUrl);
 
     try {
       const newMarkerRef = await addDoc(
@@ -109,7 +109,7 @@ export class MapService {
 
   // Saves a new message containing an image in Firestore.
   // This first saves the image in Firebase storage.
-  saveMarker = async (lat: number, lng: number,title: string, description: string, file: any) => {
+  saveMarker = async (lat: number, lng: number, description: string) => {
     // try {
     //   // 1 -  loading icon that will get updated with the shared image.
     //   const markerRef = await this.addMarker(
@@ -120,7 +120,7 @@ export class MapService {
     //     this.LOADING_IMAGE_URL
     //   );
 
-      return this.addMarker( lat, lng, title, description, file);
+      return this.addMarker( lat, lng, description);
     
   };
 

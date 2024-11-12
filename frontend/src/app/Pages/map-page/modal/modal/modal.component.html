@@ -31,6 +31,7 @@
             id="lat"
             class="report-textbox"
             placeholder="36.180545979079874"
+            [(ngModel)]="this.lat"
             required
           />
         </div>
@@ -41,6 +42,7 @@
             id="lng"
             class="report-textbox"
             placeholder="-115.17917779168842"
+            [(ngModel)]="this.lng"
             required
           />
         </div>
@@ -56,7 +58,7 @@
         />
       </div>
       <div class="mb-6">
-        <label for="password" class="text-label">Phone Number</label>
+        <label for="phonenumber" class="text-label">Phone Number</label>
         <input
           type="tel"
           id="phone"
@@ -73,6 +75,7 @@
           id="description"
           rows="3"
           placeholder="Please put the description of the location, what time, and how many cats were seen"
+          [(ngModel)]="this.description"
           required
         ></textarea>
       </div>
@@ -96,7 +99,8 @@
       <button
         type="submit"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
+        (click)="this.onSubmit()"
+        >
         Submit
       </button>
     </form>

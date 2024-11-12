@@ -41,6 +41,36 @@ export class ModalComponent {
     }
   }
 
+  getpostion(inputElement: HTMLInputElement, intputElement2: HTMLInputElement): void {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position: GeolocationPosition) => {
+         
+          inputElement.value = String(position.coords.latitude);
+          intputElement2.value = String(position.coords.longitude);
+    
+        },
+        () => {
+          //handleLocationError(true, infoWindow, map.getCenter()!);
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      //handleLocationError(false, infoWindow, map.getCenter()!);
+    }
+    
+  }
+
+
+
+  handleLocationError(
+    browserHasGeolocation: boolean,
+    infoWindow: google.maps.InfoWindow,
+    pos: google.maps.LatLng
+  ) {
+    
+  }
+
   closeDialog() {
     this.dialogRef.close('Pizza!');
   }

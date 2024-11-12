@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ModalComponent {
   mapService = inject(MapService);
+  //user$ = this.mapService.user$;
   description: string = '';
   lat: number = 0;
   lng: number = 0;
@@ -24,11 +25,20 @@ export class ModalComponent {
   constructor(public dialogRef: MatDialogRef<ModalComponent>) {}
 
   onSubmit(): void {
-    this.mapService.saveMarker(this.lat, this.lng, this.description);
-
-    this.dialogRef.close({
-      
-    });
+    
+    if (this.lat && this.lng && this.description) {
+      this.mapService.saveMarker(this.lat, this.lng, this.description)
+        .then(() => {
+          console.log('Marker saved successfully');
+          this.dialogRef.close();
+        })
+        .catch(error => {
+          console.error('Error saving marker:', error);
+          alert('Failed to save marker. Please try again.');
+        });
+    } else {
+      alert('Please fill out all required fields.');
+    }
   }
 
   closeDialog() {

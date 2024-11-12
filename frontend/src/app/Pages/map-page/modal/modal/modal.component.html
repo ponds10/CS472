@@ -36,6 +36,18 @@
         Get current location
       </button>
       
+      <div>
+        <label for="file" class="file upload">Picture</label>
+        <input 
+          type="lat"
+          id="lat"
+          class="report-textbox"
+          placeholder="36.180545979079874"
+          [(ngModel)]="this.slat"
+          required
+        />
+      </div>
+
       <div class="pt-5 mb-6">
         <label for="Description" class="text-label">Description</label>
         <textarea

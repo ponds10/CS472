@@ -27,9 +27,9 @@ export class ModalComponent {
   constructor(public dialogRef: MatDialogRef<ModalComponent>) {}
 
   onSubmit(): void {
-    this.lat = parseFloat(this.slat);
-    this.lng = parseFloat(this.slng);
-    
+    this.lat = 1;
+    this.lng = 2;
+
     if (this.lat && this.lng && this.description) {
       this.mapService.saveMarker(this.lat, this.lng, this.description)
         .then(() => {

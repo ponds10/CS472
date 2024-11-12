@@ -27,7 +27,7 @@ type Marker = {
   timestamp: FieldValue;
   title?: string | null;
   description?: string | null;
-  imageUrl?: string | null;
+  image?: File | null;
   lat?: number | null;
   lng?: number | null;
   uid: string;
@@ -57,7 +57,7 @@ export class MapService {
     lng: number | null,
     
     description: string | null,
-    //imageUrl: string | null
+    image: any | null,
   ): Promise<void | DocumentReference<DocumentData>> => {
     // ignore empty description
     if (!description  && !lat && !lng) {
@@ -83,7 +83,7 @@ export class MapService {
       timestamp: serverTimestamp(),
       // title: title,
       // description: description,
-      // imageUrl: imageUrl,
+    
       // lat: lat,
       // lng: lng,
       uid: this.currentUser.uid,
@@ -93,7 +93,7 @@ export class MapService {
     lat && (marker.lat = lat);
     lng && (marker.lng = lng);
     description && (marker.description = description);
-    //imageUrl && (marker.imageUrl = imageUrl);
+    image && (marker.image = image);
 
     try {
       const newMarkerRef = await addDoc(
@@ -109,7 +109,7 @@ export class MapService {
 
   // Saves a new message containing an image in Firestore.
   // This first saves the image in Firebase storage.
-  saveMarker = async (lat: number, lng: number, description: string) => {
+  saveMarker = async (lat: number, lng: number, description: string, file:File | null) => {
     // try {
     //   // 1 -  loading icon that will get updated with the shared image.
     //   const markerRef = await this.addMarker(
@@ -120,7 +120,21 @@ export class MapService {
     //     this.LOADING_IMAGE_URL
     //   );
 
-      return this.addMarker( lat, lng, description);
+     let publicImageUrl = '';
+
+    // upload image to cloud storage
+    if (file){
+      const filePath = `map-images/${file.name}`;
+      const newImageRef = ref(this.storage, filePath);
+      const fileSnapshot = await uploadBytesResumable(newImageRef, file);
+
+      // 3 - Generate a public URL for the file.
+      publicImageUrl = await getDownloadURL(newImageRef);
+     
+    }
+    
+
+      return this.addMarker( lat, lng, description, publicImageUrl);
     
   };
 

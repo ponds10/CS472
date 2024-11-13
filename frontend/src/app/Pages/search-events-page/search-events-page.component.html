@@ -1,37 +1,44 @@
-<!-- <app-header class="fixed-header"></app-header>
+<app-header></app-header>
 
-<div class="outerContainer mt-20 lg:mt-0 pt-mobile-header">
-  <div class="lg:flex-1">
-    <app-nav-bar class="fixed-nav"></app-nav-bar>
-  </div>
+<div class="outerContainer">
 
-  <!-- scrollable content and padding prevent interference from fixed header and nav bar -->
-  <div class="innerContainer scrollable-content p-4">
-
-    <div class="mt-24 flex flex-col items-center">
-      <img src="./assets/event.png" class="w-full lg:w-3/4">
+    <div class="lg:flex-1">
+        <app-nav-bar></app-nav-bar>
     </div>
 
-    <!-- Event List-->
-    <div class="events-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-      <div *ngFor="let event of events" class="event-card p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-        <img [src]="event.imageUrl" alt="Event Image" class="event-image rounded-t-lg w-full h-40 object-cover">
-        <div class="p-4">
-          <div class="flex justify-between items-center">
-            <p class="text-sm font-bold text-gray-500">{{ event.date }}</p>
-            <div class="flex items-center">
-              <p class="text-sm font-bold text-gray-500">{{ event.registeredCount }}</p>
-              <img src="./assets/images/user-icon.jpg" alt="user-icon" class="count-image w-4 h-4 ml-1">
+    <div class="innerContainer">
+
+      <div class="h-fit w-full bg-cover bg-fixed bg-search tinted">
+        <div class="h-[500px] w-full font-bold text-7xl flex flex-col justify-end text-white
+                    inset-0 bg-black opacity-50">
+          <h1>
+            Find Your Next Furry Friend
+          </h1>
+
+          <div class="h-fit w-fit m-4 p-4 text-base text-black bg-white rounded-full flex space-x-16">
+            <div>
+              Dog
+            </div> 
+
+            <div>
+              Cat
+            </div> 
+
+            <div class="space-x-4 border-l-2 border-zinc-950 border-spacing-16">
+              <button>
+                Search Now
+              </button>
             </div>
           </div>
-          <h2 class="text-lg font-bold">{{ event.title }}</h2>
-          <p class="text-sm text-gray-500">Location: {{ event.location }}</p>
-          <p class="text-sm text-gray-500">Time: {{ event.time }}</p>
-          <button [routerLink]="['/eventpage', event.id]" class="mt-2 bg-purple-400 text-white px-4 py-2 rounded hover:bg-purple-500 transition">
-            View Details
-          </button>
         </div>
       </div>
+
+        <div class="w-full mt-64 lg:mt-32 lg:flex lg:flex-col lg:items-center">
+            <div class="h-screen">
+
+            </div>
+        </div>
+
     </div>
-  </div>
-</div> -->
+
+</div>

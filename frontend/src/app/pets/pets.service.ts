@@ -5,7 +5,6 @@ import { collectionData, Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, query, orderBy, limit, where, getDocs } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
-import { profileImages, User } from '../../models/user';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 
 @Injectable({
@@ -46,7 +45,7 @@ export class PetsService {
   // generate the account!
   // takes in userInfo of the userModel
   // returns nothing, VOID
-  async generatePetPost(userInfo: User, selectedImage: File)
+  async generatePetPost(userInfo: any, selectedImage: File)
   {
     // if the user info is null, return 
     if(userInfo == null)

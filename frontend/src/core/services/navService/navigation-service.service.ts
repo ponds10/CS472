@@ -6,22 +6,8 @@ import { Auth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class NavigationServiceService {
-  auth: Auth = inject(Auth)
   // set up basic router 
   constructor(private router: Router) { }
-
-  //
-  checkUser(): boolean
-  {
-    if(this.auth.currentUser == null)
-    {
-      return false;
-    }
-    else
-    {
-      return true;
-    }
-  }
 
   // nav to login page func
   navigateToLoginPage()

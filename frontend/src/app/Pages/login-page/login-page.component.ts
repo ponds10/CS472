@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { LoginBoxComponent } from '../../components/login-box/login-box.component';
+import { LoginBoxComponent } from './login-box/login-box.component';
 @Component({
   selector: 'app-login-page',
   standalone: true,

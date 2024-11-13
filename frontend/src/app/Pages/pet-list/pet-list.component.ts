@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { PetCardComponent } from '../../../shared/components/pet-card/pet-card.component';
 import { Pet } from '../../pet.model';
-import { PetService } from '../../pet.service';
+import { PetService } from '../../depreciated/pet.service'; 
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../../shared/header/header.component';

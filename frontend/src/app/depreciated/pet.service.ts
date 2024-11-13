@@ -1,6 +1,6 @@
 // src/app/pet.service.ts
 import { Injectable } from '@angular/core';
-import { Pet } from './pet.model';
+import { Pet } from '../pet.model';
 import { Observable, of } from 'rxjs';
 
 @Injectable({

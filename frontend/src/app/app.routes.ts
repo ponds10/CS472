@@ -6,7 +6,7 @@ import { PetPageComponent } from './Pages/pet-page/pet-page.component';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { DocumentsPageComponent } from './DashboardPages/documents-page/documents-page.component';
 import { SearchEventsPageComponent } from './Pages/search-events-page/search-events-page.component';
-import { SearchPetsPageComponent } from './Pages/search-pets-page/search-pets-page.component';
+import { SearchPetsPageComponent } from './depreciated/search-pets-page/search-pets-page.component';
 import { SearchPetsFilterComponent } from './Pages/search-pets-filter/search-pets-filter.component';
 import { CreatePetPostComponent } from './CreatePages/create-pet-post/create-pet-post.component';
 import { CreateEventComponent } from './CreatePages/create-event/create-event.component';

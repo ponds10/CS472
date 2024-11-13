@@ -6,7 +6,7 @@ import { PetCardComponent } from '../../../shared/components/pet-card/pet-card.c
 import { Pet } from '../../pet.model';
 import { HeaderComponent } from '../../../shared/header/header.component';
 
-import { PetService } from '../../pet.service';
+import { PetService } from '../../depreciated/pet.service';
 
 @Component({
   selector: 'app-pet-page',

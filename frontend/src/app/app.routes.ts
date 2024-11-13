@@ -34,5 +34,6 @@ export const routes: Routes = [
     {path: 'map', component:MapPageComponent},
     {path: 'login', component:LoginPageComponent},
     {path: 'newAccount', component:NewAccountComponent},
-    {path: 'createUser', component:CreateUserProfileComponent}
+    {path: 'createUser', component:CreateUserProfileComponent},
+    {path: '**', redirectTo:'login'}
 ];

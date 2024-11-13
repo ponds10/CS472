@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { profileImages, User } from '../../models/user';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
-import { UserInfo } from 'os';
+
 @Injectable({
   providedIn: 'root'
 })

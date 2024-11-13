@@ -47,7 +47,6 @@
 
                 <form class="flex flex-col w-full items-center space-y-4">
                     <input type="file" (change)="onUpload($event)">
-                    <button type="button" (click)="onSubmit()">Submit</button>
                 </form>
                 
                 <div>
@@ -98,6 +97,56 @@
                 </div>
               </form>
               }
+
+              <div class="w-full">
+                @if(step4)
+                {
+                  <form [formGroup]="pet_health_fg" class="flex flex-col space-y-16">
+                
+                    <div>
+                      <p>Create a pet</p>
+                      <h1 class="text-3xl space-y-4">Pet Health Info</h1>
+                    </div>
+
+                    <div>
+                      <label for="vet_visits" class="mb-2 text-gray-900">Vetinary Visit Summary</label>
+                      <textarea formControlName="vet_visits" type="text" id="vet_visits" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"></textarea>
+                    </div>
+
+                    <div>
+                      <label for="vaccinations" class="mb-2 text-gray-900">Vaccinations</label>
+                      <textarea formControlName="vaccinations" type="text" id="vaccinations" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"></textarea>
+                    </div>
+  
+                  </form>
+                }
+              </div>
+
+              <div class="w-full">
+                @if(step5)
+                {
+                  <div class="flex flex-col space-y-16">
+                    <div>
+                      <p>Create a pet</p>
+                      <h1 class="text-3xl space-y-4">Review</h1>
+                    </div>
+                    
+                    <div class="h-[500px] overflow-y-auto w-full p-16 bg-white bg-opacity-50 rounded-xl space-y-4">
+                      <div>
+                        <img [src]="url" class="w-[250px] h-auto rounded-full">
+                      </div>
+                      <div>Name: {{this.basic_info_fg.controls.name.value}}</div>
+                      <div>Biography: {{this.basic_info_fg.controls.description.value}}</div>
+                      <div>Age: {{this.pet_details_fg.controls.age.value}}</div>
+                      <div>Weight: {{this.pet_details_fg.controls.weight.value}}</div>
+                      <div>Gender: {{this.pet_details_fg.controls.gender.value}}</div>
+                      <div>Breed: {{this.pet_details_fg.controls.breed.value}}</div>
+                      <div>Vet Visit Summaries: {{this.pet_health_fg.controls.vet_visits.value}}</div>
+                      <div>Vet Visit Summaries: {{this.pet_health_fg.controls.vaccinations.value}}</div>
+                    </div>
+                  </div>
+                }
+              </div>
             </div>
           </div>
           

@@ -39,11 +39,18 @@ export class CreatePetPostComponent implements OnInit{
     breed: new FormControl('')
   });
 
+  pet_health_fg = new FormGroup({
+    vet_visits: new FormControl(''),
+    vaccinations: new FormControl(''),
+  });
+
   // variables
   progress:number = 1;
   step1:number = 1;
   step2:number = 0;
   step3:number = 0;
+  step4:number = 0;
+  step5:number = 0;
 
   next()
   {
@@ -51,18 +58,22 @@ export class CreatePetPostComponent implements OnInit{
     {
       this.step1 = 0;
       this.step2 = 1;
-      this.progress = 33;
 
     }
     else if(this.step2 == 1)
     {
       this.step2 = 0;
       this.step3 = 1;
-      this.progress = 66;
     }
     else if(this.step3 == 1)
     {
-
+      this.step3=0;
+      this.step4=1
+    }
+    else if(this.step4 == 1)
+    {
+      this.step4=0;
+      this.step5=1;
     }
   }
 
@@ -80,16 +91,32 @@ export class CreatePetPostComponent implements OnInit{
       this.step1 = 1;
       this.step2 = 0;
       this.progress = 1;
+    }else if(this.step3 ==1)
+    {
+      this.step3 = 0;
+      this.step2= 1;
     }
+    else if(this.step4 ==1)
+    {
+      this.step4 = 0;
+      this.step3= 1;
+    }
+    else if(this.step5 ==1)
+      {
+        this.step5 = 0;
+        this.step4 = 1;
+      }
   }
 
   // make a variable for the selected file so that we can access it
  
   url: string | ArrayBuffer | null = null;
+  image: File | null = null;
   // trigger function that takes in the input
   onUpload(event:any)
   {
     const selectedFile = event.target.files[0];
+    this.image = selectedFile;
     const imagePath = selectedFile;
 
     const reader = new FileReader();

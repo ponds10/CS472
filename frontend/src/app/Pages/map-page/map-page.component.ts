@@ -4,6 +4,7 @@ import {
   Component,
   ViewChild,
   inject,
+  ChangeDetectorRef
 } from '@angular/core';
 import {
   GoogleMap,
@@ -36,6 +37,8 @@ import { MapService } from '../../../core/services/map/map.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapPageComponent {
+  constructor(private cdr: ChangeDetectorRef) {}
+
   @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
   @ViewChild(GoogleMap) map!: GoogleMap;
 
@@ -54,6 +57,7 @@ export class MapPageComponent {
   }
 
   createNewMarkerControl(map: GoogleMap) {
+    console.log('Called create control')
     const controlButton = document.createElement('button');
 
     controlButton.style.backgroundColor = '#fff';
@@ -100,6 +104,8 @@ export class MapPageComponent {
   }
 
   addControl() {
+    this.cdr.detectChanges();
+    console.log('called addControl')
     const newMarkerControl = this.createNewMarkerControl(this.map);
     const newMarkerControlDiv = document.createElement('div');
     newMarkerControlDiv.appendChild(newMarkerControl);

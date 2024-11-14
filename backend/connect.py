@@ -9,7 +9,7 @@ import uvicorn
 # ----------------------------------------connect to database----------------------------------------
 
 # replace "..." with your private key path
-cred = credentials.Certificate (r"perms\toebeans-d6f03-firebase-adminsdk-rrbfg-983a4fcf8a.json")
+cred = credentials.Certificate (r"perms\.json")
 
 firebase_admin.initialize_app(cred)                                                        
 
@@ -43,24 +43,36 @@ def getUserInfo(first_name:str=Form(...), last_name:str=Form(...), accountID:str
     return userInfo.addUserToDatabase(first_name, last_name, accountID, accountType, email,
                                       password, phone, street, state, city, zip, bio, image,
                                       userEntry_collectionRef.document(), userInfo_collectionRef.document())
-    # ^ returns success or fail
 
 # get user input for login
 @app.get("/user-login")
 def userLoginInfo(emailAddress:str=Form(...), password:str=Form(...)) :
     # login query using user login input
     return userEntryInfo.userLoginQuery(emailAddress, password, userEntry_collectionRef)
-    # ^ returns success or fail
 
 # get user input for new pet
 @app.get("/add-pet")
-def getPetInfo(id:str=Form(...), name:str=Form(...), species:str=Form(...), breed:str=Form(...),
+def getPetInfo(name:str=Form(...), species:str=Form(...), breed:str=Form(...),
                      sex:str=Form(...), age:str=Form(...), weight:str=Form(...), image:str=Form(...),
                      documents:str=Form(...), contact:str=Form(...)) :
     # create and store pet info in petInfo document
-    return petInfo.addPetToDatabase(id, name, species, breed, sex, age, weight, image, documents, contact,
-                                    petInfo_collectionRef.document())
-    # ^ returns success or fail
+    return petInfo.addPetToDatabase(name, species, breed, sex, age, weight, image, documents, contact,
+                                    petInfo_collectionRef)
+
+# match existing pet in database and edit fields
+@app.get("/edit-pet")
+def editPetInfo(id:str=Form(...), name:str=Form(...), species:str=Form(...), breed:str=Form(...),
+                     sex:str=Form(...), age:str=Form(...), weight:str=Form(...), image:str=Form(...),
+                     documents:str=Form(...), contact:str=Form(...)) :
+    # update petInfo document
+    return petInfo.editPetInDatabase(id, name, species, breed, sex, age, weight, image, documents, contact,
+                                    petInfo_collectionRef.document(id))
+
+# match existing pet in database and delete
+@app.get("/delete-pet")
+def deletePetInfo(id:str=Form(...)) :
+    # update petInfo document
+    return petInfo.deletePetInDatabase(petInfo_collectionRef.document(id))
 
 # ----------------------------------------command runs API----------------------------------------
 

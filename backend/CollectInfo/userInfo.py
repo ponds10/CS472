@@ -16,4 +16,4 @@ def addUserToDatabase(first_name, last_name, accountID, accountType, email, pass
     userInfo_documentRef.set(userInfo.__dict__)
 
     # return success if required fields completed correctly
-    return "User Account Successfully Created"
+    return userInfo_documentRef.get().to_dict()

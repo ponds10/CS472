@@ -5,6 +5,8 @@ import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, query, orderBy, limit, where, getDocs } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -71,7 +73,7 @@ export class LoginService {
   {
     if (UUID === null || UUID === undefined ) {
       console.log("requires a user");
-      return true;
+      return false;
     }
 
     const newUserQuery = query(collection(this.firestore, 'userInfo'), where("userID", "==", UUID), limit(12));
@@ -86,5 +88,33 @@ export class LoginService {
     console.log("herro")
 
     return false;
+  }
+
+
+  login_email(email: string, password: string)
+  {
+    // built in method from angular/core that takes in the auth, email, and password
+    // returns the UID of the user, but we should be able to access it through the auth injection
+    signInWithEmailAndPassword(this.auth, email, password);
+
+    // debug printing
+    //console.log(this.auth.currentUser?.uid);
+
+    // if the UID is null or undefined, then do not reroute and return false
+    // return true otherwise
+    if(!(this.auth.currentUser?.uid == null || this.auth.currentUser?.uid == undefined ))
+    {
+      this.router.navigate(['/', 'homepage']);
+      return true;
+    }
+
+    // for the login box, we need to have an @if that utilizes a boolean to display an error message like
+    // login failed!
+    return false;
+  }
+
+  create_account_email(email: string, password: string)
+  {
+    createUserWithEmailAndPassword(this.auth, email, password);
   }
 }

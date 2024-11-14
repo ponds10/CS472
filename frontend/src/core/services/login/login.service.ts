@@ -95,7 +95,9 @@ export class LoginService {
   {
     // built in method from angular/core that takes in the auth, email, and password
     // returns the UID of the user, but we should be able to access it through the auth injection
-    signInWithEmailAndPassword(this.auth, email, password);
+    signInWithEmailAndPassword(this.auth, email, password).then(() => {
+      this.currentUser = this.auth.currentUser;
+    });
 
     // debug printing
     //console.log(this.auth.currentUser?.uid);
@@ -115,6 +117,21 @@ export class LoginService {
 
   create_account_email(email: string, password: string)
   {
-    createUserWithEmailAndPassword(this.auth, email, password);
+    // use the built in create account with email/pw from fb
+    // pass in the auth, email, and password
+    // then we can get the returned user credential and log it for debug
+    createUserWithEmailAndPassword(this.auth, email, password).then((userCredential) => {
+      this.currentUser = this.auth.currentUser;
+      console.log(userCredential);
+      this.router.navigate(['/', 'createUser']);
+      return true;
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode)
+      console.log(errorMessage)
+      return false;
+    });
   }
 }

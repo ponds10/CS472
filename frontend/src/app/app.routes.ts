@@ -13,7 +13,7 @@ import { CreateEventComponent } from './CreatePages/create-event/create-event.co
 import { UserProfilePageComponent } from './Pages/user-profile-page/user-profile-page.component';
 import { PetListComponent } from './Pages/pet-list/pet-list.component';
 import { MapPageComponent } from './Pages/map-page/map-page.component';
-import { NewAccountComponent } from './new-account/new-account.component';
+import { CreateAccountComponent } from './Pages/create-account/create-account.component';
 import { CreateUserProfileComponent } from './CreatePages/create-user-profile/create-user-profile.component';
 
 export const routes: Routes = [
@@ -33,7 +33,7 @@ export const routes: Routes = [
     {path: 'userprofilepage', component: UserProfilePageComponent},
     {path: 'map', component:MapPageComponent},
     {path: 'login', component:LoginPageComponent},
-    {path: 'newAccount', component:NewAccountComponent},
+    {path: 'newAccount', component:CreateAccountComponent},
     {path: 'createUser', component:CreateUserProfileComponent},
     {path: '**', redirectTo:'login'}
 ];

@@ -12,6 +12,7 @@ import {
   updateDoc,
   setDoc,
   collectionData,
+  query
 } from '@angular/fire/firestore';
 
 import {
@@ -136,6 +137,11 @@ export class MapService {
 
       return this.addMarker( lat, lng, description, publicImageUrl);
     
+  };
+
+  loadMarkers =  () => {
+    const markers = query(collection(this.firestore, 'marker'));
+    return collectionData(markers);
   };
 
   // update marker in Cloud Firestore

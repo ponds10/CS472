@@ -15,11 +15,11 @@
         mapId="afece44780f05ea6"
         (mapInitialized)="addControl()"
       >
-        @for (position of markerPositions; track position) {
+        @for (marker of (markers$|async); track marker) {
         <map-advanced-marker
-          #marker="mapAdvancedMarker"
-          [position]="position"
-          (mapClick)="openInfoWindow(marker)"
+          #markerRef="mapAdvancedMarker"
+         
+          (mapClick)="openInfoWindow(markerRef)"
         ></map-advanced-marker>
         }
         <map-info-window>

@@ -18,6 +18,8 @@ import { MapInfoBoxComponent } from './map-info-box/map-info-box.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal/modal.component';
 import { MapService } from '../../../core/services/map/map.service';
+import { Observable } from 'rxjs';
+import { DocumentData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-map-page',
@@ -37,6 +39,8 @@ import { MapService } from '../../../core/services/map/map.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapPageComponent {
+  mapService = inject(MapService);
+
   constructor(private cdr: ChangeDetectorRef) {}
 
   @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
@@ -48,9 +52,8 @@ export class MapPageComponent {
   };
   zoom = 11;
 
-  markerPositions: google.maps.LatLngLiteral[] = [
-    { lat: 36.180545979079874, lng: -115.17917779168842 },
-  ];
+  markers$ = this.mapService.loadMarkers() as Observable<DocumentData[]>;
+  
 
   openInfoWindow(marker: MapAdvancedMarker) {
     this.infoWindow.open(marker);

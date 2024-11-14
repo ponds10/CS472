@@ -42,7 +42,7 @@
           (change)="this.getImage($event)"
           #fileUpload
         />
-  
+
         <button
           color="primary"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -50,14 +50,12 @@
         >
           image upload
         </button>
-        
-          @if(this.file){
-            <p> {{file.name}}</p>
-          }
-          @else {
-            <p> File type must be jpeg or png</p>
-          }
-        
+
+        @if(this.file){
+        <p>{{ file.name }}</p>
+        } @else {
+        <p>File type must be jpeg or png</p>
+        }
       </div>
 
       <div class="pt-5 mb-6">
@@ -84,18 +82,28 @@
         <label
           for="remember"
           class="ms-2 text-sm font-medium text-gray-900 dark:text-black"
-          >I confirm that the information provided is accurate and truthful to the
-          best of my knowledge.</label
+          >I confirm that the information provided is accurate and truthful to
+          the best of my knowledge.</label
         >
       </div>
 
-      <button
-      type="submit"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      (click)="this.onSubmit()"
-    >
-      Submit
-    </button>
+      <div class="grid md:grid-cols-2 gap-4 pr-52">
+        <button
+          type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          (click)="this.onSubmit()"
+        >
+          Submit
+        </button>
+
+        <button
+          type="submit"
+          class="text-black bg-gray-300 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          (click)="this.closeDialog()"
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   </div>
 </div>

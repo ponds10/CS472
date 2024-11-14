@@ -81,52 +81,46 @@
 
       <!--Case Studies-->
       <!-- ** NOTE: need to figure out how to center case study buttons-->
-      <div class="flex flex-row justify-items-center mt-8 mb-16 space-x-6">
+      <div class="flex justify-evenly mt-8 mb-16 space-x-6 w-full col-span-2 overflow-x-scroll">
         <!--Case Study 1-->
-        <div class="w-[300px] bg-rose-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105"
-          (click)="toggleDescription(1)" [class.h-auto]="showDescription1" [class.h-[200px]]="!showDescription1"
-          [class.bg-blue-100]="showDescription1">
+        <div class="w-[300px] h-[400px] bg-rose-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-100"
+          (click)="toggleDescription(1)">
           <h3 class="font-bold text-xl">Case Study 1: Inequitable Flow of Animals to Shelters</h3>
-          @if(showDescription1){
-          <div class="text-justify"> (Ly et al., 2021) found that there is an inequitable flow of animals
-            in and out of shelters. A considerable amount of surrenders come from vulnerable communities,
-            and this study examined socioeconomic factors causing this. By engaging vulnerable
-            communities, we can help them keep their pets and get them the necessary resources
-            and care.
-          </div>
-          }
         </div>
 
 
         <!--Case Study 2-->
-        <div class="w-[300px] bg-indigo-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105"
-          (click)="toggleDescription(2)" [class.h-auto]="showDescription2" [class.h-[200px]]="!showDescription2"
-          [class.bg-blue-100]="showDescription2">
+        <div class="w-[300px] h-[400px] bg-indigo-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-100"
+          (click)="toggleDescription(2)">
           <h3 class="font-bold text-xl">Case Study 2: PET Match Project</h3>
-          @if(showDescription2){
-          <div class="text-justify">A study done by (Davis et al., 2019) explored the effectiveness of an iterative
-            design
-            for a online pet adoption. The study found that the perceived ethos of their website helped
-            users to trust the website for being reputable and learning about pet ownership and responsibility.
-            Another finding was that an easy, simple, and intuitive navigation can improve user experience.
-          </div>
-          }
         </div>
 
         <!--Case Study 3-->
-        <div class="w-[300px] bg-green-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-105"
-          (click)="toggleDescription(3)" [class.h-auto]="showDescription3" [class.h-[200px]]="!showDescription3"
-          [class.bg-blue-100]="showDescription3">
+        <div class="w-[300px] h-[400px] bg-green-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-100"
+          (click)="toggleDescription(3)">
           <h3 class="font-bold text-xl">Case Study 3: Trap-Neuter-Return (TNR)</h3>
-          @if(showDescription3){
-          <div class="text-justify">
-            (Spehar & Wolf, 2020) researched TNR in San Francisco, and (Co et al., 2021) did a similar
-            study in Oklahoma. They both concluded that the lack of data on feral cat colonies limits
-            TNR research.
-          </div>
-          }
         </div>
       </div> <!--End of case study container-->
+      <div class="w-full h-[400px] p-16">
+        @if(showDescription1)
+        {
+          <div>
+            {{description1}}
+          </div>
+        }
+        @else if(showDescription2)
+        {
+          <div>
+            {{description2}}
+          </div>
+        }
+        @else if(showDescription3)
+        {
+          <div>
+            {{description3}}
+          </div>
+        }
+      </div>
     </div>
 
     <app-footer></app-footer>

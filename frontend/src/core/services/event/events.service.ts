@@ -6,6 +6,7 @@ import { addDoc, collection, query, orderBy, limit, where, getDocs } from '@angu
 import { Router } from '@angular/router';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Events } from '../../models/events';
+import { UUID as v4 } from 'crypto';
 @Injectable({
   providedIn: 'root'
 })

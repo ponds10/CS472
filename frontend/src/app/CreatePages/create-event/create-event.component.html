@@ -16,7 +16,7 @@
             </div>
             <div>
               <label for="host" class="mb-2 text-gray-900">Organizer</label>
-              <input formControlName="host" type="text" id="host" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+              <input formControlName="organizer" type="text" id="host" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
             </div>
 
             <div>
@@ -26,7 +26,7 @@
 
             <div>
               <label for="description" class="mb-2 text-gray-900">Quick Summary</label>
-              <textarea formControlName="description" type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"></textarea>
+              <textarea formControlName="summary" type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"></textarea>
             </div>
           </div>
 
@@ -60,33 +60,45 @@
             </div>
             
             <div>
-              <app-calendar></app-calendar>
+              <app-calendar
+                (dayEmitter)="recieveDay($event)"
+                (monthEmitter)="recieveMonth($event)"
+                (yearEmitter)="recieveYear($event)"
+              ></app-calendar>
+            </div>
+
+            <div>
+              <input type="time" #timeInput (change)="timeChangeEvent(timeInput.value)">
+            </div>
+
+            <div>
+
             </div>
 
             <div class="grid grid-cols-2 gap-2">
               <div class="col-span-2">
-                <label for="title" class="mb-2 text-gray-900">Street</label>
-                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+                <label for="street" class="mb-2 text-gray-900">Street</label>
+                <input formControlName="street" type="text" id="street" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
               </div>
 
               <div>
-                <label for="title" class="mb-2 text-gray-900">City</label>
-                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+                <label for="city" class="mb-2 text-gray-900">City</label>
+                <input formControlName="city" type="text" id="city" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
               </div>
 
               <div>
-                <label for="title" class="mb-2 text-gray-900">State</label>
-                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+                <label for="state" class="mb-2 text-gray-900">State</label>
+                <input formControlName="state" type="text" id="state" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
               </div>
 
               <div>
-                <label for="title" class="mb-2 text-gray-900">Zip</label>
-                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+                <label for="zip" class="mb-2 text-gray-900">Zip</label>
+                <input formControlName="zip" type="text" id="zip" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
               </div>
 
               <div>
-                <label for="title" class="mb-2 text-gray-900">Country</label>
-                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+                <label for="country" class="mb-2 text-gray-900">Country</label>
+                <input formControlName="country" type="text" id="country" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
               </div>
             </div>
           </div>
@@ -98,10 +110,14 @@
               <p>Use this section to provide any additional information you may want to include e.g agendas</p>
             </div>
             <div>
-              <label for="description" class="mb-2 text-gray-900">Add more details</label>
-              <textarea type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
+              <label for="misc" class="mb-2 text-gray-900">Add more details</label>
+              <textarea formControlName="misc" type="text" id="misc" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
             </div>
           </div>
+
+          <button (click)="createEvent()">
+            submit
+          </button>
         </form>
       </div>
     </div>

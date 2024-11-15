@@ -1,12 +1,22 @@
 export interface Events {
+    organizer: string;
     title: string;
-    description: string;
-    attendance: number;
+    summary: string;
+
     imageURL: string;
+
     date: Date;
+    street: string;
+    city: string;
+    state: string;
+    zip: string;
+    country: string
+
+    misc: string;
+
+    attendance: number;
     userID: string;
     eventID: string;
-    host: string;
 }
 
 // to store all the events a user is attending

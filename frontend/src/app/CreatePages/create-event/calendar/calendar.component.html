@@ -1,6 +1,6 @@
-<div class="text-xs p-4 border-2 border-gray-100 shadow-sm">
+<div class="text-xs p-4 border-2 border-gray-100 shadow-sm h-fit">
     <div class="w-full flex flex-col p-4 space-y-4">
-        <div class="flex justify-evenly px-16">
+        <div class="flex justify-evenly">
             <div class="border-2 h-[25px] w-[25px] rounded-full flex justify-center items-center" (click)="prevMonth()">
                 <mat-icon>keyboard_arrow_left</mat-icon>
             </div>
@@ -15,13 +15,13 @@
         </div>
 
         <div class="grid grid-cols-7 gap-4">
-            <div>Monday</div>
-            <div>Tuesday</div>
-            <div>Wednesday</div>
-            <div>Thursday</div>
-            <div>Friday</div>
-            <div>Saturday</div>
-            <div>Sunday</div>
+            <div>Mon</div>
+            <div>Tues</div>
+            <div>Wed</div>
+            <div>Thurs</div>
+            <div>Fri</div>
+            <div>Sat</div>
+            <div>Sun</div>
 
             <!--for loop if first day is 6 AKA saturday make 6 empty divs using @ for-->
             <!--then for loop for 1 to max days-->
@@ -32,11 +32,14 @@
                 {
                     @if(day[1])
                     {
-                        <div class="bg-blue-100 bg-opacity-50 border-2 roudned-full" (click)="selectDay(idx)">{{day[0]}}</div>
+                        <div class="bg-blue-100 bg-opacity-50 border-2 rounded-full 
+                                    h-[25px] w-[25px] flex justify-center items-center" 
+                            (click)="selectDay(idx)">{{day[0]}}
+                        </div>
                     }
                     @else
                     {
-                        <div (click)="selectDay(idx)">{{day[0]}}</div>
+                        <div class="h-[25px] w-[25px] flex justify-center items-center" (click)="selectDay(idx)">{{day[0]}}</div>
                     }
                 }
                 @else

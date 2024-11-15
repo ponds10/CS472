@@ -1,12 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth, user, signOut, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 import { Subscription, Observable } from 'rxjs';
-import { collectionData, Firestore } from '@angular/fire/firestore';
+import { collectionData, Firestore, Timestamp } from '@angular/fire/firestore';
 import { addDoc, collection, query, orderBy, limit, where, getDocs } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Events } from '../../models/events';
-import { UUID as v4 } from 'crypto';
+import { randomUUID, UUID as v4 } from 'crypto';
 @Injectable({
   providedIn: 'root'
 })
@@ -48,20 +48,6 @@ export class EventsService {
       return;
     }
 
-    // making sure request object does not have any empty fields
-    if
-    (
-      event.attendance === null || 
-      event.date === null ||
-      event.description === null ||
-      event.title === null
-    )
-    {
-      console.log("Event object is missing required values")
-      return;
-    }
-
-
     // store into firestore and then get the url
     // console.log to debug
     event.imageURL = await this.uploadImage(selectedImage);
@@ -74,7 +60,26 @@ export class EventsService {
     {
       const newEvent = await addDoc(
         collection(this.firestore, "events"),
-        event,
+        {
+          organizer: event.organizer,
+          title: event.title,
+          summary: event.summary,
+      
+          imageURL: event.imageURL,
+      
+          date: Timestamp.fromDate(event.date),
+          street: event.street,
+          city: event.city,
+          state: event.state,
+          zip: event.zip,
+          country: event.country,
+      
+          misc: event.misc,
+      
+          attendance: 0,
+          userID: this.auth.currentUser.uid,
+          eventID: crypto.randomUUID(),
+        },
       );
 
       return newEvent;

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { OnInit } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
+
 @Component({
   selector: 'app-calendar',
   standalone: true,
@@ -16,6 +18,10 @@ export class CalendarComponent implements OnInit {
   days: [number, boolean][] = []
   bools: boolean[] = []
   currentMonthName: string = ""
+
+  @Output() monthEmitter: EventEmitter<string> = new EventEmitter();
+  @Output() dayEmitter: EventEmitter<string>  = new EventEmitter();
+  @Output() yearEmitter: EventEmitter<string>  = new EventEmitter();
   constructor()
   {
 
@@ -130,9 +136,13 @@ export class CalendarComponent implements OnInit {
     })
     this.days[idx][1] = !this.days[idx][1]
 
-    console.log(this.currentMonthName)
-    console.log(this.currentYear)
-    console.log(this.days[idx][0])
+    // console.log(this.currentMonthName)
+    // console.log(this.currentYear.toString())
+    // console.log(this.days[idx][0].toString())
+
+    this.monthEmitter.emit(this.currentMonthName);
+    this.dayEmitter.emit(this.days[idx][0].toString());
+    this.yearEmitter.emit(this.currentYear.toString());
   }
 
 

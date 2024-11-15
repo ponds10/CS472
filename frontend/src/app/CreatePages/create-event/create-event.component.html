@@ -52,9 +52,55 @@
             </div>
           </div>
 
-                    <!--Date/Loc Panel-->
+          <!--Date/Loc Panel-->
           <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
-            <h1 class="font-bold text-xl">Date and Location</h1>
+            <div>
+              <h1 class="font-bold text-xl">Date, Time, and Location</h1>
+              <p>Let everyone know when the event is and when to arrive!</p>
+            </div>
+            
+            <div>
+              <app-calendar></app-calendar>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div class="col-span-2">
+                <label for="title" class="mb-2 text-gray-900">Street</label>
+                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+              </div>
+
+              <div>
+                <label for="title" class="mb-2 text-gray-900">City</label>
+                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+              </div>
+
+              <div>
+                <label for="title" class="mb-2 text-gray-900">State</label>
+                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+              </div>
+
+              <div>
+                <label for="title" class="mb-2 text-gray-900">Zip</label>
+                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+              </div>
+
+              <div>
+                <label for="title" class="mb-2 text-gray-900">Country</label>
+                <input formControlName="title" type="text" id="title" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+              </div>
+            </div>
+          </div>
+
+          <!--Misc Panel-->
+          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
+            <div>
+              <h1 class="font-bold text-xl">Misc</h1>
+              <p>Use this section to provide any additional information you may want to include e.g agendas</p>
+            </div>
+            <div>
+              <label for="description" class="mb-2 text-gray-900">Add more details</label>
+              <textarea type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
+            </div>
           </div>
         </form>
       </div>

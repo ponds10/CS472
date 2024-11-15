@@ -3,27 +3,20 @@ import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import {FormControl, ReactiveFormsModule, FormGroup} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
-import { BreedsService } from '../../../core/services/breeds/breeds.service';
 import { Auth } from '@angular/fire/auth';
 import { Events } from '../../../core/models/events';
 import { EventsService } from '../../../core/services/event/events.service';
-import {MatDatepickerModule, MatCalendar} from '@angular/material/datepicker';
-import {MatCardModule} from '@angular/material/card';
-import { model } from '@angular/core';
+import { CalendarComponent } from './calendar/calendar.component';
 @Component({
   selector: 'app-create-event',
   standalone: true,
   imports: [NavBarComponent, 
             HeaderComponent,
             ReactiveFormsModule,
-            MatProgressBarModule,
             MatInputModule,
             MatIconModule,
-            MatCalendar,
-            MatCardModule,
-            MatDatepickerModule
+            CalendarComponent
             ],
   templateUrl: './create-event.component.html',
   styleUrl: './create-event.component.css'
@@ -36,7 +29,7 @@ export class CreateEventComponent implements OnInit{
   image: File | null = null;
   url: string | null | ArrayBuffer = "./assets/images/event-page-sample-2.jpg";
 
-  
+
   constructor(private eventService: EventsService){}
 
   ngOnInit(): void {

@@ -1,0 +1,49 @@
+<div class="text-xs p-4 border-2 border-gray-100 shadow-sm">
+    <div class="w-full flex flex-col p-4 space-y-4">
+        <div class="flex justify-evenly px-16">
+            <div class="border-2 h-[25px] w-[25px] rounded-full flex justify-center items-center" (click)="prevMonth()">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+            </div>
+            
+            <div class="font-bold text-xl space-x-2">
+                {{currentMonthName}}
+                {{currentYear}}
+            </div>
+            <div class="border-2 h-[25px] w-[25px] rounded-full flex justify-center items-center" (click)="nextMonth()">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-7 gap-4">
+            <div>Monday</div>
+            <div>Tuesday</div>
+            <div>Wednesday</div>
+            <div>Thursday</div>
+            <div>Friday</div>
+            <div>Saturday</div>
+            <div>Sunday</div>
+
+            <!--for loop if first day is 6 AKA saturday make 6 empty divs using @ for-->
+            <!--then for loop for 1 to max days-->
+
+            @for(day of days; let idx = $index; track idx)
+            {   
+                @if(day[0])
+                {
+                    @if(day[1])
+                    {
+                        <div class="bg-blue-100 bg-opacity-50 border-2 roudned-full" (click)="selectDay(idx)">{{day[0]}}</div>
+                    }
+                    @else
+                    {
+                        <div (click)="selectDay(idx)">{{day[0]}}</div>
+                    }
+                }
+                @else
+                {
+                    <div></div>
+                }
+            }
+        </div>
+    </div>
+</div>

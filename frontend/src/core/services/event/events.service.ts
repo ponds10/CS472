@@ -2,11 +2,11 @@ import { Injectable, inject } from '@angular/core';
 import { Auth, user, signOut, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 import { Subscription, Observable } from 'rxjs';
 import { collectionData, Firestore, Timestamp } from '@angular/fire/firestore';
-import { addDoc, collection, query, orderBy, limit, where, getDocs } from '@angular/fire/firestore';
+import { addDoc, collection, query, orderBy, limit, where, getDocs, startAfter } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Events } from '../../models/events';
-import { randomUUID, UUID as v4 } from 'crypto';
+import { NavigationServiceService } from '../navService/navigation-service.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +15,7 @@ export class EventsService {
   auth: Auth = inject(Auth);
   router: Router = inject(Router);
   storage:Storage = inject(Storage)
-  constructor() { }
+  constructor(private navService: NavigationServiceService) { }
 
   
   // upload an image
@@ -45,6 +45,7 @@ export class EventsService {
     // if the current user is null then return
     if (this.auth.currentUser === null || this.auth.currentUser === undefined) {
       console.log("no signed in user");
+      this.navService.navigateToLoginPage();
       return;
     }
 
@@ -89,5 +90,57 @@ export class EventsService {
       console.error("Error writing new event to Firebase Database", error);
       return;
     }
+  }
+
+  async getInitalEvents()
+  {
+    // if the current user is null then return
+    if (this.auth.currentUser === null || this.auth.currentUser === undefined) {
+      console.log("no signed in user");
+      // reroute them to the login page!
+      this.navService.navigateToLoginPage();
+      return;
+    }
+
+    // simple query, gets 12 events
+    const newUserQuery = query(collection(this.firestore, 'events'), limit(12));
+
+    // await the snapshop / documents
+    const snapshot = await getDocs(newUserQuery);
+
+    // need to save this to a local var in the service 
+    const last_entry = snapshot.docs[snapshot.docs.length-1];
+
+    return snapshot;
+  }
+
+  async getNextEvents()
+  {
+    // if the current user is null then return
+    if (this.auth.currentUser === null || this.auth.currentUser === undefined) {
+      console.log("no signed in user");
+      // reroute them to the login page!
+      this.navService.navigateToLoginPage();
+      return;
+    }
+
+    // this if the last entry is null we need to make a var for it. 
+    if(false)
+    {
+      return this.getInitalEvents();
+    }
+
+    // simple query, gets 12 events but uses the startAfter part of the query() params
+    // which lets us do a paginated query, to set up pages, should help speed up load times/avoid excessive queries
+    const newUserQuery = query(collection(this.firestore, 'events'), startAfter() ,limit(12));
+
+    // await the snapshop / documents
+    const snapshot = await getDocs(newUserQuery);
+
+    // need to save this to a local var in the service 
+    const last_entry = snapshot.docs[snapshot.docs.length-1];
+
+    return snapshot;
+
   }
 }

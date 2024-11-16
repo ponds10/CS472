@@ -62,3 +62,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border hover:bg-gray-300 
   border-gray-600 dark:focus:ring-blue-800; 
 }
+
+.cardAnim
+{
+  @apply [transform:rotateY(360deg)];
+}

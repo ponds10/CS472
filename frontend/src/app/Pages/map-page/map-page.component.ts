@@ -101,8 +101,10 @@ export class MapPageComponent {
     });
   }
 
-  openInfoDialog(): void {
-    const dialogRef = this.dialog.open(MapInfoBoxComponent, {});
+  openInfoDialog(description: any, image: any, coordinates: any, username: any, timestamp: any): void {
+    const dialogRef = this.dialog.open(MapInfoBoxComponent, {
+      data: {des: description, img: image, crd: coordinates, un: username, ts: timestamp}
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');

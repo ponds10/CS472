@@ -19,6 +19,8 @@
           @let markerPos = { lat: marker['lat'], lng: marker['lng'] };
           @let markerDes = marker['description'];
           @let markerImg = marker['image'];
+          @let markerUser = marker['name'];
+          @let markerTime = marker['timestamp'];
 
         <map-advanced-marker
           #markerRef="mapAdvancedMarker"
@@ -38,7 +40,7 @@
           <button>
             <p
               class="font-medium text-blue-600 hover:underline"
-              (click)="openInfoDialog()"
+              (click)="openInfoDialog(markerDes, markerImg, markerPos, markerUser, markerTime)"
             >
               View Info
             </p>

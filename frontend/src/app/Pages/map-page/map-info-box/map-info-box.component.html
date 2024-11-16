@@ -8,19 +8,19 @@
     <div>
       <img
         class="max-h-80 place-self-center rounded-2xl"
-        src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b"
+        src="{{ data.img }}"
       />
     </div>
     <div class="text-gray-500 font-light italic text-xs">
-      <p>Reported by: on</p>
+      <p>Reported by: {{ data.un }} on {{ date }}</p>
     </div>
     <div class="pt-2 text-sm">
       <p>Coordinates:</p>
-      <p>1, 2</p>
+      <p>{{ data.crd.lat }}, {{ data.crd.lng }}</p>
     </div>
     <div class="pt-2 text-sm">
       <p>Description:</p>
-      <p>Cat!</p>
+      <p>{{ data.des }}</p>
     </div>
   </div>
 </div>

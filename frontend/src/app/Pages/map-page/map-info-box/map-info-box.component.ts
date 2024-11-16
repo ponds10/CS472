@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-map-info-box',
@@ -12,8 +12,17 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class MapInfoBoxComponent {
   constructor(public dialogRef: MatDialogRef<MapInfoBoxComponent>) {}
+  data = inject<DialogData>(MAT_DIALOG_DATA)
+  date = this.data.ts.toDate()
 
   closeDialog(): void {
     this.dialogRef.close('hi');
   }
+}
+export interface DialogData {
+  des: any;
+  img: any;
+  crd: any;
+  un: any;
+  ts: any;
 }

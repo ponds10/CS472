@@ -17,12 +17,6 @@ import { After } from 'v8';
   ],
   templateUrl: './landing-page.component.html',
   animations: [
-    trigger('aboutCardsTrigger', [
-      state('close', style({ transform: 'translateX(300%)' })), // Corrected 'translationX' to 'translateX' and closed the parentheses
-      state('open', style({ transform: 'translateX(0)' })),  // Same here
-      transition('close => open', [animate('1s ease-in')]),
-    ]),
-
     trigger('loadTrigger', [
       state('hidden', style({
         transform: 'translateY(30%)', opacity: 0})
@@ -31,34 +25,6 @@ import { After } from 'v8';
       ), transition('hidden => shown', [
         animate('1s ease-in')
       ]),]),
-
-    trigger("staggerTrigger", [
-      transition( '* <=> *', [
-        query(':enter', [
-          style({opacity: 0, transform: 'scale(0.7)'}),
-          stagger(100, [
-            animate('500ms ease-in', style({opacity:1, transform:'scale(1)'}))
-          ],), 
-        ], {optional:true}),
-
-        query(':leave', [
-          style({opacity: 1, transform: 'scale(1)'}),
-          stagger(-100, [
-            animate('500ms ease-in', style({opacity:0, transform:'scale(0.7)'}))
-          ],), 
-        ], {optional:true})
-      ])
-    ]),
-
-    trigger('inOutAnimation', [
-      transition('inView => outView', [
-        animate('300ms ease-out', style({ opacity: 0 })),
-      ]),
-      transition('outView => inView', [
-        animate('300ms ease-in', style({ opacity: 1 })),
-      ])
-    ]),
-
   ],
 })
 
@@ -123,7 +89,7 @@ export class LandingPageComponent implements AfterViewInit {
       const options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5
+        threshold: 0.1
       }
 
       // make the observer

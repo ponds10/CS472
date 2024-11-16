@@ -15,7 +15,7 @@
             </div>
           </div>
 
-          <div>
+          <div #targets #header2 [@loadTrigger]="triggerHelper(header2)">
             <button (click)="this.navService.navigateToLoginPage()"
               class="p-4 pl-16 pr-16 rounded-full border border-gray-400 font-bold font-2xl bg-gray-100 bg-opacity-50 hover:bg-pink-100">
               LOGIN
@@ -23,18 +23,19 @@
           </div>
         </div>
 
-        <div class="w-full flex flex-col items-center lg:w-3/4">
+        <div class="w-full flex flex-col items-center lg:w-3/4" #targets #header3 [@loadTrigger]="triggerHelper(header3)">
           <img src="./assets/images/landing-2.png" class="w-full lg:w-3/4">
         </div>
       </div>
       <!--About Us-->
       <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-blue-100 bg-opacity-50 rounded-xl text-xl
-                lg:col-span-1 lg:mr-4 overflow-auto">
+                lg:col-span-1 lg:mr-4 overflow-auto"
+                #targets #grid1 [@loadTrigger]="triggerHelper(grid1)">
         <div class="flex justify-center font-bold text-3xl">
           About Us
         </div>
 
-        <div #targets #test [@loadTrigger]>
+        <div>
           Toebeans is an application done by on of the senior design groups at UNLV!
           We aim to help local shelters by driving adoption through education, streamlined processes, and visibility.
           As avid animal lovers, each and everyone of us has contribuited toward a better tommorow for the animals here
@@ -43,7 +44,8 @@
       </div>
       <!--Adopting/Fostering-->
       <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-pink-100 bg-opacity-50 rounded-xl text-xl
-                lg:ml-4 lg:col-span-1 overflow-auto">
+                lg:ml-4 lg:col-span-1 overflow-auto"
+                #targets #grid2 [@loadTrigger]="triggerHelper(grid2)">
         <div class="flex justify-center font-bold text-3xl">
           Consider Adopting or Fostering
         </div>
@@ -59,8 +61,8 @@
         </div>
       </div>
       <!--TNR-->
-      <div
-        class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-violet-200 bg-opacity-50 rounded-xl text-xl overflow-auto">
+      <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-violet-200 bg-opacity-50 rounded-xl text-xl overflow-auto"
+        #targets #grid3 [@loadTrigger]="triggerHelper(grid3)">
         <div class="flex justify-center font-bold text-3xl">
           Trap-Neuter-Return
         </div>
@@ -87,7 +89,8 @@
         <!--Case Study 1-->
         <div class="w-[300px] h-[400px]  bg-rose-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-1000 ease-in-out flex flex-col items-center space-y-16" 
           [class.cardAnim]="showDescription1"
-          (click)="toggleDescription(1)">
+          (click)="toggleDescription(1)"
+          #targets #case1 [@loadTrigger]="triggerHelper(case1)">
           @if(!showDescription1)
           {
             <img src="./assets/case_study_images/1.png" class="w-3/4">
@@ -103,7 +106,8 @@
         <!--Case Study 2-->
         <div class="w-[300px] h-[400px] bg-indigo-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-1000 ease-in-out flex flex-col items-center space-y-16"
           [class.cardAnim]="showDescription2"
-          (click)="toggleDescription(2)">
+          (click)="toggleDescription(2)"
+          #targets #case2 [@loadTrigger]="triggerHelper(case2)">
           @if(!showDescription2)
           {
             <img src="./assets/case_study_images/2.png" class="w-3/4">
@@ -118,7 +122,8 @@
         <!--Case Study 3-->
         <div class="w-[300px] h-[400px] bg-green-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-1000 ease-in-out flex flex-col items-center space-y-16"
           [class.cardAnim]="showDescription3"
-          (click)="toggleDescription(3)">
+          (click)="toggleDescription(3)"
+          #targets #case3 [@loadTrigger]="triggerHelper(case3)">
           @if(!showDescription3)
           {
             <img src="./assets/case_study_images/3.png" class="w-3/4">

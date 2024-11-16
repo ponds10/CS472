@@ -1,14 +1,14 @@
 class User :
-    def __init__(self, first_name, last_name, accountID, accountType, email, phone, street, state, city, zip, bio, image):
+    def __init__(self, accountType, biography, city, email, first_name, last_name, phone, state, street, userID, userEntryID, zip):
+        self.accountType = accountType
+        self.biography = biography
+        self.city = city
+        self.email = email
         self.first_name = first_name
         self.last_name = last_name
-        self.accountID = accountID
-        self.accountType = accountType
-        self.email = email
         self.phone = phone
-        self.street = street
         self.state = state
-        self.city = city
+        self.street = street
+        self.userID = userID
+        self.userEntryID = userEntryID
         self.zip = zip
-        self.bio = bio
-        self.image = image

@@ -17,20 +17,24 @@
       >
         @for (marker of (markers$|async); track marker) {
           @let markerPos = { lat: marker['lat'], lng: marker['lng'] };
+          @let markerDes = marker['description'];
+          @let markerImg = marker['image'];
+
         <map-advanced-marker
           #markerRef="mapAdvancedMarker"
           [position]="markerPos"
-          (mapClick)="openInfoWindow(markerRef)"
+          (mapClick)="openInfoWindow(markerRef, infoRef)"
           (markerInitialized)="outputTest()"
         ></map-advanced-marker>
-        }
-        <map-info-window>
+        
+        <map-info-window
+          #infoRef="mapInfoWindow">
           <img
             class="max-h-64 rounded-lg"
-            src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSC4DtHTGprsp7K8u0ZlfSDmIDplvQYH5vniT0I3rpcl6wqBh8b"
+            src="{{ markerImg }}"
           />
           <p>Description:</p>
-          <p>Cat!</p>
+          <p>{{ markerDes }} </p>
           <button>
             <p
               class="font-medium text-blue-600 hover:underline"
@@ -40,6 +44,7 @@
             </p>
           </button>
         </map-info-window>
+        }
       </google-map>
     </div>
   </div>

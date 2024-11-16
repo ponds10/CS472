@@ -43,7 +43,6 @@ export class MapPageComponent {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
   @ViewChild(GoogleMap) map!: GoogleMap;
 
   center: google.maps.LatLngLiteral = {
@@ -59,8 +58,8 @@ export class MapPageComponent {
   }
   
 
-  openInfoWindow(marker: MapAdvancedMarker) {
-    this.infoWindow.open(marker);
+  openInfoWindow(marker: MapAdvancedMarker, infoWindow: MapInfoWindow) {
+    infoWindow.open(marker);
   }
 
   createNewMarkerControl(map: GoogleMap) {

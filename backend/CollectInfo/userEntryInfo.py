@@ -7,7 +7,7 @@ import os
 '''
 
 # create and store user entry info in userEntry document
-def createuserEntry(emailAddress, password, userEntry_documentRef) :
+def createuserEntry(email, password, userEntry_collectionRef) :
     '''
     # generate email verification link
     link = auth.generate_password_reset_link(emailAddress)
@@ -49,18 +49,19 @@ def createuserEntry(emailAddress, password, userEntry_documentRef) :
     hashedPassword = hash.passwordHash(password)
 
     # setting userEntry field values
-    userEntry = UserEntry(emailAddress, hashedPassword)
+    userEntryInfo = UserEntry(None, email, hashedPassword)
 
-    # storing in userEntry document in database
-    userEntry_documentRef.set(userEntry.__dict__)
+    # storing userEntry document in database
+    # .add returns what we just added to database
+    doc = userEntry_collectionRef.add(userEntryInfo.__dict__)
 
-    # successful user entry creation
-    return "Welcome to Toebeans!"
+    # return userEntry doc reference
+    return doc[1]
 
 # login query using user login input
-def userLoginQuery(emailAddress, password, userEntry_collectionRef) :
-    # find matching emailAddress in collection of userEntry documents and convert to stream
-    userEntryMatch = userEntry_collectionRef.where(filter = FieldFilter("emailAddress", "==", emailAddress)).stream()
+def userLoginQuery(email, password, userEntry_collectionRef, userInfo_collectionRef) :
+    # find matching email address in collection of userEntry documents and convert to stream
+    userEntryMatch = userEntry_collectionRef.where(filter = FieldFilter("email", "==", email)).stream()
 
     # will only run if userMatch success
     for ACC in userEntryMatch :
@@ -74,8 +75,11 @@ def userLoginQuery(emailAddress, password, userEntry_collectionRef) :
             # updating password field in database with the newly rehashed and resalted password
             userEntry_collectionRef.document(ACC.id).update({"password" : hash.passwordHash(password)})
 
+            # get userInfo if login is valid
+            doc = userInfo_collectionRef.document(userEntryDictionary["userID"])
+            
             # successful login
-            return "You're logged in!"
+            return doc.get().to_dict()
         
         # if the login input and userEntry passwords don't match
         else :
@@ -84,3 +88,24 @@ def userLoginQuery(emailAddress, password, userEntry_collectionRef) :
 
     # if no email match, for loop does not run and we return
     return "Email Does Not Exist"
+
+'''
+def editUserEntryInDatabase(userID, accountType, biography, city, email, password, first_name, last_name, phone,
+                                       state, street, zip, userEntry_documentRef) :
+    # error check updated info
+
+    # update existing user in database
+    userEntryInfo = UserEntry(userID, accountType, biography, city, email, password, first_name, last_name, phone,
+                                       state, street, zip)
+    userEntry_documentRef.set(userEntryInfo.__dict__, merge = True)
+
+    # return success if required fields updated correctly
+    return userEntry_documentRef.get().to_dict()
+'''
+
+def deleteUserEntryInDatabase(userEntry_documentRef) :
+    # delete existing user in database
+    userEntry_documentRef.delete()
+
+    # user has been deleted
+    return "Success"

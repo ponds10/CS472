@@ -53,6 +53,10 @@ export class MapPageComponent {
   zoom = 11;
 
   markers$ = this.mapService.loadMarkers() as Observable<DocumentData[]>;
+
+  outputTest() {
+    console.log('hello')
+  }
   
 
   openInfoWindow(marker: MapAdvancedMarker) {

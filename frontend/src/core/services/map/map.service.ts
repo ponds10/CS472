@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth, user, User } from '@angular/fire/auth';
-import { Subscription } from 'rxjs';
+import { Subscription, timestamp } from 'rxjs';
 import {
   DocumentReference,
   DocumentData,
@@ -12,7 +12,8 @@ import {
   updateDoc,
   setDoc,
   collectionData,
-  query
+  query,
+  orderBy
 } from '@angular/fire/firestore';
 
 import {
@@ -140,7 +141,7 @@ export class MapService {
   };
 
   loadMarkers =  () => {
-    const markers = query(collection(this.firestore, 'marker'));
+    const markers = query(collection(this.firestore, 'marker'), orderBy('timestamp', 'desc'));
     return collectionData(markers);
   };
 

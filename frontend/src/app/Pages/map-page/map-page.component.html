@@ -16,10 +16,12 @@
         (mapInitialized)="addControl()"
       >
         @for (marker of (markers$|async); track marker) {
+          @let markerPos = { lat: marker['lat'], lng: marker['lng'] };
         <map-advanced-marker
           #markerRef="mapAdvancedMarker"
-         
+          [position]="markerPos"
           (mapClick)="openInfoWindow(markerRef)"
+          (markerInitialized)="outputTest()"
         ></map-advanced-marker>
         }
         <map-info-window>

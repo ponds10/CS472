@@ -6,7 +6,7 @@
       <div class="w-full flex flex-col items-center bg-white bg-opacity-50 pt-8 pb-8 col-span-2 rounded-xl">
         <div class="flex flex-col items-center space-y-16">
           <!--Toebeans-->
-          <div>
+          <div #targets #header [@loadTrigger]="triggerHelper(header)">
             <div class="font-bold text-5xl flex justify-center lg:text-7xl">
               TOEBEANS
             </div>
@@ -34,7 +34,7 @@
           About Us
         </div>
 
-        <div>
+        <div #targets #test [@loadTrigger]>
           Toebeans is an application done by on of the senior design groups at UNLV!
           We aim to help local shelters by driving adoption through education, streamlined processes, and visibility.
           As avid animal lovers, each and everyone of us has contribuited toward a better tommorow for the animals here

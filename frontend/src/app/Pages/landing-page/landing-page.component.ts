@@ -1,24 +1,75 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { LoginBoxComponent } from '../login-page/login-box/login-box.component';
+
+import { ChangeDetectionStrategy, Component, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { HeaderComponent } from "../../../shared/header/header.component";
 import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
 import { FooterComponent } from '../../../shared/footer/footer.component';
 import { ChangeDetectorRef } from '@angular/core';
+import { trigger, state, transition, animate, style, query, stagger } from '@angular/animations';
+import { AfterViewInit } from '@angular/core';
+import { After } from 'v8';
+
 @Component({
   selector: 'app-landing-page',
   standalone: true,
   imports: [
-    CommonModule,
-    LoginBoxComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   templateUrl: './landing-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('aboutCardsTrigger', [
+      state('close', style({ transform: 'translateX(300%)' })), // Corrected 'translationX' to 'translateX' and closed the parentheses
+      state('open', style({ transform: 'translateX(0)' })),  // Same here
+      transition('close => open', [animate('1s ease-in')]),
+    ]),
+
+    trigger('loadTrigger', [
+      state('hidden', style({
+        transform: 'translateY(30%)', opacity: 0})
+      ), state('shown', style({
+        transform: 'translateY(0%)', opacity:100})
+      ), transition('hidden => shown', [
+        animate('1s ease-in')
+      ]),]),
+
+    trigger("staggerTrigger", [
+      transition( '* <=> *', [
+        query(':enter', [
+          style({opacity: 0, transform: 'scale(0.7)'}),
+          stagger(100, [
+            animate('500ms ease-in', style({opacity:1, transform:'scale(1)'}))
+          ],), 
+        ], {optional:true}),
+
+        query(':leave', [
+          style({opacity: 1, transform: 'scale(1)'}),
+          stagger(-100, [
+            animate('500ms ease-in', style({opacity:0, transform:'scale(0.7)'}))
+          ],), 
+        ], {optional:true})
+      ])
+    ]),
+
+    trigger('inOutAnimation', [
+      transition('inView => outView', [
+        animate('300ms ease-out', style({ opacity: 0 })),
+      ]),
+      transition('outView => inView', [
+        animate('300ms ease-in', style({ opacity: 1 })),
+      ])
+    ]),
+
+  ],
 })
 
-export class LandingPageComponent {
+export class LandingPageComponent implements AfterViewInit {
+    // view children gets the array of elements we will apply the riseAnimation to
+  // also set up the observer and visibility map to track
+  @ViewChildren('targets') elements: QueryList<ElementRef> | null = null; // Reference to multiple elements
+  private observer: IntersectionObserver;
+  private visibilityMap: Map<Element, boolean> = new Map(); // Map to track visibility of each element
+
+
   // control the visibility of the descriptions
   showDescription1 = false;
   showDescription2 = false;
@@ -32,7 +83,77 @@ export class LandingPageComponent {
   output2: string = "";
   output3: string = "";
 
-  constructor(public navService: NavigationServiceService, private cdr: ChangeDetectorRef) {}
+  constructor(public navService: NavigationServiceService, private cdr: ChangeDetectorRef) {
+      // this is the callback for the observer
+    // for each of the entries first save the target
+    // if it is currently interesting then add it to the map by setting it to true
+    // otherwise set it to false
+    const callback = (entries: any) => { 
+      
+      let index = 1;
+      entries.forEach((entry: any)=> {
+
+        const targetElement = entry.target;
+
+        if (entry.isIntersecting) 
+        {
+          setTimeout(() => {
+            console.log(`${targetElement} entered the viewport`);
+            this.visibilityMap.set(targetElement, true);
+            targetElement.classList.add('in-view'); 
+            console.log(this.visibilityMap.get(targetElement))
+          }, 500 * index)
+
+          // console.log(`${targetElement} entered the viewport`);
+          // this.visibilityMap.set(targetElement, true);
+          // targetElement.classList.add('in-view'); 
+          // console.log(this.visibilityMap.get(targetElement))
+          index++;
+        } 
+        else 
+        {
+          console.log(`${targetElement} left the viewport`);
+          //this.visibilityMap.set(targetElement, false);  // Set as not visible
+          targetElement.classList.remove('in-view'); // Remove CSS class for out-of-view state
+        }
+      }
+      )};
+
+      // options
+      const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+      }
+
+      // make the observer
+      this.observer = new IntersectionObserver(callback, options);
+  
+  }
+
+    // for the html to call! 
+    triggerHelper(ref: HTMLElement)
+    {
+      const native = ref;
+      const flag = this.visibilityMap.get(native);
+      if(flag)
+      {
+        return 'shown';
+      }else
+      {
+        return 'hidden';
+      }
+    }
+  
+    // after view is initialized, observe the elements!
+    ngAfterViewInit() {
+      console.log("testing1")
+      if (this.elements) {
+        this.elements.forEach((box: ElementRef) => {
+          this.observer.observe(box.nativeElement);
+        });
+      }
+    }
 
   // toggle description visibility
   // completes the animation for the cards and does a typing animation

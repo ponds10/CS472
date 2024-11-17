@@ -5,56 +5,29 @@
             <app-nav-bar></app-nav-bar>
         </div>
 
-    <div class="innerContainer p-16 pt-0">
-        <!--Spacers: probably not best practice-->
-        <section class="w-full h-[25px]"></section>
+    <div class="innerContainer p-16 pt-8 space-y-4">
 
-        <!-- The outer divs manage the dashboard's border, essentially creating an inner page we can mess with-->
-        <!-- utilize the following space to create the main portion of the dashboard, the application can handle overflow-->
-        <div class="text-3xl font-bold text-black">
-            Manage Your Profile
+        <div class="text-xl font-bold">
+            Hello, Welcome Back {{user?.first_name}}
         </div>
-        <section class="w-full space-y-24 lg:overflow-visible">
-            <div class="grid grid-cols-2 w-full
-                        lg:space-x-4 lg:grid-cols-3">
-                <app-home-card class="grid-cols-subgrid col-span-1 lg:col-span-1" title="Your Pets" source="./assets/homepage_images/3.png"></app-home-card>
-                <app-home-card class="grid-cols-subgrid col-span-1 lg:col-span-1" title="Saved Events" source="./assets/homepage_images/4.png"></app-home-card>
-                <app-home-card class="grid-cols-subgrid col-span-1 lg:col-span-1" title="Documents" source="./assets/homepage_images/5.png"></app-home-card>
+
+        <div class="grid grid-cols-4 gap-4 w-full">
+            <div class="col-span-2">
+                <app-home-card title="Your Pets" source="./assets/homepage_images/3.png"></app-home-card>
             </div>
-        </section>
 
+            <div class="col-span-2 row-span-2">
+                <app-events-calendar></app-events-calendar>
+            </div>
 
-        
+            <div>
+                <app-home-card title="Saved Events" source="./assets/homepage_images/4.png"></app-home-card>
+            </div>
 
-        <div class="text-3xl font-bold text-black">
-            Events You Might Like
+            <div>
+                <app-home-card title="Documents" source="./assets/homepage_images/5.png"></app-home-card>
+            </div>
         </div>
-        <section class="w-full space-y-24 lg:overflow-visible">
-            <div class="grid grid-cols-2 w-full
-                        lg:grid-cols-3 lg:space-x-4">
-
-                        <app-home-card title="TNR Workshop" source="https://i0.wp.com/www.communitycatspodcast.com/wp-content/uploads/2023/11/CCP_Graphic_Events_23110913.jpg?fit=768%2C768&ssl=1"></app-home-card>
-                        <app-home-card title="Pet Food Distribuition" source="https://plus.unsplash.com/premium_photo-1664392203126-a001a860a20d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGV0JTIwZm9vZCUyMGRpc3RyaWJ1aXRpb258ZW58MHx8MHx8fDA%3D"></app-home-card>
-                        <app-home-card title="Free Vaccinations" source="https://plus.unsplash.com/premium_photo-1663133471353-6510dfdac351?q=80&w=3872&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></app-home-card>
-                
-            </div>
-        </section>
-
-        <div class="text-3xl font-bold text-black">
-            Discover Fosters
-        </div>
-        <section class="w-full space-y-24 lg:overflow-visible">
-            <div class="grid grid-cols-2 w-full
-                        lg:grid-cols-3 lg:space-x-4">
-
-                <app-home-card title="Milo" source="https://images.unsplash.com/photo-1612956331286-cec478562654?q=80&w=3948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></app-home-card>
-                <app-home-card title="Otis" source="https://images.unsplash.com/photo-1673382550412-db5b3955249e?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></app-home-card>
-                <app-home-card title="Lucy" source="https://images.unsplash.com/photo-1455103493930-a116f655b6c5?q=80&w=3871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></app-home-card>
-                
-            </div>
-        </section>
-
-
 
         <!--Spacers: probably not best practice-->
         <section class="w-full h-[100px]"></section>

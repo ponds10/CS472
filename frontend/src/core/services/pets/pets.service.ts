@@ -19,6 +19,50 @@ export class PetsService {
   imageUrl: string | null = null;
   constructor() { }
 
+  animalTypes: string[] = [
+    'Any',
+    'Cat',
+    'Dog',
+  ]
+
+  catBreeds: string[] = [
+    'Any'
+  ]
+
+  dogBreeds: string[] = [
+    'Any'
+  ]
+
+  animalGenders: string[] = [
+    'Any',
+    'Male',
+    'Female'
+  ]
+
+  catAges: string[] = [
+    'Any',
+    '0-1',
+    '2-6',
+    '7-9',
+    '10+'
+  ]
+
+  dogAges: string[] = [
+    'Any'
+  ]
+
+  animalSizes: string[] = [
+    'Any',
+    'Small',
+    'Medium',
+    'Large'
+  ]
+
+  animalPrograms: string[] = [
+    'Any',
+    'Shelter',
+    'Foster'
+  ]
   // upload images
   // takes in a file
   // returns nothing

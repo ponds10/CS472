@@ -5,7 +5,7 @@
     <div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
-          <label for="lat" class="text-label">Latitude</label>
+          <label for="lat" class="text-label">Latitude<span class="text-red-500">*</span></label>
           <input
             type="lat"
             id="lat"
@@ -16,7 +16,7 @@
           />
         </div>
         <div>
-          <label for="lng" class="text-label">Longitude</label>
+          <label for="lng" class="text-label">Longitude<span class="text-red-500">*</span></label>
           <input
             type="lng"
             id="lng"
@@ -29,16 +29,17 @@
       </div>
       <button
         type="submit"
-        class="text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border hover:bg-gray-300 border-gray-600 dark:focus:ring-blue-800"
+        class="text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center border hover:bg-gray-300 border-gray-600 dark:focus:ring-blue-800"
         (click)="getpostion()"
       >
         Get current location
       </button>
 
-      <div class="grid md:grid-cols-2 gap-6 pt-5 mb-6">
+      <div class="grid md:grid-cols-2 gap-3 pt-5">
         <input
           type="file"
           class="file-input hidden"
+          accept=".jpg,.jpeg,.png,.heic"
           (change)="this.getImage($event)"
           #fileUpload
         />
@@ -48,18 +49,18 @@
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           (click)="fileUpload.click()"
         >
-          image upload
+          Upload Image
         </button>
 
         @if(this.file){
-        <p>{{ file.name }}</p>
+        <p class="font-light text-xs md:place-self-center">{{ file.name }}</p>
         } @else {
-        <p>File type must be jpeg or png</p>
+        <p class="font-light text-xs md:place-self-center">File type must be .jpeg, .jpg, .png, or .heic</p>
         }
       </div>
 
       <div class="pt-5 mb-6">
-        <label for="Description" class="text-label">Description</label>
+        <label for="Description" class="text-label">Description<span class="text-red-500">*</span></label>
         <textarea
           class="form-control border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-black px-3 py-1.5 bg-gray-50 bg-clip-padding transition ease-in-out"
           id="description"

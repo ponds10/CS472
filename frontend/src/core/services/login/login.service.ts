@@ -41,7 +41,7 @@ export class LoginService {
       // subscribe to await for the results, if false => no UID found they are a new user
       // navigate to the create user page!
       from(this.searchUID(this.auth.currentUser?.uid)).subscribe((data) => {
-        if(data){
+        if(!data){
           this.router.navigate(['/', 'createUser']);
         }
         else
@@ -97,10 +97,11 @@ export class LoginService {
     // returns the UID of the user, but we should be able to access it through the auth injection
     signInWithEmailAndPassword(this.auth, email, password).then(() => {
       this.currentUser = this.auth.currentUser;
+      console.log(this.currentUser)
     });
 
     // debug printing
-    //console.log(this.auth.currentUser?.uid);
+    console.log(this.auth.currentUser?.uid);
 
     // if the UID is null or undefined, then do not reroute and return false
     // return true otherwise

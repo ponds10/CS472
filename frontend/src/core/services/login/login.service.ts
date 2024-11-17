@@ -71,6 +71,7 @@ export class LoginService {
   // otherwise return false
   async searchUID(UUID: string | undefined)
   {
+    let flag: boolean = false;
     if (UUID === null || UUID === undefined ) {
       console.log("requires a user");
       return false;
@@ -81,13 +82,15 @@ export class LoginService {
     const snapshot = await getDocs(newUserQuery);
     snapshot.forEach((doc) => 
     {
-      return true;
+      console.log("testing foreach")
+      flag = true;
     })
 
     // debug
-    console.log("herro")
+    // console.log("herro")
+    // console.log(snapshot.docs)
 
-    return false;
+    return flag;
   }
 
 

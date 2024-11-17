@@ -6,20 +6,22 @@ import { User } from '../../../core/models/user';
 import { UserService } from '../../../core/services/user/user.service';
 import { Auth } from '@angular/fire/auth';
 import { Inject } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { LoginService } from '../../../core/services/login/login.service';
 @Component({
   selector: 'app-create-user-profile',
   standalone: true,
   imports: [HeaderComponent, MatIcon, ReactiveFormsModule],
   templateUrl: './create-user-profile.component.html',
 })
-export class CreateUserProfileComponent {
+export class CreateUserProfileComponent implements OnInit{
   // var declarations that control the forms step output
   // utilizes truthy values with the @if directives
   steps: number[] = [1, 0, 0, 0, 0]
   current_step: number = 0;
   max: number = 0;
 
-  constructor(private userService: UserService, private auth: Auth){
+  constructor(private userService: UserService, private auth: Auth, private loginService: LoginService){
     auth = inject(Auth);
   }
 
@@ -90,5 +92,9 @@ export class CreateUserProfileComponent {
     if (file) {
       this.selectedImage = file;
     }
+  }
+
+  ngOnInit(): void {
+    this.loginService.searchUID(this.auth.currentUser?.uid)
   }
 }

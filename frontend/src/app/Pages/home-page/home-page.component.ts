@@ -14,7 +14,7 @@ import { from } from 'rxjs';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
-  user: User | null = null;
+  user: User | null | undefined = null;
   constructor(private userService: UserService)
   {
   }
@@ -30,7 +30,7 @@ export class HomePageComponent {
       {
         this.user = this.userService.currentUser;
       })
-      
+
     }
   }
 }

@@ -7,6 +7,7 @@ import { HeaderComponent } from '../../../shared/header/header.component';
 import { profileImages, User } from '../../../core/models/user';
 import { UserService } from '../../../core/services/user/user.service';
 import { from } from 'rxjs';
+import { unwatchFile } from 'fs';
 @Component({
   selector: 'app-user-profile-page',
   standalone: true,
@@ -15,8 +16,8 @@ import { from } from 'rxjs';
   styleUrl: './user-profile-page.component.css'
 })
 export class UserProfilePageComponent implements OnInit{
-  user: User | null = null;
-  image: profileImages | null = null;
+  user: User | null | undefined = null;
+  image: profileImages | null | undefined = null;
   constructor(private userService: UserService)
   {
   }
@@ -24,19 +25,31 @@ export class UserProfilePageComponent implements OnInit{
   
   ngOnInit(): void {
     this.user = this.userService.currentUser;
-    if(this.user == null)
+    this.image = this.userService.currentImage;
+
+    if(this.user == null || this.user == undefined)
     {
       // use the from() from rxjs to transform the promise into an observable
       // than subscribe to it
       from(this.userService.getUserInfo()).subscribe((data) => 
       {
-        this.user = this.userService.currentUser;
-      })
-
-      from(this.userService.getProfileImage()).subscribe((data) => 
+        // lets say the observable returns before the currentUser gets assigned
+        // in some strange world lol => the returned data should be good
+        if(this.userService.currentUser == null || this.userService.currentUser == undefined)
         {
-          this.image = this.userService.currentImage
-        })
+          this.user = data;
+        }
+      })
+    }
+
+    // checking again here for the profile image
+    // if it is still null after the last check e.g. the user was loaded but the image wasnt
+    // then call the userservice's get profile image and subscribe to the data
+    if(this.image == null || this.image == undefined)
+    {
+      from(this.userService.getProfileImage()).subscribe(data => {
+        this.image = data;
+      })
     }
   }
 

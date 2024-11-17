@@ -16,8 +16,8 @@ export class UserService {
   auth: Auth = inject(Auth);
   router: Router = inject(Router);
   storage:Storage = inject(Storage)
-  currentUser: User | null = null;
-  currentImage: profileImages | null = null;
+  currentUser: User | null | undefined = null;
+  currentImage: profileImages | null  | undefined= null;
   constructor() { }
 
   // sample service that should get the user information based on authentification from the firebase db
@@ -127,7 +127,7 @@ export class UserService {
     // if the current user is not null! return, no need to invoke a call to firebase and incurr charges
     if(this.currentUser != null)
     {
-      return;
+      return this.currentUser;
     }
 
     // if there is no current user, then also return and log
@@ -145,12 +145,9 @@ export class UserService {
     // iterate through (should rlly just be one though) log it and then update current user inside
     snapshot.forEach((doc) => 
     {
-      console.log(doc.get('first_name'));
-      // let temp: User = doc.data() as User;
-      // console.log(temp)
-      // console.log(doc.data())
       this.currentUser = doc.data() as User;
     })
+
     return this.currentUser;
   }
 
@@ -159,8 +156,13 @@ export class UserService {
   // no args, and is meant to return the current user
   async getProfileImage()
   {
-    // if the current user is not null! return, no need to invoke a call to firebase and incurr charges
-    if(this.currentUser != null)
+
+    // if current user is null return also if current image is not NULL then return
+    if(this.currentImage != null)
+    {
+      return this.currentImage;
+    }
+    if(this.currentUser == null)
     {
       return;
     }
@@ -172,7 +174,7 @@ export class UserService {
     }
 
     // simple query, that gets the 1st user where the field of userID = the current logged in user's ID
-    const newUserQuery = query(collection(this.firestore, 'profileImages'), where("accountID", "==", this.auth.currentUser?.uid), limit(1));
+    const newUserQuery = query(collection(this.firestore, 'profileImages'), where("accountID", "==", this.auth.currentUser?.uid), limit(5));
 
     // await the snapshop / documents
     const snapshot = await getDocs(newUserQuery);
@@ -180,11 +182,13 @@ export class UserService {
     // iterate through (should rlly just be one though) log it and then update current user inside
     snapshot.forEach((doc) => 
     {
-      // let temp: User = doc.data() as User;
-      // console.log(temp)
-      // console.log(doc.data())
       this.currentImage = doc.data() as profileImages;
+      //console.log(doc.data())
     })
+
+    // debug printing
+    // console.log("help me")
+    // console.log(this.auth.currentUser?.uid)
     return this.currentImage;
   }
 }

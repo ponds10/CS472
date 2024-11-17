@@ -6,154 +6,116 @@
     </div>
 
     <div class="innerContainer">
-        <div class="flex flex-col items-center w-full mt-32">
-          <div class="w-1/2 h-[500px] lg:h-[700px]" >
-            
-            <div class="w-full">
-
-              @if(step1)
-              {
-                <form [formGroup]="basic_info_fg" class="flex flex-col space-y-16">
-                  <div>
-                    <p>Create a pet</p>
-                    <h1 class="text-3xl space-y-4">Lets start with the basics</h1>
-                  </div>
-
-                  <div>
-                    <label for="name" class="mb-2 text-gray-900">Name</label>
-                    <input formControlName="name" type="text" id="name" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="cookie" required/>
-                  </div>
-
-                  <div>
-                    <label for="description" class="mb-2 text-gray-900">Description</label>
-                    <textarea formControlName="description" type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"></textarea>
-                  </div>
-
-                </form>
-  
-              }
+      <div class="w-full flex justify-center mt-16 mb-32 p-8">
+        <form [formGroup]="fg_event" class="flex flex-col space-y-16 w-full lg:w-1/2">
+          <!--Panel 1-->
+          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
+            <div>
+              <h1 class="font-bold text-xl">Pet Details</h1>
+              <p>Use this section to introduce your pet's name to everyone and provide them with a quick biography</p>
             </div>
 
-            <div class="w-full">
+            <div>
+              <label for="host" class="mb-2 text-gray-900">Name</label>
+              <input formControlName="organizer" type="text" id="host" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+            </div>
 
-              @if(step2)
-              {
-              <form [formGroup]="basic_info_fg" class="flex flex-col space-y-16">
-                
-                <div>
-                  <p>Create a pet</p>
-                  <h1 class="text-3xl space-y-4">Upload an image</h1>
-                </div>
+            <div>
+              <label for="description" class="mb-2 text-gray-900">Biography</label>
+              <textarea formControlName="summary" type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"></textarea>
+            </div>
+          </div>
 
-                <form class="flex flex-col w-full items-center space-y-4">
-                    <input type="file" (change)="onUpload($event)">
-                </form>
-                
-                <div>
-                    <img src="{{url}}" class="w-full">
-                </div>
+          <!--Image Panel-->
+          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
+            <h1 class="font-bold text-xl">Upload an Image</h1>
 
-              </form>
-              }
-            </div>          
+            <div class="space-y-4">
+              <img [src]="url" class="w-full h-auto rounded-xl">
 
-            <div class="w-full">
+              <input type="file" (change)="fileChangeEvent($event)">
+            </div>
+          </div>
 
-              @if(step3)
-              {
-              <form [formGroup]="pet_details_fg" class="flex flex-col space-y-16">
-                
-                <div>
-                  <p>Create a pet</p>
-                  <h1 class="text-3xl space-y-4">Pet Details</h1>
-                </div>
+          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
+            <div>
+              <h1 class="font-bold text-xl">Medical History</h1>
+              <p>Use this section to describe any knowledge on your pet's medical history</p>
+            </div>
+            <div>
+              <label for="description" class="mb-2 text-gray-900">Vaccination History</label>
+              <textarea type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
+            </div>
 
-                <div>
-                  <label for="Age" class="mb-2 text-gray-900">Age</label>
-                  <input formControlName="age" type="number" id="Age" class="bg-gray-50 border opacity-50 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full" placeholder="12" required/>
-                </div>
+            <div>
+              <label for="description" class="mb-2 text-gray-900">Vetinary Visit History</label>
+              <textarea type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
+            </div>
 
-                <div>
-                  <label for="Weight" class="mb-2 text-gray-900">Weight</label>
-                  <input formControlName="weight" type="number" id="Weight" class="bg-gray-50 border opacity-50 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full" placeholder="5" required/>
-                </div>
+            <div>
+              <label for="description" class="mb-2 text-gray-900">Additional Info e.g dietary restrictions</label>
+              <textarea type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
+            </div>
+          </div>
 
-                <div>
-                  <label for="gender" class="mb-2 text-gray-900">Gender</label>
-                  <select formControlName="gender" id="gender" class="bg-white border opacity-50 border-gray-300 text-gray-900 text-sm p-2.5 w-full" required> 
-                    <option>Male</option>
-                    <option>Female</option>
-                  </select>
-                </div>
+          <!--Date/Loc Panel-->
+          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
+            <div>
+              <h1 class="font-bold text-xl">Biometric Information</h1>
+              <p>Use this section to input relevant biometric information about your pet</p>
+            </div>
 
-                <div>
-                  <label for="breed" class="mb-2 text-gray-900">Breed</label>
-                  <select formControlName="breed" id="breed" class="bg-white border opacity-50 border-gray-300 text-sm p-2.5 w-full" required> 
-                    @for(breed of dog_breeds; let idx = $index; track idx)
-                    {
-                        <option>{{breed}}</option>
-                    }
-                  </select>
-                </div>
-              </form>
-              }
-
-              <div class="w-full">
-                @if(step4)
-                {
-                  <form [formGroup]="pet_health_fg" class="flex flex-col space-y-16">
-                
-                    <div>
-                      <p>Create a pet</p>
-                      <h1 class="text-3xl space-y-4">Pet Health Info</h1>
-                    </div>
-
-                    <div>
-                      <label for="vet_visits" class="mb-2 text-gray-900">Vetinary Visit Summary</label>
-                      <textarea formControlName="vet_visits" type="text" id="vet_visits" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"></textarea>
-                    </div>
-
-                    <div>
-                      <label for="vaccinations" class="mb-2 text-gray-900">Vaccinations</label>
-                      <textarea formControlName="vaccinations" type="text" id="vaccinations" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"></textarea>
-                    </div>
-  
-                  </form>
-                }
+            <div class="grid grid-cols-2 gap-2">
+              <div class="col-span-2">
+                <label for="street" class="mb-2 text-gray-900">Species</label>
+                <input formControlName="street" type="text" id="street" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
               </div>
 
-              <div class="w-full">
-                @if(step5)
-                {
-                  <div class="flex flex-col space-y-16">
-                    <div>
-                      <p>Create a pet</p>
-                      <h1 class="text-3xl space-y-4">Review</h1>
-                    </div>
-                    
-                    <div class="h-[500px] overflow-y-auto w-full p-16 bg-white bg-opacity-50 rounded-xl space-y-4">
-                      <div>
-                        <img [src]="url" class="w-[250px] h-auto rounded-full">
-                      </div>
-                      <div>Name: {{this.basic_info_fg.controls.name.value}}</div>
-                      <div>Biography: {{this.basic_info_fg.controls.description.value}}</div>
-                      <div>Age: {{this.pet_details_fg.controls.age.value}}</div>
-                      <div>Weight: {{this.pet_details_fg.controls.weight.value}}</div>
-                      <div>Gender: {{this.pet_details_fg.controls.gender.value}}</div>
-                      <div>Breed: {{this.pet_details_fg.controls.breed.value}}</div>
-                      <div>Vet Visit Summaries: {{this.pet_health_fg.controls.vet_visits.value}}</div>
-                      <div>Vet Visit Summaries: {{this.pet_health_fg.controls.vaccinations.value}}</div>
-                    </div>
-                  </div>
-                }
+              <div>
+                <label for="city" class="mb-2 text-gray-900">Age</label>
+                <input formControlName="city" type="text" id="city" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+              </div>
+
+              <div>
+                <label for="state" class="mb-2 text-gray-900">Weight</label>
+                <input formControlName="state" type="text" id="state" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+              </div>
+
+              <div>
+                <label for="zip" class="mb-2 text-gray-900">Gender</label>
+                <input formControlName="zip" type="text" id="zip" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
+              </div>
+
+              <div>
+                <label for="country" class="mb-2 text-gray-900">Breed</label>
+                <input formControlName="country" type="text" id="country" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
               </div>
             </div>
           </div>
-          
-          <div class="flex space-x-4">
-            <button (click)="back()"> <mat-icon>keyboard_arrow_left</mat-icon> </button>
-            <button (click)="next()"> <mat-icon>keyboard_arrow_right</mat-icon></button>
+
+          <!--Misc Panel-->
+          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
+            <div>
+              <h1 class="font-bold text-xl">Additional Information</h1>
+              <p>Use this section to provide any additional information you may want to include e.g pet behvaiors, reason for surrender, etc.</p>
+            </div>
+            <div>
+              <label for="misc" class="mb-2 text-gray-900">Add more details</label>
+              <textarea formControlName="misc" type="text" id="misc" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
+            </div>
           </div>
-        </div>
+
+          <div class="w-full flex justify-center">
+            <button class="p-4 px-16 font-bold bg-blue-400 bg-opacity-50 rounded-full w-fit border-2 shadow
+                          hover:bg-opacity-100">
+              Submit
+            </button>
+          </div>
+
+        </form>
+      </div>
     </div>
+           
+          
+
 </div>

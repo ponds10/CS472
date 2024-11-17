@@ -110,7 +110,9 @@ export class EventsService {
 
     // need to save this to a local var in the service 
     const last_entry = snapshot.docs[snapshot.docs.length-1];
-
+    snapshot.forEach((doc) => {
+      console.log(doc.data())
+    })
     return snapshot;
   }
 

@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+import { EventsService } from '../../../core/services/event/events.service';
+
 @Component({
   selector: 'app-search-events-page',
   templateUrl: './search-events-page.component.html',
@@ -15,6 +17,10 @@ import { CommonModule } from '@angular/common';
 export class SearchEventsPageComponent{
 
 
-  constructor() {}
+  constructor(private eventService: EventsService) {}
 
+  testing()
+  {
+    this.eventService.getInitalEvents();
+  }
 }

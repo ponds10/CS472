@@ -89,7 +89,7 @@ export class LandingPageComponent implements AfterViewInit {
       const options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1
+        threshold: 0.25
       }
 
       // make the observer

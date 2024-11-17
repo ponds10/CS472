@@ -6,118 +6,28 @@
         <app-nav-bar></app-nav-bar>
     </div>
 
-    <div class="innerContainer #scroll">
+    <div class="innerContainer">
 
-        <div class="w-full mt-64 lg:mt-32 lg:flex lg:flex-col lg:items-center">
-            <img src="./assets/search.png" class="w-full lg:w-3/4">
+      <div class="h-fit w-full bg-cover bg-fixed bg-search tinted">
+        <div class="h-[500px] w-full font-bold text-7xl flex flex-col justify-end text-white
+                    inset-0 bg-black opacity-50">
+          <h1 class="p-4">
+            Find Your Next Furry Friend
+          </h1>
         </div>
+      </div>
 
-        <div class="w-full flex flex-col items-center">
-            <button
-                (click)="test()"
-                class="bg-transparent border border-black rounded-full flex items-center p-4 ">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
-        
-        <div class="h-[100px]"></div>
-        
-    
+      <!--Filter Panel-->
+      <div class="w-full p-4">
+       hello u can put the panel here
+      </div>
 
-        <div class="w-full h-[800px] p-32" >
-            
-            <div class="w-full">
-
-              @if(step1)
-              {
-                <div class="h-[500px]">
-                    <div>
-                        <p>Find a pet</p>
-                        <h1 class="text-3xl space-y-4">Lets start with cats or dogs</h1>
-                      </div>
-    
-                      <div class="w-full flex justify-around">
-                        <button class="flex flex-col items-center"><img src="./assets/images/1.png" class="w-1/2"></button>
-                        <button class="flex flex-col items-center"><img src="./assets/images/2.png" class="w-1/2"></button>
-                      </div>
-                </div>
-              }
+      <div class="w-full mt-64 lg:mt-32 lg:flex lg:flex-col lg:items-center">
+            <div class="h-screen">
+              hello u can put stuff in here like pet cards
             </div>
+      </div>
 
-            <div class="w-full">
-
-              @if(step2)
-              {
-              <form [formGroup]="species_fg" class="flex flex-col space-y-16 h-[500px]">
-                
-                <div>
-                  <p>Find a pet</p>
-                  <h1 class="text-3xl space-y-4">Looking to adopt a cat?</h1>
-                </div>
-                
-                <div>
-                    Consider fostering a recovering cat recently trapped and neutered before returning it to the wild! 
-                </div>
-                
-                <div>
-                    <button>Im interested!</button>
-                    <button>Im looking to do a regular adoption!</button>
-                </div>
-
-              </form>
-              }
-            </div>          
-
-            <div class="w-full">
-
-              @if(step3)
-              {
-              <form [formGroup]="pet_details_fg" class="flex flex-col space-y-16">
-                
-                <div>
-                  <p>Find a pet</p>
-                  <h1 class="text-3xl space-y-4">Pet Details</h1>
-                </div>
-
-                <div>
-                  <label for="Age" class="mb-2 text-gray-900">Age</label>
-                  <input formControlName="age" type="number" id="Age" class="bg-gray-50 border opacity-50 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full" placeholder="12" required/>
-                </div>
-
-                <div>
-                  <label for="Weight" class="mb-2 text-gray-900">Weight</label>
-                  <input formControlName="weight" type="number" id="Weight" class="bg-gray-50 border opacity-50 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full" placeholder="5" required/>
-                </div>
-
-                <div>
-                  <label for="gender" class="mb-2 text-gray-900">Gender</label>
-                  <select formControlName="gender" id="gender" class="bg-white border opacity-50 border-gray-300 text-gray-900 text-sm p-2.5 w-full" required> 
-                    <option>Male</option>
-                    <option>Female</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label for="breed" class="mb-2 text-gray-900">Breed</label>
-                  <select formControlName="breed" id="breed" class="bg-white border opacity-50 border-gray-300 text-sm p-2.5 w-full" required> 
-                    @for(breed of dog_breeds; let idx = $index; track idx)
-                    {
-                        <option>{{breed}}</option>
-                    }
-                  </select>
-                </div>
-              </form>
-              }
-            </div>
-
-            <div class="w-full flex flex-col items-center" #target>
-                <div>
-                    <button (click)="back()"> <mat-icon>keyboard_arrow_left</mat-icon> </button>
-                    <button (click)="next()"> <mat-icon>keyboard_arrow_right</mat-icon></button>
-                </div>
-            </div>
-
-            <div class="h-[200px]"></div>
     </div>
 
 </div>

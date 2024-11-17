@@ -35,9 +35,9 @@ export class LoginBoxComponent {
     const email = this.fg_login.get('email')?.value;
     const password = this.fg_login.get('password')?.value;
 
-    // debug printing
-    // console.log(email)
-    // console.log(password)
+    //debug printing
+    console.log(email)
+    console.log(password)
 
     // input validation, if either are null return false, otherwise return true
     // and use the service

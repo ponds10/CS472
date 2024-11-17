@@ -41,15 +41,19 @@ import { DocumentData } from '@angular/fire/firestore';
 export class MapPageComponent {
   mapService = inject(MapService);
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) { }
 
   @ViewChild(GoogleMap) map!: GoogleMap;
 
-  center: google.maps.LatLngLiteral = {
+  options: google.maps.MapOptions = {
+    center: {
     lat: 36.180545979079874,
     lng: -115.17917779168842,
-  };
-  zoom = 11;
+    },
+    zoom: 11,
+    mapTypeControl: false,
+    streetViewControl: false
+  }
 
   markers$ = this.mapService.loadMarkers() as Observable<DocumentData[]>;
 
@@ -120,5 +124,6 @@ export class MapPageComponent {
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
       newMarkerControlDiv
     );
+    
   }
 }

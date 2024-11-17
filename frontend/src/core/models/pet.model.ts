@@ -5,14 +5,14 @@ export interface PetAttribute {
 }
 
 export interface Pet {
-  id: number;
+  id: string;
   name: string;
   species: string;
   breed: string;
   sex: string;
   age?: string;
   weight: string;
-  image: string;
+  image?: string;
   documents?: PetAttribute[];
   contact?: ContactInfo;
 }

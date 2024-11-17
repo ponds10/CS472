@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Auth, user, signOut, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 import { Subscription, Observable } from 'rxjs';
 import { collectionData, Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, query, orderBy, limit, where, getDocs } from '@angular/fire/firestore';
+import { addDoc, collection, query, orderBy, limit, where, getDoc, doc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
@@ -74,5 +74,24 @@ export class PetsService {
     }
 
     return;
+  };
+
+  //get all the pets
+  loadPets = () => {
+    const pets = query(collection(this.firestore, 'petInfo'),
+    orderBy('name'));
+    return collectionData(pets);
+  };
+
+  // get the pet by the id
+  getPetById = async (id: string) => {
+    const petRef = doc(this.firestore, 'petInfo', id); // Use doc() for a single document
+  const petData = await getDoc(petRef); // Use getDoc() for a single document
+
+  if (petData.exists()) {
+    return petData.data(); // Return the data if the document exists
+  } else {
+    return null; // Or throw an error if the document doesn't exist
   }
+  };
 }

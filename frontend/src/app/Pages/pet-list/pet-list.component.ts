@@ -1,21 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { PetCardComponent } from '../../../shared/components/pet-card/pet-card.component';
-import { Pet } from '../../pet.model';
-import { PetService } from '../../depreciated/pet.service'; 
+import { Pet } from '../../../core/models/pet.model';
+import { PetsService } from '../../../core/services/pets/pets.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
+import { Observable } from 'rxjs';
+import { DocumentData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-pet-list',
   templateUrl: './pet-list.component.html',
   styleUrls: ['./pet-list.component.css'],
   standalone: true,
-  imports: [CommonModule, PetCardComponent, FormsModule, RouterModule, HeaderComponent, NavBarComponent] 
+  imports: [
+    CommonModule,
+    PetCardComponent,
+    FormsModule,
+    RouterModule,
+    HeaderComponent,
+    NavBarComponent,
+  ],
 })
-export class PetListComponent implements OnInit {
+export class PetListComponent {
   pets: Pet[] = [];
   searchTerm: string = '';
   selectedSpecies: string = '';
@@ -25,24 +34,42 @@ export class PetListComponent implements OnInit {
   currentPage: number = 1;
   petsPerPage: number = 6;
 
-  constructor(private readonly petService: PetService) { }
+  petServ = inject(PetsService);
+  pets$ = this.petServ.loadPets() as Observable<DocumentData[]>;
+
+  constructor(private readonly petService: PetsService) {}
 
   ngOnInit(): void {
-    this.petService.getPets().subscribe({
-      next: (data: Pet[]) => {
-        this.pets = data;
+    this.pets$.subscribe({
+      next: (data: DocumentData[]) => {
+        this.pets = data.map((pet) => ({
+          id: pet['petID'],
+          name: pet['name'],
+          species: pet['species'],
+          breed: pet['breed'],
+          sex: pet['sex'],
+          age: pet['age'],
+          weight: pet['weight'],
+          image: pet['image'],
+          documents: pet['documents'],
+          contact: pet['contact'],
+        }));
       },
-      error: (error) => {
+      error: (error: any) => {
         console.error('Error fetching pets:', error);
         this.errorMessage = 'Unable to load pets. Please try again later.';
-      }
+      },
     });
   }
 
   filteredPets(): Pet[] {
-    return this.pets.filter(pet => {
-      const matchesName = pet.name.toLowerCase().includes(this.searchTerm.toLowerCase());
-      const matchesSpecies = this.selectedSpecies ? pet.species === this.selectedSpecies : true;
+    return this.pets.filter((pet) => {
+      const matchesName = pet.name
+        .toLowerCase()
+        .includes(this.searchTerm.toLowerCase());
+      const matchesSpecies = this.selectedSpecies
+        ? pet.species === this.selectedSpecies
+        : true;
       return matchesName && matchesSpecies;
     });
   }

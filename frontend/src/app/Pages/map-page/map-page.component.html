@@ -35,11 +35,11 @@
             class="max-h-64 rounded-lg"
             src="{{ markerImg }}"
           />
-          <p>Description:</p>
-          <p>{{ markerDes }} </p>
+          <p class="pt-2 font-medium">Description:</p>
+          <p class="pt-2" >{{ markerDes }} </p>
           <button>
             <p
-              class="font-medium text-blue-600 hover:underline"
+              class="pt-2 font-medium text-blue-600 hover:underline"
               (click)="openInfoDialog(markerDes, markerImg, markerPos, markerUser, markerTime)"
             >
               View Info

@@ -1,0 +1,65 @@
+<p>search-panel works!</p>
+<div class="mb-6">
+  <!-- <input
+    type="text"
+    placeholder="Search by name..."
+    [(ngModel)]="searchTerm"
+    class="px-3 py-2 border rounded w-full md:w-1/2"
+  /> -->
+  <p>Type:</p>
+  <select
+    [(ngModel)]="selectedType"
+    (change)="animalTypeChange(selectedType)"
+    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
+  >
+    <option *ngFor="let type of animalTypes" [value]="type">{{ type }}</option>
+
+    <!-- Add more species as needed -->
+  </select>
+
+  <p>Age:</p>
+  <select
+    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
+    [(ngModel)]="selectedAge"
+  >
+    <option *ngFor="let age of catAges" [value]="age">{{ age }}</option>
+  </select>
+
+  <p>Gender:</p>
+  <select
+    [(ngModel)]="selectedGender"
+    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
+  >
+    <option *ngFor="let gender of animalGenders" [value]="gender">
+      {{ gender }}
+    </option>
+  </select>
+
+  <p>Breed:</p>
+  <select
+    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
+    [(ngModel)]="selectedBreed" 
+  >
+    <option *ngFor="let breed of Breeds" [value]="breed">{{ breed }}</option>
+  </select>
+
+  <p>Sizes:</p>
+  <select
+    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
+    [(ngModel)]="selectedSize" 
+  >
+    <option *ngFor="let size of animalSizes" [value]="size">{{ size }}</option>
+  </select>
+
+  <p>Programs:</p>
+  <select
+    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
+    [(ngModel)]="selectedProgram" 
+  >
+    <option *ngFor="let program of animalPrograms" [value]="program">{{ program }}</option>
+  </select>
+
+
+</div>
+
+

@@ -26,11 +26,13 @@ export class PetsService {
   ]
 
   catBreeds: string[] = [
-    'Any'
+    'Any',
+    'Calico'
   ]
 
   dogBreeds: string[] = [
-    'Any'
+    'Any',
+    'bulldog'
   ]
 
   animalGenders: string[] = [

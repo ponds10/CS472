@@ -45,7 +45,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .innerContainer
 {
   @apply bg-white bg-opacity-50 flex flex-col items-center rounded-lg shadow-2xl space-y-24
-  lg:items-start lg:w-full lg:overflow-scroll
+  lg:items-start lg:w-full lg:overflow-auto
   transition-all duration-500 ease-in-out;
 }
 

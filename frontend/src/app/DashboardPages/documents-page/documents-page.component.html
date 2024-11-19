@@ -6,141 +6,95 @@
   <div class="lg:flex-1">
     <app-nav-bar></app-nav-bar>
   </div>
-    <div class="innerContainer">
+  <div class="innerContainer p-16 pt-8 space-y-4">
+    <div class="flex flex-col grid-cols-2 w-full h-screen ">
+      <!--First horizontal section-->
+      <div class="flex justify-between ml-8">
+        <!--Folders-->
+        <div class="grid grid-cols-2 gap-x-32 ml-8">
+          <!--Folder 1-->
+          <a href="#" class="inline-block">
+            <img src="./assets/images/sample_folder.png" class="h-32 w-32 lg:h-48 lg:w-48">
+          </a>
+          <!--Folder 2-->
+          <a href="#" class="inline-block">
+            <img src="./assets/images/sample_folder.png" class="h-32 w-32 lg:h-48 lg:w-48">
+          </a>
+          <!--Folder 3-->
+          <a href="#" class="inline-block">
+            <img src="./assets/images/sample_folder.png" class="h-32 w-32 lg:h-48 lg:w-48">
+          </a>
+          <!--Folder 4-->
+          <a href="#" class="inline-block">
+            <img src="./assets/images/sample_folder.png" class="h-32 w-32 lg:h-48 lg:w-48">
+          </a>
+        </div>
 
-    <div class="h-screen">
-      <!--Medical Documents Carousel-->
-      <section class="w-full lg:space-y-24 lg:overflow-visible space-y-0 md:space-y-12">
-        <div class="grid grid-cols-2 w-full lg:grid-cols-3 lg:space-x-4 gap-0 md:gap-4">
-          <div class="text-left">
-            <h2>Medical Documents</h2>
-            <ul class="carousel">
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Cookie Vaccines</span>
-                </div>
-              </li>
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Baljeet Vaccines</span>
-                </div>
-              </li>
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Milou Vaccines</span>
-                </div>
-              </li>
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Fishy Vaccines</span>
-                </div>
-              </li>
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Hamster Vaccines</span>
-                </div>
-              </li>
-            </ul>
+        <!--Progress Circle-->
+        <div class="flex justify-around items-center bg-white w-96 h-76 rounded-3xl mt-12 mr-10">
+          <div class="relative flex flex-col items-center p-4 w-80">
+            <h2 class="text-xl text-center mb-10">30/50 Documents Uploaded</h2>
+            <svg class="w-44 h-44 overflow-visible" viewBox="0 0 100 100">
+              <!--Background circle-->
+              <circle class="text-cyan-300 stroke-current" stroke-width="20" cx="50" cy="50" r="40" fill="transparent">
+              </circle>
+              <!--Inner circle-->
+              <circle class="text-cyan-400 stroke-current" stroke-width="20" stroke-linecap="round" cx="50" cy="50"
+                r="40" fill="transparent" stroke-dasharray="251.2" stroke-dashoffset="calc(251.2 - (251.2 * 60) / 100)">
+              </circle>
+            </svg>
           </div>
         </div>
-      </section>
+      </div>
 
-
-      <!--Applications Carousel-->
-      <section class="w-full lg:space-y-24 lg:overflow-visible space-y-0 md:space-y-12">
-        <div class="grid grid-cols-2 w-full lg:grid-cols-3 lg:space-x-4 gap-0 md:gap-4">
-          <div class="text-left">
-            <h2>Applications</h2>
-            <ul class="carousel">
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Foster Application</span>
-                </div>
-              </li>
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Heaven Can Wait Application</span>
-                </div>
-              </li>
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Some Other Application</span>
-                </div>
-              </li>
-            </ul>
+      <!--Lower horizontal half-->
+      <div class="flex flex-grow justify-between mt-4">
+        <!--Recent Uploads-->
+        <div class="w-full ml-8 mr-8">
+          <h2 class="text-xl font-semibold mb-3">Recent Uploads</h2>
+          <!--Headers-->
+          <div class="grid grid-cols-3 gap-6 text-base font-medium pb-2">
+            <div class="ml-2">Name</div>
+            <div>Type</div>
+            <div>Upload Date</div>
+          </div>
+          <!--TEMP Insert rows of documents here-->
+          <div class="space-y-1">
+            <div class="grid grid-cols-3 gap-2 text-base px-2 py-1 rounded-md hover:bg-sky-400 hover:text-white">
+              <div class="whitespace-normal break-word">file.docx</div>
+              <div>Application/Forms</div>
+              <div>11/18/24</div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-base px-2 py-1 rounded-md hover:bg-sky-400 hover:text-white">
+              <div class="whitespace-normal break-word">medical.pdf</div>
+              <div>Application/Forms</div>
+              <div>11/09/24</div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-base px-2 py-1 rounded-md hover:bg-sky-400 hover:text-white">
+              <div class="whitespace-normal break-words">vaccinesandlonglongloooongdocument.pdf</div>
+              <div>Application/Forms</div>
+              <div>03/25/24</div>
+            </div>
           </div>
         </div>
-      </section>
 
-      <!--Miscellaneous Documents-->
-      <section class="w-full lg:space-y-24 lg:overflow-visible space-y-0 md:space-y-12">
-        <div class="grid grid-cols-2 w-full lg:grid-cols-3 lg:space-x-4 gap-0 md:gap-4">
-          <div class="text-left">
-            <h2>Misc. Documents</h2>
-            <ul class="carousel">
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Foster Application</span>
-                </div>
-              </li>
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Fee Documents</span>
-                </div>
-              </li>
-
-              <li class="carousel-item flex flex-col justify-between">
-                <div class="w-full h-3/4 overflow-hidden rounded-t-lg bg-cover bg-center"
-                  style="background-image: url('./assets/images/adoption-sample.png');">
-                </div>
-                <div class="w-full h-1/4 text-left p-2">
-                  <span>Birth Certificate</span>
-                </div>
-              </li>
-            </ul>
-          </div>
+        <!--Upload File-->
+        <div class="flex flex-1 w-96 h-44 mt-5 mr-10 ml-10">
+          <label for="dropzone-file"
+            class="flex flex-col items-center justify-center w-96 py-8 rounded-3xl cursor-pointer bg-gray-50">
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+              <svg class="w-8 h-8 mb-4 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 20 16">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+              </svg>
+              <p class="mb-2 text-md text-black">Click to upload or drag and drop</p>
+              <p class="text-sm text-black"><span class="italic">.docx and .pdf files only!</span></p>
+            </div>
+            <input id="dropzone-file" type="file" class="hidden" />
+          </label>
         </div>
-      </section>
-    </div>
-
-    <section class="w-full h-[200px]"></section>
+      </div>
+    </div> <!--Overall closing tag-->
   </div>
+</div>

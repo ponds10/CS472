@@ -23,7 +23,7 @@ import { After } from 'v8';
       ), state('shown', style({
         transform: 'translateY(0%)', opacity:100})
       ), transition('hidden => shown', [
-        animate('1s ease-in')
+        animate('0.75s ease-in')
       ]),]),
   ],
 })
@@ -41,9 +41,9 @@ export class LandingPageComponent implements AfterViewInit {
   showDescription2 = false;
   showDescription3 = false;
 
-  description1: string = "testing this here";
-  description2: string = "desciption 2";
-  description3: string = "description 3";
+  description1: string = "Based on research from non-profits, organizations, and volunteers here in Las Vegas, we believe that our free to use event management system will drive community action and foster teamwork between rescuers";
+  description2: string = "Shelters and animals here in Las Vegas and across the country need support. This is evident through our consumer studies. 137 pets brought to a shelter within one day. We aim to centralize all things pets";
+  description3: string = "Feral cats destory ecosystems, and can be harmful for communities. However, this does not mean society should handle them with no regard. TNR is an ethical way of handling these populations. We aim to foster and educate TNR efforts.";
 
   output1: string = "";
   output2: string = "";
@@ -149,7 +149,7 @@ export class LandingPageComponent implements AfterViewInit {
       // from there detect the changes with the imported CDR
       for(let i = 0; i < this.description1.length; i++)
       {
-        await new Promise(resolve => setTimeout(resolve, 25))
+        await new Promise(resolve => setTimeout(resolve, 10))
         this.output1 += this.description1[i];
         //console.log(this.output1)
         this.cdr.detectChanges()

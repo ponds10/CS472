@@ -28,7 +28,7 @@
         </div>
       </div>
       <!--About Us-->
-      <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-blue-100 bg-opacity-50 rounded-xl text-xl
+      <div class="h-fit lg:h-[500px] col-span-2 w-full p-4 lg:p-16 space-y-16 bg-blue-100 bg-opacity-50 rounded-xl text-xl
                 lg:col-span-1 lg:mr-4 overflow-auto"
                 #targets #grid1 [@loadTrigger]="triggerHelper(grid1)">
         <div class="flex justify-center font-bold text-3xl">
@@ -43,7 +43,7 @@
         </div>
       </div>
       <!--Adopting/Fostering-->
-      <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-pink-100 bg-opacity-50 rounded-xl text-xl
+      <div class="h-fit lg:h-[500px] col-span-2 w-full p-4 lg:p-16 space-y-16 bg-pink-100 bg-opacity-50 rounded-xl text-xl
                 lg:ml-4 lg:col-span-1 overflow-auto"
                 #targets #grid2 [@loadTrigger]="triggerHelper(grid2)">
         <div class="flex justify-center font-bold text-3xl">
@@ -61,7 +61,7 @@
         </div>
       </div>
       <!--TNR-->
-      <div class="h-[500px] col-span-2 w-full p-16 space-y-16 bg-violet-200 bg-opacity-50 rounded-xl text-xl overflow-auto"
+      <div class="h-fit lg:h-[500px] col-span-2 w-full p-4 lg:p-16 space-y-16 bg-violet-200 bg-opacity-50 rounded-xl text-xl overflow-auto"
         #targets #grid3 [@loadTrigger]="triggerHelper(grid3)">
         <div class="flex justify-center font-bold text-3xl">
           Trap-Neuter-Return
@@ -85,9 +85,9 @@
       <div class="w-full p-16 flex justify-center font-bold text-3xl col-span-2">
         Case Studies
       </div>
-      <div class="flex flex-col justify-evenly p-4 gap-4 w-full row-span-3 lg:flex-row col-span-2">
+      <div class="flex flex-col items-center justify-evenly p-4 gap-4 w-full row-span-3 lg:flex-row col-span-2">
         <!--Case Study 1-->
-        <div class="w-[300px] h-[400px]  bg-rose-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-1000 ease-in-out flex flex-col items-center space-y-16" 
+        <div class="w-[300px] h-[400px] bg-rose-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-1000 ease-in-out flex flex-col items-center space-y-16 shadow" 
           [class.cardAnim]="showDescription1"
           (click)="toggleDescription(1)"
           >
@@ -104,7 +104,7 @@
 
 
         <!--Case Study 2-->
-        <div class="w-[300px] h-[400px] bg-indigo-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-1000 ease-in-out flex flex-col items-center space-y-16"
+        <div class="w-[300px] h-[400px] bg-indigo-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-1000 ease-in-out flex flex-col items-center space-y-16 shadow"
           [class.cardAnim]="showDescription2"
           (click)="toggleDescription(2)"
           >
@@ -120,7 +120,7 @@
         </div>
 
         <!--Case Study 3-->
-        <div class="w-[300px] h-[400px] bg-green-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-1000 ease-in-out flex flex-col items-center space-y-16"
+        <div class="w-[300px] h-[400px] bg-green-200 p-10 bg-opacity-60 rounded-lg text-center cursor-pointer transition-all duration-1000 ease-in-out flex flex-col items-center space-y-16 shadow"
           [class.cardAnim]="showDescription3"
           (click)="toggleDescription(3)">
           @if(!showDescription3)

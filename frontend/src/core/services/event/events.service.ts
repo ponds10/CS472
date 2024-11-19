@@ -14,7 +14,7 @@ export class EventsService {
   firestore: Firestore = inject(Firestore);
   auth: Auth = inject(Auth);
   router: Router = inject(Router);
-  storage:Storage = inject(Storage)
+  storage:Storage = inject(Storage);
   constructor(private navService: NavigationServiceService) { }
 
   

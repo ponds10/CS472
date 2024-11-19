@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { NavigationServiceService } from '../../core/services/navService/navigation-service.service';
-import { LoginService } from '../../core/services/login/login.service';
+import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
+import { LoginService } from '../../../core/services/login/login.service';
 
 @Component({
   selector: 'app-new-account',

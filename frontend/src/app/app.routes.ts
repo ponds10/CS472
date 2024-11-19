@@ -15,25 +15,26 @@ import { PetListComponent } from './Pages/pet-list/pet-list.component';
 import { MapPageComponent } from './Pages/map-page/map-page.component';
 import { CreateAccountComponent } from './Pages/create-account/create-account.component';
 import { CreateUserProfileComponent } from './CreatePages/create-user-profile/create-user-profile.component';
+import { authGuard } from '../core/guard/auth.guard';
 
 export const routes: Routes = [
-    {path: '', component: LandingPageComponent},
+    {path: '', component: LandingPageComponent, canActivate: [authGuard]},
     {path: 'login', component: LoginPageComponent},
    // {path: 'eventpage', component: EventPageComponent},
    // {path: 'eventpage/:id', component: EventPageComponent},  // Updated to accept event ID as a parameter
-    {path: 'petlist/:id', component: PetPageComponent},
-    {path: 'petlist', component: PetListComponent}, //the pets/results page is this, delete later
-    {path: 'homepage', component: HomePageComponent},
-    {path: 'documentspage', component: DocumentsPageComponent},
-    {path: 'search/pets/filter', component: SearchPetsFilterComponent},
-    {path: 'search/pets/results', component: SearchPetsPageComponent},
-    {path: 'search/events', component: SearchEventsPageComponent},
-    {path: 'create/pet-post', component: CreatePetPostComponent},
-    {path: 'create/event', component: CreateEventComponent},
-    {path: 'userprofilepage', component: UserProfilePageComponent},
-    {path: 'map', component:MapPageComponent},
-    {path: 'login', component:LoginPageComponent},
-    {path: 'newAccount', component:CreateAccountComponent},
-    {path: 'createUser', component:CreateUserProfileComponent},
+    {path: 'petlist/:id', component: PetPageComponent, canActivate: [authGuard]},
+    {path: 'petlist', component: PetListComponent, canActivate: [authGuard]}, //the pets/results page is this, delete later
+    {path: 'homepage', component: HomePageComponent, canActivate: [authGuard]},
+    {path: 'documentspage', component: DocumentsPageComponent, canActivate: [authGuard]},
+    {path: 'search/pets/filter', component: SearchPetsFilterComponent, canActivate: [authGuard]},
+    {path: 'search/pets/results', component: SearchPetsPageComponent, canActivate: [authGuard]},
+    {path: 'search/events', component: SearchEventsPageComponent, canActivate: [authGuard]},
+    {path: 'create/pet-post', component: CreatePetPostComponent, canActivate: [authGuard]},
+    {path: 'create/event', component: CreateEventComponent, canActivate: [authGuard]},
+    {path: 'userprofilepage', component: UserProfilePageComponent, canActivate: [authGuard]},
+    {path: 'map', component:MapPageComponent, canActivate: [authGuard]},
+    {path: 'login', component:LoginPageComponent, canActivate: [authGuard]},
+    {path: 'newAccount', component:CreateAccountComponent, canActivate: [authGuard]},
+    {path: 'createUser', component:CreateUserProfileComponent, canActivate: [authGuard]},
     {path: '**', redirectTo:'login'}
 ];

@@ -23,7 +23,7 @@ export class SearchPanelComponent {
   animalPrograms: string[] = [];
   Breeds: string[] = [];
   
-  selectedType: string = '';
+  selectedType: string = "";
   selectedAge: number = 0;
   searchTerm: string = '';
   selectedGender: string = '';

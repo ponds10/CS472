@@ -1,65 +1,87 @@
-<p>search-panel works!</p>
-<div class="mb-6">
-  <!-- <input
-    type="text"
-    placeholder="Search by name..."
-    [(ngModel)]="searchTerm"
-    class="px-3 py-2 border rounded w-full md:w-1/2"
-  /> -->
-  <p>Type:</p>
-  <select
-    [(ngModel)]="selectedType"
-    (change)="animalTypeChange(selectedType)"
-    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
+<div class="px-32">
+  <div
+    class="flex flex-col space-y-4 px-2 m-0 rounded-xl w-full h-[300px] justify-between shadow-xl transition-all ease-in shadow lg:w-full lg:h-[200px] bg-gray-50 bg-opacity-50"
   >
-    <option *ngFor="let type of animalTypes" [value]="type">{{ type }}</option>
+    <div class="grid p-6 gap-4 mb-6 grid-cols-4 content-evenly">
+      <!-- <input
+      type="text"
+      placeholder="Search by name..."
+      [(ngModel)]="searchTerm"
+      class="px-3 py-2 border rounded w-full md:w-1/2"
+    /> -->
+      <div class="px-8">
+        <p class="text-center">Type</p>
+        <select
+          [(ngModel)]="selectedType"
+          (change)="animalTypeChange(selectedType)"
+          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
+        >
+         <option [ngValue]="0" disabled selected>Select an animal type</option>
+          <option *ngFor="let type of animalTypes" [value]="type">
+            {{ type }}
+          </option>
 
-    <!-- Add more species as needed -->
-  </select>
+          <!-- Add more species as needed -->
+        </select>
+      </div>
 
-  <p>Age:</p>
-  <select
-    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
-    [(ngModel)]="selectedAge"
-  >
-    <option *ngFor="let age of catAges" [value]="age">{{ age }}</option>
-  </select>
+      <div class="px-8">
+        <p class="text-center">Age</p>
+        <select
+          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
+          [(ngModel)]="selectedAge"
+        >
+          <option *ngFor="let age of catAges" [value]="age">{{ age }}</option>
+        </select>
+      </div>
 
-  <p>Gender:</p>
-  <select
-    [(ngModel)]="selectedGender"
-    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
-  >
-    <option *ngFor="let gender of animalGenders" [value]="gender">
-      {{ gender }}
-    </option>
-  </select>
+      <div class="px-8">
+        <p class="text-center">Gender</p>
+        <select
+          [(ngModel)]="selectedGender"
+          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
+        >
+          <option *ngFor="let gender of animalGenders" [value]="gender">
+            {{ gender }}
+          </option>
+        </select>
+      </div>
 
-  <p>Breed:</p>
-  <select
-    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
-    [(ngModel)]="selectedBreed" 
-  >
-    <option *ngFor="let breed of Breeds" [value]="breed">{{ breed }}</option>
-  </select>
+      <div class="px-8">
+        <p class="text-center">Breed</p>
+        <select
+          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
+          [(ngModel)]="selectedBreed"
+        >
+          <option *ngFor="let breed of Breeds" [value]="breed">
+            {{ breed }}
+          </option>
+        </select>
+      </div>
 
-  <p>Sizes:</p>
-  <select
-    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
-    [(ngModel)]="selectedSize" 
-  >
-    <option *ngFor="let size of animalSizes" [value]="size">{{ size }}</option>
-  </select>
+      <div class="px-8">
+        <p class="text-center">Sizes</p>
+        <select
+          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
+          [(ngModel)]="selectedSize"
+        >
+          <option *ngFor="let size of animalSizes" [value]="size">
+            {{ size }}
+          </option>
+        </select>
+      </div>
 
-  <p>Programs:</p>
-  <select
-    class="mt-4 md:mt-0 px-3 py-2 border rounded w-full md:w-1/4"
-    [(ngModel)]="selectedProgram" 
-  >
-    <option *ngFor="let program of animalPrograms" [value]="program">{{ program }}</option>
-  </select>
-
-
+      <div class="px-8">
+        <p class="text-center">Programs</p>
+        <select
+          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
+          [(ngModel)]="selectedProgram"
+        >
+          <option *ngFor="let program of animalPrograms" [value]="program">
+            {{ program }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
 </div>
-
-

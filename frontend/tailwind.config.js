@@ -17,7 +17,11 @@ module.exports = {
       'account': "url('../public/assets/dots.png')",
       'landing1': "url('../public/assets/landing-img1.png')",
     },
-    extend: {},
+    extend: {
+      colors:{
+        'baby-purple': '#d8c7ff',
+      },
+    },
   },
   plugins: [],
 }

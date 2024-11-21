@@ -33,8 +33,7 @@ export const routes: Routes = [
     {path: 'create/event', component: CreateEventComponent, canActivate: [authGuard]},
     {path: 'userprofilepage', component: UserProfilePageComponent, canActivate: [authGuard]},
     {path: 'map', component:MapPageComponent, canActivate: [authGuard]},
-    {path: 'login', component:LoginPageComponent, canActivate: [authGuard]},
-    {path: 'newAccount', component:CreateAccountComponent, canActivate: [authGuard]},
-    {path: 'createUser', component:CreateUserProfileComponent, canActivate: [authGuard]},
-    {path: '**', redirectTo:'login'}
+    {path: 'newAccount', component:CreateAccountComponent},
+    {path: 'createUser', component:CreateUserProfileComponent},
+    {path: '**', redirectTo:'login'},
 ];

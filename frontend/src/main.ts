@@ -14,7 +14,7 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom([BrowserAnimationsModule]),
     provideRouter(routes),
     provideFirebaseApp(() => initializeApp({
-      "projectId":"123toebeans-d6f03",
+      "projectId":"toebeans-d6f03",
       "appId":"1:10600296290:web:ccff98c6130c4bb517c63b",
       "storageBucket":"toebeans-d6f03.appspot.com",
       "apiKey":"AIzaSyADxlQyq1u7g4LULCI9RfhKdheVkAOscoI",

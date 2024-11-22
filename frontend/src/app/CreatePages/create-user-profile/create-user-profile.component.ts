@@ -106,7 +106,7 @@ export class CreateUserProfileComponent implements OnInit{
         return;
       }
 
-      if(this.fg_userInfo.get('first_name')?.value == null || 
+      if(this.fg_userInfo.get('first_name')?.value == null || this.fg_userInfo.get('first_name')?.value == undefined || this.fg_userInfo.get('first_name')?.value == '' ||
         this.fg_userInfo.get('last_name')?.value == null ||
         this.fg_userInfo.get('biography')?.value == null ||
         this.fg_userInfo.get('phone')?.value == null ||

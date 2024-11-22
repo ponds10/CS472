@@ -14,6 +14,7 @@ export class MapInfoBoxComponent {
   constructor(public dialogRef: MatDialogRef<MapInfoBoxComponent>) {}
   data = inject<DialogData>(MAT_DIALOG_DATA)
   date = this.data.ts.toDate()
+  url = 'https://www.google.com/maps/dir/?api=1&destination=' + String(this.data.crd.lat) + '%2C' + String(this.data.crd.lng)
 
   closeDialog(): void {
     this.dialogRef.close('hi');

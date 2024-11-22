@@ -15,86 +15,115 @@ import { LoginService } from '../../../core/services/login/login.service';
   templateUrl: './create-user-profile.component.html',
 })
 export class CreateUserProfileComponent implements OnInit{
-  // var declarations that control the forms step output
-  // utilizes truthy values with the @if directives
-  steps: number[] = [1, 0, 0, 0, 0]
-  current_step: number = 0;
-  max: number = 0;
+   // vars
+   selectedImage: File | null = null; 
+   userId: string | undefined = ''; 
+   auth: Auth = inject(Auth);
+ 
+   // this is for images
+   image: File | null = null;
+   url: string | null | ArrayBuffer = "./assets/images/ToeBeans.png";
+ 
+   accountFlag: boolean = false;
 
-  constructor(private userService: UserService, private auth: Auth, private loginService: LoginService){
-    auth = inject(Auth);
-  }
+   errorFlag: boolean = false;
+   errorMessage: string = '';
+   constructor(private userService: UserService){}
+ 
+   // oninit 
+   ngOnInit(): void {
+     this.userId = this.auth.currentUser?.uid;
+   }
+ 
+   // make the form controls for each step in the creation page
+   fg_userInfo = new FormGroup({
+ 
+     first_name: new FormControl(''),
+     last_name: new FormControl(''),
+     biography: new FormControl(''),
+ 
+ 
+     phone: new FormControl(''),
+     email: new FormControl(''),
 
-  // form groups for each step that will later be used to 
-  // query info and then store in the userinfo data on firestore
-  fg_basic_info = new FormGroup({
-    fname: new FormControl(''),
-    lname: new FormControl(''),
-  });
+     street: new FormControl(''),
+     city: new FormControl(''),
+     state: new FormControl(''),
+     zip: new FormControl(''),
+     accountType: new FormControl('')
+   });
+ 
+   // filechange event
+   fileChangeEvent(event: any): void {
+     const file = event.target.files[0];
+     if (file) {
+       this.selectedImage = file;
+     }
+ 
+     this.image = file;
+     const imagePath = file;
+ 
+     const reader = new FileReader();
+ 
+     reader.readAsDataURL(file);
+     reader.onload = (e => {
+       this.url = reader.result;
+     })
+   }
 
-  fg_bio = new FormGroup({
-    bio: new FormControl(''),
-  });
+   onRadioChange(num: Number)
+   {
+      if(this.fg_userInfo.get('accountType')?.value == 'individual')
+      {
+        this.accountFlag = true;
+      }
+   }
 
-  fg_contactInfo = new FormGroup({
-    phone: new FormControl(''),
-    email: new FormControl(''),
-    street: new FormControl(''),
-    city: new FormControl(''),
-    state: new FormControl(''),
-  });
+   submitUserInfo(){
+    console.log(this.fg_userInfo.get('first_name')?.value)
+    console.log(this.fg_userInfo.get('last_name')?.value)
+    console.log(this.fg_userInfo.get('biography')?.value)
+    console.log(this.fg_userInfo.get('phone')?.value)
+    console.log(this.fg_userInfo.get('email')?.value)
+    console.log(this.fg_userInfo.get('street')?.value)
+    console.log(this.fg_userInfo.get('city')?.value)
+    console.log(this.fg_userInfo.get('state')?.value)
+    console.log(this.fg_userInfo.get('zip')?.value)
+    console.log(this.fg_userInfo.get('accountType')?.value)
+    console.log(this.selectedImage)
 
-  // next and back
-  // click functions that change the steps[] by changing the truthy values!
-  next()
-  {
-    if(this.current_step + 1 == this.max){return;}
+      if(this.selectedImage == null || this.url == null)
+      {
+        this.errorFlag = true;
+        this.errorMessage = "Error, please add an image before submitting"
+        return;
+      }
 
-    this.steps[this.current_step]=0;
-    this.current_step++;
-    this.steps[this.current_step]=1
-  }
-  back()
-  {
-    if(this.current_step == 0){return;}
-    this.steps[this.current_step]=0;
-    this.current_step--;
-    this.steps[this.current_step]=1
-  }
+      if(this.fg_userInfo.get('first_name')?.value == null || 
+        this.fg_userInfo.get('last_name')?.value == null ||
+        this.fg_userInfo.get('biography')?.value == null ||
+        this.fg_userInfo.get('phone')?.value == null ||
+        this.fg_userInfo.get('email')?.value == null ||
+        this.fg_userInfo.get('accountType')?.value == null)
+      {
+        this.errorFlag = true;
+        this.errorMessage = "Error, review your information and ensure no fields are missing"
+        return;
+      }
 
-  finalizeInfo()
-  {
-    const userInfo: User = 
-    {
-      first_name: this.fg_basic_info.get('fname')?.value ?? '',
-      last_name: this.fg_basic_info.get('lname')?.value ?? '',
-      biography: this.fg_bio.get('bio')?.value ?? '',
-      phone: this.fg_contactInfo.get('phone')?.value ?? '',
-      email: this.fg_contactInfo.get('email')?.value ?? '',
-      street: this.fg_contactInfo.get('street')?.value ?? '',
-      city: this.fg_contactInfo.get('city')?.value ?? '',
-      state: this.fg_contactInfo.get('state')?.value ?? '',
-      zip: this.fg_contactInfo.get('zip')?.value ?? '',
-      accountType: 'testing',
-      userID: this.auth.currentUser?.uid ?? ''
-
-    }
-
-    this.userService.generateAccount(userInfo, this.selectedImage!);
-  }
-
-  selectedImage: File | null = null; // Store the selected image file
-  uploadProgress: number = 0; // Track upload progress
-  userId: string = 'USERID';  // Replace with the actual user ID (e.g., from Firebase Authentication)
-
-  fileChangeEvent(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.selectedImage = file;
-    }
-  }
-
-  ngOnInit(): void {
-    this.loginService.searchUID(this.auth.currentUser?.uid)
-  }
+      if(this.fg_userInfo.get('accountType')?.value == "institution")
+      {
+        if(
+          this.fg_userInfo.get('street')?.value == null ||
+          this.fg_userInfo.get('city')?.value == null || 
+          this.fg_userInfo.get('state')?.value == null ||
+          this.fg_userInfo.get('zip')?.value == null )
+        {
+          this.errorFlag = true;
+          this.errorMessage = "Error, institutions are required to have an address"
+          return;
+        }
+      }
+      
+   }
 }

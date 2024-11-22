@@ -8,6 +8,7 @@ import { Auth } from '@angular/fire/auth';
 import { Inject } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { LoginService } from '../../../core/services/login/login.service';
+import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
 @Component({
   selector: 'app-create-user-profile',
   standalone: true,
@@ -28,7 +29,7 @@ export class CreateUserProfileComponent implements OnInit{
 
    errorFlag: boolean = false;
    errorMessage: string = '';
-   constructor(private userService: UserService){}
+   constructor(private userService: UserService, private navService: NavigationServiceService){}
  
    // oninit 
    ngOnInit(): void {
@@ -80,6 +81,12 @@ export class CreateUserProfileComponent implements OnInit{
    }
 
    submitUserInfo(){
+      if(this.auth.currentUser == null || this.auth.currentUser == undefined)
+      {
+        this.navService.navigateToLoginPage();
+        return;
+      }
+
     console.log(this.fg_userInfo.get('first_name')?.value)
     console.log(this.fg_userInfo.get('last_name')?.value)
     console.log(this.fg_userInfo.get('biography')?.value)
@@ -124,6 +131,48 @@ export class CreateUserProfileComponent implements OnInit{
           return;
         }
       }
+
+      try
+      {
+        //this.userService.uploadImage(this.selectedImage)
+      }
+      catch(error)
+      {
+        this.errorFlag = true;
+        this.errorMessage = "Error, upload image failed";
+        // delete from firestore!
+        return;
+      }
+
+      try
+      {
+        const userObject: User = 
+        {
+          first_name: this.fg_userInfo.get('first_name')?.value as string,
+          last_name: this.fg_userInfo.get('last_name')?.value as string,
+          biography: this.fg_userInfo.get('biography')?.value as string,
+          phone: this.fg_userInfo.get('phone')?.value as string,
+          email: this.fg_userInfo.get('email')?.value as string,
+          accountType: this.fg_userInfo.get('accountType')?.value as string,
+
+          state: this.fg_userInfo.get('state')?.value as string,
+          street: this.fg_userInfo.get('street')?.value as string,
+          city: this.fg_userInfo.get('city')?.value as string,
+          zip: this.fg_userInfo.get('zip')?.value as string,
+
+          userID: this.auth.currentUser?.uid as string
+        }
+
+        this.userService.generateAccount(userObject, this.selectedImage);
+      }
+      catch(error)
+      {
+        this.errorFlag = true;
+        this.errorMessage = "Error, uploading user information"
+        return;
+      }
       
+
+      this.navService.navigateToHomePage();
    }
 }

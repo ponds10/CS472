@@ -27,7 +27,3 @@ bootstrapApplication(AppComponent, {
     provideStorage(() => getStorage()), // Provide routing globally
   ],
 }).catch((err) => console.error(err));
-
-setTimeout(() => {
-  console.log('Firebase Auth initialized:', getAuth());
-}, 1000);

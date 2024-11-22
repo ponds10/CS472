@@ -21,13 +21,16 @@ export const authGuard: CanActivateFn = async (route, state) => {
     if (user) {
       return true; // User is authenticated
     } else {
+      // Show alert for unauthenticated access attempt
+      window.alert('Access denied. Please log in to view this page.');
       // Redirect to login if unauthenticated
       navigationService.navigateToLoginPage?.();
       await router.navigate(['/login']);
       return false;
     }
   } catch (error) {
-    console.error('Error in authGuard:', error);
+    console.error('Error in authGuard:', error); // For debugging purpose; will delete it later
+    window.alert('An error occurred. Redirecting to login.');  // Show alert for any error
     await router.navigate(['/login']);
     return false;
   }

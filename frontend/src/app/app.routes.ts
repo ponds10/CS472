@@ -18,7 +18,7 @@ import { CreateUserProfileComponent } from './CreatePages/create-user-profile/cr
 import { authGuard } from '../core/guard/auth.guard';
 
 export const routes: Routes = [
-    {path: '', component: LandingPageComponent, canActivate: [authGuard]},
+    {path: '', component: LandingPageComponent},
     {path: 'login', component: LoginPageComponent},
    // {path: 'eventpage', component: EventPageComponent},
    // {path: 'eventpage/:id', component: EventPageComponent},  // Updated to accept event ID as a parameter
@@ -34,6 +34,6 @@ export const routes: Routes = [
     {path: 'userprofilepage', component: UserProfilePageComponent, canActivate: [authGuard]},
     {path: 'map', component:MapPageComponent, canActivate: [authGuard]},
     {path: 'newAccount', component:CreateAccountComponent},
-    {path: 'createUser', component:CreateUserProfileComponent},
+    {path: 'createUser', component:CreateUserProfileComponent, canActivate: [authGuard]},
     {path: '**', redirectTo:'login'},
 ];

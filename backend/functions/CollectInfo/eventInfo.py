@@ -10,7 +10,7 @@ def addEventToDatabase(attendance, date, description, imageURL, title, userID, e
     #date = datetime.strptime(date, "%m/%d/%y %H:%M:%S")
     
     # creating instance of event in database based on org user input
-    eventInfo = Event(attendance, date, description, imageURL, title, userID)
+    eventInfo = Event(None, attendance, date, description, imageURL, title, userID)
 
     # storing in eventInfo document in database
     doc = eventInfo_collectionRef.add(eventInfo.__dict__)
@@ -19,11 +19,11 @@ def addEventToDatabase(attendance, date, description, imageURL, title, userID, e
     # return success if required fields completed correctly
     return doc[1].get().to_dict()
 
-def editEventInDatabase(attendance, date, description, eventID, imageURL, title, userID, eventInfo_documentRef) :
+def editEventInDatabase(eventID, attendance, date, description, imageURL, title, userID, eventInfo_documentRef) :
     # error check updated info
 
     # update existing event in database
-    eventInfo = Event(attendance, date, description, eventID, imageURL, title, userID)
+    eventInfo = Event(eventID, attendance, date, description, imageURL, title, userID)
     eventInfo_documentRef.set(eventInfo.__dict__, merge = True)
 
     # return success if required fields updated correctly

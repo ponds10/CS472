@@ -20,6 +20,8 @@ module.exports = {
     extend: {
       colors:{
         'baby-purple': '#d8c7ff',
+        'turquoise': '#C9FFE5',
+        'blue-gray': '#72A0C1',
       },
     },
   },

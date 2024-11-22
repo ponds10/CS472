@@ -42,21 +42,15 @@ export class SearchPanelComponent {
 
   selectAnimal(animal: 'cat' | 'dog') {
     this.selectedType = animal;
-  }
-  
-  animalTypeChange( type: string): void {
-    if (type === 'Cat') {
+    if (animal === 'cat') {
       this.Breeds = this.petService.catBreeds;
-    } else if (type === 'Dog') {
+    } else if (animal === 'dog') {
       this.Breeds = this.petService.dogBreeds;
-    } else if (type === 'Any') {
-      this.Breeds = this.petService.catBreeds.concat(this.petService.dogBreeds);
     }
   }
   
   
-
-
+  
   // filterPets() {
   //   this.filteredPets = this.pets.filter(pet => {
   //     // Check if the pet matches all selected filters

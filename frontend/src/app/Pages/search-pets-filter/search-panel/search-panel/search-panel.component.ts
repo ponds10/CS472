@@ -39,6 +39,10 @@ export class SearchPanelComponent {
     this.animalSizes = this.petService.animalSizes;
     this.animalPrograms = this.petService.animalPrograms;
   }
+
+  selectAnimal(animal: 'cat' | 'dog') {
+    this.selectedType = animal;
+  }
   
   animalTypeChange( type: string): void {
     if (type === 'Cat') {

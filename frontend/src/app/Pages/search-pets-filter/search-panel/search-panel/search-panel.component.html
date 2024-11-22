@@ -1,86 +1,138 @@
-<div class="px-32">
+<div class="flex justify-center items-center px-96">
   <div
-    class="flex flex-col space-y-4 px-2 m-0 rounded-xl w-full h-[300px] justify-between shadow-xl transition-all ease-in shadow lg:w-full lg:h-[200px] bg-gray-50 bg-opacity-50"
+    class="flex transition-all duration-500 ease-in-out rounded-xl shadow-2xl bg-white bg-opacity-50 overflow-hidden"
+    [ngClass]="{
+      'w-full h-auto flex-row': selectedType,
+      'w-64 h-64 flex-col ': !selectedType
+    }"
   >
-    <div class="grid p-6 gap-4 mb-6 grid-cols-4 content-evenly">
-      <!-- <input
-      type="text"
-      placeholder="Search by name..."
-      [(ngModel)]="searchTerm"
-      class="px-3 py-2 border rounded w-full md:w-1/2"
-    /> -->
-      <div class="px-8">
-        <p class="text-center">Type</p>
-        <select
-          [(ngModel)]="selectedType"
-          (change)="animalTypeChange(selectedType)"
-          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
-        >
-         <option [ngValue]="0" disabled selected>Select an animal type</option>
-          <option *ngFor="let type of animalTypes" [value]="type">
-            {{ type }}
-          </option>
-
-          <!-- Add more species as needed -->
-        </select>
+    <!-- select animal section -->
+    <div
+      class="flex flex-col grid grid-cols-2 items-center justify-center p-4 space-y-4 bg-gray-200"
+    >
+      <!-- Cat Icon -->
+      <div
+        class="flex flex-col items-center cursor-pointer transition-transform transform hover:scale-105"
+        (click)="selectAnimal('cat')"
+        (keypress)="selectAnimal('cat')"
+      >
+        <img
+          src="./assets/images/black-cat.png"
+          alt="Cat Icon"
+          class="w-16 h-16 mb-2"
+        />
       </div>
 
-      <div class="px-8">
-        <p class="text-center">Age</p>
-        <select
-          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
-          [(ngModel)]="selectedAge"
-        >
-          <option *ngFor="let age of catAges" [value]="age">{{ age }}</option>
-        </select>
+      <!-- Dog Icon -->
+      <div
+        class="flex flex-col items-center cursor-pointer transition-transform transform hover:scale-105"
+        (click)="selectAnimal('dog')"
+        (keypress)="selectAnimal('dog')"
+      >
+        <img
+          src="./assets/images/french-bulldog.png"
+          alt="Dog Icon"
+          class="w-16 h-16 mb-2"
+        />
       </div>
+    </div>
 
-      <div class="px-8">
-        <p class="text-center">Gender</p>
-        <select
-          [(ngModel)]="selectedGender"
-          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
-        >
-          <option *ngFor="let gender of animalGenders" [value]="gender">
-            {{ gender }}
-          </option>
-        </select>
-      </div>
+    <!-- Filters selection to the right-->
+    <div
+      class="flex-grow p-6 bg-gray-50 transition-opacity duration-500"
+      [ngClass]="{
+        'opacity-100 block': selectedType,
+        'opacity-0 hidden': !selectedType
+      }"
+    >
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Type Filter -->
+        <div>
+          <p class="text-center font-medium">Type</p>
+          <select
+            [(ngModel)]="selectedType"
+            (change)="animalTypeChange(selectedType)"
+            class="mt-2 px-3 py-2 border-solid border-2 border-violet-300 rounded-lg w-full shadow"
+          >
+            <option *ngFor="let type of animalTypes" [value]="type">
+              {{ type }}
+            </option>
+          </select>
+        </div>
 
-      <div class="px-8">
-        <p class="text-center">Breed</p>
-        <select
-          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
-          [(ngModel)]="selectedBreed"
-        >
-          <option *ngFor="let breed of Breeds" [value]="breed">
-            {{ breed }}
-          </option>
-        </select>
-      </div>
+        <div>
+          <p class="text-center font-medium">Age</p>
+          <select
+            class="mt-2 px-3 py-2 border-solid border-2 border-violet-300 rounded-lg w-full shadow"
+            [(ngModel)]="selectedAge"
+          >
+            <option *ngFor="let age of catAges" [value]="age">{{ age }}</option>
+          </select>
+        </div>
 
-      <div class="px-8">
-        <p class="text-center">Sizes</p>
-        <select
-          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
-          [(ngModel)]="selectedSize"
-        >
-          <option *ngFor="let size of animalSizes" [value]="size">
-            {{ size }}
-          </option>
-        </select>
-      </div>
+        <div>
+          <p class="text-center font-medium">Gender</p>
+          <select
+            [(ngModel)]="selectedGender"
+            class="mt-2 px-3 py-2 border-solid border-2 border-violet-300 rounded-lg w-full shadow"
+          >
+            <option *ngFor="let gender of animalGenders" [value]="gender">
+              {{ gender }}
+            </option>
+          </select>
+        </div>
 
-      <div class="px-8">
-        <p class="text-center">Programs</p>
-        <select
-          class="mt-4 md:mt-0 px-3 py-2 border-solid border-2 border-baby-purple rounded-lg w-full shadow"
-          [(ngModel)]="selectedProgram"
-        >
-          <option *ngFor="let program of animalPrograms" [value]="program">
-            {{ program }}
-          </option>
-        </select>
+        <div>
+          <p class="text-center font-medium">Breed</p>
+          <select
+            class="mt-2 px-3 py-2 border-solid border-2 border-violet-300 rounded-lg w-full shadow"
+            [(ngModel)]="selectedBreed"
+          >
+            <option *ngFor="let breed of Breeds" [value]="breed">
+              {{ breed }}
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <p class="text-center font-medium">Sizes</p>
+          <select
+            class="mt-2 px-3 py-2 border-solid border-2 border-violet-300 rounded-lg w-full shadow"
+            [(ngModel)]="selectedSize"
+          >
+            <option *ngFor="let size of animalSizes" [value]="size">
+              {{ size }}
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <p class="text-center font-medium">Programs</p>
+          <select
+            class="mt-2 px-3 py-2 border-solid border-2 border-violet-300 rounded-lg w-full shadow"
+            [(ngModel)]="selectedProgram"
+          >
+            <option *ngFor="let program of animalPrograms" [value]="program">
+              {{ program }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-span-3 flex space-x-4">
+          <button
+            class="mt-4 md:mt-0 px-3 py-2 font-medium rounded-full w-full bg-baby-purple text-zinc-900 shadow"
+            type="submit"
+          >
+            Go Back
+          </button>
+
+          <button
+            class="mt-4 md:mt-0 h-full font-medium rounded-full w-full bg-violet-600 text-white shadow"
+            type="submit"
+          >
+            Search
+          </button>
+        </div>
       </div>
     </div>
   </div>

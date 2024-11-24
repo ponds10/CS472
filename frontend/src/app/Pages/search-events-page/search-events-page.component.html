@@ -39,6 +39,13 @@
             </div>
         </div>
 
+        @for(event of events; let idx = $index; track idx)
+        {
+          hello
+          <app-eventcard [event]="event"></app-eventcard>
+        }
+
+
     </div>
 
 </div>

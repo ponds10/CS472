@@ -68,7 +68,7 @@ export class EventsService {
       
           imageURL: event.imageURL,
       
-          date: Timestamp.fromDate(event.date),
+          date: Timestamp.fromDate(event.date as Date),
           street: event.street,
           city: event.city,
           state: event.state,
@@ -92,7 +92,7 @@ export class EventsService {
     }
   }
 
-  async getInitalEvents()
+  getInitalEvents()
   {
     // if the current user is null then return
     if (this.auth.currentUser === null || this.auth.currentUser === undefined) {
@@ -103,17 +103,18 @@ export class EventsService {
     }
 
     // simple query, gets 12 events
-    const newUserQuery = query(collection(this.firestore, 'events'), limit(12));
+    const eventQuery = query(collection(this.firestore, 'events'), orderBy('date'), limit(12));
 
     // await the snapshop / documents
-    const snapshot = await getDocs(newUserQuery);
+    //const snapshot = await getDocs(eventQuery);
 
     // need to save this to a local var in the service 
-    const last_entry = snapshot.docs[snapshot.docs.length-1];
-    snapshot.forEach((doc) => {
-      console.log(doc.data())
-    })
-    return snapshot;
+    // const last_entry = snapshot.docs[snapshot.docs.length-1];
+    // snapshot.forEach((doc) => {
+    //   console.log(doc.data())
+    // })
+
+    return collectionData(eventQuery)
   }
 
   async getNextEvents()

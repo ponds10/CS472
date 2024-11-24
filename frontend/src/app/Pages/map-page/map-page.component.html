@@ -26,26 +26,28 @@
           (markerInitialized)="outputTest()"
         ></map-advanced-marker>
 
-        <map-info-window #infoRef="mapInfoWindow">
-          <img class="max-h-64 rounded-lg" src="{{ markerImg }}" />
-          <p class="pt-2 font-medium">Description:</p>
-          <p class="pt-2">{{ markerDes }}</p>
-          <button>
-            <p
-              class="pt-2 font-medium text-blue-600 hover:underline"
-              (click)="
-                openInfoDialog(
-                  markerDes,
-                  markerImg,
-                  markerPos,
-                  markerUser,
-                  markerTime
-                )
-              "
-            >
-              View Info
-            </p>
-          </button>
+        <map-info-window [options]="infoOptions" #infoRef="mapInfoWindow">
+          <div class="grid grid-cols-1">
+            <img class="max-h-64 rounded-lg place-self-center" src="{{ markerImg }}" />
+            <p class="pt-2 font-medium">Description:</p>
+            <p class="pt-2 line-clamp-2">{{ markerDes }}</p>
+            <button>
+              <p
+                class="pt-2 font-medium text-blue-600 hover:underline place-self-start"
+                (click)="
+                  openInfoDialog(
+                    markerDes,
+                    markerImg,
+                    markerPos,
+                    markerUser,
+                    markerTime
+                  )
+                "
+              >
+                View Info
+              </p>
+            </button>
+          </div>
         </map-info-window>
         }
       </google-map>

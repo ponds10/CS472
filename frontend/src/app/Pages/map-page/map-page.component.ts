@@ -55,6 +55,10 @@ export class MapPageComponent {
     streetViewControl: false
   }
 
+  infoOptions: google.maps.InfoWindowOptions = {
+    maxWidth: 400
+  }
+
   markers$ = this.mapService.loadMarkers() as Observable<DocumentData[]>;
 
   outputTest() {

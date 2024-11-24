@@ -11,16 +11,16 @@
         src="{{ data.img }}"
       />
     </div>
-    <div class="text-gray-500 font-light italic text-xs">
+    <div class="pt-1 text-gray-600 font-light italic text-xs">
       <p>Reported by: {{ data.un }} on {{ date }}</p>
     </div>
     <div class="pt-2 text-sm">
-      <p>Coordinates:</p>
+      <p class="font-bold">Coordinates:</p>
       <p>{{ data.crd.lat }}, {{ data.crd.lng }}</p>
       <a class="text-blue-600 font-medium hover:underline" href="{{ url }}">Get Directions</a>
     </div>
     <div class="pt-2 text-sm">
-      <p>Description:</p>
+      <p class="font-bold">Description:</p>
       <p>{{ data.des }}</p>
     </div>
   </div>

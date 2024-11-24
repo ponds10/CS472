@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PetsService } from '../../../../../core/services/pets/pets.service';
 import { Pet } from '../../../../../core/models/pet.model';
@@ -15,6 +15,16 @@ export class SearchPanelComponent {
   //petService = inject(PetsService);
   pets: Pet[] = []; // Array to store fetched pets
   filteredPets: Pet[] = []; // Array to store filtered pets
+  filterResults: Pet = {
+    id: '',
+    name: '',
+    species: '',
+    breed: '',
+    sex: '',
+    age: 0,
+    program: '',
+    size: '',
+  };
   catAges: string[] = [];
   dogAges: string[] = [];
   animalTypes: string[] = [];
@@ -40,6 +50,26 @@ export class SearchPanelComponent {
     this.animalPrograms = this.petService.animalPrograms;
   }
 
+  // output an array of the filters
+  // contemplating if i should do that
+  @Output() petsChange = new EventEmitter<Pet>();
+ 
+  
+
+  onSubmit(): void {
+    this.filterResults = {
+      id: '',
+      name: '',
+      species: this.selectedType,
+      breed: this.selectedBreed,
+      sex: this.selectedGender,
+      program: this.selectedProgram,
+      size: this.selectedSize,
+      age: this.selectedAge,
+    }
+    this.petsChange.emit(this.filterResults);
+  }
+
   selectAnimal(animal: 'cat' | 'dog') {
     this.selectedType = animal;
     if (animal === 'cat') {
@@ -49,16 +79,6 @@ export class SearchPanelComponent {
     }
   }
   
-  
-  
-  // filterPets() {
-  //   this.filteredPets = this.pets.filter(pet => {
-  //     // Check if the pet matches all selected filters
-  //     return (
-  //       (!this.selectedAge || pet.age === this.selectedAge) &&
-  //     (!this.selectedType || pet.type === this.selectedType) &&
-  //     );
-  //   });
-  // }
+
 
 }

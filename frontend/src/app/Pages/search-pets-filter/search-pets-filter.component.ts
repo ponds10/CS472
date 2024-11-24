@@ -6,13 +6,16 @@ import {MatSliderModule} from '@angular/material/slider';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from "../../../shared/header/header.component";
 import { ReactiveFormsModule, FormGroup, FormControl, FormsModule } from '@angular/forms';
-import { ViewportScroller } from '@angular/common';
+import { ViewportScroller, CommonModule } from '@angular/common';
 import { ViewChild } from '@angular/core';
 import { Pet } from '../../../core/models/pet.model';
 import { PetsService } from '../../../core/services/pets/pets.service';
+import { PetCardComponent } from '../../../shared/components/pet-card/pet-card.component';
 import { DocumentData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { SearchPanelComponent } from './search-panel/search-panel/search-panel.component';
+
+
 
 @Component({
   selector: 'app-search-pets-filter',
@@ -26,12 +29,24 @@ import { SearchPanelComponent } from './search-panel/search-panel/search-panel.c
           ReactiveFormsModule,
           FormsModule,
           SearchPanelComponent,
+          CommonModule,
+          PetCardComponent,
+        
         ],
   templateUrl: './search-pets-filter.component.html',
   styleUrl: './search-pets-filter.component.css'
 })
 export class SearchPetsFilterComponent {
   pets: Pet[] = [];
+  filterResults: Pet = {
+    id: '',
+    name: '',
+    species: '',
+    breed: '',
+    sex: '',
+    age: 0,
+    program: '',
+  };
   currentPage: number = 1;
   petsPerPage: number = 6;
   searchTerm: string = '';
@@ -40,8 +55,9 @@ export class SearchPetsFilterComponent {
   petServ = inject(PetsService);
   pets$ = this.petServ.loadPets() as Observable<DocumentData[]>;
 
-  constructor(private viewportscroller: ViewportScroller)
+  constructor(private viewportscroller: ViewportScroller, private readonly petService: PetsService)
   {}
+ 
 
   ngOnInit(): void {
     this.pets$.subscribe({
@@ -53,6 +69,7 @@ export class SearchPetsFilterComponent {
           breed: pet['breed'],
           sex: pet['sex'],
           age: pet['age'],
+          program: pet['program'],
           weight: pet['weight'],
           image: pet['image'],
           documents: pet['documents'],
@@ -66,15 +83,27 @@ export class SearchPetsFilterComponent {
     });
   }
 
+  public searchPets(petfilterResults: Pet): void  {
+    // get the filter options from child component
+    this.filterResults = petfilterResults;
+    
+  }
+  
+
   filteredPets(): Pet[] {
+    // return an array of filtered pets 
     return this.pets.filter((pet) => {
-      const matchesName = pet.name
-        .toLowerCase()
-        .includes(this.searchTerm.toLowerCase());
-      const matchesSpecies = this.selectedSpecies
-        ? pet.species === this.selectedSpecies
-        : true;
-      return matchesName && matchesSpecies;
+      console.log("hello");
+      console.log(this.filterResults.species);
+
+       //returns a boolean indicating whether the results exists
+       return (
+        (!this.filterResults.species || pet.species === this.filterResults.species) &&
+              (!this.filterResults.age || pet.age === this.filterResults.age) &&
+            (!this.filterResults.breed || pet.breed === this.filterResults.breed) &&
+            (!this.filterResults.sex || pet.sex === this.filterResults.sex) &&
+            (!this.filterResults.program || pet.program === this.filterResults.program)
+       )
     });
   }
 

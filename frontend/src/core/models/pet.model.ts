@@ -10,9 +10,11 @@ export interface Pet {
   species: string;
   breed: string;
   sex: string;
-  age?: string;
-  weight: string;
-  image?: string;
+  age?: number;
+  weight?: string;
+  size?: string;
+  image?: number;
+  program: string;
   documents?: PetAttribute[];
   contact?: ContactInfo;
 }

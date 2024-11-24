@@ -49,6 +49,7 @@ export class PetListComponent {
           breed: pet['breed'],
           sex: pet['sex'],
           age: pet['age'],
+          program: pet['program'],
           weight: pet['weight'],
           image: pet['image'],
           documents: pet['documents'],
@@ -67,10 +68,11 @@ export class PetListComponent {
       const matchesName = pet.name
         .toLowerCase()
         .includes(this.searchTerm.toLowerCase());
-      const matchesSpecies = this.selectedSpecies
-        ? pet.species === this.selectedSpecies
+      const matchesSpecies = this.selectedSpecies.toLowerCase()
+        ? pet.species === this.selectedSpecies.toLowerCase()
         : true;
       return matchesName && matchesSpecies;
+      
     });
   }
 
@@ -94,4 +96,30 @@ export class PetListComponent {
       this.currentPage--;
     }
   }
+
+  // filterPets() {
+  //   this.filteredPets = this.pets.filter(pet => {
+  //     // Check if the pet matches all selected filters
+  //     return (
+  //       (!this.selectedAge || pet.age === this.selectedAge) &&
+  //     (!this.selectedType || pet.species === this.selectedType) &&
+  //     (!this.selectedBreed || pet.breed === this.selectedBreed) &&
+  //     (!this.selectedGender || pet.sex === this.selectedGender) &&
+  //     (!this.selectedSize || pet.weight === this.selectedSize) &&
+  //     (!this.selectedProgram || pet.program === this.selectedProgram)
+
+  //     );
+  //   });
+  // }
+
+  // filterResults: Pet = {
+  //   id: '',
+  //   name: '',
+  //   species: this.selectedType,
+  //   breed: this.selectedBreed,
+  //   sex: this.selectedGender,
+  //   program: this.selectedProgram,
+  //   size: this.selectedSize,
+  //   age: this.selectedAge,
+  // }
 }

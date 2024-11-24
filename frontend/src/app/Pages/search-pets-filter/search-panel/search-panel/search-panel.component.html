@@ -3,20 +3,19 @@
     class="flex transition-all duration-500 ease-in-out rounded-xl shadow-2xl bg-white bg-opacity-50 overflow-hidden"
     [ngClass]="{
       'w-full h-auto flex-row': selectedType,
-      'w-96 h-56 flex-col ': !selectedType
+      'w-96 h-52 flex-col ': !selectedType
     }"
   >
     <!-- select animal section -->
     <div
-      class="flex flex-col grid grid-cols-2 items-center justify-center p-4 space-y-4 bg-gray-50 bg-opacity-30"
+      class="flex flex-col grid grid-cols-2 place-content-center p-4 bg-gray-50 bg-opacity-30"
     >
       <!-- Cat Icon -->
       <div
-        class="flex flex-col items-center cursor-pointer transition-transform transform hover:scale-105 border border-gray-300 border-4 bg-white rounded-xl p-4 shadow-xl"
+        class="flex flex-col mr-2 items-center cursor-pointer transition-transform transform hover:scale-105 border border-gray-300 border-4 bg-white rounded-xl p-4 shadow-xl"
         [ngClass]="{
           'border-blue-300': selectedType === 'cat'
         }"
-
         (click)="selectAnimal('cat')"
         (keypress)="selectAnimal('cat')"
       >
@@ -30,7 +29,7 @@
 
       <!-- Dog Icon -->
       <div
-        class="flex flex-col pb-4 items-center cursor-pointer transition-transform transform hover:scale-105 border border-gray-300 border-4 bg-white rounded-xl p-4 shadow-xl"
+        class="flex flex-col ml-2 items-center cursor-pointer transition-transform transform hover:scale-105 border border-gray-300 border-4 bg-white rounded-xl p-4 shadow-xl"
         [ngClass]="{
           'border-blue-300': selectedType === 'dog'
         }"
@@ -55,20 +54,7 @@
       }"
     >
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- Type Filter -->
-        <!-- <div>
-          <p class="text-center font-medium">Type</p>
-          <select
-            [(ngModel)]="selectedType"
-            (change)="animalTypeChange(selectedType)"
-            class="mt-2 px-3 py-2 border-solid border-2 border-blue-gray rounded-lg w-full shadow"
-          >
-            <option *ngFor="let type of animalTypes" [value]="type">
-              {{ type }}
-            </option>
-          </select>
-        </div> -->
-
+        <!-- Age Filter -->
         <div>
           <p class="text-center font-medium">Age</p>
           <select
@@ -78,7 +64,7 @@
             <option *ngFor="let age of catAges" [value]="age">{{ age }}</option>
           </select>
         </div>
-
+        <!-- Gender Filter -->
         <div>
           <p class="text-center font-medium">Gender</p>
           <select
@@ -91,6 +77,7 @@
           </select>
         </div>
 
+        <!-- Breed Filter -->
         <div>
           <p class="text-center font-medium">Breed</p>
           <select
@@ -103,6 +90,7 @@
           </select>
         </div>
 
+        <!-- Size filter -->
         <div>
           <p class="text-center font-medium">Sizes</p>
           <select
@@ -115,6 +103,7 @@
           </select>
         </div>
 
+        <!-- Program filter -->
         <div>
           <p class="text-center font-medium">Programs</p>
           <select
@@ -127,11 +116,13 @@
           </select>
         </div>
 
+        <!-- submit button -->
         <div class="col-end-4 flex">
-
           <button
-            class="mt-8 px-3 py-2 font-medium rounded-full w-full bg-blue-gray bg-opacity-80 text-black shadow"
+            class="mt-8 px-3 py-2 font-medium rounded-full w-full hover:bg-blue-400 bg-blue-gray bg-opacity-90 text-black shadow"
             type="submit"
+            
+            (click)="onSubmit()"
           >
             Search
           </button>

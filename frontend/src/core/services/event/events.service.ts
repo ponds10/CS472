@@ -103,7 +103,7 @@ export class EventsService {
     }
 
     // simple query, gets 12 events
-    const eventQuery = query(collection(this.firestore, 'events'), orderBy('date'), limit(12));
+    const eventQuery = query(collection(this.firestore, 'events'), orderBy('date'));
 
     // await the snapshop / documents
     //const snapshot = await getDocs(eventQuery);
@@ -117,6 +117,7 @@ export class EventsService {
     return collectionData(eventQuery)
   }
 
+  // this will probs be depreciated since i think a paginated query is too extra
   async getNextEvents()
   {
     // if the current user is null then return

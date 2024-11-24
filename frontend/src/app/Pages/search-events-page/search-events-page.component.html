@@ -8,42 +8,25 @@
 
     <div class="innerContainer">
 
-      <div class="h-fit w-full bg-cover bg-fixed bg-search tinted">
+      <div class="h-fit w-full bg-cover bg-fixed bg-event tinted">
         <div class="h-[500px] w-full font-bold text-7xl flex flex-col justify-end text-white
                     inset-0 bg-black opacity-50">
           <h1>
-            Find Your Next Furry Friend
+            Conect with your community
           </h1>
 
-          <div class="h-fit w-fit m-4 p-4 text-base text-black bg-white rounded-full flex space-x-16">
-            <div>
-              Dog
-            </div> 
-
-            <div>
-              Cat
-            </div> 
-
-            <div>
-              <button>
-                Search Now
-              </button>
-            </div>
-          </div>
+        
         </div>
       </div>
 
-        <div class="w-full mt-64 lg:mt-32 lg:flex lg:flex-col lg:items-center">
-            <div class="h-screen">
-              <button (click)="testing()">Get Events</button>
-            </div>
+        <div class="w-full flex justify-center">
+          <div class="grid grid-cols-1 p-8 gap-4 lg:grid-cols-3">
+            @for(event of events; let idx = $index; track idx)
+            {
+              <app-eventcard [event]="event"></app-eventcard>
+            }
+          </div>
         </div>
-
-        @for(event of events; let idx = $index; track idx)
-        {
-          hello
-          <app-eventcard [event]="event"></app-eventcard>
-        }
 
 
     </div>

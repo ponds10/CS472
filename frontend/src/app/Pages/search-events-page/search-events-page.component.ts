@@ -4,7 +4,6 @@ import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 import { EventsService } from '../../../core/services/event/events.service';
 import { Events } from '../../../core/models/events';
 import { EventcardComponent } from './eventcard/eventcard.component';
@@ -15,7 +14,7 @@ import { EventcardComponent } from './eventcard/eventcard.component';
   standalone: true,
   imports: [HeaderComponent, NavBarComponent, RouterModule, CommonModule, EventcardComponent]
 })
-export class SearchEventsPageComponent{
+export class SearchEventsPageComponent implements OnInit{
   events: Events[] | null = null;
 
   constructor(private eventService: EventsService) {}
@@ -28,5 +27,11 @@ export class SearchEventsPageComponent{
     })
   }
 
+  
 
+  ngOnInit(): void {
+    this.eventService.getInitalEvents().subscribe((data: Events[]) => {
+      this.events = data;
+    })
+  }
 }

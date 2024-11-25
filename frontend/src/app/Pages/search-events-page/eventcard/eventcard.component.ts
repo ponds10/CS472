@@ -15,7 +15,6 @@ export class EventcardComponent implements OnInit{
 
   ngOnInit(): void {
     const timestamp = this.event?.date as Timestamp
-    this.event!.date = timestamp.toDate();
     this.date = timestamp.toDate();
   }
 

@@ -1,23 +1,23 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { EventPageComponent } from './event-page.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { EventPageComponent } from './event-page.component';
 
 
-// describe('EventPageComponent', () => {
-//   let component: EventPageComponent;
-//   let fixture: ComponentFixture<EventPageComponent>;
+describe('EventPageComponent', () => {
+  let component: EventPageComponent;
+  let fixture: ComponentFixture<EventPageComponent>;
 
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       imports: [EventPageComponent]
-//     })
-//     .compileComponents();
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [EventPageComponent]
+    })
+    .compileComponents();
 
-//     fixture = TestBed.createComponent(EventPageComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    fixture = TestBed.createComponent(EventPageComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

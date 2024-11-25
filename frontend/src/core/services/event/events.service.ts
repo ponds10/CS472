@@ -17,6 +17,8 @@ export class EventsService {
   storage:Storage = inject(Storage);
   constructor(private navService: NavigationServiceService) { }
 
+
+  selectedEvent: Events | null = null;
   
   // upload an image
   async uploadImage(selectedImage: File): Promise<string> {

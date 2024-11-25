@@ -23,7 +23,7 @@
           <div class="grid grid-cols-1 p-8 gap-4 lg:grid-cols-3">
             @for(event of events; let idx = $index; track idx)
             {
-              <app-eventcard [event]="event"></app-eventcard>
+              <app-eventcard [event]="event" (click)="selectEvent(event)"></app-eventcard>
             }
           </div>
         </div>

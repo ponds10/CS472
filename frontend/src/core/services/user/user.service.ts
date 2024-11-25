@@ -162,10 +162,6 @@ export class UserService {
     {
       return this.currentImage;
     }
-    if(this.currentUser == null)
-    {
-      return;
-    }
 
     // if there is no current user, then also return and log
     if (this.auth.currentUser == null ) {

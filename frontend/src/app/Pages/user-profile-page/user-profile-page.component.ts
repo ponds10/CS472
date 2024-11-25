@@ -35,10 +35,9 @@ export class UserProfilePageComponent implements OnInit{
       {
         // lets say the observable returns before the currentUser gets assigned
         // in some strange world lol => the returned data should be good
-        if(this.userService.currentUser == null || this.userService.currentUser == undefined)
-        {
-          this.user = data;
-        }
+
+          this.user = this.userService.currentUser;
+
       })
     }
 
@@ -47,8 +46,8 @@ export class UserProfilePageComponent implements OnInit{
     // then call the userservice's get profile image and subscribe to the data
     if(this.image == null || this.image == undefined)
     {
-      from(this.userService.getProfileImage()).subscribe(data => {
-        this.image = data;
+      from(this.userService.getProfileImage()).subscribe((data) => {
+        this.image = this.userService.currentImage;
       })
     }
   }

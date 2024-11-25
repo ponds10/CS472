@@ -13,6 +13,7 @@
         [options]="options"
         mapId="afece44780f05ea6"
         (mapInitialized)="addControl()"
+        (mapClick)="chooseLocation($event)"
       >
         @for (marker of (markers$|async); track marker) { @let markerPos = {
         lat: marker['lat'], lng: marker['lng'] }; @let markerDes =
@@ -28,7 +29,10 @@
 
         <map-info-window [options]="infoOptions" #infoRef="mapInfoWindow">
           <div class="grid grid-cols-1">
-            <img class="max-h-64 rounded-lg place-self-center" src="{{ markerImg }}" />
+            <img
+              class="max-h-64 rounded-lg place-self-center"
+              src="{{ markerImg }}"
+            />
             <p class="pt-2 font-medium">Description:</p>
             <p class="pt-2 line-clamp-2">{{ markerDes }}</p>
             <button>

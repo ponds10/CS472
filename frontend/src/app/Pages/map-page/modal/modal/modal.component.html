@@ -5,36 +5,48 @@
     <div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
-          <label for="lat" class="text-label">Latitude<span class="text-red-500">*</span></label>
+          <label for="lat" class="text-label"
+            >Latitude<span class="text-red-500">*</span></label
+          >
           <input
             type="lat"
             id="lat"
             class="report-textbox"
-            placeholder="36.180545979079874"
+            placeholder="36"
             [(ngModel)]="this.slat"
             required
           />
         </div>
         <div>
-          <label for="lng" class="text-label">Longitude<span class="text-red-500">*</span></label>
+          <label for="lng" class="text-label"
+            >Longitude<span class="text-red-500">*</span></label
+          >
           <input
             type="lng"
             id="lng"
             class="report-textbox"
-            placeholder="-115.17917779168842"
+            placeholder="-115"
             [(ngModel)]="this.slng"
             required
           />
         </div>
       </div>
-      <button
-        type="submit"
-        class="text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center border hover:bg-gray-300 border-gray-600 dark:focus:ring-blue-800"
-        (click)="getpostion()"
-      >
-        Get current location
-      </button>
-
+      <div class="grid grid-cols-2 gap-3">
+        <button
+          type="submit"
+          class="text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center border hover:bg-gray-300 border-gray-600 dark:focus:ring-blue-800"
+          (click)="getpostion()"
+        >
+          Get current location
+        </button>
+        <button
+          type="submit"
+          class="text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center border hover:bg-gray-300 border-gray-600 dark:focus:ring-blue-800"
+          (click)="choosePosition()"
+        >
+          Choose location
+        </button>
+      </div>
       <div class="grid md:grid-cols-2 gap-3 pt-5">
         <input
           type="file"
@@ -55,17 +67,21 @@
         @if(this.file){
         <p class="font-light text-xs md:place-self-center">{{ file.name }}</p>
         } @else {
-        <p class="font-light text-xs md:place-self-center">File type must be .jpeg, .jpg, .png, or .heic</p>
+        <p class="font-light text-xs md:place-self-center">
+          File type must be .jpeg, .jpg, .png, or .heic
+        </p>
         }
       </div>
 
       <div class="pt-5 mb-6">
-        <label for="Description" class="text-label">Description<span class="text-red-500">*</span></label>
+        <label for="Description" class="text-label"
+          >Description<span class="text-red-500">*</span></label
+        >
         <textarea
-          class="form-control border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-black px-3 py-1.5 bg-gray-50 bg-clip-padding transition ease-in-out"
+          class="form-control border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 px-3 py-1.5 bg-gray-50 bg-clip-padding transition ease-in-out"
           id="description"
           rows="3"
-          placeholder="Please put the description of the location, what time, and how many cats were seen"
+          placeholder="Please put the description of the location, what time, how many cats were seen, and any additional information"
           [(ngModel)]="this.description"
           required
         ></textarea>

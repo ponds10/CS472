@@ -13,7 +13,7 @@ import {
   setDoc,
   collectionData,
   query,
-  orderBy
+  orderBy,
 } from '@angular/fire/firestore';
 
 import {
@@ -46,7 +46,6 @@ export class MapService {
   currentUser: User | null = this.auth.currentUser;
   userSubscription: Subscription;
 
-
   constructor() {
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
       this.currentUser = aUser;
@@ -57,19 +56,18 @@ export class MapService {
   addMarker = async (
     lat: number | null,
     lng: number | null,
-    
+
     description: string | null,
-    image: any | null,
+    image: any | null
   ): Promise<void | DocumentReference<DocumentData>> => {
     // ignore empty description
-    if (!description  && !lat && !lng) {
+    if (!description && !lat && !lng) {
       console.log(
         'addMarker was called without a all required fields:',
         lat,
         lng,
-        
-        description,
-        
+
+        description
       );
       return;
     }
@@ -85,13 +83,12 @@ export class MapService {
       timestamp: serverTimestamp(),
       // title: title,
       // description: description,
-    
+
       // lat: lat,
       // lng: lng,
       uid: this.currentUser.uid,
     };
 
-    
     lat && (marker.lat = lat);
     lng && (marker.lng = lng);
     description && (marker.description = description);
@@ -111,7 +108,12 @@ export class MapService {
 
   // Saves a new message containing an image in Firestore.
   // This first saves the image in Firebase storage.
-  saveMarker = async (lat: number, lng: number, description: string, file:File | null) => {
+  saveMarker = async (
+    lat: number,
+    lng: number,
+    description: string,
+    file: File | null
+  ) => {
     // try {
     //   // 1 -  loading icon that will get updated with the shared image.
     //   const markerRef = await this.addMarker(
@@ -122,30 +124,41 @@ export class MapService {
     //     this.LOADING_IMAGE_URL
     //   );
 
-     let publicImageUrl = '';
+    let publicImageUrl = '';
 
     // upload image to cloud storage
-    if (file){
+    if (file) {
       const filePath = `map-images/${file.name}`;
       const newImageRef = ref(this.storage, filePath);
       const fileSnapshot = await uploadBytesResumable(newImageRef, file);
 
       // 3 - Generate a public URL for the file.
       publicImageUrl = await getDownloadURL(newImageRef);
-     
     }
-    
 
-      return this.addMarker( lat, lng, description, publicImageUrl);
-    
+    return this.addMarker(lat, lng, description, publicImageUrl);
   };
 
-  loadMarkers =  () => {
-    const markers = query(collection(this.firestore, 'marker'), orderBy('timestamp', 'desc'));
+  loadMarkers = () => {
+    const markers = query(
+      collection(this.firestore, 'marker'),
+      orderBy('timestamp', 'desc')
+    );
     return collectionData(markers);
   };
+
+  clicklat: string = '';
+  clicklng: string = '';
+  clickFlag: boolean = false;
+
+  clickPosition = (event: google.maps.MapMouseEvent) => {
+    this.clicklat = String(event.latLng?.lat());
+    this.clicklng = String(event.latLng?.lng());
+  };
+
+  des: string = '';
+  file: File | null = null;
 
   // update marker in Cloud Firestore
   async updateData(path: string, data: any) {}
 }
-

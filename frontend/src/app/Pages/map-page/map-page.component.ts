@@ -4,7 +4,7 @@ import {
   Component,
   ViewChild,
   inject,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
 import {
   GoogleMap,
@@ -18,8 +18,9 @@ import { MapInfoBoxComponent } from './map-info-box/map-info-box.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal/modal.component';
 import { MapService } from '../../../core/services/map/map.service';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { DocumentData } from '@angular/fire/firestore';
+import { UserInterface } from '../../../core/services/map/map.service';
 
 @Component({
   selector: 'app-map-page',
@@ -32,46 +33,65 @@ import { DocumentData } from '@angular/fire/firestore';
     MapInfoWindow,
     HeaderComponent,
     NavBarComponent,
-    MapInfoBoxComponent,
-    ModalComponent,
   ],
   templateUrl: './map-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapPageComponent {
   mapService = inject(MapService);
+  userInfo: UserInterface | null = null;
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef) {
+    this.userInfo = this.mapService.userInfo;
+
+    if(this.userInfo == null) {
+      from(this.mapService.getUserType()).subscribe((data) => {
+        this.userInfo = data;
+      })
+    }
+  }
 
   @ViewChild(GoogleMap) map!: GoogleMap;
 
   options: google.maps.MapOptions = {
     center: {
-    lat: 36.180545979079874,
-    lng: -115.17917779168842,
+      lat: 36.180545979079874,
+      lng: -115.17917779168842,
     },
     zoom: 11,
     mapTypeControl: false,
-    streetViewControl: false
-  }
+    streetViewControl: false,
+  };
 
   infoOptions: google.maps.InfoWindowOptions = {
-    maxWidth: 400
-  }
+    maxWidth: 400,
+  };
 
   markers$ = this.mapService.loadMarkers() as Observable<DocumentData[]>;
 
-  outputTest() {
-    console.log('hello')
+  chooseLocation(event: google.maps.MapMouseEvent) {
+    if (this.mapService.clickFlag) {
+      this.mapService.clickPosition(event);
+      this.mapService.clickFlag = false;
+
+      const dialogRef = this.dialog.open(ModalComponent, {});
+
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log('The dialog was closed');
+      });
+    }
   }
-  
+
+  outputTest() {
+    console.log('hello');
+  }
 
   openInfoWindow(marker: MapAdvancedMarker, infoWindow: MapInfoWindow) {
     infoWindow.open(marker);
   }
 
   createNewMarkerControl(map: GoogleMap) {
-    console.log('Called create control')
+    console.log('Called create control');
     const controlButton = document.createElement('button');
 
     controlButton.style.backgroundColor = '#fff';
@@ -109,9 +129,21 @@ export class MapPageComponent {
     });
   }
 
-  openInfoDialog(description: any, image: any, coordinates: any, username: any, timestamp: any): void {
+  openInfoDialog(
+    description: any,
+    image: any,
+    coordinates: any,
+    username: any,
+    timestamp: any
+  ): void {
     const dialogRef = this.dialog.open(MapInfoBoxComponent, {
-      data: {des: description, img: image, crd: coordinates, un: username, ts: timestamp}
+      data: {
+        des: description,
+        img: image,
+        crd: coordinates,
+        un: username,
+        ts: timestamp,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -121,13 +153,12 @@ export class MapPageComponent {
 
   addControl() {
     this.cdr.detectChanges();
-    console.log('called addControl')
+    console.log('called addControl');
     const newMarkerControl = this.createNewMarkerControl(this.map);
     const newMarkerControlDiv = document.createElement('div');
     newMarkerControlDiv.appendChild(newMarkerControl);
     this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(
       newMarkerControlDiv
     );
-    
   }
 }

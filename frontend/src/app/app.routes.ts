@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
-//import { EventPageComponent } from './Pages/event-page/event-page.component';
+import { EventPageComponent } from './Pages/event-page/event-page.component';
 import { PetPageComponent } from './Pages/pet-page/pet-page.component';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { DocumentsPageComponent } from './DashboardPages/documents-page/documents-page.component';
@@ -20,7 +20,7 @@ import { authGuard } from '../core/guard/auth.guard';
 export const routes: Routes = [
     {path: '', component: LandingPageComponent},
     {path: 'login', component: LoginPageComponent},
-   // {path: 'eventpage', component: EventPageComponent},
+    {path: 'event', component: EventPageComponent},
    // {path: 'eventpage/:id', component: EventPageComponent},  // Updated to accept event ID as a parameter
     {path: 'petlist/:id', component: PetPageComponent, canActivate: [authGuard]},
     {path: 'petlist', component: PetListComponent, canActivate: [authGuard]}, //the pets/results page is this, delete later

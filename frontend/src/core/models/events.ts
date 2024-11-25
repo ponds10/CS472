@@ -1,3 +1,5 @@
+import { Timestamp } from "@angular/fire/firestore";
+
 export interface Events {
     organizer: string;
     title: string;
@@ -5,7 +7,7 @@ export interface Events {
 
     imageURL: string;
 
-    date: Date;
+    date: Timestamp | Date;
     street: string;
     city: string;
     state: string;

@@ -1,48 +1,53 @@
-// import { HeaderComponent } from '../../../shared/header/header.component';
-// import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
+import { HeaderComponent } from '../../../shared/header/header.component';
+import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
 
-// import { EventService } from '../../services/event.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MatChipsModule } from '@angular/material/chips';
+import { EventsService } from '../../../core/services/event/events.service';
+import { Events } from '../../../core/models/events';
+import { Timestamp } from '@angular/fire/firestore';
+@Component({
+  selector: 'app-event-page',
+  templateUrl: './event-page.component.html',
+  styleUrls: ['./event-page.component.css'],
+  standalone: true,
+  imports: [HeaderComponent, NavBarComponent, CommonModule, MatChipsModule]
+})
+export class EventPageComponent implements OnInit{
+    constructor(private eventService: EventsService){}
+    selectedEvent: Events | null = null;
+    eventDate: Date | null = null;
 
-// import { Component, OnInit } from '@angular/core';
-// import { ActivatedRoute, Router } from '@angular/router';
-// import { CommonModule } from '@angular/common';
-// import { MatChipsModule } from '@angular/material/chips';
+    ngOnInit(): void {
+        this.selectedEvent = this.eventService.selectedEvent;
+        const eventTimestamp = this.selectedEvent?.date as Timestamp;
+        this.eventDate = eventTimestamp.toDate();
+    }
 
-// @Component({
-//   selector: 'app-event-page',
-//   templateUrl: './event-page.component.html',
-//   styleUrls: ['./event-page.component.css'],
-//   standalone: true,
-//   imports: [HeaderComponent, NavBarComponent, CommonModule, MatChipsModule]
-// })
-// export class EventPageComponent implements OnInit {
-//   selectedEvent: any = {
-//     isRegistered: false
-//   };
-//   userLoggedIn: boolean = false;
+    getMonth()
+    {
+    switch(this.eventDate?.getMonth())
+    {
+      case 0: return "January"; break;
+      case 1: return "February"; break;
+      case 2: return "March"; break;
+      case 3: return "April"; break;
+      case 4: return "May"; break;
+      case 5: return "June"; break;
+      case 6: return "July"; break;
+      case 7: return "August"; break;
+      case 8: return "September"; break;
+      case 9: return "October"; break;
+      case 10: return "November"; break;
+      case 11: return "December"; break;
+      default: return; break;
+    }
+  }
 
-//   registerForEvent() {
-//     if (!this.userLoggedIn) {
-//       alert("Please log into register for the event.");
-//     } else {
-//       this.selectedEvent.isRegistered = true;
-//     }
-//   }
-
-//   constructor(
-//     private route: ActivatedRoute,
-//     private eventService: EventService,
-//     private router: Router
-//   ) {}
-
-//   ngOnInit(): void {
-//     // get the event ID from the route parameters
-//     const eventId = this.route.snapshot.paramMap.get('id');
-//     if (eventId) {
-//       // fetch the event details from the service using the event ID
-//       this.eventService.getEventById(eventId).subscribe((event) => {
-//         this.selectedEvent = event;
-//       });
-//     }
-//   }
-// }
+  getDay()
+  {
+    return this.eventDate?.getDate()
+  }
+}

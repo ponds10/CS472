@@ -15,10 +15,11 @@
         (mapInitialized)="addControl()"
         (mapClick)="chooseLocation($event)"
       >
-        @for (marker of (markers$|async); track marker) { @let markerPos = {
-        lat: marker['lat'], lng: marker['lng'] }; @let markerDes =
-        marker['description']; @let markerImg = marker['image']; @let markerUser
-        = marker['name']; @let markerTime = marker['timestamp'];
+        @if(userInfo?.accountType != 'individual') { @for (marker of
+        (markers$|async); track marker) { @let markerPos = { lat: marker['lat'],
+        lng: marker['lng'] }; @let markerDes = marker['description']; @let
+        markerImg = marker['image']; @let markerUser = marker['name']; @let
+        markerTime = marker['timestamp'];
 
         <map-advanced-marker
           #markerRef="mapAdvancedMarker"
@@ -53,7 +54,7 @@
             </button>
           </div>
         </map-info-window>
-        }
+        } }
       </google-map>
     </div>
   </div>

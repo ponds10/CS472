@@ -18,8 +18,9 @@ import { MapInfoBoxComponent } from './map-info-box/map-info-box.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal/modal.component';
 import { MapService } from '../../../core/services/map/map.service';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { DocumentData } from '@angular/fire/firestore';
+import { UserInterface } from '../../../core/services/map/map.service';
 
 @Component({
   selector: 'app-map-page',
@@ -38,8 +39,17 @@ import { DocumentData } from '@angular/fire/firestore';
 })
 export class MapPageComponent {
   mapService = inject(MapService);
+  userInfo: UserInterface | null = null;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) {
+    this.userInfo = this.mapService.userInfo;
+
+    if(this.userInfo == null) {
+      from(this.mapService.getUserType()).subscribe((data) => {
+        this.userInfo = data;
+      })
+    }
+  }
 
   @ViewChild(GoogleMap) map!: GoogleMap;
 

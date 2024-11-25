@@ -14,6 +14,10 @@ import {
   collectionData,
   query,
   orderBy,
+  where,
+  doc,
+  limit,
+  getDocs
 } from '@angular/fire/firestore';
 
 import {
@@ -35,6 +39,20 @@ type Marker = {
   uid: string;
 };
 
+export interface UserInterface {
+  biography: string,
+  city: string,
+  email: string,
+  first_name: string,
+  last_name: string,
+  phone:string,
+  state: string,
+  street: string,
+  userID: string,
+  zip: string,
+  accountType: string,
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -45,11 +63,26 @@ export class MapService {
   user$ = user(this.auth);
   currentUser: User | null = this.auth.currentUser;
   userSubscription: Subscription;
+  userInfo: UserInterface | null = null;
 
   constructor() {
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
       this.currentUser = aUser;
     });
+
+    
+  }
+
+  async getUserType() {
+    const typeQuery = query(collection(this.firestore, 'userInfo'), where("userID", "==", this.auth.currentUser?.uid), limit(5));
+
+    const snapshot = await getDocs(typeQuery)
+
+    snapshot.forEach((doc) => {
+      this.userInfo = doc.data() as UserInterface
+    })
+
+    return this.userInfo
   }
 
   // add marker from map to Cloud Firestore

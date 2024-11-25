@@ -32,14 +32,14 @@
                 {
                     @if(day[1])
                     {
-                        <div class="bg-blue-100 bg-opacity-50 border-2 rounded-full 
+                        <div class="bg-blue-300 bg-opacity-100 border-2 rounded-full 
                                     h-[25px] w-[25px] flex justify-center items-center" 
-                            (click)="selectDay(idx)">{{day[0]}}
+                        >{{day[0]}}
                         </div>
                     }
                     @else
                     {
-                        <div class="h-[25px] w-[25px] flex justify-center items-center" (click)="selectDay(idx)">{{day[0]}}</div>
+                        <div class="h-[25px] w-[25px] flex justify-center items-center">{{day[0]}}</div>
                     }
                 }
                 @else

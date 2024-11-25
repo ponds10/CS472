@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { AfterViewInit, Component, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
@@ -13,7 +13,7 @@ import { Timestamp } from '@angular/fire/firestore';
   templateUrl: './events-calendar.component.html',
   styleUrl: './events-calendar.component.css'
 })
-export class EventsCalendarComponent {
+export class EventsCalendarComponent implements OnInit{
   currentMonth: number = 0;
   currentYear: number = 0;
   startDay: number = 0;
@@ -22,16 +22,19 @@ export class EventsCalendarComponent {
   bools: boolean[] = []
   currentMonthName: string = ""
 
-  @Output() monthEmitter: EventEmitter<string> = new EventEmitter();
-  @Output() dayEmitter: EventEmitter<string>  = new EventEmitter();
-  @Output() yearEmitter: EventEmitter<string>  = new EventEmitter();
 
   constructor(public eventService: EventsService)
   {
 
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.eventService.getAttendedEvents()
+    await this.calendarSetUp();
+  }
+
+  async calendarSetUp()
+  {
     // Get the current date
     const today = new Date();
 
@@ -58,11 +61,6 @@ export class EventsCalendarComponent {
     }
 
     this.currentMonthName = this.getMonthString(this.currentMonth)
-
-    if(this.eventService.attendedEvents == null)
-    {
-      this.eventService.getAttendedEvents();
-    }
   }
 
   getMonthString(month:number)
@@ -136,22 +134,22 @@ export class EventsCalendarComponent {
     }
 
     this.currentMonthName = this.getMonthString(this.currentMonth)
+    this.selectDays()
   }
 
-  selectDay(idx: number)
+  selectDays()
   {
-    this.days.forEach((day) => {
-      day[1] = false;
-    })
-    this.days[idx][1] = !this.days[idx][1]
 
-    // console.log(this.currentMonthName)
-    // console.log(this.currentYear.toString())
-    // console.log(this.days[idx][0].toString())
-
-    this.monthEmitter.emit(this.currentMonthName);
-    this.dayEmitter.emit(this.days[idx][0].toString());
-    this.yearEmitter.emit(this.currentYear.toString());
+    let chunk_days = [];
+    for(const event of this.eventService.attendedEvents!)
+    {
+      const timestamp = event.date as Timestamp;
+      const date = timestamp.toDate();
+      if(date.getMonth() == this.currentMonth)
+      {
+        this.days[date.getDate() + this.startDay][1] = true;
+      }
+    }
   }
 
   timestampHelper(input:Timestamp | Date)

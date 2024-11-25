@@ -197,6 +197,7 @@ export class EventsService {
               chunk_ids.push(eventAttendance.eventID)
             }
 
+            
             const eventAttendanceQuery2 = query(collection(this.firestore, 'events'), where("eventID", "in", chunk_ids));
             return collectionData(eventAttendanceQuery2)
         })

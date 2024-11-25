@@ -6,6 +6,7 @@ import { EventsCalendarComponent } from './events-calendar/events-calendar.compo
 import { UserService } from '../../../core/services/user/user.service';
 import { User } from '../../../core/models/user';
 import { from } from 'rxjs';
+import { EventsService } from '../../../core/services/event/events.service';
 @Component({
   selector: 'app-home-page',
   standalone: true,
@@ -15,7 +16,7 @@ import { from } from 'rxjs';
 })
 export class HomePageComponent {
   user: User | null | undefined = null;
-  constructor(private userService: UserService)
+  constructor(private userService: UserService, private eventService: EventsService)
   {
   }
 
@@ -30,7 +31,7 @@ export class HomePageComponent {
       {
         this.user = this.userService.currentUser;
       })
-
     }
+    this.eventService.getAttendedEvents();
   }
 }

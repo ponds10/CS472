@@ -2,6 +2,10 @@ import { Component, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { EventsService } from '../../../../core/services/event/events.service';
+import { Events } from '../../../../core/models/events';
+import { EventsAttendance } from '../../../../core/models/events';
+import { Timestamp } from '@angular/fire/firestore';
 @Component({
   selector: 'app-events-calendar',
   standalone: true,
@@ -21,7 +25,8 @@ export class EventsCalendarComponent {
   @Output() monthEmitter: EventEmitter<string> = new EventEmitter();
   @Output() dayEmitter: EventEmitter<string>  = new EventEmitter();
   @Output() yearEmitter: EventEmitter<string>  = new EventEmitter();
-  constructor()
+
+  constructor(public eventService: EventsService)
   {
 
   }
@@ -53,6 +58,11 @@ export class EventsCalendarComponent {
     }
 
     this.currentMonthName = this.getMonthString(this.currentMonth)
+
+    if(this.eventService.attendedEvents == null)
+    {
+      this.eventService.getAttendedEvents();
+    }
   }
 
   getMonthString(month:number)
@@ -142,5 +152,11 @@ export class EventsCalendarComponent {
     this.monthEmitter.emit(this.currentMonthName);
     this.dayEmitter.emit(this.days[idx][0].toString());
     this.yearEmitter.emit(this.currentYear.toString());
+  }
+
+  timestampHelper(input:Timestamp | Date)
+  {
+    const timestamp = input as Timestamp;
+    return timestamp.toDate()
   }
 }

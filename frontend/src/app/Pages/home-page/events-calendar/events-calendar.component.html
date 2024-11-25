@@ -56,6 +56,19 @@
         Your Upcoming Events
     </div>
 
+    @for(event of this.eventService.attendedEvents; let idx = $index; track idx)
+    {
+        <div class="eventsBox">
+            <div>
+                {{event.title}}
+            </div>
+            <div class="text-xs">
+                {{event.summary}} <br>
+                {{timestampHelper(event.date)}}
+            </div>
+        </div>
+    }
+
     <div class="eventsBox">
         <div>
             TNR Workshop

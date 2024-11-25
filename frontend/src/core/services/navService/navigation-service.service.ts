@@ -32,4 +32,14 @@ export class NavigationServiceService {
   {
     this.router.navigate(['/event']);
   }
+
+  navigateToSearchEventPage()
+  {
+    this.router.navigate(['/search/events']);
+  }
+
+  navigateToCreateEvent()
+  {
+    this.router.navigate(['/create/event']);
+  }
 }

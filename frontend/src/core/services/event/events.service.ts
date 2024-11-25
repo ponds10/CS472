@@ -87,7 +87,7 @@ export class EventsService {
           eventID: crypto.randomUUID(),
         },
       );
-
+      this.navService.navigateToSearchEventPage();
       return newEvent;
     } 
     catch (error) 

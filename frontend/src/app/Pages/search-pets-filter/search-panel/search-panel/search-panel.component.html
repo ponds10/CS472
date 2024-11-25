@@ -1,19 +1,19 @@
-<div class="flex justify-center items-center lg:px-72">
+<div class="flex justify-center items-center ">
   <div
     class="flex transition-all duration-500 ease-in-out rounded-xl shadow-2xl bg-white bg-opacity-50 overflow-hidden"
     [ngClass]="{
-      'w-full h-auto flex-row': selectedType,
-      'w-96 h-52 flex-col ': !selectedType
+      'h-auto flex-row': selectedType,
+      'min-w-92 max-w-92 min-h-52 max-h-52 flex-col ': !selectedType
     }"
   >
     <!-- select animal section -->
     <div
-      class=" grid grid-cols-2 place-content-center p-4 bg-gray-50 bg-opacity-30"
+      class=" grid grid-cols-2 place-content-center min-w-4/12 max-w-4/12 p-4 bg-gray-50 bg-opacity-30"
     >
       <!-- Cat Icon -->
        <!-- the classes defined in [ngClass] are applied before those in class attribute -->
       <button
-        class="flex flex-col mr-2 items-center cursor-pointer transition-transform transform hover:scale-105 bg-white rounded-xl p-4 shadow-xl border-4"
+        class="flex flex-col mr-2 min-w-36  max-w-36 items-center cursor-pointer transition-transform transform hover:scale-105 bg-white rounded-xl p-4 shadow-xl border-4"
         [ngClass]="{
           'border border-blue-300 ': selectedType === 'cat',
           'border border-gray-300 ': selectedType !== 'cat'
@@ -23,14 +23,14 @@
         <img
           src="./assets/images/black-cat.png"
           alt="Cat Icon"
-          class="w-24 h-24 mb-2"
+          class="min-w-24 min-h-24  max-w-24 max-h-24 mb-2"
         />
         <span class="text-lg font-medium">Cat</span>
       </button>
 
       <!-- Dog Icon -->
       <button
-        class="flex flex-col ml-2 items-center cursor-pointer transition-transform transform hover:scale-105 bg-white rounded-xl p-4 shadow-xl border-4"
+        class="flex flex-col ml-2 min-w-36 max-w-36 items-center cursor-pointer transition-transform transform hover:scale-105 bg-white rounded-xl p-4 shadow-xl border-4"
         [ngClass]="{
           'border border-blue-300 ': selectedType === 'dog',
           'border border-gray-300 ': selectedType !== 'dog'
@@ -54,9 +54,9 @@
         'opacity-0 hidden': !selectedType
       }"
     >
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="md:grid md:grid-cols-3 gap-6">
         <!-- Age Filter -->
-        <div>
+        <div class="min-w-32 max-w-32">
           <label for="age-select" class="text-center font-medium">Age</label>
           <select
             id="age-select"
@@ -68,7 +68,7 @@
           </select>
         </div>
         <!-- Gender Filter -->
-        <div>
+        <div  class="min-w-32 max-w-32">
           <label for="gender-select" class="text-center font-medium">Gender</label>
           <select
             id="gender-select"
@@ -83,7 +83,7 @@
         </div>
 
         <!-- Breed Filter -->
-        <div>
+        <div class="min-w-32 max-w-32">
           <label for="breed-select" class="text-center font-medium">Breed</label>
           <select
             id="breed-select"
@@ -98,7 +98,7 @@
         </div>
 
         <!-- Size filter -->
-        <div>
+        <div class="min-w-32 max-w-32">
           <label for="size-select" class="text-center font-medium">Sizes</label>
           <select
             id="size-select"
@@ -113,7 +113,7 @@
         </div>
 
         <!-- Program filter -->
-        <div>
+        <div class="min-w-32 max-w-32">
           <label for="program-select" class="text-center font-medium">Programs</label>
           <select
             id="program-select"
@@ -130,7 +130,7 @@
         <!-- submit button -->
         <div class="col-end-4 flex">
           <button
-            class="mt-8 px-3 py-2 font-medium rounded-full w-full hover:bg-blue-400 bg-blue-gray bg-opacity-90 text-black shadow"
+            class="min-w-32 max-w-32 mt-8 px-3 py-2 font-medium rounded-full w-full hover:bg-blue-400 bg-blue-gray bg-opacity-90 text-black shadow"
             type="submit"
             
             (click)="onSubmit()"

@@ -20,48 +20,38 @@ export class PetsService {
   constructor() { }
 
   animalTypes: string[] = [
-    'Any',
     'Cat',
     'Dog',
   ]
 
   catBreeds: string[] = [
-    'Any',
     'Calico'
   ]
 
   dogBreeds: string[] = [
-    'Any',
-    'bulldog'
+    'bulldog',
+    'pitbull',
   ]
 
   animalGenders: string[] = [
-    'Any',
     'Male',
     'Female'
   ]
 
-  catAges: string[] = [
-    'Any',
+  ages: string[] = [
     '0-1',
     '2-6',
     '7-9',
     '10+'
   ]
 
-  dogAges: string[] = [
-    'Any'
-  ]
-
   animalSizes: string[] = [
-    'Any',
     'Small',
     'Medium',
     'Large'
   ]
 
   animalPrograms: string[] = [
-    'Any',
     'Shelter',
     'Foster'
   ]

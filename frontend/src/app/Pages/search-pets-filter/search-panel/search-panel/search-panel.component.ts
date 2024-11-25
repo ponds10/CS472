@@ -12,21 +12,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './search-panel.component.css'
 })
 export class SearchPanelComponent {
-  //petService = inject(PetsService);
-  pets: Pet[] = []; // Array to store fetched pets
-  filteredPets: Pet[] = []; // Array to store filtered pets
-  filterResults: Pet = {
-    id: '',
-    name: '',
-    species: '',
-    breed: '',
-    sex: '',
-    age: 0,
-    program: '',
-    size: '',
-  };
-  catAges: string[] = [];
-  dogAges: string[] = [];
+
+  filterResults: Pet | null | undefined = null;
+  ages: string[] = [];
+
   animalTypes: string[] = [];
   animalGenders: string[] = [];
   animalSizes: string[] = [];
@@ -34,7 +23,7 @@ export class SearchPanelComponent {
   Breeds: string[] = [];
   
   selectedType: string = "";
-  selectedAge: number = 0;
+  selectedAge: number | undefined = undefined;
   searchTerm: string = '';
   selectedGender: string = '';
   selectedSize: string = '';
@@ -42,19 +31,19 @@ export class SearchPanelComponent {
   selectedBreed: string = '';
 
   constructor(private petService: PetsService) { 
-    this.catAges = this.petService.catAges;
-    this.dogAges = this.petService.dogAges;
+    this.ages = this.petService.ages;
     this.animalTypes = this.petService.animalTypes;
     this.animalGenders = this.petService.animalGenders;
     this.animalSizes = this.petService.animalSizes;
     this.animalPrograms = this.petService.animalPrograms;
   }
 
-  // output an array of the filters
-  // contemplating if i should do that
+  // output decorator that creates a communication path from child (this component)
+  // to parent (search-pets-filter component)
   @Output() petsChange = new EventEmitter<Pet>();
  
   
+  // generate events that can be listened by the parent component triggered by emit method
 
   onSubmit(): void {
     this.filterResults = {
@@ -70,8 +59,12 @@ export class SearchPanelComponent {
     this.petsChange.emit(this.filterResults);
   }
 
+
+  // changes the breed types based on the selected species (cat or dog)
   selectAnimal(animal: 'cat' | 'dog') {
     this.selectedType = animal;
+    console.log('Selected Type:', this.selectedType); // Debugging line
+
     if (animal === 'cat') {
       this.Breeds = this.petService.catBreeds;
     } else if (animal === 'dog') {
@@ -79,6 +72,4 @@ export class SearchPanelComponent {
     }
   }
   
-
-
 }

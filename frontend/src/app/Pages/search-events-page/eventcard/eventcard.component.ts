@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Events } from '../../../../core/models/events';
 import { Input } from '@angular/core';
 import { Timestamp } from '@angular/fire/firestore';
+import { EventsService } from '../../../../core/services/event/events.service';
 @Component({
   selector: 'app-eventcard',
   standalone: true,
@@ -10,6 +11,11 @@ import { Timestamp } from '@angular/fire/firestore';
   styleUrl: './eventcard.component.css'
 })
 export class EventcardComponent implements OnInit{
+  constructor(private eventService: EventsService)
+  {
+
+  }
+
   @Input() event: Events | null = null;
   date: Date | null = null;
 
@@ -41,6 +47,11 @@ export class EventcardComponent implements OnInit{
   getDay()
   {
     return this.date?.getDate()
+  }
+
+  attendEvent()
+  {
+    this.eventService.attendEvent(this.event as Events);
   }
 }
 

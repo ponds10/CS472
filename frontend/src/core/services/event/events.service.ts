@@ -5,8 +5,9 @@ import { collectionData, Firestore, Timestamp } from '@angular/fire/firestore';
 import { addDoc, collection, query, orderBy, limit, where, getDocs, startAfter } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
-import { Events } from '../../models/events';
+import { Events, EventsAttendance } from '../../models/events';
 import { NavigationServiceService } from '../navService/navigation-service.service';
+import { concatMap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,9 +18,11 @@ export class EventsService {
   storage:Storage = inject(Storage);
   constructor(private navService: NavigationServiceService) { }
 
-
+  // manages state for various pages
   selectedEvent: Events | null = null;
-  
+  attendedEventsIds: EventsAttendance[] | null = null;
+  attendedEvents: Events[] | null = null;
+
   // upload an image
   async uploadImage(selectedImage: File): Promise<string> {
     // if the current user is null then return
@@ -107,10 +110,7 @@ export class EventsService {
     // simple query, gets 12 events
     const eventQuery = query(collection(this.firestore, 'events'), orderBy('date'));
 
-    // await the snapshop / documents
     //const snapshot = await getDocs(eventQuery);
-
-    // need to save this to a local var in the service 
     // const last_entry = snapshot.docs[snapshot.docs.length-1];
     // snapshot.forEach((doc) => {
     //   console.log(doc.data())
@@ -148,5 +148,68 @@ export class EventsService {
 
     return snapshot;
 
+  }
+
+  async attendEvent(event: Events)
+  {
+    // if the current user is null then return
+    if (this.auth.currentUser === null || this.auth.currentUser === undefined) {
+      this.navService.navigateToLoginPage();
+      return;
+    }
+
+    try 
+    {
+      const newEventAttendance = await addDoc(
+        collection(this.firestore, "eventAttendance"),
+        {
+          userID: this.auth.currentUser!.uid,
+          eventID: event.eventID,
+        },
+      );
+    } 
+    catch (error) 
+    {
+      console.error("Error writing event attendance to Firebase Database", error);
+      return;
+    }
+  }
+
+  getAttendedEvents()
+  {
+    // if the current user is null then return
+    if (this.auth.currentUser === null || this.auth.currentUser === undefined) {
+      this.navService.navigateToLoginPage();
+        return;
+    }
+
+    try
+    {
+      const eventAttendanceQuery = query(collection(this.firestore, 'eventAttendance'), where("userID", "==", this.auth.currentUser?.uid));
+      
+      // Main flow using concatMap
+      collectionData(eventAttendanceQuery).pipe(
+        concatMap( (eventIds: EventsAttendance[])=> {
+          // Process the list of user IDs (for loop or any processing)
+            console.log(eventIds)
+            let chunk_ids = []
+            for (const eventAttendance of eventIds) {
+              chunk_ids.push(eventAttendance.eventID)
+            }
+
+            const eventAttendanceQuery2 = query(collection(this.firestore, 'events'), where("eventID", "in", chunk_ids));
+            return collectionData(eventAttendanceQuery2)
+        })
+      ).subscribe({
+        next: (result: Events[]) => {
+          this.attendedEvents = result;
+          console.log(result)
+        }
+      });
+    }
+    catch(error)
+    {
+      console.log("Error, retrieving records")
+    }
   }
 }

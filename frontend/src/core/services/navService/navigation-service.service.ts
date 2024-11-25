@@ -27,4 +27,9 @@ export class NavigationServiceService {
   {
     this.router.navigate(['/newAccount']);
   }
+
+  naviageToEventPage()
+  {
+    this.router.navigate(['/event']);
+  }
 }

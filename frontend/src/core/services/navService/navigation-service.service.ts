@@ -47,4 +47,9 @@ export class NavigationServiceService {
   {
     this.router.navigate(['/search/pets/results/', pet.id] );
   }
+
+  navigateToDocumentsPage()
+  {
+    this.router.navigate(['/documentspage']);
+  }
 }

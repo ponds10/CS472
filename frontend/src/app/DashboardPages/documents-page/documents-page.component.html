@@ -6,32 +6,51 @@
   <div class="navbarContainer">
     <app-nav-bar></app-nav-bar>
   </div>
-  <div class="innerContainer p-16 pt-8 space-y-4"> <!--Don't change-->
-    <div class="grid grid-cols-4 w-full space-y-16 lg:space-x-16"> <!--Beginning overall tag-->
+  <div class="innerContainer pl-32 pt-16 space-y-4"> <!--Don't change-->
+    <div class="grid grid-cols-4 w-full gap-16"> <!--Beginning overall tag-->
       <!--First horizontal section-->
-      <div class="col-span-4 lg:col-span-2 ml-8">
+      <div class="col-span-4 lg:col-span-2">
         <!--Folders-->
-        <div class="grid grid-cols-2 ml-8">
-          <!--Folder 1-->
-          <a href="#" class="inline-block">
-            <img src="./assets/images/sample_folder.png" class="h-36 w-36 lg:h-48 lg:w-48">
-          </a>
-          <!--Folder 2-->
-          <a href="#" class="inline-block">
-            <img src="./assets/images/sample_folder.png" class="h-36 w-36 lg:h-48 lg:w-48">
-          </a>
-          <!--Folder 3-->
-          <a href="#" class="inline-block">
-            <img src="./assets/images/sample_folder.png" class="h-36 w-36 lg:h-48 lg:w-48">
-          </a>
-          <!--Folder 4-->
-          <a href="#" class="inline-block">
-            <img src="./assets/images/sample_folder.png" class="h-36 w-36 lg:h-48 lg:w-48">
-          </a>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="folderCard">
+            <div>
+              <mat-icon class="text-3xl z-50">folder</mat-icon>
+            </div>
+            <div>
+              Applications/Forms
+            </div>
+          </div>
+
+          <div class="folderCard">
+            <div>
+              <mat-icon>folder</mat-icon>
+            </div>
+            <div>
+              Medical Documents
+            </div>
+          </div>
+
+          <div class="folderCard">
+            <div>
+              <mat-icon>folder</mat-icon>
+            </div>
+            <div>
+              Identification and Licensing
+            </div>
+          </div>
+
+          <div class="folderCard">
+            <div>
+              <mat-icon>folder</mat-icon>
+            </div>
+            <div>
+              Misc. Documents
+            </div>
+          </div>
         </div>
       </div>
       <!--Progress Circle-->
-      <div class="col-span-4 lg:col-span-2 mx-auto">
+      <div class="col-span-4 lg:col-span-2">
         <div class="flex justify-center items-center bg-white w-96 h-80 lg:h-76 rounded-3xl lg:mx-10">
           <div class="relative flex flex-col items-center p-4 w-80">
             <h2 class="text-xl text-center mb-10">30/50 Documents Uploaded</h2>
@@ -64,7 +83,7 @@
       <!--Lower horizontal half-->
 
       <!-- Recent Uploads -->
-      <div class="col-span-4 lg:col-span-2 lg:ml-8 lg:mr-8 mx-auto">
+      <div class="col-span-4 lg:col-span-2">
         <h2 class="text-xl font-semibold mb-3">Recent Uploads</h2>
         <!-- Headers -->
         <div class="grid grid-cols-3 gap-6 text-base font-medium pb-2">
@@ -94,7 +113,7 @@
 
 
       <!--Upload File-->
-      <div class="col-span-4 lg:col-span-2 w-96 h-44 mx-auto">
+      <div class="col-span-4 lg:col-span-2 w-96 h-44">
         <label for="dropzone-file"
           class="flex flex-col items-center justify-center w-96 py-8 rounded-3xl cursor-pointer bg-white lg:mx-10">
           <div class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -113,7 +132,7 @@
             <p class="mb-2 text-md text-black">Click to upload or drag and drop</p>
             <p class="text-sm text-black"><span class="italic">.docx and .pdf files only!</span></p>
           </div>
-          <input id="dropzone-file" type="file" class="hidden" />
+          <input id="dropzone-file" type="file" class="hidden" (change)="fileChangeEvent($event)"/>
         </label>
       </div>
     </div> <!--Overall closing tag-->

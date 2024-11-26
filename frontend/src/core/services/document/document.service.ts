@@ -51,7 +51,7 @@ export class DocumentService {
     try{
       // make a storage ref put it in the users bucket in a folder named with the users UID
       // then upload it using the uploadBytes resumable
-      const storageref = ref(this.storage, `documents/${this.auth.currentUser?.uid}/${this.selectedFile?.name}.pdf`)
+      const storageref = ref(this.storage, `documents/${this.auth.currentUser?.uid}/${this.selectedFile?.name}`)
       const fileSnapshot = await uploadBytesResumable(storageref, this.selectedFile!);
 
       // this gets the url, which we can store in a table

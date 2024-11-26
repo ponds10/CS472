@@ -14,4 +14,21 @@ import { HeaderComponent } from '../../../shared/header/header.component';
 })
 export class DocumentsPageComponent {
 
+  selectedFile: File | null = null;
+  constructor(){
+
+  }
+
+
+  // filechange event
+  fileChangeEvent(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
+
+    console.log(this.selectedFile)
+  }
+
+  
 }

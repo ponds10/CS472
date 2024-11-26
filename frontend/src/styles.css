@@ -38,7 +38,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .outerContainer
 {
-  @apply flex flex-col h-full w-full p-0 m-0 bg-cover bg-gradient overflow-y-auto
+  @apply flex flex-col h-full w-full p-0 m-0 bg-cover bg-gradient overflow-y-auto pt-[75px]
   lg:flex-row lg:pt-[75px] lg:p-4;
 }
 

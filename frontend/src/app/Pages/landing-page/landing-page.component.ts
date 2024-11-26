@@ -201,5 +201,11 @@ export class LandingPageComponent implements AfterViewInit {
         }
     }
   }
+  // to flip the card with only keyboard, do tab + enter OR space
+  handleKey(event: KeyboardEvent, index: number) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault(); // prevent page scrolling when pressing space
+      this.toggleDescription(index);
+    }
+  }
 }
-

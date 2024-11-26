@@ -6,10 +6,10 @@
     </div>
 
     <div class="innerContainer p-16 pt-8 space-y-4">
-        <div class="flex justify-center w-full h-screen">
-            <div class="grid grid-cols-1 gap-4">
-                <div class="col-span-2 bg-white bg-opacity-75 rounded-xl shadow-lg h-fit">
-                    <img [src]="selectedEvent?.imageURL" class="w-full h-auto">
+        <div class="flex justify-center items-center w-full h-fit">
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 w-3/4">
+                <div class="col-span-2 bg-white bg-opacity-75 rounded-xl shadow-lg h-fit w-full flex justify-center">
+                    <img [src]="selectedEvent?.imageURL" class="h-[500px] w-full rounded-xl">
                 </div>
     
                 <div class="col-span-2 bg-white bg-opacity-75 p-4 rounded-xl shadow-lg">
@@ -19,6 +19,16 @@
 
                     <div>
                         {{selectedEvent?.summary}}
+                    </div>
+                </div>
+
+                <div class="col-span-2 bg-white bg-opacity-75 p-4 rounded-xl shadow-lg">
+                    <div class="text-xl font-bold">
+                        <h1>Overview</h1>
+                    </div>
+
+                    <div>
+                        {{selectedEvent?.overview}}
                     </div>
                 </div>
     
@@ -48,7 +58,7 @@
                         <h1>Date and Time</h1>
                     </div>
                     <div class="flex justify-evenly">
-                        <div class="p-4 font-bold text-5xl border-r-2 border-gray-300 ">
+                        <div class="p-4 pr-16 font-bold text-5xl border-r-2 border-gray-300">
                             {{getDay()}}
                         </div>
 
@@ -60,26 +70,34 @@
                             <div>
                                 {{eventDate?.getFullYear()}}
                             </div>
+
+                            <div>
+                                {{eventDate?.toLocaleTimeString()}}
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        {{eventDate?.toLocaleTimeString()}}
                     </div>
                 </div>
     
+
+                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2">
+                    <div class="text-xl font-bold">
+                        <h1>Additional Details</h1>
+                    </div>
+                    {{selectedEvent?.misc}}
+                </div>
+
+                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg">
+                    <div class="text-xl font-bold">
+                        <h1>Organizer</h1>
+                    </div>
+                    {{selectedEvent?.organizer}}
+                </div>
+
                 <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg">
                     <div class="text-xl font-bold">
                         <h1>Attendance</h1>
                     </div>
                     {{selectedEvent?.attendance}}
-                </div>
-
-                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg">
-                    {{selectedEvent?.misc}}
-                </div>
-
-                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg">
-                    {{selectedEvent?.organizer}}
                 </div>
             </div>
         </div>

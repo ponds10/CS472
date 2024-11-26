@@ -65,6 +65,7 @@ export class CreateEventComponent implements OnInit{
     zip: new FormControl(''),
     country: new FormControl(''),
 
+    overview: new FormControl(''),
     misc: new FormControl(''),
   });
 
@@ -133,10 +134,11 @@ export class CreateEventComponent implements OnInit{
       country: this.fg_event.get('country')?.value as string,
   
       misc: this.fg_event.get('misc')?.value as string,
-
+      overview: this.fg_event.get('overview')?.value as string,
       attendance: 0,
       userID: this.auth.currentUser?.uid as string,
       eventID: '', //will be replaced
+      
     }
     this.eventService.generateEvent(event, this.selectedImage as File)
   }

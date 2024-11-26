@@ -81,6 +81,7 @@ export class EventsService {
           country: event.country,
       
           misc: event.misc,
+          overview: event.overview,
       
           attendance: 0,
           userID: this.auth.currentUser.uid,

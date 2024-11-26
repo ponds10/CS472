@@ -15,6 +15,7 @@ export interface Events {
     country: string
 
     misc: string;
+    overview:string;
 
     attendance: number;
     userID: string;

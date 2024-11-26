@@ -34,19 +34,3 @@ export const authGuard: CanActivateFn = async (route, state) => {
     await router.navigate(['/login']);
     return false;
   }
-
-
-  // ------ for testing only; will delete it later -------
-  /*
-  const isAuthenticated = false; // user not logged in
-
-  if (isAuthenticated) {
-    console.log('User is authenticated. Access granted.');
-    return true;
-  } else {
-    console.log('User is not authenticated. Redirecting to login...');
-    navigationService.navigateToLoginPage();
-    return false;
-  }
-  */
-};

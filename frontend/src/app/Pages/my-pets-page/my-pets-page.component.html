@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<div class="outerContainer">
+  <div class="navbarContainer">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="innerContainer">
+    <button
+      class="px-4 py-2 bg-blue-300 flex justify-center rounded-xl shadow-lg cursor-pointer"
+      (click)="navService.navigateToCreatePet()"
+    >
+      <mat-icon>add</mat-icon>
+      New Pet
+    </button>
+  </div>
+</div>

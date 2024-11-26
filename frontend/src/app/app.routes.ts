@@ -16,6 +16,7 @@ import { MapPageComponent } from './Pages/map-page/map-page.component';
 import { CreateAccountComponent } from './Pages/create-account/create-account.component';
 import { CreateUserProfileComponent } from './CreatePages/create-user-profile/create-user-profile.component';
 import { authGuard } from '../core/guard/auth.guard';
+import { MyPetsPageComponent } from './Pages/my-pets-page/my-pets-page.component';
 
 export const routes: Routes = [
     {path: '', component: LandingPageComponent},
@@ -35,5 +36,6 @@ export const routes: Routes = [
     {path: 'map', component:MapPageComponent, canActivate: [authGuard]},
     {path: 'newAccount', component:CreateAccountComponent},
     {path: 'createUser', component:CreateUserProfileComponent, canActivate: [authGuard]},
+    {path: 'my-pets', component:MyPetsPageComponent, canActivate: [authGuard]},
     {path: '**', redirectTo:'login'},
 ];

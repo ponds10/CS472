@@ -13,7 +13,9 @@
 
         <div class="grid grid-cols-4 gap-4 w-full">
             <div class="col-span-4 lg:col-span-2">
+                <button (click)="this.navService.navigateToMyPets()">
                 <app-home-card title="Your Pets" source="./assets/homepage_images/3.png"></app-home-card>
+                </button>
             </div>
 
             <div class="col-span-4 lg:col-span-2 lg:row-span-2">

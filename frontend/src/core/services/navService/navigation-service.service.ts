@@ -47,4 +47,14 @@ export class NavigationServiceService {
   {
     this.router.navigate(['/search/pets/results/', pet.id] );
   }
+
+  navigateToMyPets()
+  {
+    this.router.navigate(['/my-pets']);
+  }
+
+  navigateToCreatePet()
+  {
+    this.router.navigate(['/create/pet-post'])
+  }
 }

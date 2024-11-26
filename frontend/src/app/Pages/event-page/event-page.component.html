@@ -1,13 +1,15 @@
 <app-header></app-header>
 <div class="outerContainer">
 
-    <div class="lg:flex-1">
+    <div class="w-0 lg:w-fit lg:flex-1">
         <app-nav-bar></app-nav-bar>
     </div>
 
-    <div class="innerContainer p-16 pt-8 space-y-4">
+    <div class="innerContainer lg:p-16 lg:pt-8 space-y-4">
         <div class="flex justify-center items-center w-full h-fit">
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 w-3/4">
+                <div class="h-[100px]"></div>
+
                 <div class="col-span-2 bg-white bg-opacity-75 rounded-xl shadow-lg h-fit w-full flex justify-center">
                     <img [src]="selectedEvent?.imageURL" class="h-[500px] w-full rounded-xl">
                 </div>
@@ -32,7 +34,7 @@
                     </div>
                 </div>
     
-                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg w-full">
+                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg w-full col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Location</h1>
                     </div>
@@ -53,7 +55,7 @@
                     </div>
                 </div>
     
-                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg w-full space-y-4">
+                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg w-full space-y-4 col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Date and Time</h1>
                     </div>
@@ -79,26 +81,28 @@
                 </div>
     
 
-                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2">
+                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Additional Details</h1>
                     </div>
                     {{selectedEvent?.misc}}
                 </div>
 
-                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg">
+                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Organizer</h1>
                     </div>
                     {{selectedEvent?.organizer}}
                 </div>
 
-                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg">
+                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Attendance</h1>
                     </div>
                     {{selectedEvent?.attendance}}
                 </div>
+
+                <div class="h-[300px]"></div>
             </div>
         </div>
     </div>

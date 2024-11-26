@@ -49,6 +49,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   transition-all duration-500 ease-in-out;
 }
 
+.navbarContainer
+{
+  @apply w-0 lg:w-fit lg:flex-1;
+}
 .mapContainer
 {
   @apply bg-white bg-opacity-50 items-center rounded-lg shadow-2xl space-y-24

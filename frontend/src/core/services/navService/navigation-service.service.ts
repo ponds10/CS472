@@ -57,4 +57,8 @@ export class NavigationServiceService {
   {
     this.router.navigate(['/create/pet-post'])
   }
+  navigateToDocumentsPage()
+  {
+    this.router.navigate(['/documentspage']);
+  }
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
@@ -6,12 +6,13 @@ import { EventsService } from '../../../../core/services/event/events.service';
 import { Events } from '../../../../core/models/events';
 import { EventsAttendance } from '../../../../core/models/events';
 import { Timestamp } from '@angular/fire/firestore';
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-events-calendar',
   standalone: true,
   imports: [MatIcon],
   templateUrl: './events-calendar.component.html',
-  styleUrl: './events-calendar.component.css'
+  styleUrl: './events-calendar.component.css',
 })
 export class EventsCalendarComponent implements OnInit{
   currentMonth: number = 0;
@@ -23,7 +24,7 @@ export class EventsCalendarComponent implements OnInit{
   currentMonthName: string = ""
 
 
-  constructor(public eventService: EventsService)
+  constructor(public eventService: EventsService, private cdr: ChangeDetectorRef)
   {
 
   }
@@ -139,7 +140,10 @@ export class EventsCalendarComponent implements OnInit{
 
   selectDays()
   {
-
+    if(this.eventService.attendedEvents == null)
+    {
+      return false;
+    }
     let chunk_days = [];
     for(const event of this.eventService.attendedEvents!)
     {
@@ -150,6 +154,8 @@ export class EventsCalendarComponent implements OnInit{
         this.days[date.getDate() + this.startDay][1] = true;
       }
     }
+
+    return true;
   }
 
   timestampHelper(input:Timestamp | Date)

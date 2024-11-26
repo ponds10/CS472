@@ -17,7 +17,6 @@ import { NavigationServiceService } from '../../../core/services/navService/navi
 })
 export class HomePageComponent {
   user: User | null | undefined = null;
-  
   constructor(private userService: UserService, private eventService: EventsService, public navService: NavigationServiceService)
   {
   }
@@ -36,4 +35,6 @@ export class HomePageComponent {
     }
     this.eventService.getAttendedEvents();
   }
+
+
 }

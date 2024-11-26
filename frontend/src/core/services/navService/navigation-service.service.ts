@@ -42,4 +42,9 @@ export class NavigationServiceService {
   {
     this.router.navigate(['/create/event']);
   }
+
+  navigateToPetPage(pet: any)
+  {
+    this.router.navigate(['/search/pets/results/', pet.id] );
+  }
 }

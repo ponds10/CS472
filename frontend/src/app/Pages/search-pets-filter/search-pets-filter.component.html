@@ -36,15 +36,16 @@
 
         <div
           *ngIf="pets.length"
-          class="pet-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          class="pet-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:px-0 gap-4 px-16"
         >
           @for (pet of (pets$ | async); track pet) {
 
           <app-pet-card
             *ngFor="let pet of paginatedPets()"
-            [pet]="pet"
+            [pet]="pet" (click)="selectPet(pet)"
           ></app-pet-card>
           }
+
         </div>
 
         <!-- Pagination Controls -->
@@ -52,7 +53,7 @@
           <button
             (click)="prevPage()"
             [disabled]="currentPage === 1"
-            class="mx-1 px-3 py-1 border rounded-lg mt-8 px-3 py-2 font-medium hover:bg-blue-gray bg-opacity-80 text-black shadow bg-white"
+            class="mx-1 px-3 py-1 border rounded-lg mt-8 px-3 py-2 font-medium hover:bg-blue-300 bg-opacity-80 text-black shadow bg-white"
           >
             Previous
           </button>
@@ -60,7 +61,7 @@
           <button
             (click)="nextPage()"
             [disabled]="currentPage === totalPages"
-            class="mx-1 px-3 py-1 border rounded-lg mt-8 px-3 py-2 font-medium hover:bg-blue-gray bg-opacity-80 text-black shadow bg-white"
+            class="mx-1 px-3 py-1 border rounded-lg mt-8 px-3 py-2 font-medium hover:bg-blue-300 bg-opacity-80 text-black shadow bg-white"
           >
             Next
           </button>

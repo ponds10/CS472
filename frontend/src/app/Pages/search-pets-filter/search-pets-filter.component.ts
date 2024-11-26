@@ -19,7 +19,7 @@ import { PetCardComponent } from '../../../shared/components/pet-card/pet-card.c
 import { DocumentData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { SearchPanelComponent } from './search-panel/search-panel/search-panel.component';
-
+import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
 @Component({
   selector: 'app-search-pets-filter',
   standalone: true,
@@ -35,13 +35,22 @@ import { SearchPanelComponent } from './search-panel/search-panel/search-panel.c
     SearchPanelComponent,
     CommonModule,
     PetCardComponent,
+    
   ],
   templateUrl: './search-pets-filter.component.html',
   styleUrl: './search-pets-filter.component.css',
 })
 export class SearchPetsFilterComponent {
   pets: Pet[] = [];
-  filterResults: Pet | null | undefined = null;
+  filterResults: Pet = {
+    id: '',
+    name: '',
+    species: '',
+    breed: '',
+    sex: '',
+    age: undefined,
+    program: '',
+  };
   currentPage: number = 1;
   petsPerPage: number = 6;
   searchTerm: string = '';
@@ -52,7 +61,8 @@ export class SearchPetsFilterComponent {
 
   constructor(
     private viewportscroller: ViewportScroller,
-    private readonly petService: PetsService
+    private readonly petService: PetsService,
+    private navService: NavigationServiceService,
   ) {}
 
   //
@@ -90,12 +100,14 @@ export class SearchPetsFilterComponent {
     return this.pets.filter((pet) => {
       //returns a boolean indicating whether the results exists
       return (
-        this.filterResults &&
-        (!this.filterResults.species || pet.species === this.filterResults.species) &&
+
+        (!this.filterResults.species ||
+          pet.species === this.filterResults.species) &&
         (!this.filterResults.age || pet.age === this.filterResults.age) &&
         (!this.filterResults.breed || pet.breed === this.filterResults.breed) &&
         (!this.filterResults.sex || pet.sex === this.filterResults.sex) &&
-        (!this.filterResults.program || pet.program === this.filterResults.program)
+        (!this.filterResults.program ||
+          pet.program === this.filterResults.program)
       );
     });
   }
@@ -119,5 +131,9 @@ export class SearchPetsFilterComponent {
     if (this.currentPage > 1) {
       this.currentPage--;
     }
+  }
+
+  selectPet(pet: Pet): void {
+    this.navService.navigateToPetPage(pet);
   }
 }

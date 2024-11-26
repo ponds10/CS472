@@ -15,10 +15,10 @@
       <button
         class="flex flex-col mr-2 min-w-36  max-w-36 items-center cursor-pointer transition-transform transform hover:scale-105 bg-white rounded-xl p-4 shadow-xl border-4"
         [ngClass]="{
-          'border border-blue-300 ': selectedType === 'cat',
-          'border border-gray-300 ': selectedType !== 'cat'
+          'border border-blue-300 ': selectedType === 'Cat',
+          'border border-gray-300 ': selectedType !== 'Cat'
         }"
-        (click)="selectAnimal('cat')"
+        (click)="selectAnimal('Cat')"
       >
         <img
           src="./assets/images/black-cat.png"
@@ -32,10 +32,10 @@
       <button
         class="flex flex-col ml-2 min-w-36 max-w-36 items-center cursor-pointer transition-transform transform hover:scale-105 bg-white rounded-xl p-4 shadow-xl border-4"
         [ngClass]="{
-          'border border-blue-300 ': selectedType === 'dog',
-          'border border-gray-300 ': selectedType !== 'dog'
+          'border border-blue-300 ': selectedType === 'Dog',
+          'border border-gray-300 ': selectedType !== 'Dog'
         }"
-        (click)="selectAnimal('dog')"
+        (click)="selectAnimal('Dog')"
       >
         <img
           src="./assets/images/french-bulldog.png"
@@ -60,7 +60,7 @@
           <label for="age-select" class="text-center font-medium">Age</label>
           <select
             id="age-select"
-            class="mt-2 px-3 py-2 border-solid border-2 border-blue-gray rounded-lg w-full shadow"
+            class="mt-2 px-3 py-2 border-solid border-2 border-blue-300 rounded-lg w-full shadow"
             [(ngModel)]="selectedAge"
           >
           <option value="">Any</option>
@@ -73,7 +73,7 @@
           <select
             id="gender-select"
             [(ngModel)]="selectedGender"
-            class="mt-2 px-3 py-2 border-solid border-2 border-blue-gray rounded-lg w-full shadow"
+            class="mt-2 px-3 py-2 border-solid border-2 border-blue-300 rounded-lg w-full shadow"
           >
           <option value="">Any</option>
             <option *ngFor="let gender of animalGenders" [value]="gender">
@@ -87,7 +87,7 @@
           <label for="breed-select" class="text-center font-medium">Breed</label>
           <select
             id="breed-select"
-            class="mt-2 px-3 py-2 border-solid border-2 border-blue-gray rounded-lg w-full shadow"
+            class="mt-2 px-3 py-2 border-solid border-2 border-blue-300 rounded-lg w-full shadow"
             [(ngModel)]="selectedBreed"
           >
           <option value="">Any</option>
@@ -102,7 +102,7 @@
           <label for="size-select" class="text-center font-medium">Sizes</label>
           <select
             id="size-select"
-            class="mt-2 px-3 py-2 border-solid border-2 border-blue-gray rounded-lg w-full shadow"
+            class="mt-2 px-3 py-2 border-solid border-2 border-blue-300 rounded-lg w-full shadow"
             [(ngModel)]="selectedSize"
           >
           <option value="">Any</option>
@@ -117,7 +117,7 @@
           <label for="program-select" class="text-center font-medium">Programs</label>
           <select
             id="program-select"
-            class="mt-2 px-3 py-2 border-solid border-2 border-blue-gray rounded-lg w-full shadow"
+            class="mt-2 px-3 py-2 border-solid border-2 border-blue-300 rounded-lg w-full shadow"
             [(ngModel)]="selectedProgram"
           >
           <option value="">Any</option>
@@ -130,7 +130,7 @@
         <!-- submit button -->
         <div class="col-end-4 flex">
           <button
-            class="min-w-32 max-w-32 mt-8 px-3 py-2 font-medium rounded-full w-full hover:bg-blue-400 bg-blue-gray bg-opacity-90 text-black shadow"
+            class="min-w-32 max-w-32 mt-8 px-3 py-2 font-medium rounded-full w-full hover:bg-blue-400 bg-blue-300 bg-opacity-90 text-black shadow"
             type="submit"
             
             (click)="onSubmit()"

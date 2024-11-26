@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { PetsService } from '../../../../../core/services/pets/pets.service';
 import { Pet } from '../../../../../core/models/pet.model';
 import { CommonModule } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-search-panel',
   standalone: true,
-  imports: [FormsModule, CommonModule, ],
+  imports: [FormsModule, CommonModule,MatIcon ],
   templateUrl: './search-panel.component.html',
   styleUrl: './search-panel.component.css'
 })
@@ -61,13 +62,13 @@ export class SearchPanelComponent {
 
 
   // changes the breed types based on the selected species (cat or dog)
-  selectAnimal(animal: 'cat' | 'dog') {
+  selectAnimal(animal: 'Cat' | 'Dog') {
     this.selectedType = animal;
     console.log('Selected Type:', this.selectedType); // Debugging line
 
-    if (animal === 'cat') {
+    if (animal === 'Cat') {
       this.Breeds = this.petService.catBreeds;
-    } else if (animal === 'dog') {
+    } else if (animal === 'Dog') {
       this.Breeds = this.petService.dogBreeds;
     }
   }

@@ -24,6 +24,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
+import { NavigationServiceService } from '../navService/navigation-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +34,7 @@ export class LoginService {
   auth: Auth = inject(Auth);
   router: Router = inject(Router);
   private provider = new GoogleAuthProvider();
+  navService = inject(NavigationServiceService);
 
   // observable that is updated when the auth state changes
   user$ = user(this.auth);
@@ -71,7 +73,7 @@ export class LoginService {
   logout() {
     signOut(this.auth)
       .then(() => {
-        this.router.navigate(['/', '']);
+        this.router.navigate(['']);
         console.log('signed out');
       })
       .catch((error) => {

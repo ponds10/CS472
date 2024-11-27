@@ -35,6 +35,4 @@ export class HomePageComponent {
     }
     this.eventService.getAttendedEvents();
   }
-
-
 }

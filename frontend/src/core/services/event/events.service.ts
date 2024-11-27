@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Events, EventsAttendance } from '../../models/events';
 import { NavigationServiceService } from '../navService/navigation-service.service';
-import { concatMap } from 'rxjs';
+import { concatMap, of, catchError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -184,34 +184,25 @@ export class EventsService {
         return;
     }
 
-    try
-    {
+    try {
       const eventAttendanceQuery = query(collection(this.firestore, 'eventAttendance'), where("userID", "==", this.auth.currentUser?.uid));
       
-      // Main flow using concatMap
-      collectionData(eventAttendanceQuery).pipe(
-        concatMap( (eventIds: EventsAttendance[])=> {
-          // Process the list of user IDs (for loop or any processing)
-            console.log(eventIds)
-            let chunk_ids = []
-            for (const eventAttendance of eventIds) {
-              chunk_ids.push(eventAttendance.eventID)
-            }
-
-            
-            const eventAttendanceQuery2 = query(collection(this.firestore, 'events'), where("eventID", "in", chunk_ids));
-            return collectionData(eventAttendanceQuery2)
+      
+      return collectionData(eventAttendanceQuery).pipe(
+        concatMap((eventIds: EventsAttendance[]) => {
+          const chunk_ids = eventIds.map(eventAttendance => eventAttendance.eventID);
+          const eventAttendanceQuery2 = query(collection(this.firestore, 'events'), where("eventID", "in", chunk_ids));
+          return collectionData(eventAttendanceQuery2);
+        }),
+        catchError((error) => {
+          console.error('Error retrieving event data', error);
+          return of([]);  // Return empty array in case of error
         })
-      ).subscribe({
-        next: (result: Events[]) => {
-          this.attendedEvents = result;
-          console.log(result)
-        }
-      });
-    }
-    catch(error)
-    {
-      console.log("Error, retrieving records")
+      );
+    } 
+    catch (error) {
+      console.error('Unexpected error', error);
+      return of([]);  // Return empty array in case of error
     }
   }
 }

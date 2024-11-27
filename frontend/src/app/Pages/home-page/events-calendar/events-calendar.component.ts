@@ -24,13 +24,17 @@ export class EventsCalendarComponent implements OnInit{
   currentMonthName: string = ""
 
 
-  constructor(public eventService: EventsService, private cdr: ChangeDetectorRef)
+  constructor(public eventService: EventsService)
   {
 
   }
 
   async ngOnInit() {
-    this.eventService.getAttendedEvents()
+    this.eventService.getAttendedEvents().subscribe((result: Events[]) => {
+      console.log(result)
+      this.eventService.attendedEvents = result;
+      this.selectDays()
+    })
     await this.calendarSetUp();
   }
 
@@ -62,6 +66,8 @@ export class EventsCalendarComponent implements OnInit{
     }
 
     this.currentMonthName = this.getMonthString(this.currentMonth)
+
+    this.selectDays();
   }
 
   getMonthString(month:number)

@@ -53,27 +53,16 @@
       <div class="col-span-4 lg:col-span-2">
         <div class="flex justify-center items-center bg-white w-96 h-80 lg:h-76 rounded-3xl lg:mx-10">
           <div class="relative flex flex-col items-center p-4 w-80">
-            <h2 class="text-xl text-center mb-10">30/50 Documents Uploaded</h2>
+            <h2 class="text-xl text-center mb-10">
+              {{ uploadedFiles.length }}/{{ maxDocuments }} Documents Uploaded
+            </h2>
+            <!-- Circular Progress Bar -->
             <svg class="w-44 h-44 overflow-visible" viewBox="0 0 100 100">
-              <!--Background circle-->
-              <circle class="text-cyan-300 stroke-current" 
-              stroke-width="20" 
-              cx="50" 
-              cy="50" 
-              r="40" 
-              fill="transparent">
+              <circle class="text-cyan-300 stroke-current" stroke-width="20" cx="50" cy="50" r="40" fill="transparent">
               </circle>
-
-              <!--Inner circle-->
-              <circle class="text-cyan-400 stroke-current" 
-              stroke-width="20" 
-              stroke-linecap="round" 
-              cx="50" 
-              cy="50"
-              r="40" 
-              fill="transparent" 
-              stroke-dasharray="251.2" 
-              stroke-dashoffset="calc(251.2 - (251.2 * 60) / 100)">
+              <circle class="text-cyan-400 stroke-current" stroke-width="20" stroke-linecap="round" cx="50" cy="50"
+                r="40" fill="transparent" stroke-dasharray="251.2"
+                [attr.stroke-dashoffset]="251.2 - (251.2 * progressPercentage) / 100">
               </circle>
             </svg>
           </div>
@@ -91,51 +80,37 @@
           <div>Type</div>
           <div>Upload Date</div>
         </div>
-        <!-- TEMP Insert rows of documents here -->
+        <!--Insert rows of documents here -->
         <div class="space-y-1">
           <div class="grid grid-cols-3 gap-2 text-base px-2 py-1 rounded-md hover:bg-sky-400 hover:text-white">
-            <div class="whitespace-normal break-words truncate">file.docx</div>
-            <div class="truncate">Application/Forms</div> 
-            <div>11/18/24</div>
-          </div>
-          <div class="grid grid-cols-3 gap-2 text-base px-2 py-1 rounded-md hover:bg-sky-400 hover:text-white">
-            <div class="whitespace-normal break-words truncate">medical.pdf</div>
-            <div class="truncate">Application/Forms</div>
-            <div>11/09/24</div>
-          </div>
-          <div class="grid grid-cols-3 gap-2 text-base px-2 py-1 rounded-md hover:bg-sky-400 hover:text-white">
-            <div class="whitespace-normal break-words truncate">vaccinesandlonglongloooongdocument.pdf</div>
-            <div class="truncate">Application/Forms</div>
-            <div>03/25/24</div>
+            @for (file of uploadedFiles; track file.name){
+            <div class="whitespace-normal break-words truncate">{{ file.name }}</div>
+            <div class="whitespace-normal break-words truncate">{{ file.type }}</div>
+            <div class="whitespace-normal break-words truncate">{{ file.date }}</div>
+            }
           </div>
         </div>
-      </div>
+      </div> <!--Documents List end tag-->
+   
 
 
-      <!--Upload File-->
-      <div class="col-span-4 lg:col-span-2 w-96 h-44">
-        <label for="dropzone-file"
-          class="flex flex-col items-center justify-center w-96 py-8 rounded-3xl cursor-pointer bg-white lg:mx-10">
-          <div class="flex flex-col items-center justify-center pt-5 pb-6">
-            <svg class="w-8 h-8 mb-4 text-black" 
-              aria-hidden="true" 
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none"
-              viewBox="0 0 20 16">
-              <path stroke="currentColor" 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              stroke-width="2"
-              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 
-              5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-            </svg>
-            <p class="mb-2 text-md text-black">Click to upload or drag and drop</p>
-            <p class="text-sm text-black"><span class="italic">.docx and .pdf files only!</span></p>
-          </div>
-          <input id="dropzone-file" type="file" class="hidden" (change)="fileChangeEvent($event)"/>
-        </label>
-      </div>
-    </div> <!--Overall closing tag-->
+    <!--Upload File-->
+    <div class="col-span-4 lg:col-span-2 w-96 h-44">
+      <label for="dropzone-file"
+        class="flex flex-col items-center justify-center w-96 py-8 rounded-3xl cursor-pointer bg-white lg:mx-10"
+        (click)="openUploadDialogWithFile(file); $event.preventDefault();">
+        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+          <svg class="w-8 h-8 mb-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5A5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <p class="mb-2 text-md text-black">Click to upload or drag and drop</p>
+          <p class="text-sm text-black"><span class="italic">.docx and .pdf files only!</span></p>
+        </div>
+      </label>
+      <input id="dropzone-file" type="file" class="hidden" (change)="fileChangeEvent($event)" />
+    </div> 
+  </div><!--Overall closing tag-->
 
     <!--Spacers: probably not best practice-->
     <section class="w-full h-[100px]"></section>

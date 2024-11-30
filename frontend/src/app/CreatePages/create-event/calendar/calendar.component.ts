@@ -19,7 +19,7 @@ export class CalendarComponent implements OnInit {
   bools: boolean[] = []
   currentMonthName: string = ""
 
-  @Output() monthEmitter: EventEmitter<string> = new EventEmitter();
+  @Output() monthEmitter: EventEmitter<number> = new EventEmitter();
   @Output() dayEmitter: EventEmitter<string>  = new EventEmitter();
   @Output() yearEmitter: EventEmitter<string>  = new EventEmitter();
   constructor()
@@ -111,17 +111,17 @@ export class CalendarComponent implements OnInit {
     // Get the first day of the current month
     const startOfMonth = new Date(this.currentYear, this.currentMonth, 1);
     this.startDay = startOfMonth.getDay();  // 0 = Sunday, 1 = Monday, etc.
-
+    console.log(this.startDay);
     // Get the number of days in the current month
     this.daysInMonth = this.getDaysInMonth(this.currentYear, this.currentMonth);
 
     // set the days list
-    for(let i = 0; i <= this.startDay; i++)
+    for(let i = 0; i < this.startDay; i++)
     {
       this.days.push([0, false]);
     }
 
-    for(let i = 0; i <= this.daysInMonth; i++)
+    for(let i = 0; i < this.daysInMonth; i++)
     {
       this.days.push([i+1, false]);
     }
@@ -140,7 +140,7 @@ export class CalendarComponent implements OnInit {
     // console.log(this.currentYear.toString())
     // console.log(this.days[idx][0].toString())
 
-    this.monthEmitter.emit(this.currentMonthName);
+    this.monthEmitter.emit(this.currentMonth+1);
     this.dayEmitter.emit(this.days[idx][0].toString());
     this.yearEmitter.emit(this.currentYear.toString());
   }

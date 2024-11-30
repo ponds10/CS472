@@ -36,10 +36,10 @@ export class CreateEventComponent implements OnInit{
   // output from child calendar here
   currentDay: string = ''
   currentYear: string = ''
-  currentMonth: string = ''
+  currentMonth: number = 0
   selectedTime: string = ''
   recieveDay(data: string){this.currentDay = data ;console.log(this.currentDay)}
-  recieveMonth(data: string){this.currentMonth = data ;console.log(this.currentMonth)}
+  recieveMonth(data: number){this.currentMonth = data ;console.log(this.currentMonth)}
   recieveYear(data: string){this.currentYear = data ;console.log(this.currentYear)}
   date: Date | null = null;
 
@@ -90,31 +90,40 @@ export class CreateEventComponent implements OnInit{
   timeChangeEvent(data: any) {
     const [hours, minutes] = data.split(':');  // Split input time into hours and minutes
     let hour = parseInt(hours, 10);
-    let period = 'AM';  // Default to AM
-
-    // Convert 24-hour time to 12-hour time
-    if (hour >= 12) {
-      period = 'PM';  // If the hour is 12 or more, it's PM
+    let strHour = ''
+    if(hour < 10)
+    {
+      strHour = `0${hour}`
     }
-    if (hour > 12) {
-      hour -= 12;  // Convert hour to 12-hour format (13 -> 1, 14 -> 2, etc.)
-    }
-    if (hour === 0) {
-      hour = 12;  // Special case: 00:xx is actually 12:xx AM
+    else
+    {
+      strHour = `${hour}`
     }
 
-    console.log(`${hour}:${minutes}:00 ${period}`)
-    // Return the time in 12-hour format
-    this.selectedTime = `${hour}:${minutes}:00 ${period}`;
+    this.selectedTime = `${strHour}:${minutes}:00Z`;
     this.generateTimestamp();
   }
 
   generateTimestamp()
   {
-    const dateTimeString = `${this.currentMonth} ${this.currentDay}, ${this.currentYear} at ${this.selectedTime} UTC-8`;
+    let month = '';
+    let hour = '';
+    let minute 
+    if(this.currentMonth < 10)
+    {
+      month = `0${this.currentMonth}`
+    }
+    else
+    {
+      month = `${this.currentMonth}`
+    }
+    const dateTimeString = `${this.currentYear}-${month}-${this.currentDay}T${this.selectedTime}`
+
     const date = new Date(dateTimeString);
+
     this.date = date;
-    console.log(Timestamp.fromDate(date))
+    console.log(dateTimeString)
+    console.log(date)
   }
 
   createEvent()

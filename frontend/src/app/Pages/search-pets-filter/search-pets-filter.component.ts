@@ -41,7 +41,7 @@ import { NavigationServiceService } from '../../../core/services/navService/navi
   styleUrl: './search-pets-filter.component.css',
 })
 export class SearchPetsFilterComponent {
-  pets: Pet[] = [];
+  pets: Pet[] | null = null;
   filterResults: Pet = {
     uid: '',
     petId: '',
@@ -58,8 +58,6 @@ export class SearchPetsFilterComponent {
   searchTerm: string = '';
   selectedSpecies: string = '';
   errorMessage: string = '';
-  petServ = inject(PetsService);
-  pets$ = this.petServ.loadPets() as Observable<DocumentData[]>;
 
   constructor(
     private viewportscroller: ViewportScroller,
@@ -69,38 +67,19 @@ export class SearchPetsFilterComponent {
 
   //
   ngOnInit(): void {
-    this.pets$.subscribe({
-      next: (data: DocumentData[]) => {
-        this.pets = data.map((pet) => ({
-          uid: pet['uid'],
-          petId: pet['petID'],
-          name: pet['name'],
-          species: pet['species'],
-          breed: pet['breed'],
-          sex: pet['sex'],
-          age: pet['age'],
-          program: pet['program'],
-          weight: pet['weight'],
-          image: pet['image'],
-          contact: pet['contact'],
-          bio: pet['bio'],
-        }));
-      },
-      error: (error: any) => {
-        console.error('Error fetching pets:', error);
-        this.errorMessage = 'Unable to load pets. Please try again later.';
-      },
-    });
+    this.petService.loadPets().subscribe((data: Pet[]) => {
+      this.pets = data;
+    })
   }
 
-  public searchPets(petfilterResults: Pet): void {
+  searchPets(petfilterResults: Pet): void {
     // get the filter options from child component
     this.filterResults = petfilterResults;
   }
 
   filteredPets(): Pet[] {
     // return an array of filtered pets
-    return this.pets.filter((pet) => {
+    return (this.pets ?? []).filter((pet) => {
       //returns a boolean indicating whether the results exists
       return (
 
@@ -136,7 +115,9 @@ export class SearchPetsFilterComponent {
     }
   }
 
-  selectPet(pet: Pet): void {
+  selectPet(pet: Pet) {
+    this.petService.selectedPet = pet;
     this.navService.navigateToPetPage(pet);
+    return;
   }
 }

@@ -9,12 +9,20 @@ import { Events } from '../../../core/models/events';
 import { EventcardComponent } from './eventcard/eventcard.component';
 import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
 import { MatIcon } from '@angular/material/icon';
+import { transition, query, style, animate, trigger } from '@angular/animations';
+
 @Component({
   selector: 'app-search-events-page',
   templateUrl: './search-events-page.component.html',
   styleUrls: ['./search-events-page.component.css'],
   standalone: true,
-  imports: [HeaderComponent, NavBarComponent, RouterModule, CommonModule, EventcardComponent, MatIcon]
+  imports: [HeaderComponent, NavBarComponent, RouterModule, CommonModule, EventcardComponent, MatIcon],
+  animations: [
+    trigger('load', [
+      transition(':enter', [style({opacity: 0}), animate('1000ms', style({opacity: 1}))]),
+      transition(':leave', [animate('1000ms', style({opacity: 0}))]),
+    ]),
+  ]
 })
 export class SearchEventsPageComponent implements OnInit{
   events: Events[] | null = null;

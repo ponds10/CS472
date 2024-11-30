@@ -98,7 +98,7 @@ export class PetsService {
 
     // store into firestore and then get the url
     // console.log to debug
-    this.uploadImage(selectedImage);
+    await this.uploadImage(selectedImage);
     pet.image = this.imageUrl
     pet.uid = this.auth.currentUser.uid;
     console.log(pet.image)

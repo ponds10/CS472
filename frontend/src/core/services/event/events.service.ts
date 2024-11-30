@@ -1,13 +1,14 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth, user, signOut, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 import { Subscription, Observable } from 'rxjs';
-import { collectionData, Firestore, Timestamp } from '@angular/fire/firestore';
-import { addDoc, collection, query, orderBy, limit, where, getDocs, startAfter } from '@angular/fire/firestore';
+import { collectionData, Firestore, increment, query, Timestamp } from '@angular/fire/firestore';
+import { addDoc, collection, orderBy, limit, where, getDocs, startAfter } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Events, EventsAttendance } from '../../models/events';
 import { NavigationServiceService } from '../navService/navigation-service.service';
 import { concatMap, of, catchError } from 'rxjs';
+import { doc, updateDoc } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
@@ -159,6 +160,18 @@ export class EventsService {
       return;
     }
 
+    // check if the eventid is current in the attendedEvents id
+    // if it is, then just return and do not add to the count!
+    for(const temp in this.attendedEventsIds)
+    {
+      if(event.eventID == temp)
+      {
+        console.log("already attending")
+        return; 
+      }
+    }
+
+
     try 
     {
       const newEventAttendance = await addDoc(
@@ -174,6 +187,35 @@ export class EventsService {
       console.error("Error writing event attendance to Firebase Database", error);
       return;
     }
+
+    // step 2 update the attendance
+    try
+    {
+      // get the collection for events, and make the query to find where the eventid is equal to the passed one
+      // then if its not empty. iterate through, but it should rlly just be one item
+      // and update the doc to increment the attendance field
+      const eventCollection = collection(this.firestore, 'events');
+      const attendQuery = query(collection(this.firestore, 'events'), where("eventID", "==", event.eventID));
+      const snapshot = await getDocs(attendQuery)
+      if(snapshot.empty)
+      {
+        return;
+      }
+      snapshot.forEach(async (eventDoc) => {
+        const docRef = doc(this.firestore, 'events', eventDoc.id);
+        await updateDoc(docRef, {
+          'attendance': increment(1)
+        })
+      })
+    }
+    catch (error)
+    {
+      // log the error
+      console.log("Error, issue with adding you to the attendance")
+    }
+
+    // do it in the event itself, because we do not requery
+    event.attendance += 1;
   }
 
   getAttendedEvents()

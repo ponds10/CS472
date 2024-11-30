@@ -17,6 +17,7 @@ export class EventcardComponent implements OnInit{
   }
 
   @Input() event: Events | null = null;
+  attendedEvents: Events[] | null = null;
   date: Date | null = null;
 
   ngOnInit(): void {
@@ -52,6 +53,35 @@ export class EventcardComponent implements OnInit{
   attendEvent()
   {
     this.eventService.attendEvent(this.event as Events);
+    this.attendedEvents?.push(this.event!)
+  }
+
+  attendChecker(inputEvent: Events)
+  {
+    if(this.eventService.attendedEvents == null)
+    {
+      this.eventService.getAttendedEvents().subscribe((data: Events[]) => {
+        //console.log("is this getting called evertime?")
+        // its not yay
+        this.attendedEvents = data;
+      })
+    }
+    else
+    {
+      this.attendedEvents = this.eventService.attendedEvents;
+    }
+
+    const finalEvents: Events[] = this.attendedEvents!;
+    for(const event of finalEvents)
+    {
+      if(event.eventID == inputEvent.eventID)
+      {
+        return true;
+      }
+    }
+
+    return false;
+
   }
 }
 

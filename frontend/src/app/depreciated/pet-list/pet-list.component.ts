@@ -40,27 +40,27 @@ export class PetListComponent {
   constructor(private readonly petService: PetsService) {}
 
   ngOnInit(): void {
-    this.pets$.subscribe({
-      next: (data: DocumentData[]) => {
-        this.pets = data.map((pet) => ({
-          id: pet['petID'],
-          name: pet['name'],
-          species: pet['species'],
-          breed: pet['breed'],
-          sex: pet['sex'],
-          age: pet['age'],
-          program: pet['program'],
-          weight: pet['weight'],
-          image: pet['image'],
-          documents: pet['documents'],
-          contact: pet['contact'],
-        }));
-      },
-      error: (error: any) => {
-        console.error('Error fetching pets:', error);
-        this.errorMessage = 'Unable to load pets. Please try again later.';
-      },
-    });
+    // this.pets$.subscribe({
+    //   next: (data: DocumentData[]) => {
+    //     this.pets = data.map((pet) => ({
+    //       id: pet['petID'],
+    //       name: pet['name'],
+    //       species: pet['species'],
+    //       breed: pet['breed'],
+    //       sex: pet['sex'],
+    //       age: pet['age'],
+    //       program: pet['program'],
+    //       weight: pet['weight'],
+    //       image: pet['image'],
+    //       documents: pet['documents'],
+    //       contact: pet['contact'],
+    //     }));
+    //   },
+    //   error: (error: any) => {
+    //     console.error('Error fetching pets:', error);
+    //     this.errorMessage = 'Unable to load pets. Please try again later.';
+    //   },
+    // });
   }
 
   filteredPets(): Pet[] {

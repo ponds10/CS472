@@ -43,12 +43,12 @@ export class CalendarComponent implements OnInit {
     this.daysInMonth = this.getDaysInMonth(this.currentYear, this.currentMonth);
 
     // set the days list
-    for(let i = 0; i <= this.startDay; i++)
+    for(let i = 0; i < this.startDay; i++)
     {
       this.days.push([0, false]);
     }
 
-    for(let i = 0; i <= this.daysInMonth; i++)
+    for(let i = 0; i < this.daysInMonth; i++)
     {
       this.days.push([i+1, false]);
     }

@@ -22,7 +22,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginPageComponent},
     {path: 'event', component: EventPageComponent},
    // {path: 'eventpage/:id', component: EventPageComponent},  // Updated to accept event ID as a parameter
-    {path: 'search/pets/results/:id', component: PetPageComponent, canActivate: [authGuard]},
+    {path: 'search/pets/results/pet', component: PetPageComponent, canActivate: [authGuard]},
     // {path: 'petlist', component: PetListComponent, canActivate: [authGuard]}, //the pets/results page is this, delete later
     {path: 'homepage', component: HomePageComponent, canActivate: [authGuard]},
     {path: 'documentspage', component: DocumentsPageComponent, canActivate: [authGuard]},

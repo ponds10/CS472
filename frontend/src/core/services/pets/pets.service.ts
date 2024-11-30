@@ -19,6 +19,8 @@ export class PetsService {
   storage:Storage = inject(Storage)
   navService = inject(NavigationServiceService)
 
+  selectedPet: Pet | null = null;
+
   imageUrl: string = '';
   constructor() { }
 

@@ -7,7 +7,9 @@ export interface PetAttribute {
 export interface Pet {
   uid: string;
   petId: string;
+
   name: string;
+  bio: string;
   species: string;
   breed: string;
   sex: string;
@@ -16,10 +18,15 @@ export interface Pet {
   size?: string;
   image?: number;
   program: string;
+
+  //medical details
   vacc?: string;
-  vetInfo?: string;
-  misc?: string;
+  vetHistory?: string;
+  miscMed?: string;
   contact?: ContactInfo;
+
+  //additional details
+  miscInfo?:string;
 
 }
 

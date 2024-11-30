@@ -41,8 +41,10 @@ export class PetPageComponent implements OnInit {
               image: data['image'],
               contact: data['contact'],
               vacc: data['vacc'],
-              vetInfo: data['vetInfo'],
-              misc: data['misc'], 
+              vetHistory: data['vetInfo'],
+              miscMed: data['misc'], 
+              program: data['program'],
+              miscInfo: data['addInfo'],
             } as Pet;
           } else {
             return undefined;

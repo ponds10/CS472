@@ -51,6 +51,7 @@ export class SearchPetsFilterComponent {
     sex: '',
     age: undefined,
     program: '',
+    bio: '',
   };
   currentPage: number = 1;
   petsPerPage: number = 6;
@@ -82,6 +83,7 @@ export class SearchPetsFilterComponent {
           weight: pet['weight'],
           image: pet['image'],
           contact: pet['contact'],
+          bio: pet['bio'],
         }));
       },
       error: (error: any) => {

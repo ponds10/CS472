@@ -57,6 +57,7 @@ export class SearchPanelComponent {
       program: this.selectedProgram,
       size: this.selectedSize,
       age: this.selectedAge,
+      bio: '',
     }
     this.petsChange.emit(this.filterResults);
   }

@@ -1,121 +1,249 @@
 <app-header></app-header>
 
 <div class="outerContainer">
-    <div class="navbarContainer">
-        <app-nav-bar></app-nav-bar>
+  <div class="navbarContainer">
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="innerContainer">
+    <div class="w-full flex justify-center mt-16 mb-32 p-8">
+      <form
+        [formGroup]="fg_pet"
+        class="flex flex-col space-y-16 w-full lg:w-1/2"
+      >
+        <!--Panel 1-->
+        <div
+          class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16"
+        >
+          <div>
+            <h1 class="font-bold text-xl">Pet Details</h1>
+            <p>
+              Use this section to introduce your pet's name to everyone and
+              provide them with a quick biography
+            </p>
+          </div>
+
+          <div>
+            <label for="name" class="mb-2 text-gray-900">Name</label>
+            <input
+              formControlName="name"
+              type="text"
+              id="name"
+              class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl"
+              placeholder=""
+              required
+            />
+          </div>
+
+          <div>
+            <label for="description" class="mb-2 text-gray-900"
+              >Biography</label
+            >
+            <textarea
+              formControlName="bio"
+              type="text"
+              id="description"
+              class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"
+            ></textarea>
+          </div>
+        </div>
+
+        <!--Image Panel-->
+        <div
+          class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16"
+        >
+          <h1 class="font-bold text-xl">Upload an Image</h1>
+
+          <div class="space-y-4">
+            <img [src]="url" class="w-full h-auto rounded-xl" />
+
+            <input type="file" (change)="fileChangeEvent($event)" />
+          </div>
+        </div>
+
+        <div
+          class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16"
+        >
+          <div>
+            <h1 class="font-bold text-xl">Medical History</h1>
+            <p>
+              Use this section to describe any knowledge on your pet's medical
+              history
+            </p>
+          </div>
+          <div>
+            <label for="vax" class="mb-2 text-gray-900"
+              >Vaccination History</label
+            >
+            <textarea
+              formControlName="vaccination"
+              type="text"
+              id="vax"
+              class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="vet" class="mb-2 text-gray-900"
+              >Vetinary Visit History</label
+            >
+            <textarea
+              formControlName="vetinary"
+              type="text"
+              id="vet"
+              class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="med" class="mb-2 text-gray-900"
+              >Additional Info e.g dietary restrictions</label
+            >
+            <textarea
+              formControlName="medical"
+              type="text"
+              id="med"
+              class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"
+            ></textarea>
+          </div>
+        </div>
+
+        <!--Date/Loc Panel-->
+        <div
+          class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16"
+        >
+          <div>
+            <h1 class="font-bold text-xl">Biometric Information</h1>
+            <p>
+              Use this section to input relevant biometric information about
+              your pet
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div class="col-span-2">
+              <label for="species" class="mb-2 text-gray-900">Species</label>
+              <select
+                formControlName="species"
+                id="species"
+                class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl"
+                placeholder=""
+                required
+              >
+                @for (animal of animalTypes; track $index) {
+                <option [value]="animal">{{ animal }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="col-span-2">
+              <label for="breed" class="mb-2 text-gray-900">Breed</label>
+              <select
+                formControlName="breed"
+                id="breed"
+                class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl"
+                placeholder=""
+                required
+              >
+                @if (fg_pet.controls['species'].value === 'Cat') { @for (animal
+                of catBreeds; track $index) {
+                <option [value]="animal">{{ animal }}</option>
+                } }
+                @if (fg_pet.controls['species'].value === 'Dog') { @for (animal
+                  of dogBreeds; track $index) {
+                  <option [value]="animal">{{ animal }}</option>
+                  } }
+              </select>
+            </div>
+
+            <div>
+              <label for="age" class="mb-2 text-gray-900">Age</label>
+              <input
+                formControlName="age"
+                type="text"
+                id="age"
+                class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl"
+                placeholder=""
+                required
+              />
+            </div>
+
+            <div>
+              <label for="weight" class="mb-2 text-gray-900">Weight</label>
+              <input
+                formControlName="weight"
+                type="text"
+                id="weight"
+                class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl"
+                placeholder=""
+                required
+              />
+            </div>
+
+            <div>
+              <label for="gender" class="mb-2 text-gray-900">Gender</label>
+              <select
+                formControlName="gender"
+                id="gender"
+                class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl"
+                placeholder=""
+                required
+              >
+                @for (animal of animalGenders; track $index) {
+                <option [value]="animal">{{ animal }}</option>
+                }
+              </select>
+            </div>
+
+            <div>
+              <label for="size" class="mb-2 text-gray-900">Size</label>
+              <select
+                formControlName="size"
+                id="size"
+                class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl"
+                placeholder=""
+                required
+              >
+                @for (animal of animalSizes; track $index) {
+                <option [value]="animal">{{ animal }}</option>
+                }
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!--Misc Panel-->
+        <div
+          class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16"
+        >
+          <div>
+            <h1 class="font-bold text-xl">Additional Information</h1>
+            <p>
+              Use this section to provide any additional information you may
+              want to include e.g pet behvaiors, reason for surrender, etc.
+            </p>
+          </div>
+          <div>
+            <label for="misc" class="mb-2 text-gray-900"
+              >Add more details</label
+            >
+            <textarea
+              formControlName="misc"
+              type="text"
+              id="misc"
+              class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="w-full flex justify-center">
+          <button
+            class="p-4 px-16 font-bold bg-blue-400 bg-opacity-50 rounded-full w-fit border-2 shadow hover:bg-opacity-100"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
-
-    <div class="innerContainer">
-      <div class="w-full flex justify-center mt-16 mb-32 p-8">
-        <form [formGroup]="fg_event" class="flex flex-col space-y-16 w-full lg:w-1/2">
-          <!--Panel 1-->
-          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
-            <div>
-              <h1 class="font-bold text-xl">Pet Details</h1>
-              <p>Use this section to introduce your pet's name to everyone and provide them with a quick biography</p>
-            </div>
-
-            <div>
-              <label for="host" class="mb-2 text-gray-900">Name</label>
-              <input formControlName="organizer" type="text" id="host" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
-            </div>
-
-            <div>
-              <label for="description" class="mb-2 text-gray-900">Biography</label>
-              <textarea formControlName="summary" type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none rounded-xl"></textarea>
-            </div>
-          </div>
-
-          <!--Image Panel-->
-          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
-            <h1 class="font-bold text-xl">Upload an Image</h1>
-
-            <div class="space-y-4">
-              <img [src]="url" class="w-full h-auto rounded-xl">
-
-              <input type="file" (change)="fileChangeEvent($event)">
-            </div>
-          </div>
-
-          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
-            <div>
-              <h1 class="font-bold text-xl">Medical History</h1>
-              <p>Use this section to describe any knowledge on your pet's medical history</p>
-            </div>
-            <div>
-              <label for="description" class="mb-2 text-gray-900">Vaccination History</label>
-              <textarea type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
-            </div>
-
-            <div>
-              <label for="description" class="mb-2 text-gray-900">Vetinary Visit History</label>
-              <textarea type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
-            </div>
-
-            <div>
-              <label for="description" class="mb-2 text-gray-900">Additional Info e.g dietary restrictions</label>
-              <textarea type="text" id="description" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
-            </div>
-          </div>
-
-          <!--Date/Loc Panel-->
-          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
-            <div>
-              <h1 class="font-bold text-xl">Biometric Information</h1>
-              <p>Use this section to input relevant biometric information about your pet</p>
-            </div>
-
-            <div class="grid grid-cols-2 gap-2">
-              <div class="col-span-2">
-                <label for="street" class="mb-2 text-gray-900">Species</label>
-                <input formControlName="street" type="text" id="street" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
-              </div>
-
-              <div>
-                <label for="city" class="mb-2 text-gray-900">Age</label>
-                <input formControlName="city" type="text" id="city" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
-              </div>
-
-              <div>
-                <label for="state" class="mb-2 text-gray-900">Weight</label>
-                <input formControlName="state" type="text" id="state" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
-              </div>
-
-              <div>
-                <label for="zip" class="mb-2 text-gray-900">Gender</label>
-                <input formControlName="zip" type="text" id="zip" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
-              </div>
-
-              <div>
-                <label for="country" class="mb-2 text-gray-900">Breed</label>
-                <input formControlName="country" type="text" id="country" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl" placeholder="" required/>
-              </div>
-            </div>
-          </div>
-
-          <!--Misc Panel-->
-          <div class="bg-white rounded-xl shadow-sm h-[fit] flex flex-col p-8 space-y-16">
-            <div>
-              <h1 class="font-bold text-xl">Additional Information</h1>
-              <p>Use this section to provide any additional information you may want to include e.g pet behvaiors, reason for surrender, etc.</p>
-            </div>
-            <div>
-              <label for="misc" class="mb-2 text-gray-900">Add more details</label>
-              <textarea formControlName="misc" type="text" id="misc" class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full resize-none h-[100px] rounded-xl"></textarea>
-            </div>
-          </div>
-
-          <div class="w-full flex justify-center">
-            <button class="p-4 px-16 font-bold bg-blue-400 bg-opacity-50 rounded-full w-fit border-2 shadow
-                          hover:bg-opacity-100">
-              Submit
-            </button>
-          </div>
-
-        </form>
-      </div>
-    </div>
-           
-          
-
+  </div>
 </div>

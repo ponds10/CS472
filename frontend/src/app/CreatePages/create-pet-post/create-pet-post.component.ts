@@ -5,10 +5,10 @@ import {FormControl, ReactiveFormsModule, FormGroup} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { Auth } from '@angular/fire/auth';
-import { Events } from '../../../core/models/events';
-import { EventsService } from '../../../core/services/event/events.service';
 import { ViewChild } from '@angular/core';
 import { Timestamp } from '@angular/fire/firestore';
+import { PetsService } from '../../../core/services/pets/pets.service';
+import { Pet } from '../../../core/models/pet.model';
 @Component({
   selector: 'app-create-pet-post',
   standalone: true,
@@ -28,9 +28,20 @@ export class CreatePetPostComponent implements OnInit{
    // this is for images
    image: File | null = null;
    url: string | null | ArrayBuffer = "./assets/images/event-page-sample-1.jpg";
+   animalTypes: string[];
+   dogBreeds: string[];
+   catBreeds: string[];
+   animalGenders: string[];
+   animalSizes: string[];
  
  
-   constructor(private eventService: EventsService){}
+   constructor(private petService: PetsService){
+    this.animalTypes = petService.animalTypes
+    this.dogBreeds = petService.dogBreeds
+    this.catBreeds = petService.catBreeds
+    this.animalGenders = petService.animalGenders
+    this.animalSizes = petService.animalSizes
+   }
  
    // oninit 
    ngOnInit(): void {
@@ -38,19 +49,21 @@ export class CreatePetPostComponent implements OnInit{
    }
  
    // make the form controls for each step in the creation page
-   fg_event = new FormGroup({
+   fg_pet = new FormGroup({
  
-     organizer: new FormControl(''),
-     title: new FormControl(''),
-     summary: new FormControl(''),
+     name: new FormControl(''),
+     bio: new FormControl(''),
+
+     vaccination: new FormControl(''),
+     vetinary: new FormControl(''),
+     medical: new FormControl(''),
  
- 
-     date: new FormControl(''),
-     street: new FormControl(''),
-     city: new FormControl(''),
-     state: new FormControl(''),
-     zip: new FormControl(''),
-     country: new FormControl(''),
+     species: new FormControl(''),
+     breed: new FormControl(''),
+     age: new FormControl(''),
+     gender: new FormControl(''),
+     weight: new FormControl(''),
+     size: new FormControl(''),
  
      misc: new FormControl(''),
    });

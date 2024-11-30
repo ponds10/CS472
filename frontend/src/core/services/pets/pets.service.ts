@@ -6,6 +6,8 @@ import { addDoc, collection, query, orderBy, limit, where, getDoc, doc } from '@
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
+import { Pet, ContactInfo } from '../../models/pet.model';
+import { NavigationServiceService } from '../navService/navigation-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +17,9 @@ export class PetsService {
   auth: Auth = inject(Auth);
   router: Router = inject(Router);
   storage:Storage = inject(Storage)
+  navService = inject(NavigationServiceService)
 
-  imageUrl: string | null = null;
+  imageUrl: string = '';
   constructor() { }
 
   animalTypes: string[] = [
@@ -58,7 +61,8 @@ export class PetsService {
 
   animalPrograms: string[] = [
     'Shelter',
-    'Foster'
+    'Foster',
+    'Personal'
   ]
   // upload images
   // takes in a file
@@ -83,39 +87,67 @@ export class PetsService {
     return;
   }
 
-  // generate the account!
-  // takes in userInfo of the userModel
-  // returns nothing, VOID
-  async generatePetPost(userInfo: any, selectedImage: File)
+  async generatePet(pet: Pet, selectedImage: File)
   {
-    // if the user info is null, return 
-    if(userInfo == null)
-    {
-      console.log("Userinfo empty");
+    // if the current user is null then return
+    if (this.auth.currentUser === null || this.auth.currentUser === undefined) {
+      console.log("no signed in user");
+      this.navService.navigateToLoginPage();
       return;
     }
-    
-    // if there is no logged in user, return
-    if(this.auth.currentUser == null)
-    {
-      console.log("No user currently signed in!");
-    }
 
-    // otherwise, try to add a new document to the userInfo collection and return it
-    // if it errors catch it and then print it for debug
+    // store into firestore and then get the url
+    // console.log to debug
+    this.uploadImage(selectedImage);
+    pet.image = this.imageUrl
+    pet.uid = this.auth.currentUser.uid;
+    console.log(pet.image)
+
+    let contact = {
+      organization: { name: this.auth.currentUser.displayName },
+      email: this.auth.currentUser.email
+    }
+    // simple try/catch to handle errors
+    // the prev code should have populated the object, now we can add the doc
     try 
     {
-      await this.uploadImage(selectedImage);
-
+      const newPet = await addDoc(
+        collection(this.firestore, "petInfo"),
+        {
+          name: pet.name,
+          bio: pet.bio,
       
+          image: pet.image,
+      
+          species: pet.species,
+          breed: pet.breed,
+          age: pet.age,
+          gender: pet.sex,
+          weight: pet.weight,
+          size: pet.size,
+          program: pet.program,
+
+          vacc: pet.vacc,
+          vet: pet.vetHistory,
+          med: pet.miscMed,
+
+          misc: pet.miscInfo,
+
+          contact: contact,
+
+          uid: this.auth.currentUser.uid,
+          petID: crypto.randomUUID(),
+        },
+      );
+      this.navService.navigateToMyPets();
+      return newPet;
     } 
     catch (error) 
     {
-      console.error("Error writing new message to Firebase Database", error);
+      console.error("Error writing new pet to Firebase Database", error);
+      return;
     }
-
-    return;
-  };
+  }
 
   //get all the pets
   loadPets = () => {

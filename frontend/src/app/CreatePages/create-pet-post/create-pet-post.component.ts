@@ -33,6 +33,7 @@ export class CreatePetPostComponent implements OnInit{
    catBreeds: string[];
    animalGenders: string[];
    animalSizes: string[];
+   animalPrograms: string[];
  
  
    constructor(private petService: PetsService){
@@ -41,6 +42,7 @@ export class CreatePetPostComponent implements OnInit{
     this.catBreeds = petService.catBreeds
     this.animalGenders = petService.animalGenders
     this.animalSizes = petService.animalSizes
+    this.animalPrograms = petService.animalPrograms
    }
  
    // oninit 
@@ -64,6 +66,7 @@ export class CreatePetPostComponent implements OnInit{
      gender: new FormControl(''),
      weight: new FormControl(''),
      size: new FormControl(''),
+     program: new FormControl(''),
  
      misc: new FormControl(''),
    });
@@ -86,6 +89,29 @@ export class CreatePetPostComponent implements OnInit{
      })
    }
  
- 
+   createPet() {
+    let age = parseInt(this.fg_pet.get('age')?.value as string)
+    const pet: Pet = {
+      name: this.fg_pet.get('name')?.value as string,
+      bio: this.fg_pet.get('bio')?.value as string,
+      species: this.fg_pet.get('species')?.value as string,
+      breed: this.fg_pet.get('breed')?.value as string,
+      age: age,
+      sex: this.fg_pet.get('gender')?.value as string,
+      weight: this.fg_pet.get('weight')?.value as string,
+      size: this.fg_pet.get('size')?.value as string,
+      program: this.fg_pet.get('program')?.value as string,
+
+      vacc: this.fg_pet.get('vaccination')?.value as string,
+      vetHistory: this.fg_pet.get('vetinary')?.value as string,
+      miscMed: this.fg_pet.get('medical')?.value as string,
+
+      miscInfo: this.fg_pet.get('misc')?.value as string,
+
+      uid: this.auth.currentUser?.uid as string,
+      petId: ''
+    }
+    this.petService.generatePet(pet, this.selectedImage as File)
+   }
  
 }

@@ -156,6 +156,21 @@
               </select>
             </div>
 
+            <div class="col-span-2">
+              <label for="program" class="mb-2 text-gray-900">Program</label>
+              <select
+                formControlName="program"
+                id="program"
+                class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl"
+                placeholder=""
+                required
+              >
+              @for (animal of animalPrograms; track $index) {
+                <option [value]="animal">{{ animal }}</option>
+                }
+              </select>
+            </div>
+
             <div>
               <label for="age" class="mb-2 text-gray-900">Age</label>
               <input
@@ -237,7 +252,7 @@
         </div>
 
         <div class="w-full flex justify-center">
-          <button
+          <button (click)="createPet()"
             class="p-4 px-16 font-bold bg-blue-400 bg-opacity-50 rounded-full w-fit border-2 shadow hover:bg-opacity-100"
           >
             Submit

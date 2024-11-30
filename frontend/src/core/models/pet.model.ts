@@ -16,7 +16,7 @@ export interface Pet {
   age?: number;
   weight?: string;
   size?: string;
-  image?: number;
+  image?: string;
   program: string;
 
   //medical details

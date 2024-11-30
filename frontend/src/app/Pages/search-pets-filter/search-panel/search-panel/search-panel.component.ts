@@ -48,7 +48,8 @@ export class SearchPanelComponent {
 
   onSubmit(): void {
     this.filterResults = {
-      id: '',
+      uid:'',
+      petId: '',
       name: '',
       species: this.selectedType,
       breed: this.selectedBreed,

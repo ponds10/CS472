@@ -30,7 +30,8 @@ export class PetPageComponent implements OnInit {
           // Map DocumentData to your Pet interface
           if (data) {
             return {
-              id: data['petID'],
+              uid: data['uid'],
+              petId: data['petID'],
               name: data['name'],
               breed: data['breed'],
               species: data['species'],
@@ -38,8 +39,10 @@ export class PetPageComponent implements OnInit {
               age: data['age'],
               weight: data['weight'],
               image: data['image'],
-              documents: data['documents'],
               contact: data['contact'],
+              vacc: data['vacc'],
+              vetInfo: data['vetInfo'],
+              misc: data['misc'], 
             } as Pet;
           } else {
             return undefined;

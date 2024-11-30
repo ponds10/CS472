@@ -43,7 +43,8 @@ import { NavigationServiceService } from '../../../core/services/navService/navi
 export class SearchPetsFilterComponent {
   pets: Pet[] = [];
   filterResults: Pet = {
-    id: '',
+    uid: '',
+    petId: '',
     name: '',
     species: '',
     breed: '',
@@ -70,7 +71,8 @@ export class SearchPetsFilterComponent {
     this.pets$.subscribe({
       next: (data: DocumentData[]) => {
         this.pets = data.map((pet) => ({
-          id: pet['petID'],
+          uid: pet['uid'],
+          petId: pet['petID'],
           name: pet['name'],
           species: pet['species'],
           breed: pet['breed'],
@@ -79,7 +81,6 @@ export class SearchPetsFilterComponent {
           program: pet['program'],
           weight: pet['weight'],
           image: pet['image'],
-          documents: pet['documents'],
           contact: pet['contact'],
         }));
       },

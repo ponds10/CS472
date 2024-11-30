@@ -5,7 +5,8 @@ export interface PetAttribute {
 }
 
 export interface Pet {
-  id: string;
+  uid: string;
+  petId: string;
   name: string;
   species: string;
   breed: string;
@@ -15,8 +16,11 @@ export interface Pet {
   size?: string;
   image?: number;
   program: string;
-  documents?: PetAttribute[];
+  vacc?: string;
+  vetInfo?: string;
+  misc?: string;
   contact?: ContactInfo;
+
 }
 
 export interface ContactInfo {

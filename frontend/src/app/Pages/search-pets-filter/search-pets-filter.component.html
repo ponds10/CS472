@@ -16,8 +16,7 @@
 
     <!--Filter Panel-->
     <div class="w-full p-4">
-      <app-search-panel (petsChange)="searchPets($event)"/>
- 
+      <app-search-panel (petsChange)="searchPets($event)" />
     </div>
 
     <div class="w-full mt-64 lg:mt-32 lg:flex lg:flex-col lg:items-center">
@@ -39,13 +38,11 @@
           class="pet-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:px-0 gap-4 px-16"
         >
           @for (pet of (pets$ | async); track pet) {
+          <button *ngFor="let pet of paginatedPets()" (click)="selectPet(pet)">
+            <app-pet-card [pet]="pet" ></app-pet-card>
+          </button>
 
-          <app-pet-card
-            *ngFor="let pet of paginatedPets()"
-            [pet]="pet" (click)="selectPet(pet)"
-          ></app-pet-card>
           }
-
         </div>
 
         <!-- Pagination Controls -->

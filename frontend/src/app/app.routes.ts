@@ -11,7 +11,6 @@ import { SearchPetsFilterComponent } from './Pages/search-pets-filter/search-pet
 import { CreatePetPostComponent } from './CreatePages/create-pet-post/create-pet-post.component';
 import { CreateEventComponent } from './CreatePages/create-event/create-event.component';
 import { UserProfilePageComponent } from './Pages/user-profile-page/user-profile-page.component';
-import { PetListComponent } from './Pages/pet-list/pet-list.component';
 import { MapPageComponent } from './Pages/map-page/map-page.component';
 import { CreateAccountComponent } from './Pages/create-account/create-account.component';
 import { CreateUserProfileComponent } from './CreatePages/create-user-profile/create-user-profile.component';

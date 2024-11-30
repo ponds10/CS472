@@ -88,7 +88,7 @@ export class CreateEventComponent implements OnInit{
   }
 
   timeChangeEvent(data: any) {
-    const [hours, minutes] = data.split(':');  // Split input time into hours and minutes
+    let [hours, minutes] = data.split(':');  // Split input time into hours and minutes
     let hour = parseInt(hours, 10);
     let strHour = ''
     if(hour < 10)
@@ -108,7 +108,7 @@ export class CreateEventComponent implements OnInit{
   {
     let month = '';
     let hour = '';
-    let minute 
+    let day = ''
     if(this.currentMonth < 10)
     {
       month = `0${this.currentMonth}`
@@ -117,6 +117,12 @@ export class CreateEventComponent implements OnInit{
     {
       month = `${this.currentMonth}`
     }
+
+    if(`${this.currentDay}`.length == 1)
+    {
+      this.currentDay = `0${this.currentDay}`
+    }
+
     const dateTimeString = `${this.currentYear}-${month}-${this.currentDay}T${this.selectedTime}`
 
     const date = new Date(dateTimeString);

@@ -3,10 +3,11 @@ import { Events } from '../../../../core/models/events';
 import { Input } from '@angular/core';
 import { Timestamp } from '@angular/fire/firestore';
 import { EventsService } from '../../../../core/services/event/events.service';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-eventcard',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './eventcard.component.html',
   styleUrl: './eventcard.component.css'
 })
@@ -58,30 +59,29 @@ export class EventcardComponent implements OnInit{
 
   attendChecker(inputEvent: Events)
   {
-    if(this.eventService.attendedEvents == null)
-    {
-      this.eventService.getAttendedEvents().subscribe((data: Events[]) => {
-        //console.log("is this getting called evertime?")
-        // its not yay
-        this.attendedEvents = data;
-      })
-    }
-    else
-    {
-      this.attendedEvents = this.eventService.attendedEvents;
-    }
+    // if(this.eventService.attendedEvents == null)
+    // {
+    //   this.eventService.getAttendedEvents().subscribe((data: Events[]) => {
+    //     //console.log("is this getting called evertime?")
+    //     // its not yay
+    //     this.attendedEvents = data;
+    //   })
+    // }
+    // else
+    // {
+    //   this.attendedEvents = this.eventService.attendedEvents;
+    // }
 
-    const finalEvents: Events[] = this.attendedEvents!;
-    for(const event of finalEvents)
-    {
-      if(event.eventID == inputEvent.eventID)
-      {
-        return true;
-      }
-    }
+    // const finalEvents: Events[] = this.attendedEvents!;
+    // for(const event of finalEvents)
+    // {
+    //   if(event.eventID == inputEvent.eventID)
+    //   {
+    //     return true;
+    //   }
+    // }
 
     return false;
-
   }
 }
 

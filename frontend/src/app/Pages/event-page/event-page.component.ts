@@ -8,6 +8,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { EventsService } from '../../../core/services/event/events.service';
 import { Events } from '../../../core/models/events';
 import { Timestamp } from '@angular/fire/firestore';
+import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
 @Component({
   selector: 'app-event-page',
   templateUrl: './event-page.component.html',
@@ -16,14 +17,20 @@ import { Timestamp } from '@angular/fire/firestore';
   imports: [HeaderComponent, NavBarComponent, CommonModule, MatChipsModule]
 })
 export class EventPageComponent implements OnInit{
-    constructor(private eventService: EventsService){}
+    constructor(private eventService: EventsService, private navService: NavigationServiceService){}
     selectedEvent: Events | null = null;
     eventDate: Date | null = null;
 
     ngOnInit(): void {
+        console.log(this.selectedEvent)
+        if(this.eventService.selectedEvent == null || this.eventService.selectedEvent == undefined)
+        {
+          this.navService.navigateToSearchEventPage();
+        }
         this.selectedEvent = this.eventService.selectedEvent;
         const eventTimestamp = this.selectedEvent?.date as Timestamp;
         this.eventDate = eventTimestamp.toDate();
+
     }
 
     getMonth()

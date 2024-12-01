@@ -14,13 +14,13 @@
       </div>
     </div>
 
-    <!--Filter Panel-->
+    <!-- Filter Panel -->
     <div class="w-full p-4">
-      <app-search-panel (petsChange)="searchPets($event)" />
+      <app-search-panel (petsChange)="searchPets($event)"></app-search-panel>
     </div>
 
-    <div class="w-full mt-64 lg:mt-32 lg:flex lg:flex-col lg:items-center">
-      <div class="h-screen">
+    <div class="w-full mt-64 lg:mt-32 flex flex-col items-center">
+      <div class="container mx-auto px-16">
         <!-- Error Message -->
         <div *ngIf="errorMessage" class="error-message text-red-500 mb-4">
           {{ errorMessage }}
@@ -32,16 +32,17 @@
         </div>
 
         <!-- Pet List -->
-
         <div
           *ngIf="pets?.length"
-          class="pet-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:px-0 gap-4 px-16"
+          class="pet-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 "
         >
-          <button *ngFor="let pet of paginatedPets()" (click)="selectPet(pet)">
-            <app-pet-card [pet]="pet" ></app-pet-card>
-          </button>
-
-
+          <div
+            *ngFor="let pet of paginatedPets()"
+            (click)="selectPet(pet)"
+            class="flex justify-center"
+          >
+            <app-pet-card [pet]="pet"></app-pet-card>
+          </div>
         </div>
 
         <!-- Pagination Controls -->
@@ -49,7 +50,7 @@
           <button
             (click)="prevPage()"
             [disabled]="currentPage === 1"
-            class="mx-1 px-3 py-1 border rounded-lg mt-8 px-3 py-2 font-medium hover:bg-blue-300 text-black shadow bg-white"
+            class="mx-1 px-3 py-1 border rounded-lg mt-8 font-medium hover:bg-blue-300 text-black shadow bg-white"
           >
             Previous
           </button>
@@ -57,7 +58,7 @@
           <button
             (click)="nextPage()"
             [disabled]="currentPage === totalPages"
-            class="mx-1 px-3 py-1 border rounded-lg mt-8 px-3 py-2 font-medium hover:bg-blue-300 text-black shadow bg-white"
+            class="mx-1 px-3 py-1 border rounded-lg mt-8 font-medium hover:bg-blue-300 text-black shadow bg-white"
           >
             Next
           </button>

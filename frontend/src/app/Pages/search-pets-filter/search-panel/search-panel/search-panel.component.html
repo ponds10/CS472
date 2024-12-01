@@ -10,7 +10,7 @@
       <!-- Cat Icon -->
        <!-- the classes defined in [ngClass] are applied before those in class attribute -->
       <button
-        class="flex flex-col mr-2 min-w-36  max-w-36 items-center cursor-pointer hover:scale-105 bg-white rounded-xl p-4 shadow-xl border-4"
+        class="flex flex-col mr-2 min-w-36  max-w-36 items-center cursor-pointer transition-transform transform hover:scale-105 bg-white rounded-xl p-4 shadow-xl border-4"
         [ngClass]="{
           'border border-blue-300 ': selectedType === 'Cat',
           'border border-gray-300 ': selectedType !== 'Cat'

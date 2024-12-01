@@ -1,17 +1,24 @@
-<!-- src/app/pet-card/pet-card.component.html -->
 <div
-  class="flex flex-col space-y-4 rounded-lg shadow-2xl w-full h-fit m-0 lg:w-3/4 lg:mx-auto hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out bg-white"
+  class="flex flex-col rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out bg-white"
+  style="max-width: 300px; max-height: 400px; min-width: 300px; min-height: 400px;"
 >
-  <div class="w-full md:">
-    <img [src]="pet.image" [alt]="pet.name" class="rounded-xl w-full" />
+  <div class="w-full h-64 overflow-hidden rounded-t-xl">
+    <img
+      [src]="pet.image"
+      [alt]="pet.name"
+      class="object-cover w-full h-full"
+    />
   </div>
 
-  <div class="w-full p-4 space-y-4">
-    <div class="text-3xl font-bold text-cyan-600">
+  <div class="w-full p-4 space-y-2 flex-grow">
+    <div class="text-2xl font-bold px-4">
       {{ pet.name }}
     </div>
-    <div class="text-lg">
-      {{pet.sex}} {{ pet.breed }} {{ pet.weight }} lbs
+    <div class="text-lg px-4 text-gray-700">
+      {{ pet.sex }}  •  {{ pet.breed }}  
+    </div>
+    <div class="text-lg px-4 text-gray-700">
+      {{ pet.age }} yrs old   
     </div>
   </div>
 </div>

@@ -130,10 +130,10 @@ export class PetsService {
           program: pet.program,
 
           vacc: pet.vacc,
-          vet: pet.vetHistory,
-          med: pet.miscMed,
+          vetHistory: pet.vetHistory,
+          miscMed: pet.miscMed,
 
-          misc: pet.miscInfo,
+          miscInfo: pet.miscInfo,
 
           contact: contact,
 

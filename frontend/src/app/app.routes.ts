@@ -22,12 +22,12 @@ export const routes: Routes = [
     {path: 'login', component: LoginPageComponent},
     {path: 'event', component: EventPageComponent},
    // {path: 'eventpage/:id', component: EventPageComponent},  // Updated to accept event ID as a parameter
-    {path: 'search/pets/results/pet', component: PetPageComponent, canActivate: [authGuard]},
+    {path: 'search/pets/filter/pet', component: PetPageComponent, canActivate: [authGuard]},
     // {path: 'petlist', component: PetListComponent, canActivate: [authGuard]}, //the pets/results page is this, delete later
     {path: 'homepage', component: HomePageComponent, canActivate: [authGuard]},
     {path: 'documentspage', component: DocumentsPageComponent, canActivate: [authGuard]},
     {path: 'search/pets/filter', component: SearchPetsFilterComponent, canActivate: [authGuard]},
-    {path: 'search/pets/results', component: SearchPetsPageComponent, canActivate: [authGuard]},
+    //{path: 'search/pets/results', component: SearchPetsPageComponent, canActivate: [authGuard]},
     {path: 'search/events', component: SearchEventsPageComponent, canActivate: [authGuard]},
     {path: 'create/pet-post', component: CreatePetPostComponent, canActivate: [authGuard]},
     {path: 'create/event', component: CreateEventComponent, canActivate: [authGuard]},

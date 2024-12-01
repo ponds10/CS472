@@ -117,7 +117,9 @@ export class SearchPetsFilterComponent {
 
   selectPet(pet: Pet) {
     this.petService.selectedPet = pet;
+    // save pet data locally
+    sessionStorage.setItem('selectedPet', JSON.stringify(pet));
     this.navService.navigateToPetPage(pet);
-    return;
+    
   }
 }

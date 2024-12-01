@@ -124,7 +124,7 @@ export class PetsService {
           species: pet.species,
           breed: pet.breed,
           age: pet.age,
-          gender: pet.sex,
+          sex: pet.sex,
           weight: pet.weight,
           size: pet.size,
           program: pet.program,
@@ -138,7 +138,7 @@ export class PetsService {
           contact: contact,
 
           uid: this.auth.currentUser.uid,
-          petID: crypto.randomUUID(),
+          petId: crypto.randomUUID(),
         },
       );
       this.navService.navigateToMyPets();

@@ -151,7 +151,7 @@ export class MapPageComponent {
     });
   }
 
-  addControl() {
+  mapInit() {
     this.cdr.detectChanges();
     console.log('called addControl');
     const newMarkerControl = this.createNewMarkerControl(this.map);
@@ -161,4 +161,12 @@ export class MapPageComponent {
       newMarkerControlDiv
     );
   }
+
+  markerIcon() {
+    const markerIcon = document.createElement('img');
+    markerIcon.src = './assets/images/map-cat.png'
+    markerIcon.width = 36
+    return markerIcon
+  }
+
 }

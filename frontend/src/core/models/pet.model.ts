@@ -13,7 +13,7 @@ export interface Pet {
   species: string;
   breed: string;
   sex: string;
-  age?: number;
+  age?: number | number[];
   weight?: string;
   size?: string;
   image?: string;

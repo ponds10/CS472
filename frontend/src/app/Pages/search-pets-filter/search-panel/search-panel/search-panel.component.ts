@@ -24,7 +24,7 @@ export class SearchPanelComponent {
   Breeds: string[] = [];
   
   selectedType: string = "";
-  selectedAge: number | undefined = undefined;
+  selectedAge: string = '';
   searchTerm: string = '';
   selectedGender: string = '';
   selectedSize: string = '';
@@ -47,6 +47,19 @@ export class SearchPanelComponent {
   // generate events that can be listened by the parent component triggered by emit method
 
   onSubmit(): void {
+    let realAges: number[] = [];
+    if(this.selectedAge === '0-1') {
+      realAges = [0, 1]
+    } 
+    else if (this.selectedAge === '2-6') {
+      realAges = [2, 3, 4, 5, 6]
+    }
+    else if (this.selectedAge === '7-9') {
+      realAges = [7, 8, 9]
+    }
+    else if (this.selectedAge === '10+') {
+      realAges = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    }
     this.filterResults = {
       uid:'',
       petId: '',
@@ -56,7 +69,7 @@ export class SearchPanelComponent {
       sex: this.selectedGender,
       program: this.selectedProgram,
       size: this.selectedSize,
-      age: this.selectedAge,
+      age: realAges,
       bio: '',
     }
     this.petsChange.emit(this.filterResults);

@@ -85,7 +85,8 @@ export class SearchPetsFilterComponent {
 
         (!this.filterResults.species ||
           pet.species === this.filterResults.species) &&
-        (!this.filterResults.age || pet.age === this.filterResults.age) &&
+        // @ts-ignore
+        (!this.filterResults.age || this.filterResults.age.includes(pet.age)) &&
         (!this.filterResults.breed || pet.breed === this.filterResults.breed) &&
         (!this.filterResults.sex || pet.sex === this.filterResults.sex) &&
         (!this.filterResults.program ||

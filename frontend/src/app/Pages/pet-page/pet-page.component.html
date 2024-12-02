@@ -6,75 +6,72 @@
 
   <div class="innerContainer lg:p-16 lg:pt-8 space-y-4">
     <div class="flex justify-center items-center w-full pt-16">
-      <div class="grid grid-cols-1 gap-0 lg:grid-cols-2 w-4/5">
+      <div class="grid grid-cols-2 gap-0 w-4/5">
         <!-- <div
           class="bg-white bg-opacity-75 rounded-xl shadow-lg md:col-span-2 "
         > -->
-         
-            <div class="flex-none w-full h-64 md:h-auto relative overflow-hidden rounded-tl-xl rounded-tr-xl md:rounded-bl-xl md:rounded-tr-none ">
-              <img
-                [src]="pet?.image"
-                alt=""
-                class=" w-full h-full object-cover "
-                loading="eager"
-              />
-            </div>
-          
-            <div class="flex font-sans bg-white bg-opacity-75 md:rounded-tr-xl md:rounded-bl-none rounded-br-xl rounded-bl-xl">
-            <form class="flex-auto p-16">
-              <div class="flex flex-wrap">
-                <h1 class="flex-auto text-3xl font-semibold text-slate-900">
-                  {{ pet?.name }}
-                </h1>
-                <div class="text-xl font-semibold text-slate-500">
-                  {{ pet?.program }}
-                </div>
-                <div class="w-full flex-none font-medium text-slate-700 my-2">
-                  {{ pet?.breed }}
-                </div>
 
-                <!-- About pet info -->
-                <div class="grid grid-cols-2 mt-6 w-2/3">
-                  <div class="text-md text-slate-600">
-                    Name
-                  </div>
-                  <div class="text-md font-medium text-slate-700">
-                    {{ pet?.name }}
-                  </div>
-                  <div class="text-md text-slate-600">
-                    Age
-                  </div>
-                  <div class="text-md font-medium text-slate-700">
-                    {{ pet?.age }}
-                  </div>
-                  <div class="text-md text-slate-600">
-                    Gender
-                  </div>
-                  <div class="text-md font-medium text-slate-700">
-                    {{ pet?.sex }}
-                  </div>
-                  <div class="text-md text-slate-600">
-                    Size
-                  </div>
-                  <div class="text-md font-medium text-slate-700">
-                    {{ pet?.size }}
-                  </div>
+        <div
+          class="flex-none col-span-2 lg:col-span-1 w-full h-64 md:h-auto relative overflow-hidden rounded-tl-xl rounded-tr-xl md:rounded-bl-xl md:rounded-tr-none"
+        >
+          <img
+            [src]="pet?.image"
+            alt=""
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+
+        <div
+          class="flex font-sans col-span-2 lg:col-span-1 bg-white bg-opacity-75 md:rounded-tr-xl md:rounded-bl-none rounded-br-xl rounded-bl-xl"
+        >
+          <form class="flex-auto p-16">
+            <div class="flex flex-wrap">
+              <h1 class="flex-auto text-3xl font-semibold text-slate-900">
+                {{ pet?.name }}
+              </h1>
+              <div class="text-xl font-semibold text-slate-500">
+                {{ pet?.program }}
+              </div>
+              <div class="w-full flex-none font-medium text-slate-700 my-2">
+                {{ pet?.breed }}
+              </div>
+
+              <!-- About pet info -->
+              <div class="grid grid-cols-2 mt-6 w-2/3">
+                <div class="text-md text-slate-600">Name</div>
+                <div class="text-md font-medium text-slate-700">
+                  {{ pet?.name }}
+                </div>
+                <div class="text-md text-slate-600">Age</div>
+                <div class="text-md font-medium text-slate-700">
+                  {{ pet?.age }}
+                </div>
+                <div class="text-md text-slate-600">Gender</div>
+                <div class="text-md font-medium text-slate-700">
+                  {{ pet?.sex }}
+                </div>
+                <div class="text-md text-slate-600">Size</div>
+                <div class="text-md font-medium text-slate-700">
+                  {{ pet?.size }}
                 </div>
               </div>
+            </div>
+            <div
+              class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200"
+            ></div>
+            <div class="flex space-x-4 mb-6">
               <div
-                class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200"
-              ></div>
-              <div class="flex space-x-4 mb-6">
-                <div class="flex-auto flex space-x-4 text-2xl font-semibold text-slate-900">
-                  Meet {{pet?.name}}
-                  
-                </div>
+                class="flex-auto flex space-x-4 text-2xl font-semibold text-slate-900"
+              >
+                Meet {{ pet?.name }}
               </div>
-              <div class="w-full flex-none font-medium text-slate-700 mt-2">
-                {{ pet?.bio }}
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="w-full flex-none font-medium text-slate-700 mt-2">
+              {{ pet?.bio }}
+            </div>
+          </form>
+        </div>
         <!-- </div> -->
 
         <!-- contact info -->
@@ -100,8 +97,6 @@
             <div class="p-4 font-bold text-xl"></div>
           </div>
         </div>
-
-        
 
         <div class="h-[300px]"></div>
       </div>

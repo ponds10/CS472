@@ -54,7 +54,7 @@ export class SearchPetsFilterComponent implements OnInit {
     bio: '',
   };
   currentPage: number = 1;
-  petsPerPage: number = 6;
+  petsPerPage: number = 8;
   searchTerm: string = '';
   selectedSpecies: string = '';
   errorMessage: string = '';

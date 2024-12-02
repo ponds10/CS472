@@ -58,6 +58,7 @@ export class SearchPetsFilterComponent implements OnInit {
   searchTerm: string = '';
   selectedSpecies: string = '';
   errorMessage: string = '';
+  validPrograms: string[] = ['Shelter', 'Foster']
 
   constructor(
     private viewportscroller: ViewportScroller,
@@ -90,7 +91,8 @@ export class SearchPetsFilterComponent implements OnInit {
         (!this.filterResults.breed || pet.breed === this.filterResults.breed) &&
         (!this.filterResults.sex || pet.sex === this.filterResults.sex) &&
         (!this.filterResults.program ||
-          pet.program === this.filterResults.program)
+          pet.program === this.filterResults.program) &&
+        (this.validPrograms.includes(pet.program))
       );
     });
   }

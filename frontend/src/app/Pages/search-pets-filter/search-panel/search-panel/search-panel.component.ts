@@ -36,6 +36,7 @@ export class SearchPanelComponent {
     this.animalGenders = this.petService.animalGenders;
     this.animalSizes = this.petService.animalSizes;
     this.animalPrograms = this.petService.animalPrograms;
+    this.animalPrograms.pop()
   }
 
   // output decorator that creates a communication path from child (this component)

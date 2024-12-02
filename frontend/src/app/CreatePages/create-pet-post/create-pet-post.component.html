@@ -24,7 +24,7 @@
           </div>
 
           <div>
-            <label for="name" class="mb-2 text-gray-900">Name</label>
+            <label for="name" class="mb-2 text-gray-900">Name<span class="text-red-500">*</span></label>
             <input
               formControlName="name"
               type="text"
@@ -122,7 +122,7 @@
 
           <div class="grid grid-cols-2 gap-2">
             <div class="col-span-2">
-              <label for="species" class="mb-2 text-gray-900">Species</label>
+              <label for="species" class="mb-2 text-gray-900">Species<span class="text-red-500">*</span></label>
               <select
                 formControlName="species"
                 id="species"
@@ -137,7 +137,7 @@
             </div>
 
             <div class="col-span-2">
-              <label for="breed" class="mb-2 text-gray-900">Breed</label>
+              <label for="breed" class="mb-2 text-gray-900">Breed<span class="text-red-500">*</span></label>
               <select
                 formControlName="breed"
                 id="breed"
@@ -157,7 +157,7 @@
             </div>
 
             <div class="col-span-2">
-              <label for="program" class="mb-2 text-gray-900">Program</label>
+              <label for="program" class="mb-2 text-gray-900">Program<span class="text-red-500">*</span></label>
               <select
                 formControlName="program"
                 id="program"
@@ -172,7 +172,7 @@
             </div>
 
             <div>
-              <label for="age" class="mb-2 text-gray-900">Age</label>
+              <label for="age" class="mb-2 text-gray-900">Age<span class="text-red-500">*</span></label>
               <input
                 formControlName="age"
                 type="text"
@@ -191,12 +191,11 @@
                 id="weight"
                 class="bg-gray-50 border opacity-75 border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 w-full rounded-xl"
                 placeholder=""
-                required
               />
             </div>
 
             <div>
-              <label for="gender" class="mb-2 text-gray-900">Gender</label>
+              <label for="gender" class="mb-2 text-gray-900">Gender<span class="text-red-500">*</span></label>
               <select
                 formControlName="gender"
                 id="gender"
@@ -211,7 +210,7 @@
             </div>
 
             <div>
-              <label for="size" class="mb-2 text-gray-900">Size</label>
+              <label for="size" class="mb-2 text-gray-900">Size<span class="text-red-500">*</span></label>
               <select
                 formControlName="size"
                 id="size"

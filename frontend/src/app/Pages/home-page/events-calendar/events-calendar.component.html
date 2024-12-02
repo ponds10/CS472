@@ -1,15 +1,15 @@
 <div class="text-xs p-4 border-2 border-gray-100 shadow-sm h-fit bg-white bg-opacity-75 rounded-xl">
     <div class="w-full flex flex-col p-4 space-y-4">
         <div class="flex justify-evenly">
-            <div class="border-2 h-[25px] w-[25px] rounded-full flex justify-center items-center" (click)="prevMonth()">
+            <div class="border-2 h-[25px] w-[25px] rounded-full flex justify-center items-center" (click)="prevMonth()" style="cursor: pointer">
                 <mat-icon>keyboard_arrow_left</mat-icon>
             </div>
-            
+
             <div class="font-bold text-xl space-x-2">
                 {{currentMonthName}}
                 {{currentYear}}
             </div>
-            <div class="border-2 h-[25px] w-[25px] rounded-full flex justify-center items-center" (click)="nextMonth()">
+            <div class="border-2 h-[25px] w-[25px] rounded-full flex justify-center items-center" (click)="nextMonth()" style="cursor: pointer">
                 <mat-icon>keyboard_arrow_right</mat-icon>
             </div>
         </div>
@@ -27,13 +27,13 @@
             <!--then for loop for 1 to max days-->
 
             @for(day of days; let idx = $index; track idx)
-            {   
+            {
                 @if(day[0])
                 {
                     @if(day[1])
                     {
-                        <div class="bg-blue-300 bg-opacity-100 border-2 rounded-full 
-                                    h-[25px] w-[25px] flex justify-center items-center" 
+                        <div class="bg-blue-300 bg-opacity-100 border-2 rounded-full
+                                    h-[25px] w-[25px] flex justify-center items-center"
                         >{{day[0]}}
                         </div>
                     }

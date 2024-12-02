@@ -23,11 +23,15 @@
             </div>
 
             <div class="col-span-4 lg:col-span-1">
+              <button class="w-full text-left">
                 <app-home-card title="Saved Events" source="./assets/homepage_images/4.png"></app-home-card>
+              </button>
             </div>
 
             <div class="col-span-4 lg:col-span-1">
-                <app-home-card (click)="navService.navigateToDocumentsPage()" title="Documents" source="./assets/homepage_images/5.png"></app-home-card>
+              <button class="w-full text-left" (click)="navService.navigateToDocumentsPage()">
+                <app-home-card title="Documents" source="./assets/homepage_images/5.png"></app-home-card>
+              </button>
             </div>
         </div>
 

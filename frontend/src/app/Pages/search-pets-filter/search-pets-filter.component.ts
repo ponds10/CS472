@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, inject, OnInit } from '@angular/core';
 import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
 import { SampleCardComponent } from '../../../shared/components/sample-card/sample-card.component';
 import { MatChipsModule } from '@angular/material/chips';
@@ -40,7 +40,7 @@ import { NavigationServiceService } from '../../../core/services/navService/navi
   templateUrl: './search-pets-filter.component.html',
   styleUrl: './search-pets-filter.component.css',
 })
-export class SearchPetsFilterComponent {
+export class SearchPetsFilterComponent implements OnInit {
   pets: Pet[] | null = null;
   filterResults: Pet = {
     uid: '',

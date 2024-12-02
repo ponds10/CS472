@@ -6,12 +6,69 @@
   </div>
 
   <div class="innerContainer">
-    <button
-      class="px-4 py-2 bg-blue-300 flex justify-center rounded-xl shadow-lg cursor-pointer"
-      (click)="navService.navigateToCreatePet()"
-    >
-      <mat-icon>add</mat-icon>
-      New Pet
-    </button>
+    <div class="w-full mt-64 lg:mt-32 flex flex-col items-center">
+      <div class="container mx-auto px-16">
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="error-message text-red-500 mb-4">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Loading Indicator -->
+        <div *ngIf="!pets?.length && !errorMessage" class="loading-spinner">
+          Loading pets...
+        </div>
+
+        <!-- Pet List -->
+        <div
+          *ngIf="pets?.length"
+          class="pet-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
+          <div
+            *ngFor="let pet of paginatedPets()"
+            (click)="selectPet(pet)"
+            class="flex justify-center"
+          >
+            <app-pet-card [pet]="pet"></app-pet-card>
+          </div>
+          <button class="flex justify-center" (click)="navService.navigateToCreatePet()">
+          <div
+            class="flex flex-col rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out bg-white items-center"
+            style="
+              max-width: 300px;
+              max-height: 400px;
+              min-width: 300px;
+              min-height: 400px;
+            "
+          >
+          <div class="text-[180px] -mb-32 mt-10 text-gray-900 opacity-40">
+            <mat-icon [inline]="true">add</mat-icon>
+          </div>
+          <div class="text-lg font-medium text-gray-900 opacity-40">
+            <p>New Pet</p>
+          </div>
+          </div>
+        </button>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination mt-6 flex justify-center">
+          <button
+            (click)="prevPage()"
+            [disabled]="currentPage === 1"
+            class="mx-1 px-3 py-1 border rounded-lg mt-8 font-medium hover:bg-blue-300 text-black shadow bg-white"
+          >
+            Previous
+          </button>
+          <span class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+          <button
+            (click)="nextPage()"
+            [disabled]="currentPage === totalPages"
+            class="mx-1 px-3 py-1 border rounded-lg mt-8 font-medium hover:bg-blue-300 text-black shadow bg-white"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

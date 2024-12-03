@@ -6,18 +6,18 @@
   </div>
 
   <div class="innerContainer">
-    <h1 class="font-semibold text-5xl mt-10 md:pl-12 md:place-self-start">
+    <h1 class="font-semibold text-5xl mt-10 md:pl-12 md:place-self-start"  role="banner">
       Your Pets
     </h1>
     <div class="w-full mt-24 lg:mt-32 flex flex-col items-center pb-20">
       <div class="container mx-auto px-2 md:px-16">
         <!-- Error Message -->
-        <div *ngIf="errorMessage" class="error-message text-red-500 mb-4">
+        <div *ngIf="errorMessage" class="error-message text-red-500 mb-4" aria-errormessage="error-message">
           {{ errorMessage }}
         </div>
 
         <!-- Loading Indicator -->
-        <div *ngIf="!pets?.length && !errorMessage" class="loading-spinner">
+        <div *ngIf="!pets?.length && !errorMessage" class="loading-spinner" aria-busy="true" role="alert">
           Loading pets...
         </div>
 
@@ -25,7 +25,9 @@
         <div
           *ngIf="pets?.length"
           class="pet-list grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
-        >
+          aria-labelledby="pet-list"
+          role="list"
+          >
           <div
             *ngFor="let pet of paginatedPets()"
             (click)="selectPet(pet)"
@@ -60,7 +62,9 @@
             (click)="prevPage()"
             [disabled]="currentPage === 1"
             class="mx-1 px-3 py-1 border rounded-lg mt-8 font-medium hover:bg-blue-300 text-black shadow bg-white"
-          >
+            aria-labelledby="previous-button"
+            role="button"
+            >
             Previous
           </button>
           <span class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
@@ -68,7 +72,9 @@
             (click)="nextPage()"
             [disabled]="currentPage === totalPages"
             class="mx-1 px-3 py-1 border rounded-lg mt-8 font-medium hover:bg-blue-300 text-black shadow bg-white"
-          >
+            aria-labelledby="next-button"
+            role="button"
+            >
             Next
           </button>
         </div>

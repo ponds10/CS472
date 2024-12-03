@@ -6,9 +6,11 @@
   </div>
 
   <div class="innerContainer">
-    <h1 class="font-semibold text-5xl mt-10 md:pl-12 md:place-self-start">Your Pets</h1>
+    <h1 class="font-semibold text-5xl mt-10 md:pl-12 md:place-self-start">
+      Your Pets
+    </h1>
     <div class="w-full mt-24 lg:mt-32 flex flex-col items-center pb-20">
-      <div class="container mx-auto px-16">
+      <div class="container mx-auto px-2 md:px-16">
         <!-- Error Message -->
         <div *ngIf="errorMessage" class="error-message text-red-500 mb-4">
           {{ errorMessage }}
@@ -22,7 +24,7 @@
         <!-- Pet List -->
         <div
           *ngIf="pets?.length"
-          class="pet-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          class="pet-list grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
         >
           <div
             *ngFor="let pet of paginatedPets()"
@@ -30,25 +32,26 @@
             class="flex justify-center"
           >
             <app-pet-card [pet]="pet"></app-pet-card>
+
+            <!-- new pet card -->
           </div>
-          <button class="flex justify-center" (click)="navService.navigateToCreatePet()">
-          <div
-            class="flex flex-col rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out bg-white items-center"
-            style="
-              max-width: 300px;
-              max-height: 400px;
-              min-width: 300px;
-              min-height: 400px;
-            "
+          <button
+            class="flex justify-center"
+            (click)="navService.navigateToCreatePet()"
           >
-          <div class="text-[180px] -mb-32 mt-10 text-gray-900 opacity-40">
-            <mat-icon [inline]="true">add</mat-icon>
-          </div>
-          <div class="text-lg font-medium text-gray-900 opacity-40">
-            <p>New Pet</p>
-          </div>
-          </div>
-        </button>
+            <div
+              class="flex flex-col rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out bg-white items-center max-w-[300px] max-h-[400px] min-w-[200px] min-h-[240px] md:min-h-[400px] md:min-w-[300px]"
+            >
+              <div
+                class="text-[180px] -mb-32 -mt-4 md:mt-10 text-gray-900 opacity-40"
+              >
+                <mat-icon [inline]="true">add</mat-icon>
+              </div>
+              <div class="text-lg font-medium text-gray-900 opacity-40">
+                <p>New Pet</p>
+              </div>
+            </div>
+          </button>
         </div>
 
         <!-- Pagination Controls -->

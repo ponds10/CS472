@@ -65,4 +65,8 @@ export class NavigationServiceService {
   {
     this.router.navigate(['/documentspage']);
   }
+  navigateToMyEvents()
+  {
+    this.router.navigate(['/my-events']);
+  }
 }

@@ -16,6 +16,7 @@ import { CreateAccountComponent } from './Pages/create-account/create-account.co
 import { CreateUserProfileComponent } from './CreatePages/create-user-profile/create-user-profile.component';
 import { authGuard } from '../core/guard/auth.guard';
 import { MyPetsPageComponent } from './Pages/my-pets-page/my-pets-page.component';
+import { MyEventsComponent } from './Pages/my-events/my-events.component';
 
 export const routes: Routes = [
     {path: '', component: LandingPageComponent},
@@ -36,5 +37,7 @@ export const routes: Routes = [
     {path: 'newAccount', component:CreateAccountComponent},
     {path: 'createUser', component:CreateUserProfileComponent, canActivate: [authGuard]},
     {path: 'my-pets', component:MyPetsPageComponent, canActivate: [authGuard]},
+    {path: 'my-events', component:MyEventsComponent, canActivate: [authGuard]},
     {path: '**', redirectTo:'login'},
+
 ];

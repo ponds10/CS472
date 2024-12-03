@@ -3,7 +3,7 @@
       <div class="">
         <img src="./assets/images/name_logo.png" alt="logo" class="">
       </div>
-  
+
       <!-- Text boxes-->
       <form [formGroup]="fg_login">
         <div class="flex flex-col">
@@ -15,16 +15,16 @@
           <input type="password" id="password" class="login-textbox" placeholder="" formControlName="password"/>
         </div>
       </form>
-  
+
       <div class="h-1"></div>
-  
+
       <!-- Buttons -->
       <div>
         <button class="login-button bg-cyan-300 hover:bg-cyan-500" (click)="createAccountWithEmail()">
           Sign Up
         </button>
       </div>
-  
+
       <!-- or divider -->
       <div class="w-full flex items-center">
         <div class="pl-4 flex-auto">
@@ -35,21 +35,21 @@
           <hr class="border-gray-500" />
         </div>
       </div>
-      
+
       <div>
         <button class="login-button bg-white border-2 border-gray-400 flex items-center justify-center gap-1" (click)="this.loginService.login()">
           <img class ="size-5" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"/>
           <p class="flex-none">Continue With Google</p>
         </button>
       </div>
-  
+
       <div>
         <div class="grid grid-cols-1 place-items-center space-y-4">
           <div>
-            <a (click)="this.navService.navigateToLoginPage()">Already have an account?</a>
+            <a (click)="this.navService.navigateToLoginPage()" style="cursor: pointer">Already have an account?</a>
           </div>
         </div>
       </div>
-  
+
     </div>
   </div>

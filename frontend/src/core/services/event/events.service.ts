@@ -154,6 +154,7 @@ export class EventsService {
 
   async attendEvent(event: Events)
   {
+    console.log("we made it")
     // if the current user is null then return
     if (this.auth.currentUser === null || this.auth.currentUser === undefined) {
       this.navService.navigateToLoginPage();
@@ -163,18 +164,20 @@ export class EventsService {
     // if the list of attended events is empty then return
     if(this.attendedEvents == null)
     {
-      return;
+      console.log("cool its empty!")
     }
-
-    // check if the eventid is current in the attendedEvents id
-    // if it is, then just return and do not add to the count!
-    for(const temp of this.attendedEvents!)
+    else
     {
-      if(event.eventID == temp.eventID )
-      {
-        console.log("already attending")
-        return; 
-      }
+      // check if the eventid is current in the attendedEvents id
+      // if it is, then just return and do not add to the count!
+      for(const temp of this.attendedEvents!)
+        {
+          if(event.eventID == temp.eventID )
+          {
+            console.log("already attending")
+            return; 
+          }
+        }
     }
 
     // now we need to add to the table that stores our 
@@ -264,7 +267,7 @@ export class EventsService {
   {
     if(this.attendedEvents == null)
     {
-      return false;
+      this.getAttendedEvents();
     }
     for(const currEvent of this.attendedEvents!)
     {

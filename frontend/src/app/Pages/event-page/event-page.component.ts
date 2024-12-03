@@ -9,12 +9,14 @@ import { Timestamp } from '@angular/fire/firestore';
 import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
 import { User } from '../../../core/models/user';
 import { ActivatedRoute } from '@angular/router';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-event-page',
   templateUrl: './event-page.component.html',
   styleUrls: ['./event-page.component.css'],
   standalone: true,
-  imports: [HeaderComponent, NavBarComponent, CommonModule, MatChipsModule]
+  imports: [HeaderComponent, NavBarComponent, CommonModule, MatChipsModule, MatIcon, MatIconModule]
 })
 export class EventPageComponent implements OnInit{
     // constructor for the services
@@ -88,6 +90,12 @@ export class EventPageComponent implements OnInit{
     // returns a true/false boolean that determines whether or not 
     attending()
     {
-      return this.eventService.checkAttendance(this.selectedEvent!)
+      return this.eventService.checkAttendance(this.selectedEvent!);
+    }
+
+    rsvpEvent()
+    {
+      this.eventService.attendEvent(this.selectedEvent!)
+      this.eventService.attendedEvents?.push(this.selectedEvent!)
     }
 }

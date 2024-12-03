@@ -36,24 +36,23 @@
 
                 <div role="region" aria-labelledby="location-title" class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg w-full col-span-2 lg:col-span-1">
                   <h1 id="location-title" class="text-xl font-bold">Location</h1>
-                    <!-- <div class="text-xl font-bold">
-                        <h1>Location</h1>
-                    </div> -->
-                    <div>
-                        {{selectedEvent?.street}}
+                    <div class="flex p-8">
+                        <mat-icon>room</mat-icon>
+                        <div>
+                            <div>
+                                {{selectedEvent?.street}}
+                            </div>
+                            <div>
+                                {{selectedEvent?.city}}, 
+                                {{selectedEvent?.state}}
+                                {{selectedEvent?.zip}}
+                            </div>
+                            <div>
+                                {{selectedEvent?.country}}
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        {{selectedEvent?.city}}
-                    </div>
-                    <div>
-                        {{selectedEvent?.state}}
-                    </div>
-                    <div>
-                        {{selectedEvent?.zip}}
-                    </div>
-                    <div>
-                        {{selectedEvent?.country}}
-                    </div>
+
                 </div>
 
                 <div role="region" aria-labelledby="date-title" class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg w-full space-y-4 col-span-2 lg:col-span-1">
@@ -83,37 +82,84 @@
                 </div>
 
 
-                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 col-span-2 lg:col-span-1">
-                    <div class="text-xl font-bold">
-                        <h1>Additional Details</h1>
-                    </div>
-                    {{selectedEvent?.misc}}
-                </div>
+                
 
                 <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Organizer</h1>
                     </div>
-                    {{selectedEvent?.organizer}}
-                    {{organizer?.first_name}}
+                    <div class="w-full flex flex-col justify-center items-center p-4">
+                        <div class="w-full rounded-xl shadow-lg p-4 space-y-4 h-[200px] bg-white">
+                            <div class="font-bold">
+                                {{organizer?.first_name}}
+                                {{organizer?.last_name}}
+                            </div>
+
+                            <div>
+                                {{organizer?.accountType}}
+                            </div>
+
+                            <div class="border-b-2"></div>
+
+                            
+                            <div class="flex items-center space-x-4">
+                                <mat-icon>phone</mat-icon>
+                                {{organizer?.phone}}
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <mat-icon>mail</mat-icon>
+                                {{organizer?.email}}
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
                 </div>
 
                 <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Attendance</h1>
                     </div>
-                    {{selectedEvent?.attendance}}
+                    <div class="w-full flex flex-col justify-center items-center p-4">
+                        <div class="w-full rounded-xl shadow-lg p-4 space-y-4 h-[200px] bg-white">
+                            <div class="flex items-center justify-center">
+                                <mat-icon>group</mat-icon>
+                                {{selectedEvent?.attendance}}
+                            </div>
+                            
+                            <div class="border-b-2"></div>
 
-                    @if(attending())
-                    {
-                        you are attending!
-                    }
-                    @else 
-                    {
-
-                    }
+                            @if(attending())
+                            {
+                                <div class="w-full p-4 flex justify-center">
+                                    <button class="p-4 px-16 font-bold bg-blue-400 bg-opacity-50 rounded-full w-fit border-2 shadow
+                                    hover:bg-opacity-100" disabled="true">
+                                        You are attending
+                                    </button>
+                                </div>
+                            }
+                            @else 
+                            {
+                                <div class="w-full p-4 flex justify-center">
+                                    <button class="p-4 px-16 font-bold bg-blue-400 bg-opacity-50 rounded-full w-fit border-2 shadow
+                                    hover:bg-opacity-100" (click)="rsvpEvent()">
+                                        RSVP
+                                    </button>
+                                </div>
+                            }
+                            
+                        </div>
+                    </div>
+                    
+                    
                 </div>
-
+                
+                <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 lg:col-span-1">
+                    <div class="text-xl font-bold">
+                        <h1>Additional Details</h1>
+                    </div>
+                    {{selectedEvent?.misc}}
+                </div>
                 <div class="h-[300px]"></div>
             </div>
         </div>

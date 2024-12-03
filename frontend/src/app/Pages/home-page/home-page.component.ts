@@ -33,6 +33,5 @@ export class HomePageComponent {
         this.user = this.userService.currentUser;
       })
     }
-    this.eventService.getAttendedEvents();
   }
 }

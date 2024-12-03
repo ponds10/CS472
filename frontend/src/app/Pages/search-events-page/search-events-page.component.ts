@@ -29,20 +29,14 @@ export class SearchEventsPageComponent implements OnInit{
   full_events: Events[] | null = null;
   constructor(private eventService: EventsService, private navService: NavigationServiceService) {}
 
-  testing()
-  {
-    this.eventService.getInitalEvents().subscribe((data: Events[]) => {
-      this.events = data;
-      console.log(this.events)
-    })
-  }
-
-  
-
   ngOnInit(): void {
     this.eventService.getInitalEvents().subscribe((data: Events[]) => {
       this.events = data;
       this.full_events = data;
+    })
+
+    this.eventService.getAttendedEvents().subscribe((result: Events[]) => {
+      this.eventService.attendedEvents = result;
     })
   }
 

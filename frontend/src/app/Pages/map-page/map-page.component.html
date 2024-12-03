@@ -1,11 +1,11 @@
-<app-header></app-header>
+<app-header role="banner"></app-header>
 
-<div class="outerContainer">
+<div class="outerContainer" role="navigation">
   <div class="lg:flex-1 lg:relative fixed">
     <app-nav-bar></app-nav-bar>
   </div>
 
-  <div class="mapContainer">
+  <div class="mapContainer" aria-labelledby="map-container" role="region">
     <div class="w-full h-5/6 lg:h-full">
       <google-map
         height="100%"
@@ -28,7 +28,7 @@
           (mapClick)="openInfoWindow(markerRef, infoRef)"
         ></map-advanced-marker>
 
-        <map-info-window [options]="infoOptions" #infoRef="mapInfoWindow">
+        <map-info-window [options]="infoOptions" #infoRef="mapInfoWindow" aria-labelledby="report-cat" role="dialog">
           <div class="grid grid-cols-1">
             <img
               class="max-h-64 rounded-lg place-self-center"

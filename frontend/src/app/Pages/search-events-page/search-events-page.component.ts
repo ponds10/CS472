@@ -51,7 +51,7 @@ export class SearchEventsPageComponent implements OnInit{
   selectEvent(event: Events)
   {
     this.eventService.selectedEvent = event;
-    this.navService.naviageToEventPage();
+    this.navService.naviageToEventPage(event.eventID);
     return;
   }
   

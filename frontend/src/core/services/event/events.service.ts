@@ -288,4 +288,12 @@ export class EventsService {
       return of(error);
     }
   }
+
+  getSelectedEvent(eventID: string)
+  {
+    // simple query, gets 12 events
+    const eventQuery = query(collection(this.firestore, 'events'), where('eventID','==', eventID));
+
+    return collectionData(eventQuery)
+  }
 }

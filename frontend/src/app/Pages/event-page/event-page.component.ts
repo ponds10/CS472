@@ -8,6 +8,7 @@ import { Events } from '../../../core/models/events';
 import { Timestamp } from '@angular/fire/firestore';
 import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
 import { User } from '../../../core/models/user';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-event-page',
   templateUrl: './event-page.component.html',
@@ -17,7 +18,10 @@ import { User } from '../../../core/models/user';
 })
 export class EventPageComponent implements OnInit{
     // constructor for the services
-    constructor(private eventService: EventsService, private navService: NavigationServiceService){}
+    constructor(private eventService: EventsService, 
+                private navService: NavigationServiceService,
+                private route: ActivatedRoute
+              ){}
 
     // variables for the page that we are essentially getting from the service
     selectedEvent: Events | null = null;
@@ -25,10 +29,20 @@ export class EventPageComponent implements OnInit{
     organizer: User | null = null;
 
     ngOnInit(): void {
-        // if the selected event is null or undefined, go to the search event
+        // if the selected event is null or undefined, query the database
+
         if(this.eventService.selectedEvent == null || this.eventService.selectedEvent == undefined)
         {
-          this.navService.navigateToSearchEventPage();
+          // from the active route, get the mapped query parameters
+          // get the eventid
+          this.route.queryParamMap.subscribe((data) => {
+            // with the eventid subscribe to the get selected event
+            // its a simple query that returns an array of events, but really its only one event
+            // just index 0 to get it
+            this.eventService.getSelectedEvent(data.get('eventid')!).subscribe((data: Events[]) => {
+              this.selectedEvent = data[0];
+            })
+          })
         }
         // get the selected event, make the time stamp, and the date
         this.selectedEvent = this.eventService.selectedEvent;

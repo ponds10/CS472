@@ -28,9 +28,13 @@ export class NavigationServiceService {
     this.router.navigate(['/newAccount']);
   }
 
-  naviageToEventPage()
+  naviageToEventPage(id: string)
   {
-    this.router.navigate(['/event']);
+    this.router.navigate(['/event'], 
+      {
+        queryParams: {eventid: id}
+      }
+    );
   }
 
   navigateToSearchEventPage()

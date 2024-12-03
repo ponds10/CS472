@@ -43,20 +43,24 @@ export class EventPageComponent implements OnInit{
             // just index 0 to get it
             this.eventService.getSelectedEvent(data.get('eventid')!).subscribe((data: Events[]) => {
               this.selectedEvent = data[0];
+              this.eventService.selectedEvent = data[0];
+              const eventTimestamp = this.selectedEvent?.date as Timestamp;
+              this.eventDate = eventTimestamp.toDate();
             })
           })
         }
-        // get the selected event, make the time stamp, and the date
-        this.selectedEvent = this.eventService.selectedEvent;
-        const eventTimestamp = this.selectedEvent?.date as Timestamp;
-        this.eventDate = eventTimestamp.toDate();
+        else{
+          // get the selected event, make the time stamp, and the date
+          this.selectedEvent = this.eventService.selectedEvent;
+          const eventTimestamp = this.selectedEvent?.date as Timestamp;
+          this.eventDate = eventTimestamp.toDate();
 
-        // subscribe to the getOrganizer, so we can populate the user images in the posts
-        this.eventService.getOrganizer(this.selectedEvent!.userID).subscribe((data: User[]) => {
-          this.organizer = data[0]
-          console.log(data[0])
-        })
-
+            // subscribe to the getOrganizer, so we can populate the user images in the posts
+          this.eventService.getOrganizer(this.selectedEvent!.userID).subscribe((data: User[]) => {
+            this.organizer = data[0]
+            console.log(data[0])
+          })
+        }
     }
 
     // gets the month, depending on the num
@@ -87,15 +91,27 @@ export class EventPageComponent implements OnInit{
       return this.eventDate?.getDate()
     }
 
-    // returns a true/false boolean that determines whether or not 
+    // returns a true/false boolean that determines whether or not
     attending()
     {
       return this.eventService.checkAttendance(this.selectedEvent!);
     }
 
+    // rsvp the event, simply call the attend event and then 
+    // push the selected event into the attendedevents array
     rsvpEvent()
     {
       this.eventService.attendEvent(this.selectedEvent!)
       this.eventService.attendedEvents?.push(this.selectedEvent!)
+    }
+
+    // basic render check for when the user refreshes a page
+    // if the organizer and or the attendedEvents == null, 
+    // it means we do not want to render certain UI cards
+    renderCheck()
+    {
+      if(this.organizer == null){return false;}
+      else if(this.eventService.attendedEvents == null){return false;}
+      else {return true;}
     }
 }

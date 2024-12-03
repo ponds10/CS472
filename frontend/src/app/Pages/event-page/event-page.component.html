@@ -83,7 +83,7 @@
 
 
                 
-
+            @if(renderCheck()){
                 <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Organizer</h1>
@@ -115,7 +115,9 @@
                         </div>
                     </div>
                 </div>
+            }
 
+            @if(renderCheck()){
                 <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Attendance</h1>
@@ -149,11 +151,9 @@
                             }
                             
                         </div>
-                    </div>
-                    
-                    
+                    </div>       
                 </div>
-                
+            }
                 <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 lg:col-span-1">
                     <div class="text-xl font-bold">
                         <h1>Additional Details</h1>

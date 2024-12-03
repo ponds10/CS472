@@ -268,7 +268,7 @@ export class EventsService {
     }
     for(const currEvent of this.attendedEvents!)
     {
-      if(event.eventID = currEvent.eventID)
+      if(event.eventID == currEvent.eventID)
       {
         return true;
       }

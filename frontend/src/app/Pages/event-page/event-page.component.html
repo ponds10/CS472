@@ -95,6 +95,7 @@
                         <h1>Organizer</h1>
                     </div>
                     {{selectedEvent?.organizer}}
+                    {{organizer?.first_name}}
                 </div>
 
                 <div class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg col-span-2 lg:col-span-1">
@@ -102,6 +103,15 @@
                         <h1>Attendance</h1>
                     </div>
                     {{selectedEvent?.attendance}}
+
+                    @if(attending())
+                    {
+                        you are attending!
+                    }
+                    @else 
+                    {
+
+                    }
                 </div>
 
                 <div class="h-[300px]"></div>

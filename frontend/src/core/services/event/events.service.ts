@@ -160,18 +160,25 @@ export class EventsService {
       return;
     }
 
+    // if the list of attended events is empty then return
+    if(this.attendedEvents == null)
+    {
+      return;
+    }
+
     // check if the eventid is current in the attendedEvents id
     // if it is, then just return and do not add to the count!
-    for(const temp in this.attendedEventsIds)
+    for(const temp of this.attendedEvents!)
     {
-      if(event.eventID == temp)
+      if(event.eventID == temp.eventID )
       {
         console.log("already attending")
         return; 
       }
     }
 
-
+    // now we need to add to the table that stores our 
+    // attendance, using the eventid and user id
     try 
     {
       const newEventAttendance = await addDoc(
@@ -188,13 +195,15 @@ export class EventsService {
       return;
     }
 
-    // step 2 update the attendance
+    // Update the Event
+    // after the event attendance is tracked, we need to increment the event's attendance
+    // for others to see
+
     try
     {
-      // get the collection for events, and make the query to find where the eventid is equal to the passed one
-      // then if its not empty. iterate through, but it should rlly just be one item
-      // and update the doc to increment the attendance field
-      const eventCollection = collection(this.firestore, 'events');
+      // make the query, where we do it based on the eventid
+      // then we get the docs, if empty return, otherwise, iterate through 
+      // update the document by incrementing the attendance field
       const attendQuery = query(collection(this.firestore, 'events'), where("eventID", "==", event.eventID));
       const snapshot = await getDocs(attendQuery)
       if(snapshot.empty)
@@ -214,7 +223,7 @@ export class EventsService {
       console.log("Error, issue with adding you to the attendance")
     }
 
-    // do it in the event itself, because we do not requery
+    // do it locally in the event we do not requery
     event.attendance += 1;
   }
 
@@ -245,6 +254,38 @@ export class EventsService {
     catch (error) {
       console.error('Unexpected error', error);
       return of([]);  // Return empty array in case of error
+    }
+  }
+
+  // checks if the event is already attended
+  // returns true if it is found through iterating
+  // returns false if the list is empty or its not found in the list! 
+  checkAttendance(event: Events)
+  {
+    if(this.attendedEvents == null)
+    {
+      return false;
+    }
+    for(const currEvent of this.attendedEvents!)
+    {
+      if(event.eventID = currEvent.eventID)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  getOrganizer(orgId: string)
+  {
+    try {
+      const orgQuery = query(collection(this.firestore, 'userInfo'), where("userID", "==", orgId));
+      // await the snapshop / documents
+      return collectionData(orgQuery)
+    } 
+    catch (error) {
+      console.error('Unexpected error', error);
+      return of(error);
     }
   }
 }

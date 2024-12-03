@@ -29,6 +29,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   a {
     color: #1a202c; /* Default link color (dark gray) */
     text-decoration: none;
+    align-items: center; /* vertically center the items */
+    display: inline-flex; /* To keep the link inline with surrounding text */
   }
   
   a:hover {

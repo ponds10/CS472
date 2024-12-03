@@ -1,25 +1,20 @@
-import { Component, ElementRef, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavBarComponent } from '../../../shared/nav-bar/nav-bar.component';
-import { SampleCardComponent } from '../../../shared/components/sample-card/sample-card.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import {
   ReactiveFormsModule,
-  FormGroup,
-  FormControl,
   FormsModule,
 } from '@angular/forms';
-import { ViewportScroller, CommonModule } from '@angular/common';
-import { ViewChild } from '@angular/core';
+import {  CommonModule } from '@angular/common';
 import { Pet } from '../../../core/models/pet.model';
 import { PetsService } from '../../../core/services/pets/pets.service';
 import { PetCardComponent } from '../../../shared/components/pet-card/pet-card.component';
-import { DocumentData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 import { SearchPanelComponent } from './search-panel/search-panel/search-panel.component';
 import { NavigationServiceService } from '../../../core/services/navService/navigation-service.service';
+
 @Component({
   selector: 'app-search-pets-filter',
   standalone: true,
@@ -28,14 +23,12 @@ import { NavigationServiceService } from '../../../core/services/navService/navi
     MatIconModule,
     MatChipsModule,
     MatSliderModule,
-    SampleCardComponent,
     HeaderComponent,
     ReactiveFormsModule,
     FormsModule,
     SearchPanelComponent,
     CommonModule,
     PetCardComponent,
-    
   ],
   templateUrl: './search-pets-filter.component.html',
   styleUrl: './search-pets-filter.component.css',
@@ -61,9 +54,8 @@ export class SearchPetsFilterComponent implements OnInit {
   validPrograms: string[] = ['Shelter', 'Foster']
 
   constructor(
-    private viewportscroller: ViewportScroller,
     private readonly petService: PetsService,
-    private navService: NavigationServiceService,
+    private readonly navService: NavigationServiceService,
   ) {}
 
   //

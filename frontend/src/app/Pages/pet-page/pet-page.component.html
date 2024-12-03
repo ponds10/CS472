@@ -6,99 +6,177 @@
 
   <div class="innerContainer lg:p-16 lg:pt-8 space-y-4">
     <div class="flex justify-center items-center w-full pt-16">
-      <div class="grid grid-cols-2 gap-0 w-4/5">
-        <!-- <div
+      <div class="grid grid-cols-1 w-full md:w-4/5">
+        <div class="grid md:grid-cols-2">
+          <!-- <div
           class="bg-white bg-opacity-75 rounded-xl shadow-lg md:col-span-2 "
         > -->
 
-        <div
-          class="flex-none col-span-2 lg:col-span-1 w-full h-64 md:h-auto relative overflow-hidden rounded-tl-xl rounded-tr-xl md:rounded-bl-xl md:rounded-tr-none"
-        >
-          <img
-            [src]="pet?.image"
-            alt=""
-            class="w-full h-full object-cover"
-            loading="eager"
-          />
-        </div>
+          <div
+            class="flex-none w-full h-64 md:h-auto relative overflow-hidden sm:rounded-tl-xl sm:rounded-tr-xl md:rounded-bl-xl md:rounded-tr-none"
+          >
+            <img
+              [src]="pet?.image"
+              alt=""
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
 
-        <div
-          class="flex font-sans col-span-2 lg:col-span-1 bg-white bg-opacity-75 md:rounded-tr-xl md:rounded-bl-none rounded-br-xl rounded-bl-xl"
-        >
-          <form class="flex-auto p-16">
-            <div class="flex flex-wrap">
-              <h1 class="flex-auto text-3xl font-semibold text-slate-900">
-                {{ pet?.name }}
-              </h1>
-              <div class="text-xl font-semibold text-slate-500">
-                {{ pet?.program }}
-              </div>
-              <div class="w-full flex-none font-medium text-slate-700 my-2">
-                {{ pet?.breed }}
-              </div>
-
-              <!-- About pet info -->
-              <div class="grid grid-cols-2 mt-6 w-2/3">
-                <div class="text-md text-slate-600">Name</div>
-                <div class="text-md font-medium text-slate-700">
+          <div
+            class="flex font-sans bg-white bg-opacity-75 md:rounded-tr-xl md:rounded-bl-none sm:rounded-br-xl sm:rounded-bl-xl"
+          >
+            <form class="flex-auto p-12 md:p-16">
+              <div class="flex flex-wrap">
+                <h1 class="flex-auto text-3xl font-semibold text-slate-900">
                   {{ pet?.name }}
+                </h1>
+                <div class="text-xl font-semibold text-slate-500">
+                  {{ pet?.program }}
                 </div>
-                <div class="text-md text-slate-600">Age</div>
-                <div class="text-md font-medium text-slate-700">
-                  {{ pet?.age }}
+                <div class="w-full flex-none font-medium text-slate-700 my-2">
+                  {{ pet?.breed }}
                 </div>
-                <div class="text-md text-slate-600">Gender</div>
-                <div class="text-md font-medium text-slate-700">
-                  {{ pet?.sex }}
-                </div>
-                <div class="text-md text-slate-600">Size</div>
-                <div class="text-md font-medium text-slate-700">
-                  {{ pet?.size }}
+
+                <!-- About pet info -->
+                <div class="grid grid-cols-2 mt-6 w-2/3">
+                  <div class="text-md text-slate-600">Name</div>
+                  <div class="text-md font-medium text-slate-700">
+                    {{ pet?.name }}
+                  </div>
+                  <div class="text-md text-slate-600">Age</div>
+                  <div class="text-md font-medium text-slate-700">
+                    {{ pet?.age }}
+                  </div>
+                  <div class="text-md text-slate-600">Gender</div>
+                  <div class="text-md font-medium text-slate-700">
+                    {{ pet?.sex }}
+                  </div>
+                  <div class="text-md text-slate-600">Size</div>
+                  <div class="text-md font-medium text-slate-700">
+                    {{ pet?.size }}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200"
-            ></div>
-            <div class="flex space-x-4 mb-6">
+
+              <!-- division line -->
               <div
-                class="flex-auto flex space-x-4 text-2xl font-semibold text-slate-900"
+                class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200"
+              ></div>
+
+              <!-- Pet biography -->
+              <div class="flex space-x-4 mb-6">
+                <div
+                  class="flex-auto flex space-x-4 text-2xl font-semibold text-slate-900"
+                >
+                  Meet {{ pet?.name }}
+                </div>
+              </div>
+              <div *ngIf="pet?.bio" class="w-full flex-none font-medium text-slate-700 mt-2">
+                {{ pet?.bio }}
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 md:gap-8">
+          <!-- contact info -->
+          <div
+            class="flex-auto overflow-hidden bg-white bg-opacity-75 p-12 w-full mt-8 rounded-xl shadow-lg"
+          >
+            <div class="space-y-4">
+              <h1 class="text-xl font-bold">Contact Information</h1>
+              <div class="text-md text-slate-600">
+                If you would like to adopt/foster or have further questions
+                please contact
+              </div>
+
+              <!-- user contact info -->
+              <div
+                class="flex font-sans bg-white bg-opacity-75 rounded-xl shadow-sm overflow-hidden"
               >
-                Meet {{ pet?.name }}
+                <form class="flex-auto p-6 md:p-8">
+                  <div class="flex flex-wrap">
+                    <h1 class="flex-auto text-xl font-semibold text-slate-900">
+                      {{ user?.first_name }} {{ user?.last_name }}
+                    </h1>
+
+                    <div class="w-full flex-none font-medium text-slate-700">
+                      {{ user?.accountType }}
+                    </div>
+
+                    <!-- User email and org name -->
+                  </div>
+                  <div
+                    class="flex items-baseline mb-6 pb-6 border-b border-slate-200"
+                  ></div>
+                  <div class="flex space-x-4 mb-6">
+                    <div class="text-md font-medium text-slate-700">
+                      <a
+                        href="mailto:{{ user?.email }}"
+                        class="text-md font-medium text-slate-700"
+                      >
+                        <mat-icon>mail_outline</mat-icon>
+                        {{ user?.email }}
+                      </a>
+                      <div
+                        *ngIf="pet?.contact?.organization?.name"
+                        class="text-md font-medium text-slate-700"
+                      >
+                        <mat-icon>business</mat-icon>
+                        {{ pet?.contact?.organization?.name }}
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
-            <div class="w-full flex-none font-medium text-slate-700 mt-2">
-              {{ pet?.bio }}
+          </div>
+
+          <!-- Medical History -->
+          <div
+            class="flex-auto overflow-hidden bg-white bg-opacity-75 p-12 w-full mt-8 rounded-xl shadow-lg"
+          >
+            <div class="space-y-4">
+              <h1 class="text-xl font-bold">Medical History</h1>
+
+              <div *ngIf="pet?.vacc">
+                <div class="font-medium text-lg">Vaccinations</div>
+                <div class="text-sm font-medium text-slate-700">
+                  {{ pet?.vacc }}
+                </div>
+
+                <div
+                  *ngIf="
+                    (pet?.vacc && pet?.vetHistory) ||
+                    (pet?.vacc && pet?.miscMed)
+                  "
+                  class="flex items-baseline mb-6 pb-6 border-b border-slate-200"
+                ></div>
+              </div>
+
+              <div *ngIf="pet?.vetHistory">
+                <div class="font-medium text-lg">Vet History</div>
+                <div class="text-sm font-medium text-slate-700">
+                  {{ pet?.vetHistory }}
+                </div>
+                <div
+                  *ngIf="pet?.vetHistory && pet?.miscMed"
+                  class="flex items-baseline mb-6 pb-6 border-b border-slate-200"
+                ></div>
+              </div>
+
+              <div *ngIf="pet?.miscMed">
+                <div class="font-medium text-lg">Miscellaneous</div>
+                <div class="text-sm font-medium text-slate-700">
+                  {{ pet?.miscMed }}
+                </div>
+              </div>
             </div>
-          </form>
-        </div>
-        <!-- </div> -->
-
-        <!-- contact info -->
-        <div
-          class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg w-full col-span-2 lg:col-span-1 mt-8"
-        >
-          <div class="text-xl font-bold">
-            <h1>Contact Information</h1>
           </div>
+
+          <div class="h-[300px]"></div>
         </div>
-
-        <div
-          class="bg-white bg-opacity-75 p-4 rounded-xl shadow-lg w-full space-y-4 col-span-2 lg:col-span-1 mt-8"
-        >
-          <div class="text-xl font-bold">
-            <h1>Medical History</h1>
-          </div>
-          <div class="flex justify-evenly">
-            <div
-              class="p-4 pr-16 font-bold text-5xl border-r-2 border-gray-300"
-            ></div>
-
-            <div class="p-4 font-bold text-xl"></div>
-          </div>
-        </div>
-
-        <div class="h-[300px]"></div>
       </div>
     </div>
 

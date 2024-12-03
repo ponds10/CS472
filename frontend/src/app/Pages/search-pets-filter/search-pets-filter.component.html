@@ -20,7 +20,7 @@
     </div>
 
     <div class="w-full mt-64 lg:mt-32 flex flex-col items-center pb-20">
-      <div class="container mx-auto px-16">
+      <div class="container mx-auto px-2 md:px-16">
         <!-- Error Message -->
         <div *ngIf="errorMessage" class="error-message text-red-500 mb-4">
           {{ errorMessage }}
@@ -34,7 +34,7 @@
         <!-- Pet List -->
         <div
           *ngIf="pets?.length"
-          class="pet-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 "
+          class="pet-list grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 "
         >
           <div
             *ngFor="let pet of paginatedPets()"
@@ -43,7 +43,9 @@
           >
             <app-pet-card [pet]="pet"></app-pet-card>
           </div>
+          
         </div>
+
 
         <!-- Pagination Controls -->
         <div class="pagination mt-6 md:flex justify-center hidden">
@@ -62,6 +64,7 @@
           >
             Next
           </button>
+
         </div>
       </div>
     </div>

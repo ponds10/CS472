@@ -7,13 +7,13 @@
   <div class="innerContainer lg:p-16 lg:pt-8 space-y-4">
     <div class="flex justify-center items-center w-full pt-16">
       <div class="grid grid-cols-1 w-full md:w-4/5">
-        <div class="grid md:grid-cols-2">
+        <div class="grid lg:grid-cols-2">
           <!-- <div
           class="bg-white bg-opacity-75 rounded-xl shadow-lg md:col-span-2 "
         > -->
 
           <div
-            class="flex-none w-full h-64 md:h-auto relative overflow-hidden sm:rounded-tl-xl sm:rounded-tr-xl md:rounded-bl-xl md:rounded-tr-none"
+            class="flex-none w-full h-64 md:h-auto relative overflow-hidden sm:rounded-tl-xl sm:rounded-tr-xl lg:rounded-bl-xl lg:rounded-tr-none"
           >
             <img
               [src]="pet?.image"
@@ -24,7 +24,7 @@
           </div>
 
           <div
-            class="flex font-sans bg-white bg-opacity-75 md:rounded-tr-xl md:rounded-bl-none sm:rounded-br-xl sm:rounded-bl-xl"
+            class="flex font-sans bg-white bg-opacity-75 lg:rounded-tr-xl lg:rounded-bl-none sm:rounded-br-xl sm:rounded-bl-xl"
           >
             <form class="flex-auto p-12 md:p-16">
               <div class="flex flex-wrap">
@@ -79,8 +79,8 @@
           </div>
         </div>
 
-        <div class="grid md:grid-cols-2 md:gap-8">
-          <!-- contact info -->
+        <div class="grid lg:grid-cols-2 md:gap-8">
+          <!-- contact info card-->
           <div
             class="flex-auto overflow-hidden bg-white bg-opacity-75 p-12 w-full mt-8 rounded-xl shadow-lg"
           >
@@ -91,13 +91,13 @@
                 please contact
               </div>
 
-              <!-- user contact info -->
+              <!-- user contact info card -->
               <div
                 class="flex font-sans bg-white bg-opacity-75 rounded-3xl shadow-sm overflow-hidden "
               >
-                <form class="flex-auto p-4 md:p-8">
+                <form class="flex-auto p-4 lg:p-8">
                   <div class="flex flex-wrap">
-                    <h1 class="flex-auto text-xl font-semibold text-slate-900">
+                    <h1 class="flex-auto text-lg lg:text-xl font-semibold text-slate-900">
                       {{ user?.first_name }} {{ user?.last_name }}
                     </h1>
 
@@ -108,20 +108,20 @@
                     <!-- User email and org name -->
                   </div>
                   <div
-                    class="flex items-baseline mb-6 pb-6 border-b border-slate-200"
+                    class="flex items-baseline mb-4 pb-4 lg:mb-6 lg:pb-6 border-b border-slate-200"
                   ></div>
                   <div class="flex space-x-4 mb-6">
-                    <div class="text-md font-medium text-slate-700">
+                    <div class="text-sm xl:text-md font-medium text-slate-700">
                       <a
                         href="mailto:{{ user?.email }}"
-                        class="text-md font-medium text-slate-700"
+                        class="text-sm xl:text-md font-medium text-slate-700"
                       >
                         <mat-icon>mail_outline</mat-icon>
                         {{ user?.email }}
                       </a>
                       <div
                         *ngIf="pet?.contact?.organization?.name"
-                        class="text-md font-medium text-slate-700"
+                        class="text-sm xl:text-md font-medium text-slate-700"
                       >
                         <mat-icon>business</mat-icon>
                         {{ pet?.contact?.organization?.name }}

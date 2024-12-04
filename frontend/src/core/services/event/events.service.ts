@@ -299,4 +299,19 @@ export class EventsService {
 
     return collectionData(eventQuery)
   }
+
+  getHostingEvents()
+  {
+    // if the current user is null then return
+    if (this.auth.currentUser === null || this.auth.currentUser === undefined) {
+      console.log("no signed in user");
+      // reroute them to the login page!
+      this.navService.navigateToLoginPage();
+      return;
+    }
+
+    const eventQuery = query(collection(this.firestore, 'events'), where('userID', '==', this.auth.currentUser.uid));
+
+    return collectionData(eventQuery)
+  }
 }

@@ -4,7 +4,80 @@
         <app-nav-bar></app-nav-bar>
     </div>
     
-    <div class="innerContainer">
-        my events page
+    <div class="innerContainer space-y-4">
+        <h1 class="font-semibold text-5xl mt-10 md:pl-12 md:place-self-start"  role="banner">
+            Your Events
+        </h1>
+
+        <div class="w-full p-12 pt-0 grid grid-cols-2 gap-4">
+            <div class="col-span-2 lg:col-span-1">
+                <div class="text-xl font-bold my-4">
+                    Events You Are Attending
+                </div>
+                <app-events-calendar></app-events-calendar>
+            </div>
+
+            <div class="col-span-2 lg:col-span-1">
+                <div class="text-xl font-bold my-4">
+                    Events You Are Hosting
+                </div>
+                <div class="w-full flex justify-center">
+                    <button
+                        (click)="previousPage()"
+                        [disabled]="currentPage === 0"
+                        class="mx-1 px-3 py-1 border rounded-lg mt-8 font-medium hover:bg-blue-300 text-black shadow bg-white"
+                        aria-labelledby="previous-button"
+                        role="button"
+                        >
+                        Previous
+                    </button>
+                    <div class="">Page {{ currentPage + 1}}</div>
+                    <button
+                        (click)="nextPage()"
+                        class="mx-1 px-3 py-1 border rounded-lg mt-8 font-medium hover:bg-blue-300 text-black shadow bg-white"
+                        aria-labelledby="next-button"
+                        role="button"
+                        >
+                        Next
+                    </button>
+                </div>
+                <div class="h-fit grid grid-cols-2 gap-4 my-4">
+                    @for(event of this.paginatedHostedEvents; let idx = $index; track idx)
+                    {
+                    <button
+                        aria-labelledby="select-event-button"
+                        role="button"
+                    >
+                        <div class="w-full bg-white bg-opacity-100 rounded-xl shadow-lg" (click)="selectEvent(event)">
+                            <div>
+                                <img [src]="event.imageURL" class="w-full h-[200px] rounded-t-lg">
+                            </div>
+                            <div class="bg-white bg-opacity-50 h-[50px] rounded-b-xl overflow-hidden p-2">
+                                <div>
+                                    {{event.title}}
+                                </div>
+                                <div class="text-xs">
+                                    {{event.summary}} <br>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    }
+                </div>
+            </div>
+
+            <div class="col-span-2 w-full flex justify-center my-4">
+                <button
+                    aria-labelledby="create-event-button"
+                    role="button"
+                >
+                    <div class="w-[200px] h-fit p-4 rounded-full bg-blue-400 hover:scale-105 hover:shadow-xl transition-all ease-in">
+                        Create New Pet
+                    </div>
+                </button>
+            </div>
+
+            
+        </div>
     </div>
 </div>

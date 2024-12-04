@@ -1,41 +1,44 @@
 <app-header></app-header>
 <div class="outerContainer">
 
-        <div class="navbarContainer">
-            <app-nav-bar></app-nav-bar>
-        </div>
+  <div class="navbarContainer">
+    <app-nav-bar></app-nav-bar>
+  </div>
 
-    <div class="innerContainer p-6 lg:p-16 pt-8 space-y-4">
+  <div class="innerContainer p-6 lg:p-16 pt-8 space-y-4">
 
-        <div class="text-xl font-bold">
-            Hello, Welcome Back {{user?.first_name}}
-        </div>
-
-        <div class="grid grid-cols-4 gap-4 w-full">
-            <div class="col-span-4 lg:col-span-2">
-                <button class="w-full text-left" (click)="this.navService.navigateToMyPets()">
-                <app-home-card title="Your Pets" source="./assets/homepage_images/3.png"></app-home-card>
-                </button>
-            </div>
-
-            <div class="col-span-4 lg:col-span-2 lg:row-span-2">
-                <app-events-calendar></app-events-calendar>
-            </div>
-
-            <div class="col-span-4 lg:col-span-1">
-              <button class="w-full text-left" (click)="navService.navigateToMyEvents()">
-                <app-home-card title="Saved Events" source="./assets/homepage_images/4.png"></app-home-card>
-              </button>
-            </div>
-
-            <div class="col-span-4 lg:col-span-1">
-              <button class="w-full text-left" (click)="navService.navigateToDocumentsPage()">
-                <app-home-card title="Documents" source="./assets/homepage_images/5.png"></app-home-card>
-              </button>
-            </div>
-        </div>
-
-        <!--Spacers: probably not best practice-->
-        <section class="w-full h-[100px]"></section>
+    <div class="text-xl font-bold">
+      Hello, Welcome Back {{user?.first_name}}
     </div>
+
+    <div class="grid grid-cols-4 gap-4 w-full">
+      <div class="col-span-4 lg:col-span-2">
+        <button class="w-full text-left" (click)="this.navService.navigateToMyPets()" aria-label="View Your Pets">
+          <app-home-card title="Your Pets" source="./assets/homepage_images/3.png"
+            alt="An image representing pet page"></app-home-card>
+        </button>
+      </div>
+
+      <div class="col-span-4 lg:col-span-2 lg:row-span-2">
+        <app-events-calendar></app-events-calendar>
+      </div>
+
+      <div class="col-span-4 lg:col-span-1">
+        <button class="w-full text-left" (click)="navService.navigateToMyEvents()" aria-label="View Saved Events">
+          <app-home-card title="Saved Events" source="./assets/homepage_images/4.png"
+            alt="An image representing saved events page"></app-home-card>
+        </button>
+      </div>
+
+      <div class="col-span-4 lg:col-span-1">
+        <button class="w-full text-left" (click)="navService.navigateToDocumentsPage()" aria-label="View Documents">
+          <app-home-card title="Documents" source="./assets/homepage_images/5.png"
+            alt="An image representing documents page"></app-home-card>
+        </button>
+      </div>
+    </div>
+
+    <!--Spacers: probably not best practice-->
+    <section class="w-full h-[100px]"></section>
+  </div>
 </div>

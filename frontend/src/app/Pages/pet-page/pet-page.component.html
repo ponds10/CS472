@@ -61,7 +61,7 @@
 
               <!-- division line -->
               <div
-                class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200"
+                class="flex items-baseline mt-4 mb-6 pb-6 border-b-2 border-slate-200"
               ></div>
 
               <!-- Pet biography -->
@@ -93,35 +93,42 @@
 
               <!-- user contact info card -->
               <div
-                class="flex font-sans bg-white bg-opacity-75 rounded-3xl shadow-sm overflow-hidden "
+                class="flex font-sans bg-white bg-opacity-75 rounded-xl shadow-lg overflow-hidden "
               >
-                <form class="flex-auto p-4 lg:p-8">
+                <form class="flex-auto p-3 lg:p-6">
                   <div class="flex flex-wrap">
-                    <h1 class="flex-auto text-lg lg:text-xl font-semibold text-slate-900">
+                    <h1 class="flex-auto text-base lg:text-lg font-semibold text-slate-900 pb-2">
                       {{ user?.first_name }} {{ user?.last_name }}
                     </h1>
 
-                    <div class="w-full flex-none font-medium text-slate-700">
+                    <div class="w-full flex-none text-base font-medium text-slate-700 ">
                       {{ user?.accountType }}
                     </div>
 
                     <!-- User email and org name -->
                   </div>
                   <div
-                    class="flex items-baseline mb-4 pb-4 lg:mb-6 lg:pb-6 border-b border-slate-200"
+                    class="flex items-baseline mb-2 pb-2 lg:mb-4 lg:pb-4 border-b-2 border-slate-200"
                   ></div>
-                  <div class="flex space-x-4 mb-6">
-                    <div class="text-sm xl:text-md font-medium text-slate-700">
+                  <div class="flex ">
+                    <div class="text-sm xl:text-md font-medium ">
+                      <a
+                        href="tel:{{ user?.phone }}"
+                        class="text-sm xl:text-md font-medium "
+                      >
+                        <mat-icon>phone</mat-icon>
+                        {{ user?.phone }}
+                      </a>
                       <a
                         href="mailto:{{ user?.email }}"
-                        class="text-sm xl:text-md font-medium text-slate-700"
+                        class="text-sm xl:text-md font-medium "
                       >
                         <mat-icon>mail_outline</mat-icon>
                         {{ user?.email }}
                       </a>
                       <div
                         *ngIf="pet?.contact?.organization?.name"
-                        class="text-sm xl:text-md font-medium text-slate-700"
+                        class="text-sm xl:text-md font-medium "
                       >
                         <mat-icon>business</mat-icon>
                         {{ pet?.contact?.organization?.name }}
@@ -135,10 +142,11 @@
 
           <!-- Medical History -->
           <div
-            class="flex-auto overflow-hidden bg-white bg-opacity-75 p-12 w-full mt-8 rounded-xl shadow-lg"
+            class="flex-auto overflow-hidden bg-white bg-opacity-75 p-12 w-full mt-8 rounded-xl shadow-lg "
           >
-            <div class="space-y-4">
-              <h1 class="text-xl font-bold">Medical History</h1>
+            <div class="space-y-4 ">
+              <h1 class="text-xl font-bold pb-3">Medical History</h1>
+
 
               <div *ngIf="pet?.vacc">
                 <div class="font-medium text-lg">Vaccinations</div>
@@ -151,7 +159,7 @@
                     (pet?.vacc && pet?.vetHistory) ||
                     (pet?.vacc && pet?.miscMed)
                   "
-                  class="flex items-baseline mb-6 pb-6 border-b border-slate-200"
+                  class="flex items-baseline mb-6 pb-6 border-b-2 border-slate-200"
                 ></div>
               </div>
 

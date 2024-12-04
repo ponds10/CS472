@@ -1,30 +1,22 @@
-<div
-  class="flex flex-col rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out bg-white  
-  max-w-[160px] min-w-[160px] max-h-[200px] min-h-[200px] 
-  md:max-h-[300px] md:min-h-[300px] md:min-w-[240px] md:max-w-[240px] 
-  2xl:min-w-[300px] 2xl:max-w-[300px] 2xl:max-h-[400px] 2xl:min-h-[400px]"
-
->
-  <div class="w-full h-32 md:h-64 overflow-hidden rounded-t-xl">
-    <img
-      [src]="pet.image"
-      [alt]="pet.name"
-      class="object-cover w-full h-full"
-
-    />
+<div class="flex flex-col flex-1 w-full h-80 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out bg-white">
+  
+  <!-- Image container with consistent aspect ratio -->
+  <div class=" aspect-square overflow-hidden rounded-t-xl">
+    <img [src]="pet.image" [alt]="pet.name" class="object-cover w-full h-full" />
   </div>
-
-  <div class="w-full p-3 md:p-4 2xl:p-8 space-y-2 flex-grow">
-    <div class=" text-md md:text-2xl font-bold ">
+  
+  <!-- Content container with minimum height -->
+  <div class="w-full p-4 xl:p-5 space-y-2 flex flex-col flex-grow min-h-[140px]">
+    <div class="text-lg md:text-2xl font-bold">
       {{ pet.name }}
     </div>
-    <div class="text-xs md:text-base 2xl:text-lg text-gray-700">
-      {{ pet.sex }}  •  {{ pet.breed }}  
+    <div class="text-base md:text-lg text-gray-700">
+      {{ pet.sex }} • {{ pet.breed }}
+      <p>{{ pet.age }} yrs old</p>
     </div>
-    <div class="text-xs md:text-base 2xl:text-lg text-gray-700">
-      {{ pet.age }} yrs old   
+    <!-- If additional info is needed -->
+    <div class="text-base md:text-lg text-gray-700 mt-auto">
     </div>
   </div>
+  
 </div>
-
-

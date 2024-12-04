@@ -34,12 +34,12 @@
         <!-- Pet List -->
         <div
           *ngIf="pets?.length"
-          class="pet-list grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 "
+          class="pet-list grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-6 "
         >
           <div
             *ngFor="let pet of paginatedPets()"
             (click)="selectPet(pet)"
-            class="flex justify-center"
+            class="flex"
           >
             <app-pet-card [pet]="pet"></app-pet-card>
           </div>

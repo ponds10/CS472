@@ -85,10 +85,44 @@ export class EventPageComponent implements OnInit{
       }
     }
 
-    // simplet returns the date
+    // get the time if greater than 24 hours
+    // its the next day in PST
     getDay()
     {
+      const time = this.eventDate?.getHours();
+      if(time! + 8 > 24)
+      {
+        return this.eventDate?.getDate()! + 1
+      }
       return this.eventDate?.getDate()
+    }
+
+    // get the time and convert it to PST
+    getTime()
+    {
+      const time = this.eventDate?.getHours()
+      let hours = time;
+      let minutes: string | number | undefined = this.eventDate?.getMinutes()
+      if(minutes! < 10)
+      {
+        minutes = `0${minutes}`
+      }
+
+      if(time!+8 > 24)
+      {
+        hours = time! + 8 - 24
+        return `${hours}:${minutes} AM`
+      }
+      else if(time! + 8 < 12)
+      {
+        hours = time! + 8;
+        return `${hours}:${minutes} AM`
+      }
+      else
+      {
+        hours = time! + 8 - 12;
+        return `${hours}:${minutes} PM`
+      }
     }
 
     // returns a true/false boolean that determines whether or not

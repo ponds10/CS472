@@ -1,3 +1,4 @@
+<html lang="en">
 <app-header></app-header>
 
 <div class="outerContainer">
@@ -5,19 +6,13 @@
     <app-nav-bar></app-nav-bar>
   </div>
   <div class="innerContainer">
-    <div
-      class="flex flex-col items-center w-full pt-32 pb-64 p-4 bg-cover bg-account"
-    >
+    <div class="flex flex-col items-center w-full pt-32 pb-64 p-4 bg-cover bg-account">
       <div class="grid grid-cols-2 lg:space-x-4">
         <div
-          class="row-span-1 col-span-2 space-y-16 rounded-xl bg-white bg-opacity-75 flex flex-col items-center p-16 shadow-lg lg:row-span-3 lg:col-span-1"
-        >
+          class="row-span-1 col-span-2 space-y-16 rounded-xl bg-white bg-opacity-75 flex flex-col items-center p-16 shadow-lg lg:row-span-3 lg:col-span-1">
           <div class="flex flex-col items-center">
             <div>
-              <img
-                src="{{ this.image?.profile_img_url }}"
-                class="rounded-full h-[250px]"
-              />
+              <img src="{{ this.image?.profile_img_url }}" alt="User Profile Image" class="rounded-full h-[250px]" />
             </div>
 
             <div class="text-xl"></div>
@@ -34,8 +29,7 @@
         </div>
 
         <div
-          class="col-span-2 rounded-xl bg-white bg-opacity-75 flex flex-col items-center p-16 mt-4 mb-4 shadow-lg space-y-16 lg:col-span-1 lg:mt-0"
-        >
+          class="col-span-2 rounded-xl bg-white bg-opacity-75 flex flex-col items-center p-16 mt-4 mb-4 shadow-lg space-y-16 lg:col-span-1 lg:mt-0">
           <div class="font-bold">Contact Information</div>
 
           <div>
@@ -45,8 +39,7 @@
         </div>
 
         <div
-          class="col-span-2 rounded-xl bg-white bg-opacity-75 flex flex-col items-center p-16 mt-4 mb-4 shadow-lg space-y-16 lg:col-span-1 lg:mt-0"
-        >
+          class="col-span-2 rounded-xl bg-white bg-opacity-75 flex flex-col items-center p-16 mt-4 mb-4 shadow-lg space-y-16 lg:col-span-1 lg:mt-0">
           <div class="font-bold">Address</div>
 
           <div>
@@ -57,8 +50,7 @@
         </div>
 
         <div
-          class="col-span-2 rounded-xl bg-white bg-opacity-75 flex flex-col items-center p-16 shadow-lg space-y-16 lg:col-span-1"
-        >
+          class="col-span-2 rounded-xl bg-white bg-opacity-75 flex flex-col items-center p-16 shadow-lg space-y-16 lg:col-span-1">
           <div>
             <button class="buttonStyle" (click)="loginService.logout()">
               Sign Out
@@ -69,3 +61,5 @@
     </div>
   </div>
 </div>
+
+</html>

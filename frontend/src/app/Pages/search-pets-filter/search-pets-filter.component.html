@@ -39,7 +39,7 @@
           <div
             *ngFor="let pet of paginatedPets()"
             (click)="selectPet(pet)"
-            class="flex"
+            class="flex w-full"
           >
             <app-pet-card [pet]="pet"></app-pet-card>
           </div>

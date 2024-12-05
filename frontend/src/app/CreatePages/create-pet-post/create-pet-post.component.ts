@@ -33,7 +33,11 @@ export class CreatePetPostComponent implements OnInit{
    catBreeds: string[];
    animalGenders: string[];
    animalSizes: string[];
-   animalPrograms: string[];
+   animalPrograms: string[] = [
+    'Shelter',
+    'Foster',
+    'Personal'
+  ]
  
  
    constructor(private petService: PetsService){
@@ -42,7 +46,7 @@ export class CreatePetPostComponent implements OnInit{
     this.catBreeds = petService.catBreeds
     this.animalGenders = petService.animalGenders
     this.animalSizes = petService.animalSizes
-    this.animalPrograms = petService.animalPrograms
+    //this.animalPrograms = petService.animalPrograms
    }
  
    // oninit 

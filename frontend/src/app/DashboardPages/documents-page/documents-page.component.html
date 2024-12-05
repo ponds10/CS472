@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header role="header"></app-header>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--Navigation Bar-->
@@ -6,15 +6,16 @@
   <div class="navbarContainer">
     <app-nav-bar></app-nav-bar>
   </div>
-  <div class="innerContainer pl-32 pt-16 space-y-4"> <!--Don't change-->
-    <div class="grid grid-cols-4 w-full gap-16"> <!--Beginning overall tag-->
+  <div class="innerContainer"> <!--Don't change-->
+    <div class="font-semibold text-5xl mt-10 lg:pl-12 lg:place-self-start" role="banner">Your Documents</div>
+    <div class="grid grid-cols-4 w-full space-y-16 space-x-2 lg:ml-12"> <!--Beginning overall tag-->
       <!--First horizontal section-->
-      <div class="col-span-4 lg:col-span-2">
+      <div class="col-span-4 ml-10  lg:col-span-2" aria-labelledby="folders" role="region">
         <!--Folders-->
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-4 text-center text-wrap">
           <div class="folderCard">
             <div>
-              <mat-icon class="text-3xl z-50">folder</mat-icon>
+              <mat-icon>folder</mat-icon>
             </div>
             <div>
               Applications/Forms
@@ -49,30 +50,32 @@
           </div>
         </div>
       </div>
-      <!--Progress Circle-->
-      <div class="col-span-4 lg:col-span-2">
-        <div class="flex justify-center items-center bg-white w-96 h-80 lg:h-76 rounded-3xl lg:mx-10">
-          <div class="relative flex flex-col items-center p-4 w-80">
-            <h2 class="text-xl text-center mb-10">
-              {{ uploadedFiles.length }}/{{ maxDocuments }} Documents Uploaded
-            </h2>
-            <!-- Circular Progress Bar -->
-            <svg class="w-44 h-44 overflow-visible" viewBox="0 0 100 100">
-              <circle class="text-cyan-300 stroke-current" stroke-width="20" cx="50" cy="50" r="40" fill="transparent">
-              </circle>
-              <circle class="text-cyan-400 stroke-current" stroke-width="20" stroke-linecap="round" cx="50" cy="50"
-                r="40" fill="transparent" stroke-dasharray="251.2"
-                [attr.stroke-dashoffset]="251.2 - (251.2 * progressPercentage) / 100">
-              </circle>
-            </svg>
-          </div>
-        </div>
-      </div>
+
+<!-- Progress Circle -->
+<div class="col-span-4 lg:col-span-2 flex justify-center items-center mt-10">
+  <div class="flex justify-center items-center bg-white w-96 h-80 lg:h-76 rounded-3xl lg:mx-10" role="progressbar">
+    <div class="relative flex flex-col items-center p-4 w-80">
+      <h2 class="text-xl text-center mb-10">
+        {{ uploadedFiles.length }}/{{ maxDocuments }} Documents Uploaded
+      </h2>
+      <!-- Circular Progress Bar -->
+      <svg class="w-44 h-44 overflow-visible" viewBox="0 0 100 100">
+        <circle class="text-cyan-300 stroke-current" stroke-width="20" cx="50" cy="50" r="40" fill="transparent">
+        </circle>
+        <circle class="text-cyan-400 stroke-current" stroke-width="20" stroke-linecap="round" cx="50" cy="50"
+          r="40" fill="transparent" stroke-dasharray="251.2"
+          [attr.stroke-dashoffset]="251.2 - (251.2 * progressPercentage) / 100">
+        </circle>
+      </svg>
+    </div>
+  </div>
+</div>
+
 
       <!--Lower horizontal half-->
 
       <!-- Recent Uploads -->
-      <div class="col-span-4 lg:col-span-2">
+      <div class="col-span-4 ml-4 lg:col-span-2" aria-labelledby="recent-uploads" role="list">
         <h2 class="text-xl font-semibold mb-3">Recent Uploads</h2>
         <!-- Headers -->
         <div class="grid grid-cols-3 gap-6 text-base font-medium pb-2">
@@ -95,10 +98,11 @@
 
 
     <!--Upload File-->
-    <div class="col-span-4 lg:col-span-2 w-96 h-44">
+    <div class="col-span-4 lg:col-span-2 flex justify-center items-center w-full h-44 mt-5" aria-labelledby="upload-file" role="form">
       <label for="dropzone-file"
         class="flex flex-col items-center justify-center w-96 py-8 rounded-3xl cursor-pointer bg-white lg:mx-10"
-        (click)="openUploadDialogWithFile(file); $event.preventDefault();">
+        (click)="openUploadDialogWithFile(file); $event.preventDefault();"
+        tabindex="0">
         <div class="flex flex-col items-center justify-center pt-5 pb-6">
           <svg class="w-8 h-8 mb-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

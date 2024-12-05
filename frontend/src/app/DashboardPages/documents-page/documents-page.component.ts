@@ -23,7 +23,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrl: './documents-page.component.css',
 })
 export class DocumentsPageComponent {
-  uploadedFiles: { name: string; type: string; date: string }[] = [];
+  uploadedFiles: { name: string; type: string; date: string; folder: string }[] = [];
   maxDocuments = 50;
   file: File | null = null;
 
@@ -49,8 +49,10 @@ export class DocumentsPageComponent {
           name: result.file.name,
           type: result.type,
           date,
+          folder: result.type,
         });
       }
+      
     });
   }
   // progress circle counter

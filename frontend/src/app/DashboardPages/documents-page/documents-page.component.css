@@ -1,4 +1,9 @@
 .folderCard
 {
-    @apply w-[200px] h-[200px] bg-white bg-opacity-50 rounded-xl shadow-lg flex flex-col items-center justify-center p-4;
+    @apply w-[150px] h-[150px] bg-white bg-opacity-50 rounded-xl shadow-lg flex flex-col items-center justify-center p-4;
+}
+@media (min-width: 1024px) {
+    .folderCard {
+        @apply w-[200px] h-[200px];
+    }
 }

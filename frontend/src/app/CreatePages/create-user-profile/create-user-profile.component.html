@@ -80,20 +80,32 @@
 
                 <div class="flex justify-evenly">
                     <div class="space-x-4">
-                        <input type="radio" id="institution" name="institution" value="institution" formControlName="accountType" (change)="onRadioChange(1)">
-                        <label for="institution">Institution</label>
+                        <button (click)="onRadioChange(1)"
+                          class="p-4 px-16 font-bold bg-blue-400 bg-opacity-50 rounded-full w-fit border-2 shadow
+                          hover:bg-opacity-100">
+                            Institution
+                        </button>
                     </div>
     
                     <div class="space-x-4">
-                        <input type="radio" id="individual" name="individual" value="individual" formControlName="accountType" (change)="onRadioChange(0)">
-                        <label for="individual">Individual</label>
+                      <button (click)="onRadioChange(0)"
+                      class="p-4 px-16 font-bold bg-blue-400 bg-opacity-50 rounded-full w-fit border-2 shadow
+                      hover:bg-opacity-100">
+                          individual
+                      </button>
                     </div>
                 </div>
 
                 @if(accountFlag)
                 {
                     <div class="w-full flex justify-center p-16 font-bold">
-                        If you are an individual, the following section is optional and not required!
+                        You have selected individual, the following address information is optional and not required.
+                    </div>
+                }
+                @else 
+                {
+                    <div class="w-full flex justify-center p-16 font-bold">
+                        You have selected Institution, please enter your address information below. 
                     </div>
                 }
             </div>

@@ -83,4 +83,9 @@ export class MyEventsComponent implements OnInit {
 
     this.paginatedHostedEvents = this.hostedEvents!.slice(stIndex, edIndex)
   }
+
+  createEvent()
+  {
+    this.navService.navigateToCreateEvent();
+  }
 }

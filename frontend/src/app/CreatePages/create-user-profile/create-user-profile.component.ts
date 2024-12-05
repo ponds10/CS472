@@ -74,8 +74,14 @@ export class CreateUserProfileComponent implements OnInit{
 
    onRadioChange(num: Number)
    {
-      if(this.fg_userInfo.get('accountType')?.value == 'individual')
+      if(num == 1)
       {
+        this.fg_userInfo.get('accountType')?.setValue('institution')
+        this.accountFlag = false;
+      }
+      else
+      {
+        this.fg_userInfo.get('accountType')?.setValue('individual')
         this.accountFlag = true;
       }
    }

@@ -4,7 +4,7 @@ import { Subscription, Observable } from 'rxjs';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, query, orderBy, limit, where, getDoc, doc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
+import { from, of } from 'rxjs';
 import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { Pet, ContactInfo } from '../../models/pet.model';
 import { NavigationServiceService } from '../navService/navigation-service.service';
@@ -169,4 +169,17 @@ export class PetsService {
     return null; // Or throw an error if the document doesn't exist
   }
   };
+
+  getOrganizer(orgId: string)
+  {
+    try {
+      const orgQuery = query(collection(this.firestore, 'userInfo'), where("userID", "==", orgId));
+      // await the snapshop / documents
+      return collectionData(orgQuery)
+    } 
+    catch (error) {
+      console.error('Unexpected error', error);
+      return of(error);
+    }
+  }
 }

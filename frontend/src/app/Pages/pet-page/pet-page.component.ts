@@ -9,6 +9,7 @@ import { profileImages, User } from '../../../core/models/user';
 import { from } from 'rxjs';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
+import { PetsService } from '../../../core/services/pets/pets.service';
 
 @Component({
   selector: 'app-pet-page',
@@ -18,7 +19,7 @@ import {MatCardModule} from '@angular/material/card';
   styleUrl: './pet-page.component.css',
 })
 export class PetPageComponent implements OnInit {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService, private petService: PetsService) {}
   user: User | null | undefined = null;
   image: profileImages | null | undefined = null;
   pet: Pet | null = null;
@@ -28,7 +29,10 @@ export class PetPageComponent implements OnInit {
     this.pet = JSON.parse(sessionStorage.getItem('selectedPet') as string);
 
     // get user
-    this.user = this.userService.currentUser;
+    this.petService.getOrganizer(this.pet?.uid as string).subscribe((data: User[]) => {
+      this.user = data[0]
+      console.log(data[0])
+    })
     this.image = this.userService.currentImage;
     if (this.user == null || this.user == undefined) {
       // use the from() from rxjs to transform the promise into an observable

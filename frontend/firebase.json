@@ -5,5 +5,16 @@
   },
   "storage": {
     "rules": "storage.rules"
-  }
+  },
+  "headers": [
+      {
+        "source": "/styles/**",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/css"
+          }
+        ]
+      }
+    ]
 }
